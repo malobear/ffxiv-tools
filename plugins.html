@@ -17,6 +17,7 @@
 <meta name="twitter:title" content="FFXIV Plugins">
 <meta name="twitter:description" content="Dalamud plugins I actually use for FFXIV — client-side tools, some from the default plugin directory, some added as custom/experimental repos.">
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
 <style>
   :root {
     color-scheme: light dark;
@@ -36,12 +37,30 @@
     line-height: 1.5;
   }
   main {
-    max-width: 760px;
+    max-width: 1180px;
     margin: 0 auto;
     padding: 48px 20px 80px;
   }
   header {
     margin-bottom: 24px;
+  }
+  .page-layout {
+    align-items: flex-start;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .sidebar-col {
+    padding-left: 0;
+  }
+  @media (min-width: 769px) {
+    .sidebar-col {
+      position: sticky;
+      top: 24px;
+    }
+  }
+  .content-col {
+    padding-right: 0;
+    min-width: 0;
   }
   h1 {
     font-size: 1.8rem;
@@ -53,8 +72,9 @@
   }
   .page-nav {
     display: flex;
-    gap: 16px;
-    margin-top: 16px;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 24px;
   }
   .page-nav a {
     color: var(--muted);
@@ -78,7 +98,7 @@
     padding: 12px 14px;
     color: var(--muted);
     font-size: 0.85rem;
-    margin-bottom: 32px;
+    margin-bottom: 24px;
   }
   .search-bar {
     position: relative;
@@ -116,7 +136,6 @@
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
-    margin-bottom: 32px;
   }
   .tag-pill {
     background: var(--card);
@@ -130,6 +149,9 @@
   .tag-pill:hover, .tag-pill.active {
     color: var(--accent);
     border-color: var(--accent);
+  }
+  section[hidden] {
+    display: none;
   }
   h2 {
     font-size: 1.05rem;
@@ -231,17 +253,21 @@
   <header>
     <h1>FFXIV Plugins</h1>
     <p>Dalamud plugins I actually use. Handy to have in one place when I'm recommending them to someone.</p>
-    <nav class="page-nav"><a href="./">Tools I use</a><a href="watchlist.html">Watchlist</a><a class="current" href="plugins.html">Plugins</a></nav>
   </header>
 
   <p class="note">These are third-party client plugins run through <a href="https://dalamud.dev/" target="_blank" rel="noopener noreferrer">Dalamud</a>, not officially supported by Square Enix — install and use at your own judgment. Anything tagged <strong>experimental</strong> isn't in Dalamud's default plugin directory; you add it under Dalamud Settings → Experimental → Custom Plugin Repositories using the repo/URL linked below.</p>
 
-  <div class="search-bar">
-    <input id="search" type="search" placeholder="Search plugins by name, description, or tag..." autocomplete="off">
-    <button id="clear-search" type="button" title="Clear" hidden>&times;</button>
+  <div class="page-layout columns">
+  <div class="sidebar-col column is-3">
+    <nav class="page-nav"><a href="./">Tools I use</a><a href="watchlist.html">Watchlist</a><a class="current" href="plugins.html">Plugins</a></nav>
+    <div class="search-bar">
+      <input id="search" type="search" placeholder="Search plugins by name, description, or tag..." autocomplete="off">
+      <button id="clear-search" type="button" title="Clear" hidden>&times;</button>
+    </div>
+    <div id="tag-bar"></div>
   </div>
-  <div id="tag-bar"></div>
 
+  <div class="content-col column is-9">
   <p id="empty-state" hidden>No plugins match that search. <button id="empty-clear" type="button">Clear it</button>.</p>
 
   <section>
@@ -287,6 +313,8 @@
       </li>
     </ul>
   </section>
+  </div>
+  </div>
 
   <footer>
     See the <a href="./">main list</a> or the <a href="watchlist.html">watchlist</a>.
@@ -297,7 +325,7 @@
 <script>
 (function () {
   var items = Array.prototype.slice.call(document.querySelectorAll('li[data-tags]'));
-  var sections = Array.prototype.slice.call(document.querySelectorAll('main > section'));
+  var sections = Array.prototype.slice.call(document.querySelectorAll('.content-col > section'));
   var input = document.getElementById('search');
   var clearBtn = document.getElementById('clear-search');
   var tagBar = document.getElementById('tag-bar');
