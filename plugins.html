@@ -3,19 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FFXIV Watchlist</title>
-<meta name="description" content="FFXIV tools I've heard about or others recommend but haven't tried myself yet — a holding place to explore later.">
-<link rel="canonical" href="https://malobear.github.io/ffxiv-tools/watchlist.html">
+<title>FFXIV Plugins</title>
+<meta name="description" content="Dalamud plugins I actually use for FFXIV — client-side tools, some from the default plugin directory, some added as custom/experimental repos.">
+<link rel="canonical" href="https://malobear.github.io/ffxiv-tools/plugins.html">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="FFXIV Tools & Links">
-<meta property="og:title" content="FFXIV Watchlist">
-<meta property="og:description" content="FFXIV tools I've heard about or others recommend but haven't tried myself yet — a holding place to explore later.">
-<meta property="og:url" content="https://malobear.github.io/ffxiv-tools/watchlist.html">
+<meta property="og:title" content="FFXIV Plugins">
+<meta property="og:description" content="Dalamud plugins I actually use for FFXIV — client-side tools, some from the default plugin directory, some added as custom/experimental repos.">
+<meta property="og:url" content="https://malobear.github.io/ffxiv-tools/plugins.html">
 
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="FFXIV Watchlist">
-<meta name="twitter:description" content="FFXIV tools I've heard about or others recommend but haven't tried myself yet — a holding place to explore later.">
+<meta name="twitter:title" content="FFXIV Plugins">
+<meta name="twitter:description" content="Dalamud plugins I actually use for FFXIV — client-side tools, some from the default plugin directory, some added as custom/experimental repos.">
 
 <style>
   :root {
@@ -229,41 +229,33 @@
 <body>
 <main>
   <header>
-    <h1>FFXIV Watchlist</h1>
-    <p>Tools I've heard about or seen others use, but haven't tried myself. A holding place to explore later.</p>
-    <nav class="page-nav"><a href="./">Tools I use</a><a class="current" href="watchlist.html">Watchlist</a><a href="plugins.html">Plugins</a></nav>
+    <h1>FFXIV Plugins</h1>
+    <p>Dalamud plugins I actually use. Handy to have in one place when I'm recommending them to someone.</p>
+    <nav class="page-nav"><a href="./">Tools I use</a><a href="watchlist.html">Watchlist</a><a class="current" href="plugins.html">Plugins</a></nav>
   </header>
 
-  <p class="note">Nothing here is a recommendation from me yet — it's a reminder to check these out. Once I've actually used one and it earns a spot, it moves to the <a href="./">main list</a>.</p>
+  <p class="note">These are third-party client plugins run through <a href="https://dalamud.dev/" target="_blank" rel="noopener noreferrer">Dalamud</a>, not officially supported by Square Enix — install and use at your own judgment. Anything tagged <strong>experimental</strong> isn't in Dalamud's default plugin directory; you add it under Dalamud Settings → Experimental → Custom Plugin Repositories using the repo/URL linked below.</p>
 
   <div class="search-bar">
-    <input id="search" type="search" placeholder="Search watchlist by name, description, or tag..." autocomplete="off">
+    <input id="search" type="search" placeholder="Search plugins by name, description, or tag..." autocomplete="off">
     <button id="clear-search" type="button" title="Clear" hidden>&times;</button>
   </div>
   <div id="tag-bar"></div>
 
-  <p id="empty-state" hidden>Nothing on the watchlist matches that search. <button id="empty-clear" type="button">Clear it</button>.</p>
+  <p id="empty-state" hidden>No plugins match that search. <button id="empty-clear" type="button">Clear it</button>.</p>
 
   <section>
-    <h2>Theorycrafting &amp; Calculators</h2>
+    <h2>Housing &amp; Decoration</h2>
     <ul>
-      <li data-tags="theorycrafting, rotations, community">
-        <a href="https://www.thebalanceffxiv.com/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">The Balance<span class="desc">Job theorycrafting hub, rotation guides, discord</span></span></a>
-        <div class="tags"><button type="button">theorycrafting</button><button type="button">rotations</button><button type="button">community</button></div>
-      </li>
-      <li data-tags="gear, theorycrafting">
-        <a href="https://etro.gg/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Etro<span class="desc">Gearset planner and BiS builder</span></span></a>
-        <div class="tags"><button type="button">gear</button><button type="button">theorycrafting</button></div>
-      </li>
-      <li data-tags="gear, glamour">
-        <a href="https://ffxiv.ariyala.com/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Ariyala's Toolbox<span class="desc">Alternate gearset/glamour planner</span></span></a>
-        <div class="tags"><button type="button">gear</button><button type="button">glamour</button></div>
+      <li data-tags="housing, experimental">
+        <a href="https://github.com/LeonBlade/BDTHPlugin" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Burning Down The House (BDTH)<span class="desc">Gizmo-based housing item positioning — far more precise than the in-game editor. Custom repo, not in the default plugin directory.</span></span></a>
+        <div class="tags"><button type="button">housing</button><button type="button">experimental</button></div>
       </li>
     </ul>
   </section>
 
   <footer>
-    Actually use one of these regularly? Move it to the <a href="./">main list</a>.
+    See the <a href="./">main list</a> or the <a href="watchlist.html">watchlist</a>.
     Source on <a href="https://github.com/malobear/ffxiv-tools">GitHub</a> — see something missing? Open a PR or ping me.
   </footer>
 </main>
@@ -365,7 +357,7 @@
   var itemList = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    "name": "FFXIV Watchlist",
+    "name": "FFXIV Plugins",
     "itemListElement": []
   };
   var pos = 1;

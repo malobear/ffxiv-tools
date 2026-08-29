@@ -3,16 +3,22 @@ Useful Tools &amp; Links for FFXIV!
 
 Live page: https://malobear.github.io/ffxiv-tools/
 Watchlist (unvetted, to explore later): https://malobear.github.io/ffxiv-tools/watchlist.html
+Plugins: https://malobear.github.io/ffxiv-tools/plugins.html
 
-## Two pages
+## Three pages
 
 - `index.html` — tools I actually use. This is the one worth sharing/linking.
 - `watchlist.html` — tools I've heard about or seen recommended but haven't tried
   myself yet. A holding place, not an endorsement. Once something on the watchlist
   earns regular use, move its `<li>` block over to `index.html` (and delete it from
   the watchlist).
+- `plugins.html` — Dalamud plugins I actually use. Kept separate since these are
+  third-party client mods, not sanctioned tools like the others — the page carries
+  a note about that. Tag any plugin that isn't in Dalamud's default plugin directory
+  (i.e. needs a custom repo added under Dalamud Settings → Experimental) with
+  `experimental`.
 
-Both pages share the exact same structure, styling, and search/tag script — see below.
+All three pages share the exact same structure, styling, and search/tag script — see below.
 
 ## Updating the list
 
