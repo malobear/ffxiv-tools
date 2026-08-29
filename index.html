@@ -30,7 +30,7 @@
   * { box-sizing: border-box; }
   body {
     margin: 0;
-    background: var(--bg);
+    background: linear-gradient(180deg, var(--bg) 0%, #0d0f14 100%);
     color: var(--text);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     line-height: 1.5;
@@ -138,17 +138,37 @@
   li {
     border: 1px solid var(--border);
     background: var(--card);
-    border-radius: 8px;
+    border-radius: 10px;
     margin-bottom: 8px;
+    transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease;
+  }
+  li:hover {
+    border-color: var(--accent);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    transform: translateY(-1px);
   }
   li a {
-    display: block;
+    display: flex;
+    align-items: center;
+    gap: 12px;
     padding: 12px 14px;
     color: var(--text);
     text-decoration: none;
   }
   li a:hover {
     color: var(--accent);
+  }
+  li .favicon {
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    flex-shrink: 0;
+    background: var(--border);
+    object-fit: contain;
+  }
+  li .link-body {
+    flex: 1;
+    min-width: 0;
   }
   li .desc {
     display: block;
@@ -157,7 +177,7 @@
     margin-top: 2px;
   }
   li .tags {
-    padding: 0 14px 10px;
+    padding: 0 14px 10px 46px;
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
@@ -216,12 +236,22 @@
     <h2>Market &amp; Economy</h2>
     <ul>
       <li data-tags="market, economy">
-        <a href="https://universalis.app/" target="_blank" rel="noopener noreferrer">Universalis<span class="desc">Cross-world market board data</span></a>
+        <a href="https://universalis.app/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Universalis<span class="desc">Cross-world market board data</span></span></a>
         <div class="tags"><button type="button">market</button><button type="button">economy</button></div>
       </li>
       <li data-tags="crafting, gathering, market">
-        <a href="https://ffxivteamcraft.com/" target="_blank" rel="noopener noreferrer">Teamcraft<span class="desc">Crafting lists, alarms, gathering routes</span></a>
+        <a href="https://ffxivteamcraft.com/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Teamcraft<span class="desc">Crafting lists, alarms, gathering routes</span></span></a>
         <div class="tags"><button type="button">crafting</button><button type="button">gathering</button><button type="button">market</button></div>
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Progress &amp; Checklists</h2>
+    <ul>
+      <li data-tags="checklist, dungeons, raids">
+        <a href="https://xivtodo.com/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">XIV To-Do<span class="desc">Duty completion tracker for dungeons, raids, and trials — less useful for the dailies checklist</span></span></a>
+        <div class="tags"><button type="button">checklist</button><button type="button">dungeons</button><button type="button">raids</button></div>
       </li>
     </ul>
   </section>
@@ -230,11 +260,11 @@
     <h2>Guides &amp; Reference</h2>
     <ul>
       <li data-tags="database, reference">
-        <a href="https://www.garlandtools.org/db/" target="_blank" rel="noopener noreferrer">Garland Tools<span class="desc">Item, recipe, and quest database</span></a>
+        <a href="https://www.garlandtools.org/db/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Garland Tools<span class="desc">Item, recipe, and quest database</span></span></a>
         <div class="tags"><button type="button">database</button><button type="button">reference</button></div>
       </li>
       <li data-tags="official, news">
-        <a href="https://na.finalfantasyxiv.com/lodestone/" target="_blank" rel="noopener noreferrer">The Lodestone<span class="desc">Official news, maintenance, and lore updates</span></a>
+        <a href="https://na.finalfantasyxiv.com/lodestone/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">The Lodestone<span class="desc">Official news, maintenance, and lore updates</span></span></a>
         <div class="tags"><button type="button">official</button><button type="button">news</button></div>
       </li>
     </ul>
@@ -259,6 +289,13 @@
   function tagsOf(li) {
     return li.dataset.tags.split(',').map(function (t) { return t.trim(); }).filter(Boolean);
   }
+
+  document.querySelectorAll('li[data-tags] > a > img.favicon').forEach(function (img) {
+    try {
+      var host = new URL(img.parentElement.href).hostname;
+      img.src = 'https://www.google.com/s2/favicons?sz=64&domain=' + encodeURIComponent(host);
+    } catch (e) {}
+  });
 
   var allTags = [];
   items.forEach(function (li) {
@@ -342,11 +379,12 @@
   var pos = 1;
   document.querySelectorAll('main li[data-tags] > a').forEach(function (a) {
     var descEl = a.querySelector('.desc');
+    var bodyEl = a.querySelector('.link-body');
     itemList.itemListElement.push({
       "@type": "ListItem",
       "position": pos++,
       "url": a.href,
-      "name": a.childNodes[0].textContent.trim(),
+      "name": bodyEl ? bodyEl.childNodes[0].textContent.trim() : a.textContent.trim(),
       "description": descEl ? descEl.textContent.trim() : ""
     });
   });

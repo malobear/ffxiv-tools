@@ -22,15 +22,17 @@ Each category is a `<section>` in `<main>`, with an `<h2>` title and a `<ul>` of
 
 ```html
 <li data-tags="tag-one, tag-two">
-  <a href="https://example.com/" target="_blank" rel="noopener noreferrer">Name<span class="desc">Short description</span></a>
+  <a href="https://example.com/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Name<span class="desc">Short description</span></span></a>
   <div class="tags"><button type="button">tag-one</button><button type="button">tag-two</button></div>
 </li>
 ```
 
 The `data-tags` attribute on the `<li>` and the `<button>` labels in `.tags` should
 match (comma-separated, lowercase). New tags just work — the tag pill bar and the
-search box pick them up automatically, no other file needs editing. Commit and push to
-`main` and GitHub Pages redeploys within a minute or two.
+search box pick them up automatically, no other file needs editing. The favicon
+`<img>` needs no `src` — it's filled in automatically at page load from the link's
+own domain (via Google's favicon service), so you never have to go hunt one down.
+Commit and push to `main` and GitHub Pages redeploys within a minute or two.
 
 The list itself is plain static HTML (not JS-generated) so it's fully visible to
 search engines and link-preview bots without executing any script — search/filter and

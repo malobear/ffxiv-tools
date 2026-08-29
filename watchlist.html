@@ -30,7 +30,7 @@
   * { box-sizing: border-box; }
   body {
     margin: 0;
-    background: var(--bg);
+    background: linear-gradient(180deg, var(--bg) 0%, #0d0f14 100%);
     color: var(--text);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     line-height: 1.5;
@@ -148,17 +148,37 @@
   li {
     border: 1px solid var(--border);
     background: var(--card);
-    border-radius: 8px;
+    border-radius: 10px;
     margin-bottom: 8px;
+    transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease;
+  }
+  li:hover {
+    border-color: var(--accent);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    transform: translateY(-1px);
   }
   li a {
-    display: block;
+    display: flex;
+    align-items: center;
+    gap: 12px;
     padding: 12px 14px;
     color: var(--text);
     text-decoration: none;
   }
   li a:hover {
     color: var(--accent);
+  }
+  li .favicon {
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    flex-shrink: 0;
+    background: var(--border);
+    object-fit: contain;
+  }
+  li .link-body {
+    flex: 1;
+    min-width: 0;
   }
   li .desc {
     display: block;
@@ -167,7 +187,7 @@
     margin-top: 2px;
   }
   li .tags {
-    padding: 0 14px 10px;
+    padding: 0 14px 10px 46px;
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
@@ -228,15 +248,15 @@
     <h2>Theorycrafting &amp; Calculators</h2>
     <ul>
       <li data-tags="theorycrafting, rotations, community">
-        <a href="https://www.thebalanceffxiv.com/" target="_blank" rel="noopener noreferrer">The Balance<span class="desc">Job theorycrafting hub, rotation guides, discord</span></a>
+        <a href="https://www.thebalanceffxiv.com/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">The Balance<span class="desc">Job theorycrafting hub, rotation guides, discord</span></span></a>
         <div class="tags"><button type="button">theorycrafting</button><button type="button">rotations</button><button type="button">community</button></div>
       </li>
       <li data-tags="gear, theorycrafting">
-        <a href="https://etro.gg/" target="_blank" rel="noopener noreferrer">Etro<span class="desc">Gearset planner and BiS builder</span></a>
+        <a href="https://etro.gg/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Etro<span class="desc">Gearset planner and BiS builder</span></span></a>
         <div class="tags"><button type="button">gear</button><button type="button">theorycrafting</button></div>
       </li>
       <li data-tags="gear, glamour">
-        <a href="https://ffxiv.ariyala.com/" target="_blank" rel="noopener noreferrer">Ariyala's Toolbox<span class="desc">Alternate gearset/glamour planner</span></a>
+        <a href="https://ffxiv.ariyala.com/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Ariyala's Toolbox<span class="desc">Alternate gearset/glamour planner</span></span></a>
         <div class="tags"><button type="button">gear</button><button type="button">glamour</button></div>
       </li>
     </ul>
@@ -261,6 +281,13 @@
   function tagsOf(li) {
     return li.dataset.tags.split(',').map(function (t) { return t.trim(); }).filter(Boolean);
   }
+
+  document.querySelectorAll('li[data-tags] > a > img.favicon').forEach(function (img) {
+    try {
+      var host = new URL(img.parentElement.href).hostname;
+      img.src = 'https://www.google.com/s2/favicons?sz=64&domain=' + encodeURIComponent(host);
+    } catch (e) {}
+  });
 
   var allTags = [];
   items.forEach(function (li) {
@@ -344,11 +371,12 @@
   var pos = 1;
   document.querySelectorAll('main li[data-tags] > a').forEach(function (a) {
     var descEl = a.querySelector('.desc');
+    var bodyEl = a.querySelector('.link-body');
     itemList.itemListElement.push({
       "@type": "ListItem",
       "position": pos++,
       "url": a.href,
-      "name": a.childNodes[0].textContent.trim(),
+      "name": bodyEl ? bodyEl.childNodes[0].textContent.trim() : a.textContent.trim(),
       "description": descEl ? descEl.textContent.trim() : ""
     });
   });
