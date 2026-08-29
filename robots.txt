@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://malobear.github.io/ffxiv-tools/sitemap.xml
