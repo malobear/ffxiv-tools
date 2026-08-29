@@ -5,6 +5,8 @@ Live page: https://malobear.github.io/ffxiv-tools/
 Watchlist (unvetted, to explore later): https://malobear.github.io/ffxiv-tools/watchlist.html
 Plugins: https://malobear.github.io/ffxiv-tools/plugins.html
 
+FINAL FANTASY XIV is a registered trademark of Square Enix Holdings Co., Ltd. This project is an unofficial, fan-made list, not affiliated with or endorsed by Square Enix. Each page carries the same notice in its footer.
+
 ## Three pages
 
 - `index.html`: tools I actually use. This is the one worth sharing/linking.
