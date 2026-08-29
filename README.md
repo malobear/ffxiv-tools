@@ -40,7 +40,8 @@ match (comma-separated, lowercase). New tags just work: the tag pill bar and the
 search box pick them up automatically, no other file needs editing. The favicon
 `<img>` needs no `src`: it's filled in automatically at page load from the link's
 own domain (via Google's favicon service), so you never have to go hunt one down.
-Commit and push to `main` and GitHub Pages redeploys within a minute or two.
+Commit and push to `main` and GitHub Pages redeploys within a minute or two. Worth
+bumping the matching `<lastmod>` date in `sitemap.xml` when you edit a page.
 
 The list itself is plain static HTML (not JS-generated) so it's fully visible to
 search engines and link-preview bots without executing any script. Search/filter and
