@@ -3,19 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FFXIV Tools &amp; Links</title>
-<meta name="description" content="Curated FFXIV tools and links — theorycrafting calculators, market board data, crafting trackers, and reference sites, updated whenever something new is worth keeping.">
-<link rel="canonical" href="https://malobear.github.io/ffxiv-tools/">
+<title>FFXIV Watchlist</title>
+<meta name="description" content="FFXIV tools I've heard about or others recommend but haven't tried myself yet — a holding place to explore later.">
+<link rel="canonical" href="https://malobear.github.io/ffxiv-tools/watchlist.html">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="FFXIV Tools & Links">
-<meta property="og:title" content="FFXIV Tools & Links">
-<meta property="og:description" content="Curated FFXIV tools and links — theorycrafting calculators, market board data, crafting trackers, and reference sites, updated whenever something new is worth keeping.">
-<meta property="og:url" content="https://malobear.github.io/ffxiv-tools/">
+<meta property="og:title" content="FFXIV Watchlist">
+<meta property="og:description" content="FFXIV tools I've heard about or others recommend but haven't tried myself yet — a holding place to explore later.">
+<meta property="og:url" content="https://malobear.github.io/ffxiv-tools/watchlist.html">
 
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="FFXIV Tools & Links">
-<meta name="twitter:description" content="Curated FFXIV tools and links — theorycrafting calculators, market board data, crafting trackers, and reference sites, updated whenever something new is worth keeping.">
+<meta name="twitter:title" content="FFXIV Watchlist">
+<meta name="twitter:description" content="FFXIV tools I've heard about or others recommend but haven't tried myself yet — a holding place to explore later.">
 
 <style>
   :root {
@@ -69,6 +69,16 @@
   }
   .page-nav a:hover {
     color: var(--accent);
+  }
+  .note {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 6px;
+    padding: 12px 14px;
+    color: var(--muted);
+    font-size: 0.85rem;
+    margin-bottom: 32px;
   }
   .search-bar {
     position: relative;
@@ -199,49 +209,41 @@
 <body>
 <main>
   <header>
-    <h1>FFXIV Tools &amp; Links</h1>
-    <p>A running list of things I actually use. Updated whenever I find something worth keeping.</p>
-    <nav class="page-nav"><a class="current" href="/">Tools I use</a><a href="/watchlist.html">Watchlist</a></nav>
+    <h1>FFXIV Watchlist</h1>
+    <p>Tools I've heard about or seen others use, but haven't tried myself. A holding place to explore later.</p>
+    <nav class="page-nav"><a href="/">Tools I use</a><a class="current" href="/watchlist.html">Watchlist</a></nav>
   </header>
 
+  <p class="note">Nothing here is a recommendation from me yet — it's a reminder to check these out. Once I've actually used one and it earns a spot, it moves to the <a href="/">main list</a>.</p>
+
   <div class="search-bar">
-    <input id="search" type="search" placeholder="Search tools by name, description, or tag..." autocomplete="off">
+    <input id="search" type="search" placeholder="Search watchlist by name, description, or tag..." autocomplete="off">
     <button id="clear-search" type="button" title="Clear" hidden>&times;</button>
   </div>
   <div id="tag-bar"></div>
 
-  <p id="empty-state" hidden>No tools match that search. <button id="empty-clear" type="button">Clear it</button>.</p>
+  <p id="empty-state" hidden>Nothing on the watchlist matches that search. <button id="empty-clear" type="button">Clear it</button>.</p>
 
   <section>
-    <h2>Market &amp; Economy</h2>
+    <h2>Theorycrafting &amp; Calculators</h2>
     <ul>
-      <li data-tags="market, economy">
-        <a href="https://universalis.app/" target="_blank" rel="noopener noreferrer">Universalis<span class="desc">Cross-world market board data</span></a>
-        <div class="tags"><button type="button">market</button><button type="button">economy</button></div>
+      <li data-tags="theorycrafting, rotations, community">
+        <a href="https://www.thebalanceffxiv.com/" target="_blank" rel="noopener noreferrer">The Balance<span class="desc">Job theorycrafting hub, rotation guides, discord</span></a>
+        <div class="tags"><button type="button">theorycrafting</button><button type="button">rotations</button><button type="button">community</button></div>
       </li>
-      <li data-tags="crafting, gathering, market">
-        <a href="https://ffxivteamcraft.com/" target="_blank" rel="noopener noreferrer">Teamcraft<span class="desc">Crafting lists, alarms, gathering routes</span></a>
-        <div class="tags"><button type="button">crafting</button><button type="button">gathering</button><button type="button">market</button></div>
+      <li data-tags="gear, theorycrafting">
+        <a href="https://etro.gg/" target="_blank" rel="noopener noreferrer">Etro<span class="desc">Gearset planner and BiS builder</span></a>
+        <div class="tags"><button type="button">gear</button><button type="button">theorycrafting</button></div>
       </li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Guides &amp; Reference</h2>
-    <ul>
-      <li data-tags="database, reference">
-        <a href="https://www.garlandtools.org/db/" target="_blank" rel="noopener noreferrer">Garland Tools<span class="desc">Item, recipe, and quest database</span></a>
-        <div class="tags"><button type="button">database</button><button type="button">reference</button></div>
-      </li>
-      <li data-tags="official, news">
-        <a href="https://na.finalfantasyxiv.com/lodestone/" target="_blank" rel="noopener noreferrer">The Lodestone<span class="desc">Official news, maintenance, and lore updates</span></a>
-        <div class="tags"><button type="button">official</button><button type="button">news</button></div>
+      <li data-tags="gear, glamour">
+        <a href="https://ffxiv.ariyala.com/" target="_blank" rel="noopener noreferrer">Ariyala's Toolbox<span class="desc">Alternate gearset/glamour planner</span></a>
+        <div class="tags"><button type="button">gear</button><button type="button">glamour</button></div>
       </li>
     </ul>
   </section>
 
   <footer>
-    Found something I haven't tried? See the <a href="/watchlist.html">watchlist</a>.
+    Actually use one of these regularly? Move it to the <a href="/">main list</a>.
     Source on <a href="https://github.com/malobear/ffxiv-tools">GitHub</a> — see something missing? Open a PR or ping me.
   </footer>
 </main>
@@ -336,7 +338,7 @@
   var itemList = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    "name": "FFXIV Tools & Links",
+    "name": "FFXIV Watchlist",
     "itemListElement": []
   };
   var pos = 1;
