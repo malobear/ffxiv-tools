@@ -1,5 +1,6 @@
-# ffxiv-tools
-Useful Tools &amp; Links for FFXIV!
+# FFXIV Tools & Links
+
+A curated, hand-picked list of FFXIV tools I actually use: market board data, crafting trackers, glamour and mod sources, Dalamud plugins, and other reference sites. Kept small on purpose, updated whenever something new earns a spot.
 
 Live page: https://malobear.github.io/ffxiv-tools/
 Watchlist (unvetted, to explore later): https://malobear.github.io/ffxiv-tools/watchlist.html
