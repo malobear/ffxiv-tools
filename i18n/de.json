@@ -136,6 +136,7 @@
     "relictracker": "Verfolgt den Fortschritt bei Relikt-Waffen und was noch fehlt",
     "sightseeinglog": "Helfer für das Ingame-Sightseeing-Log-Bingo",
     "oceanfishing": "Kommender Zeitplan für Ozeanangel-Ausfahrten, blaue Fische und Achievement-Infos",
+    "ff14fish": "Sagt Wetter-/Zeitfenster für das Fangen bestimmter Fische voraus, der Community-Standard unter den Angel-Tabellen",
     "aetherphone": "Fügt eine vollständige Smartphone-Oberfläche ins Spiel ein: Social Feed, Nachrichten, Fotos teilen, Marktbrett, Spiele. Bringt viel vom Home-Screen-Gefühl ins Spiel. Custom-Repo, nicht im Standard-Plugin-Verzeichnis"
   },
   "pages": {

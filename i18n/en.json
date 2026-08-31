@@ -136,6 +136,7 @@
     "relictracker": "Tracks relic weapon progress and what's still needed",
     "sightseeinglog": "Helper for the in-game Sightseeing Log bingo",
     "oceanfishing": "Upcoming ocean fishing voyage schedule, blue fish, and achievement info",
+    "ff14fish": "Predicts weather/time windows for catching specific fish, the community standard for fishing spreadsheets",
     "aetherphone": "Adds a full smartphone interface in-game, social feed, messaging, photo sharing, market board, games. Recreates a lot of a home-screen experience. Custom repo, not in the default plugin directory"
   },
   "pages": {
