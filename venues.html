@@ -234,14 +234,21 @@
   li .venue-meta .schedule::before {
     content: "🕒 ";
   }
+  li .venue-meta .address::before {
+    content: "📍 ";
+  }
   li .copy-address {
     background: none;
     border: 1px solid var(--border);
     color: var(--muted);
     border-radius: 999px;
-    padding: 3px 10px;
+    width: 22px;
+    height: 22px;
+    line-height: 1;
     font-size: 0.75rem;
+    padding: 0;
     cursor: pointer;
+    flex-shrink: 0;
   }
   li .copy-address:hover, li .copy-address.copied {
     color: var(--accent);
@@ -322,7 +329,8 @@
         <a href="https://theeventide.crd.co/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">The Eventide<span class="desc" data-i18n="items.theeventide">Eorzea's Weirdest Tavern</span></span></a>
         <div class="venue-meta">
           <span class="schedule">Mondays 10:30 PM&ndash;12:17 AM ET</span>
-          <button type="button" class="copy-address" data-i18n="pages.venues.copyAddress">Copy address</button>
+          <span class="address">Malboro - Lavender Beds - Ward 23 Plot 11</span>
+          <button type="button" class="copy-address" data-i18n="pages.venues.copyAddress" data-i18n-title title="Copy Lifestream Command" aria-label="Copy Lifestream Command">📋</button>
         </div>
         <div class="tags"><button type="button">tavern</button><button type="button">lounge</button></div>
       </li>
@@ -505,17 +513,14 @@
     var li = btn.closest('li[data-li-command]');
     if (!li) return;
     var command = li.dataset.liCommand;
+    var icon = btn.textContent;
     btn.addEventListener('click', function () {
-      var reset = function () {
-        btn.classList.remove('copied');
-        btn.dispatchEvent(new CustomEvent('i18n:relabel'));
-      };
       var showCopied = function () {
         btn.classList.add('copied');
-        btn.textContent = i18next.t('pages.venues.addressCopied');
+        btn.textContent = '✓';
         setTimeout(function () {
-          btn.textContent = i18next.t('pages.venues.copyAddress');
-          reset();
+          btn.textContent = icon;
+          btn.classList.remove('copied');
         }, 1500);
       };
       if (navigator.clipboard && navigator.clipboard.writeText) {

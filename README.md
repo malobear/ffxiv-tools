@@ -82,11 +82,16 @@ so the site never breaks, it just shows English for that one entry until transla
   `America/New_York`). The page's own script converts this to each visitor's local
   time and weekday client-side, so don't pre-convert it yourself. `data-end` earlier
   than `data-start` is treated as crossing midnight into the next day.
-- `data-li-command`: the exact command to copy for the
+- `data-li-command`: the exact command copied by the address button, for the
   [Lifestream](https://github.com/NightmareXIV/Lifestream) plugin's `/li` travel
   command, in the form `/li <World> <District> <Ward> <Plot>` (data center and the
   `W`/`P` prefixes are omitted). Get the address from the venue's own site; don't
   guess at ward/plot numbers.
+
+Inside `.venue-meta`, also add a plain-text `<span class="address">` with the same
+address written out for humans to read (e.g. `Malboro - Lavender Beds - Ward 23 Plot
+11`), so it's visible without clicking anything. Not translated across languages,
+same as item names, since it's real place names/numbers.
 
 ### Searching / sharing a filtered view
 

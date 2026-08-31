@@ -33,6 +33,7 @@
         el.placeholder = value;
       } else if (el.hasAttribute('data-i18n-title')) {
         el.title = value;
+        if (el.hasAttribute('aria-label')) el.setAttribute('aria-label', value);
       } else {
         el.textContent = value;
       }
