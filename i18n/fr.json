@@ -3,7 +3,8 @@
     "nav": {
       "tools": "Mes outils",
       "watchlist": "Watchlist",
-      "plugins": "Plugins"
+      "plugins": "Plugins",
+      "venues": "Lieux"
     },
     "clearSearchTitle": "Effacer",
     "emptyClear": "Effacer",
@@ -47,6 +48,7 @@
     "items": "objets",
     "job-guides": "guides de job",
     "lodestone": "Lodestone",
+    "lounge": "lounge",
     "maps": "cartes",
     "market": "marché",
     "meta-list": "méta-liste",
@@ -78,9 +80,11 @@
     "social": "social",
     "streaming": "streaming",
     "symbols": "symboles",
+    "tavern": "taverne",
     "theorycrafting": "theorycrafting",
     "toolbars": "barres d'outils",
     "tracker": "suivi",
+    "travel": "voyage",
     "ui": "interface",
     "unicode": "unicode",
     "venues": "lieux",
@@ -137,6 +141,8 @@
     "sightseeinglog": "Aide pour le bingo du journal de tourisme en jeu",
     "oceanfishing": "Calendrier à venir des sorties de pêche en mer, poissons bleus et infos de hauts faits",
     "ff14fish": "Prédit les fenêtres météo/horaires pour attraper des poissons spécifiques, la référence communautaire des tableurs de pêche",
+    "lifestream": "Voyagez vers un autre monde, data center ou logement avec une seule commande. Dépôt personnalisé, absent du répertoire de plugins par défaut",
+    "theeventide": "La taverne la plus étrange d'Éorzéa",
     "aetherphone": "Ajoute une interface complète de smartphone en jeu : fil social, messagerie, partage de photos, marché, jeux. Recrée en grande partie l'expérience d'un écran d'accueil. Dépôt personnalisé, absent du répertoire de plugins par défaut"
   },
   "pages": {
@@ -192,6 +198,22 @@
         "guides": "Guides & Référence",
         "progress": "Progression & Listes de vérification",
         "plugins": "Plugins"
+      }
+    },
+    "venues": {
+      "h1": "FFXIV Venues",
+      "tagline": "Des lieux gérés par des joueurs que je fréquente vraiment. Les horaires sont convertis automatiquement dans votre heure locale.",
+      "note": "Les horaires sont indiqués par chaque lieu en heure de l'Est (Eastern Time) et convertis ici dans l'heure et le jour locaux de votre appareil. Utilisez le bouton d'adresse pour copier une commande de voyage {lifestream} prête à coller.",
+      "lifestreamLinkLabel": "Lifestream",
+      "searchPlaceholder": "Rechercher un lieu par nom, description ou tag...",
+      "emptyStateText": "Aucun lieu ne correspond à cette recherche.",
+      "copyAddress": "Copier l'adresse",
+      "addressCopied": "Copié !",
+      "footerLine1": "Consultez la {main} ou la {plugins}.",
+      "mainLinkLabel": "liste principale",
+      "pluginsLinkLabel": "page des plugins",
+      "sections": {
+        "nightlife": "Bars & Lounges"
       }
     }
   }

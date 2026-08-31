@@ -12,26 +12,21 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FFXIV Watchlist</title>
-<meta name="description" content="FFXIV tools I've heard about or others recommend but haven't tried myself yet, a holding place to explore later.">
-<link rel="canonical" href="https://malobear.github.io/ffxiv-tools/watchlist.html">
+<title>FFXIV Venues</title>
+<meta name="description" content="Player-run FFXIV venues I actually visit, with open days/hours converted to your local time and a one-click Lifestream address.">
+<link rel="canonical" href="https://malobear.github.io/ffxiv-tools/venues.html">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <meta name="theme-color" content="#12151c">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="FFXIV Tools & Links">
-<meta property="og:title" content="FFXIV Watchlist">
-<meta property="og:description" content="FFXIV tools I've heard about or others recommend but haven't tried myself yet, a holding place to explore later.">
-<meta property="og:url" content="https://malobear.github.io/ffxiv-tools/watchlist.html">
-<meta property="og:image" content="https://malobear.github.io/ffxiv-tools/og-watchlist.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="FFXIV Watchlist">
+<meta property="og:title" content="FFXIV Venues">
+<meta property="og:description" content="Player-run FFXIV venues I actually visit, with open days/hours converted to your local time and a one-click Lifestream address.">
+<meta property="og:url" content="https://malobear.github.io/ffxiv-tools/venues.html">
 
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="FFXIV Watchlist">
-<meta name="twitter:description" content="FFXIV tools I've heard about or others recommend but haven't tried myself yet, a holding place to explore later.">
-<meta name="twitter:image" content="https://malobear.github.io/ffxiv-tools/og-watchlist.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="FFXIV Venues">
+<meta name="twitter:description" content="Player-run FFXIV venues I actually visit, with open days/hours converted to your local time and a one-click Lifestream address.">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
 <style>
@@ -227,6 +222,31 @@
     font-size: 0.85rem;
     margin-top: 2px;
   }
+  li .venue-meta {
+    padding: 0 14px 10px 46px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+  li .venue-meta .schedule::before {
+    content: "🕒 ";
+  }
+  li .copy-address {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    border-radius: 999px;
+    padding: 3px 10px;
+    font-size: 0.75rem;
+    cursor: pointer;
+  }
+  li .copy-address:hover, li .copy-address.copied {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
   li .tags {
     padding: 0 14px 10px 46px;
     display: flex;
@@ -275,86 +295,36 @@
 <body>
 <main>
   <header>
-    <h1 data-i18n="pages.watchlist.h1">FFXIV Watchlist</h1>
-    <p data-i18n="pages.watchlist.tagline">Tools I've heard about or seen others use, but haven't tried myself. A holding place to explore later.</p>
+    <h1 data-i18n="pages.venues.h1">FFXIV Venues</h1>
+    <p data-i18n="pages.venues.tagline">Player-run venues I actually visit. Hours are converted to your local time automatically.</p>
   </header>
 
-  <p class="note" data-i18n-rich="pages.watchlist.note">Nothing here is a recommendation from me yet, it's a reminder to check these out. Once I've actually used one and it earns a spot, it moves to the <a href="./" data-token="main" data-i18n="pages.watchlist.mainLinkLabel">main list</a>.</p>
+  <p class="note" data-i18n-rich="pages.venues.note">Hours are posted by each venue in Eastern Time and shown here converted to your device's local time and weekday. Use the address button to copy a ready-to-paste <a href="https://github.com/NightmareXIV/Lifestream" target="_blank" rel="noopener noreferrer" data-token="lifestream" data-i18n="pages.venues.lifestreamLinkLabel">Lifestream</a> travel command.</p>
 
   <div class="page-layout columns">
   <div class="sidebar-col column is-3">
-    <nav class="page-nav"><a href="./" data-i18n="shared.nav.tools">Tools I use</a><a class="current" href="watchlist.html" data-i18n="shared.nav.watchlist">Watchlist</a><a href="plugins.html" data-i18n="shared.nav.plugins">Plugins</a><a href="venues.html" data-i18n="shared.nav.venues">Venues</a></nav>
+    <nav class="page-nav"><a href="./" data-i18n="shared.nav.tools">Tools I use</a><a href="watchlist.html" data-i18n="shared.nav.watchlist">Watchlist</a><a href="plugins.html" data-i18n="shared.nav.plugins">Plugins</a><a class="current" href="venues.html" data-i18n="shared.nav.venues">Venues</a></nav>
     <div id="lang-bar"></div>
     <div class="search-bar">
-      <input id="search" type="search" data-i18n="pages.watchlist.searchPlaceholder" data-i18n-placeholder placeholder="Search watchlist by name, description, or tag..." autocomplete="off">
+      <input id="search" type="search" data-i18n="pages.venues.searchPlaceholder" data-i18n-placeholder placeholder="Search venues by name, description, or tag..." autocomplete="off">
       <button id="clear-search" type="button" data-i18n="shared.clearSearchTitle" data-i18n-title title="Clear" hidden>&times;</button>
     </div>
     <div id="tag-bar"></div>
   </div>
 
   <div class="content-col column is-9">
-  <p id="empty-state" hidden><span data-i18n="pages.watchlist.emptyStateText">Nothing on the watchlist matches that search.</span> <button id="empty-clear" type="button" data-i18n="shared.emptyClear">Clear it</button>.</p>
+  <p id="empty-state" hidden><span data-i18n="pages.venues.emptyStateText">No venues match that search.</span> <button id="empty-clear" type="button" data-i18n="shared.emptyClear">Clear it</button>.</p>
 
   <section>
-    <h2 data-i18n="pages.watchlist.sections.theorycrafting">Theorycrafting &amp; Calculators</h2>
+    <h2 data-i18n="pages.venues.sections.nightlife">Bars &amp; Lounges</h2>
     <ul>
-      <li data-tags="theorycrafting, rotations, community">
-        <a href="https://www.thebalanceffxiv.com/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">The Balance<span class="desc" data-i18n="items.thebalance">Job theorycrafting hub, rotation guides, discord</span></span></a>
-        <div class="tags"><button type="button">theorycrafting</button><button type="button">rotations</button><button type="button">community</button></div>
-      </li>
-      <li data-tags="gear, theorycrafting">
-        <a href="https://etro.gg/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Etro<span class="desc" data-i18n="items.etro">Gearset planner and BiS builder</span></span></a>
-        <div class="tags"><button type="button">gear</button><button type="button">theorycrafting</button></div>
-      </li>
-      <li data-tags="gear, glamour">
-        <a href="https://ffxiv.ariyala.com/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Ariyala's Toolbox<span class="desc" data-i18n="items.ariyala">Alternate gearset/glamour planner</span></span></a>
-        <div class="tags"><button type="button">gear</button><button type="button">glamour</button></div>
-      </li>
-    </ul>
-  </section>
-
-  <section>
-    <h2 data-i18n="pages.watchlist.sections.guides">Guides &amp; Reference</h2>
-    <ul>
-      <li data-tags="wiki, items, quests">
-        <a href="https://ffxiv.gamerescape.com/wiki/Main_Page" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Gamer Escape Wiki<span class="desc" data-i18n="items.gamerescapewiki">General item, quest, and game info. Alternate to the Console Games Wiki</span></span></a>
-        <div class="tags"><button type="button">wiki</button><button type="button">items</button><button type="button">quests</button></div>
-      </li>
-      <li data-tags="maps, hunts, gathering">
-        <a href="http://heavenswhere.com/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Heavenswhere<span class="desc" data-i18n="items.heavenswhere">Interactive maps for hunts, gathering nodes, aether currents, and treasure (currently showing a maintenance page, recheck before relying on it)</span></span></a>
-        <div class="tags"><button type="button">maps</button><button type="button">hunts</button><button type="button">gathering</button></div>
-      </li>
-    </ul>
-  </section>
-
-  <section>
-    <h2 data-i18n="pages.watchlist.sections.progress">Progress &amp; Checklists</h2>
-    <ul>
-      <li data-tags="relic, checklist, tracker">
-        <a href="https://ffxivrelictracker.com/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">FFXIV Relic Tracker<span class="desc" data-i18n="items.relictracker">Tracks relic weapon progress and what's still needed</span></span></a>
-        <div class="tags"><button type="button">relic</button><button type="button">checklist</button><button type="button">tracker</button></div>
-      </li>
-      <li data-tags="sightseeing, checklist">
-        <a href="https://tylian.net/sslog/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Sightseeing Log Helper<span class="desc" data-i18n="items.sightseeinglog">Helper for the in-game Sightseeing Log bingo</span></span></a>
-        <div class="tags"><button type="button">sightseeing</button><button type="button">checklist</button></div>
-      </li>
-      <li data-tags="fishing, schedule">
-        <a href="https://ffxiv.pf-n.co/ocean-fishing" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Ocean Fishing Schedule<span class="desc" data-i18n="items.oceanfishing">Upcoming ocean fishing voyage schedule, blue fish, and achievement info</span></span></a>
-        <div class="tags"><button type="button">fishing</button><button type="button">schedule</button></div>
-      </li>
-      <li data-tags="fishing, tracker">
-        <a href="https://ff14fish.carbuncleplushy.com/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Fish Tracker<span class="desc" data-i18n="items.ff14fish">Predicts weather/time windows for catching specific fish, the community standard for fishing spreadsheets</span></span></a>
-        <div class="tags"><button type="button">fishing</button><button type="button">tracker</button></div>
-      </li>
-    </ul>
-  </section>
-
-  <section>
-    <h2 data-i18n="pages.watchlist.sections.plugins">Plugins</h2>
-    <ul>
-      <li data-tags="plugins, immersion, experimental">
-        <a href="https://aetherphone.net/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Aetherphone<span class="desc" data-i18n="items.aetherphone">Adds a full smartphone interface in-game, social feed, messaging, photo sharing, market board, games. Recreates a lot of a home-screen experience. Custom repo, not in the default plugin directory</span></span></a>
-        <div class="tags"><button type="button">plugins</button><button type="button">immersion</button><button type="button">experimental</button></div>
+      <li data-tags="tavern, lounge" data-day="mon" data-start="22:30" data-end="00:17" data-tz="America/New_York" data-li-command="/li Malboro Lavender Beds 23 11">
+        <a href="https://theeventide.crd.co/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">The Eventide<span class="desc" data-i18n="items.theeventide">Eorzea's Weirdest Tavern</span></span></a>
+        <div class="venue-meta">
+          <span class="schedule">Mondays 10:30 PM&ndash;12:17 AM ET</span>
+          <button type="button" class="copy-address" data-i18n="pages.venues.copyAddress">Copy address</button>
+        </div>
+        <div class="tags"><button type="button">tavern</button><button type="button">lounge</button></div>
       </li>
     </ul>
   </section>
@@ -362,7 +332,7 @@
   </div>
 
   <footer>
-    <span data-i18n-rich="pages.watchlist.footerLine1">Actually use one of these regularly? Move it to the <a href="./" data-token="main" data-i18n="pages.watchlist.mainLinkLabel">main list</a>.</span>
+    <span data-i18n-rich="pages.venues.footerLine1">See the <a href="./" data-token="main" data-i18n="pages.venues.mainLinkLabel">main list</a> or the <a href="plugins.html" data-token="plugins" data-i18n="pages.venues.pluginsLinkLabel">plugins page</a>.</span>
     <span data-i18n-rich="shared.footerGithubLine">Source on <a href="https://github.com/malobear/ffxiv-tools" data-token="github" data-i18n="shared.githubLinkLabel">GitHub</a>. See something missing? Open a PR or ping me.</span>
     <p class="legal" data-i18n="shared.legal">FINAL FANTASY XIV is a registered trademark of Square Enix Holdings Co., Ltd. This is an unofficial, fan-made list, not affiliated with or endorsed by Square Enix.</p>
   </footer>
@@ -467,12 +437,99 @@
   if (initQ) input.value = initQ;
   applyFilter();
 
+  // Convert a wall-clock time in a named IANA zone to the equivalent UTC instant,
+  // accounting for DST (the zone's offset isn't fixed year-round).
+  function zonedWallTimeToUtc(y, m, d, hh, mm, timeZone) {
+    var target = Date.UTC(y, m - 1, d, hh, mm);
+    var guess = new Date(target);
+    for (var i = 0; i < 2; i++) {
+      var parts = new Intl.DateTimeFormat('en-US', {
+        timeZone: timeZone, hour12: false,
+        year: 'numeric', month: '2-digit', day: '2-digit',
+        hour: '2-digit', minute: '2-digit', second: '2-digit'
+      }).formatToParts(guess);
+      var map = {};
+      parts.forEach(function (p) { map[p.type] = p.value; });
+      var hour = +map.hour === 24 ? 0 : +map.hour;
+      var asIfUtc = Date.UTC(+map.year, +map.month - 1, +map.day, hour, +map.minute, +map.second);
+      var diff = asIfUtc - guess.getTime();
+      guess = new Date(target - diff);
+    }
+    return guess;
+  }
+
+  var DOW = { sun: 0, mon: 1, tue: 2, wed: 3, thu: 4, fri: 5, sat: 6 };
+
+  function nextOccurrence(dayKey, hh, mm, timeZone) {
+    // Find "today" as a Y-M-D calendar date in the source timeZone, then advance
+    // to the next date (today included) whose weekday, in that same zone, matches dayKey.
+    var now = new Date();
+    var todayParts = new Intl.DateTimeFormat('en-US', {
+      timeZone: timeZone, year: 'numeric', month: '2-digit', day: '2-digit', weekday: 'short'
+    }).formatToParts(now).reduce(function (m, p) { m[p.type] = p.value; return m; }, {});
+    var todayDow = new Date(Date.UTC(+todayParts.year, +todayParts.month - 1, +todayParts.day)).getUTCDay();
+    var target = DOW[dayKey];
+    var delta = (target - todayDow + 7) % 7;
+    var base = new Date(Date.UTC(+todayParts.year, +todayParts.month - 1, +todayParts.day));
+    base.setUTCDate(base.getUTCDate() + delta);
+    return zonedWallTimeToUtc(base.getUTCFullYear(), base.getUTCMonth() + 1, base.getUTCDate(), hh, mm, timeZone);
+  }
+
+  var localFmt = new Intl.DateTimeFormat(undefined, { weekday: 'short', hour: 'numeric', minute: '2-digit' });
+  var tzAbbrFmt = new Intl.DateTimeFormat(undefined, { timeZoneName: 'short' });
+
+  function tzAbbr(date) {
+    var part = tzAbbrFmt.formatToParts(date).find(function (p) { return p.type === 'timeZoneName'; });
+    return part ? part.value : '';
+  }
+
+  document.querySelectorAll('li[data-day]').forEach(function (li) {
+    var day = li.dataset.day;
+    var tz = li.dataset.tz;
+    var startH = +li.dataset.start.split(':')[0], startM = +li.dataset.start.split(':')[1];
+    var endH = +li.dataset.end.split(':')[0], endM = +li.dataset.end.split(':')[1];
+    var startUtc = nextOccurrence(day, startH, startM, tz);
+    var endUtc = nextOccurrence(day, endH, endM, tz);
+    if (endUtc <= startUtc) endUtc = new Date(endUtc.getTime() + 24 * 60 * 60 * 1000);
+    var startLocal = localFmt.format(startUtc);
+    var endLocal = localFmt.format(endUtc);
+    var abbr = tzAbbr(startUtc);
+    var scheduleEl = li.querySelector('.schedule');
+    if (scheduleEl) {
+      scheduleEl.textContent = startLocal + '–' + endLocal + (abbr ? ' ' + abbr : '');
+      scheduleEl.title = li.dataset.day.toUpperCase() + ' ' + li.dataset.start + '–' + li.dataset.end + ' ' + tz.replace('_', ' ');
+    }
+  });
+
+  document.querySelectorAll('.copy-address').forEach(function (btn) {
+    var li = btn.closest('li[data-li-command]');
+    if (!li) return;
+    var command = li.dataset.liCommand;
+    btn.addEventListener('click', function () {
+      var reset = function () {
+        btn.classList.remove('copied');
+        btn.dispatchEvent(new CustomEvent('i18n:relabel'));
+      };
+      var showCopied = function () {
+        btn.classList.add('copied');
+        btn.textContent = i18next.t('pages.venues.addressCopied');
+        setTimeout(function () {
+          btn.textContent = i18next.t('pages.venues.copyAddress');
+          reset();
+        }, 1500);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(command).then(showCopied, function () {});
+      }
+    });
+  });
+
   document.addEventListener('i18nready', function () {
     applyFilter();
     var itemList = {
       "@context": "https://schema.org",
       "@type": "ItemList",
-      "name": "FFXIV Watchlist",
+      "name": "FFXIV Venues",
       "itemListElement": []
     };
     var pos = 1;

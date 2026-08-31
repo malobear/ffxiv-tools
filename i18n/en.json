@@ -3,7 +3,8 @@
     "nav": {
       "tools": "Tools I use",
       "watchlist": "Watchlist",
-      "plugins": "Plugins"
+      "plugins": "Plugins",
+      "venues": "Venues"
     },
     "clearSearchTitle": "Clear",
     "emptyClear": "Clear it",
@@ -47,6 +48,7 @@
     "items": "items",
     "job-guides": "job-guides",
     "lodestone": "lodestone",
+    "lounge": "lounge",
     "maps": "maps",
     "market": "market",
     "meta-list": "meta-list",
@@ -78,9 +80,11 @@
     "social": "social",
     "streaming": "streaming",
     "symbols": "symbols",
+    "tavern": "tavern",
     "theorycrafting": "theorycrafting",
     "toolbars": "toolbars",
     "tracker": "tracker",
+    "travel": "travel",
     "ui": "ui",
     "unicode": "unicode",
     "venues": "venues",
@@ -137,6 +141,8 @@
     "sightseeinglog": "Helper for the in-game Sightseeing Log bingo",
     "oceanfishing": "Upcoming ocean fishing voyage schedule, blue fish, and achievement info",
     "ff14fish": "Predicts weather/time windows for catching specific fish, the community standard for fishing spreadsheets",
+    "lifestream": "Travel to another world, data center, or house with a single command. Custom repo, not in the default plugin directory",
+    "theeventide": "Eorzea's Weirdest Tavern",
     "aetherphone": "Adds a full smartphone interface in-game, social feed, messaging, photo sharing, market board, games. Recreates a lot of a home-screen experience. Custom repo, not in the default plugin directory"
   },
   "pages": {
@@ -192,6 +198,22 @@
         "guides": "Guides & Reference",
         "progress": "Progress & Checklists",
         "plugins": "Plugins"
+      }
+    },
+    "venues": {
+      "h1": "FFXIV Venues",
+      "tagline": "Player-run venues I actually visit. Hours are converted to your local time automatically.",
+      "note": "Hours are posted by each venue in Eastern Time and shown here converted to your device's local time and weekday. Use the address button to copy a ready-to-paste {lifestream} travel command.",
+      "lifestreamLinkLabel": "Lifestream",
+      "searchPlaceholder": "Search venues by name, description, or tag...",
+      "emptyStateText": "No venues match that search.",
+      "copyAddress": "Copy address",
+      "addressCopied": "Copied!",
+      "footerLine1": "See the {main} or the {plugins}.",
+      "mainLinkLabel": "main list",
+      "pluginsLinkLabel": "plugins page",
+      "sections": {
+        "nightlife": "Bars & Lounges"
       }
     }
   }

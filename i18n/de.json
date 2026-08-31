@@ -3,7 +3,8 @@
     "nav": {
       "tools": "Meine Tools",
       "watchlist": "Watchlist",
-      "plugins": "Plugins"
+      "plugins": "Plugins",
+      "venues": "Venues"
     },
     "clearSearchTitle": "Leeren",
     "emptyClear": "Zurücksetzen",
@@ -47,6 +48,7 @@
     "items": "Items",
     "job-guides": "Job-Guides",
     "lodestone": "Lodestone",
+    "lounge": "Lounge",
     "maps": "Karten",
     "market": "Markt",
     "meta-list": "Meta-Liste",
@@ -78,9 +80,11 @@
     "social": "Sozial",
     "streaming": "Streaming",
     "symbols": "Symbole",
+    "tavern": "Taverne",
     "theorycrafting": "Theorycrafting",
     "toolbars": "Toolbars",
     "tracker": "Tracker",
+    "travel": "Reisen",
     "ui": "UI",
     "unicode": "Unicode",
     "venues": "Venues",
@@ -137,6 +141,8 @@
     "sightseeinglog": "Helfer für das Ingame-Sightseeing-Log-Bingo",
     "oceanfishing": "Kommender Zeitplan für Ozeanangel-Ausfahrten, blaue Fische und Achievement-Infos",
     "ff14fish": "Sagt Wetter-/Zeitfenster für das Fangen bestimmter Fische voraus, der Community-Standard unter den Angel-Tabellen",
+    "lifestream": "Reise mit einem einzigen Befehl zu einer anderen Welt, einem anderen Rechenzentrum oder Haus. Custom-Repo, nicht im Standard-Plugin-Verzeichnis",
+    "theeventide": "Eorzeas seltsamste Taverne",
     "aetherphone": "Fügt eine vollständige Smartphone-Oberfläche ins Spiel ein: Social Feed, Nachrichten, Fotos teilen, Marktbrett, Spiele. Bringt viel vom Home-Screen-Gefühl ins Spiel. Custom-Repo, nicht im Standard-Plugin-Verzeichnis"
   },
   "pages": {
@@ -192,6 +198,22 @@
         "guides": "Guides & Referenz",
         "progress": "Fortschritt & Checklisten",
         "plugins": "Plugins"
+      }
+    },
+    "venues": {
+      "h1": "FFXIV Venues",
+      "tagline": "Spielergeführte Venues, die ich tatsächlich besuche. Öffnungszeiten werden automatisch in deine lokale Zeit umgerechnet.",
+      "note": "Öffnungszeiten werden von jeder Venue in Eastern Time angegeben und hier in die lokale Zeit und den Wochentag deines Geräts umgerechnet. Über die Adress-Schaltfläche kannst du einen einsatzbereiten {lifestream}-Reisebefehl kopieren.",
+      "lifestreamLinkLabel": "Lifestream",
+      "searchPlaceholder": "Venues nach Name, Beschreibung oder Tag durchsuchen...",
+      "emptyStateText": "Keine Venues passen zu dieser Suche.",
+      "copyAddress": "Adresse kopieren",
+      "addressCopied": "Kopiert!",
+      "footerLine1": "Sieh dir die {main} oder die {plugins} an.",
+      "mainLinkLabel": "Hauptliste",
+      "pluginsLinkLabel": "Plugin-Seite",
+      "sections": {
+        "nightlife": "Bars & Lounges"
       }
     }
   }
