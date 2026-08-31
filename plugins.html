@@ -148,10 +148,13 @@
   }
   #clear-search:hover { color: var(--text); }
   #clear-search[hidden] { display: none; }
-  #tag-bar {
+  #tag-bar, #lang-bar {
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
+  }
+  #lang-bar {
+    margin-bottom: 16px;
   }
   .tag-pill {
     background: var(--card);
@@ -272,122 +275,123 @@
 <body>
 <main>
   <header>
-    <h1>FFXIV Plugins</h1>
-    <p>Dalamud plugins I actually use. Handy to have in one place when I'm recommending them to someone.</p>
+    <h1 data-i18n="pages.plugins.h1">FFXIV Plugins</h1>
+    <p data-i18n="pages.plugins.tagline">Dalamud plugins I actually use. Handy to have in one place when I'm recommending them to someone.</p>
   </header>
 
-  <p class="note">These are third-party client plugins run through <a href="https://dalamud.dev/" target="_blank" rel="noopener noreferrer">Dalamud</a>, not officially supported by Square Enix. Install and use at your own judgment. Anything tagged <strong>experimental</strong> isn't in Dalamud's default plugin directory; you add it under Dalamud Settings → Experimental → Custom Plugin Repositories using the repo/URL linked below.</p>
+  <p class="note" data-i18n-rich="pages.plugins.note">These are third-party client plugins run through <a href="https://dalamud.dev/" target="_blank" rel="noopener noreferrer" data-token="dalamud" data-i18n="pages.plugins.dalamudLinkLabel">Dalamud</a>, not officially supported by Square Enix. Install and use at your own judgment. Anything tagged <strong data-token="experimental" data-i18n="pages.plugins.experimentalLabel">experimental</strong> isn't in Dalamud's default plugin directory; you add it under Dalamud Settings → Experimental → Custom Plugin Repositories using the repo/URL linked below.</p>
 
   <div class="page-layout columns">
   <div class="sidebar-col column is-3">
-    <nav class="page-nav"><a href="./">Tools I use</a><a href="watchlist.html">Watchlist</a><a class="current" href="plugins.html">Plugins</a></nav>
+    <nav class="page-nav"><a href="./" data-i18n="shared.nav.tools">Tools I use</a><a href="watchlist.html" data-i18n="shared.nav.watchlist">Watchlist</a><a class="current" href="plugins.html" data-i18n="shared.nav.plugins">Plugins</a></nav>
+    <div id="lang-bar"></div>
     <div class="search-bar">
-      <input id="search" type="search" placeholder="Search plugins by name, description, or tag..." autocomplete="off">
-      <button id="clear-search" type="button" title="Clear" hidden>&times;</button>
+      <input id="search" type="search" data-i18n="pages.plugins.searchPlaceholder" data-i18n-placeholder placeholder="Search plugins by name, description, or tag..." autocomplete="off">
+      <button id="clear-search" type="button" data-i18n="shared.clearSearchTitle" data-i18n-title title="Clear" hidden>&times;</button>
     </div>
     <div id="tag-bar"></div>
   </div>
 
   <div class="content-col column is-9">
-  <p id="empty-state" hidden>No plugins match that search. <button id="empty-clear" type="button">Clear it</button>.</p>
+  <p id="empty-state" hidden><span data-i18n="pages.plugins.emptyStateText">No plugins match that search.</span> <button id="empty-clear" type="button" data-i18n="shared.emptyClear">Clear it</button>.</p>
 
   <section>
-    <h2>Get Started</h2>
+    <h2 data-i18n="pages.plugins.sections.getStarted">Get Started</h2>
     <ul>
       <li data-tags="plugins, mods">
-        <a href="https://dalamud.dev/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Dalamud<span class="desc">Plugin framework for FFXIV client tools and mods. Install this first, everything else on this page runs through it</span></span></a>
+        <a href="https://dalamud.dev/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Dalamud<span class="desc" data-i18n="items.dalamud">Plugin framework for FFXIV client tools and mods. Install this first, everything else on this page runs through it</span></span></a>
         <div class="tags"><button type="button">plugins</button><button type="button">mods</button></div>
       </li>
       <li data-tags="mods, experimental">
-        <a href="https://github.com/xivdev/Penumbra" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Penumbra<span class="desc">Runtime mod loader, applies texture/model mods without touching game files. Custom repo, not in the default plugin directory</span></span></a>
+        <a href="https://github.com/xivdev/Penumbra" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Penumbra<span class="desc" data-i18n="items.penumbra">Runtime mod loader, applies texture/model mods without touching game files. Custom repo, not in the default plugin directory</span></span></a>
         <div class="tags"><button type="button">mods</button><button type="button">experimental</button></div>
       </li>
       <li data-tags="glamour, experimental">
-        <a href="https://github.com/Ottermandias/Glamourer" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Glamourer<span class="desc">Changes your character's outside appearance using Penumbra mods, what Glamaholic plates apply through. Custom repo, not in the default plugin directory</span></span></a>
+        <a href="https://github.com/Ottermandias/Glamourer" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Glamourer<span class="desc" data-i18n="items.glamourer">Changes your character's outside appearance using Penumbra mods, what Glamaholic plates apply through. Custom repo, not in the default plugin directory</span></span></a>
         <div class="tags"><button type="button">glamour</button><button type="button">experimental</button></div>
       </li>
       <li data-tags="guide">
-        <a href="https://reniguide.carrd.co/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">The Reni Guide<span class="desc">Beginner-friendly walkthrough for setting up Penumbra and Glamourer to mod your character's appearance</span></span></a>
+        <a href="https://reniguide.carrd.co/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">The Reni Guide<span class="desc" data-i18n="items.renireguide">Beginner-friendly walkthrough for setting up Penumbra and Glamourer to mod your character's appearance</span></span></a>
         <div class="tags"><button type="button">guide</button></div>
       </li>
     </ul>
   </section>
 
   <section>
-    <h2>Housing &amp; Decoration</h2>
+    <h2 data-i18n="pages.plugins.sections.housing">Housing &amp; Decoration</h2>
     <ul>
       <li data-tags="housing, experimental">
-        <a href="https://github.com/LeonBlade/BDTHPlugin" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Burning Down The House (BDTH)<span class="desc">Gizmo-based housing item positioning, far more precise than the in-game editor. Custom repo, not in the default plugin directory.</span></span></a>
+        <a href="https://github.com/LeonBlade/BDTHPlugin" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Burning Down The House (BDTH)<span class="desc" data-i18n="items.bdth">Gizmo-based housing item positioning, far more precise than the in-game editor. Custom repo, not in the default plugin directory.</span></span></a>
         <div class="tags"><button type="button">housing</button><button type="button">experimental</button></div>
       </li>
     </ul>
   </section>
 
   <section>
-    <h2>Glamour</h2>
+    <h2 data-i18n="pages.plugins.sections.glamour">Glamour</h2>
     <ul>
       <li data-tags="glamour, plates">
-        <a href="https://github.com/caitlyn-gg/Glamaholic" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Glamaholic<span class="desc">Save and swap glamour plates. Import looks straight from Eorzea Collection or someone else's export, try them on, and apply via Glamourer. In the default plugin repo but hidden from browsing, so search the exact name to install</span></span></a>
+        <a href="https://github.com/caitlyn-gg/Glamaholic" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Glamaholic<span class="desc" data-i18n="items.glamaholic">Save and swap glamour plates. Import looks straight from Eorzea Collection or someone else's export, try them on, and apply via Glamourer. In the default plugin repo but hidden from browsing, so search the exact name to install</span></span></a>
         <div class="tags"><button type="button">glamour</button><button type="button">plates</button></div>
       </li>
     </ul>
   </section>
 
   <section>
-    <h2>Mods</h2>
+    <h2 data-i18n="pages.plugins.sections.mods">Mods</h2>
     <ul>
       <li data-tags="mods, glamour, gear">
-        <a href="https://www.xivmodarchive.com/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">XIV Mod Archive<span class="desc">Biggest free mod repository: glamour, gear, and animation mods, installed via Penumbra</span></span></a>
+        <a href="https://www.xivmodarchive.com/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">XIV Mod Archive<span class="desc" data-i18n="items.xivmodarchive">Biggest free mod repository: glamour, gear, and animation mods, installed via Penumbra</span></span></a>
         <div class="tags"><button type="button">mods</button><button type="button">glamour</button><button type="button">gear</button></div>
       </li>
       <li data-tags="mods, glamour, gear">
-        <a href="https://heliosphere.app/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Heliosphere<span class="desc">Second mod source/manager I check when Mod Archive doesn't have what I'm looking for</span></span></a>
+        <a href="https://heliosphere.app/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Heliosphere<span class="desc" data-i18n="items.heliosphere">Second mod source/manager I check when Mod Archive doesn't have what I'm looking for</span></span></a>
         <div class="tags"><button type="button">mods</button><button type="button">glamour</button><button type="button">gear</button></div>
       </li>
       <li data-tags="mods, glamour, paid">
-        <a href="https://www.glamourdresser.com/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Glamour Dresser<span class="desc">Paid mod marketplace. I don't usually pay, but a lot of creators unpaywall mods after a while, so I browse their Patreons for stuff that's gone free</span></span></a>
+        <a href="https://www.glamourdresser.com/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Glamour Dresser<span class="desc" data-i18n="items.glamourdresser">Paid mod marketplace. I don't usually pay, but a lot of creators unpaywall mods after a while, so I browse their Patreons for stuff that's gone free</span></span></a>
         <div class="tags"><button type="button">mods</button><button type="button">glamour</button><button type="button">paid</button></div>
       </li>
       <li data-tags="guide, mods, compression">
-        <a href="https://compressyourself.carrd.co/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Compress Yourself<span class="desc">Step-by-step guide to compressing mod textures for Lightless/PlayerSync. Keeps synced mod sizes down</span></span></a>
+        <a href="https://compressyourself.carrd.co/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Compress Yourself<span class="desc" data-i18n="items.compressyourself">Step-by-step guide to compressing mod textures for Lightless/PlayerSync. Keeps synced mod sizes down</span></span></a>
         <div class="tags"><button type="button">guide</button><button type="button">mods</button><button type="button">compression</button></div>
       </li>
     </ul>
   </section>
 
   <section>
-    <h2>Chat &amp; UI</h2>
+    <h2 data-i18n="pages.plugins.sections.chatui">Chat &amp; UI</h2>
     <ul>
       <li data-tags="chat, ui, qol">
-        <a href="https://github.com/Infiziert90/ChatTwo" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Chat 2<span class="desc">Complete in-game chat window rewrite: unlimited tabs, better filtering, RGB channel colors, unread counts. A must-have</span></span></a>
+        <a href="https://github.com/Infiziert90/ChatTwo" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Chat 2<span class="desc" data-i18n="items.chat2">Complete in-game chat window rewrite: unlimited tabs, better filtering, RGB channel colors, unread counts. A must-have</span></span></a>
         <div class="tags"><button type="button">chat</button><button type="button">ui</button><button type="button">qol</button></div>
       </li>
       <li data-tags="ui, toolbars, hud">
-        <a href="https://una-xiv.github.io/umbra-docs/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Umbra XIV<span class="desc">Fully customizable toolbars and 3D world markers. In the default plugin repo but hidden from browsing, so search the exact name to install</span></span></a>
+        <a href="https://una-xiv.github.io/umbra-docs/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Umbra XIV<span class="desc" data-i18n="items.umbraxiv">Fully customizable toolbars and 3D world markers. In the default plugin repo but hidden from browsing, so search the exact name to install</span></span></a>
         <div class="tags"><button type="button">ui</button><button type="button">toolbars</button><button type="button">hud</button></div>
       </li>
     </ul>
   </section>
 
   <section>
-    <h2>Social &amp; Friends</h2>
+    <h2 data-i18n="pages.plugins.sections.social">Social &amp; Friends</h2>
     <ul>
       <li data-tags="social, friends, experimental">
-        <a href="https://github.com/devckuw/BetterFriendList" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Better Friend List<span class="desc">Cross-server friend list with FC-style login/logout notifications. The other person needs it installed too for you to see theirs</span></span></a>
+        <a href="https://github.com/devckuw/BetterFriendList" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Better Friend List<span class="desc" data-i18n="items.betterfriendlist">Cross-server friend list with FC-style login/logout notifications. The other person needs it installed too for you to see theirs</span></span></a>
         <div class="tags"><button type="button">social</button><button type="button">friends</button><button type="button">experimental</button></div>
       </li>
     </ul>
   </section>
 
   <section>
-    <h2>Plugin Discovery &amp; Publishers</h2>
+    <h2 data-i18n="pages.plugins.sections.discovery">Plugin Discovery &amp; Publishers</h2>
     <ul>
       <li data-tags="browser, discovery">
-        <a href="https://tommadness.github.io/Plugin-Browser/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Dalamud Plugin Browser<span class="desc">Better search/browse UI for what's available in the main plugin repo than Dalamud's own in-game list</span></span></a>
+        <a href="https://tommadness.github.io/Plugin-Browser/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Dalamud Plugin Browser<span class="desc" data-i18n="items.dalamudpluginbrowser">Better search/browse UI for what's available in the main plugin repo than Dalamud's own in-game list</span></span></a>
         <div class="tags"><button type="button">browser</button><button type="button">discovery</button></div>
       </li>
       <li data-tags="publisher, experimental">
-        <a href="https://puni.sh/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Puni.sh<span class="desc">Plugin studio/publisher I pull from a lot: Artisan, AutoRetainer, Pandora's Box, and more. Their repo goes under Dalamud's Experimental settings.</span></span></a>
+        <a href="https://puni.sh/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Puni.sh<span class="desc" data-i18n="items.punish">Plugin studio/publisher I pull from a lot: Artisan, AutoRetainer, Pandora's Box, and more. Their repo goes under Dalamud's Experimental settings.</span></span></a>
         <div class="tags"><button type="button">publisher</button><button type="button">experimental</button></div>
       </li>
     </ul>
@@ -396,12 +400,16 @@
   </div>
 
   <footer>
-    See the <a href="./">main list</a> or the <a href="watchlist.html">watchlist</a>.
-    Source on <a href="https://github.com/malobear/ffxiv-tools">GitHub</a>. See something missing? Open a PR or ping me.
-    <p class="legal">FINAL FANTASY XIV is a registered trademark of Square Enix Holdings Co., Ltd. This is an unofficial, fan-made list, not affiliated with or endorsed by Square Enix.</p>
+    <span data-i18n-rich="pages.plugins.footerLine1">See the <a href="./" data-token="main" data-i18n="pages.plugins.mainLinkLabel">main list</a> or the <a href="watchlist.html" data-token="watchlist" data-i18n="pages.plugins.watchlistLinkLabel">watchlist</a>.</span>
+    <span data-i18n-rich="shared.footerGithubLine">Source on <a href="https://github.com/malobear/ffxiv-tools" data-token="github" data-i18n="shared.githubLinkLabel">GitHub</a>. See something missing? Open a PR or ping me.</span>
+    <p class="legal" data-i18n="shared.legal">FINAL FANTASY XIV is a registered trademark of Square Enix Holdings Co., Ltd. This is an unofficial, fan-made list, not affiliated with or endorsed by Square Enix.</p>
   </footer>
 </main>
 
+<script src="https://cdn.jsdelivr.net/npm/i18next@26.4.0/dist/umd/i18next.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/i18next-http-backend@4.0.1/i18nextHttpBackend.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/i18next-browser-languagedetector@8.2.1/dist/umd/i18nextBrowserLanguageDetector.min.js"></script>
+<script src="i18n.js"></script>
 <script>
 (function () {
   var items = Array.prototype.slice.call(document.querySelectorAll('li[data-tags]'));
@@ -435,14 +443,16 @@
     btn.type = 'button';
     btn.className = 'tag-pill';
     btn.textContent = tag;
+    btn.dataset.tagKey = tag;
     btn.addEventListener('click', function () { setQuery(tag); });
     tagBar.appendChild(btn);
   });
 
   document.querySelectorAll('li .tags button').forEach(function (btn) {
+    btn.dataset.tagKey = btn.textContent.trim();
     btn.addEventListener('click', function (e) {
       e.preventDefault();
-      setQuery(btn.textContent.trim());
+      setQuery(btn.dataset.tagKey);
     });
   });
 
@@ -463,10 +473,9 @@
   function applyFilter() {
     var q = input.value.trim().toLowerCase();
     var anyVisible = false;
-    var activeTags = allTags.filter(function (t) { return t.toLowerCase() === q; });
 
     tagBar.querySelectorAll('.tag-pill').forEach(function (pill) {
-      pill.classList.toggle('active', pill.textContent.toLowerCase() === q);
+      pill.classList.toggle('active', pill.dataset.tagKey === q);
     });
 
     sections.forEach(function (section) {
@@ -496,28 +505,31 @@
   if (initQ) input.value = initQ;
   applyFilter();
 
-  var itemList = {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    "name": "FFXIV Plugins",
-    "itemListElement": []
-  };
-  var pos = 1;
-  document.querySelectorAll('main li[data-tags] > a').forEach(function (a) {
-    var descEl = a.querySelector('.desc');
-    var bodyEl = a.querySelector('.link-body');
-    itemList.itemListElement.push({
-      "@type": "ListItem",
-      "position": pos++,
-      "url": a.href,
-      "name": bodyEl ? bodyEl.childNodes[0].textContent.trim() : a.textContent.trim(),
-      "description": descEl ? descEl.textContent.trim() : ""
+  document.addEventListener('i18nready', function () {
+    applyFilter();
+    var itemList = {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "FFXIV Plugins",
+      "itemListElement": []
+    };
+    var pos = 1;
+    document.querySelectorAll('main li[data-tags] > a').forEach(function (a) {
+      var descEl = a.querySelector('.desc');
+      var bodyEl = a.querySelector('.link-body');
+      itemList.itemListElement.push({
+        "@type": "ListItem",
+        "position": pos++,
+        "url": a.href,
+        "name": bodyEl ? bodyEl.childNodes[0].textContent.trim() : a.textContent.trim(),
+        "description": descEl ? descEl.textContent.trim() : ""
+      });
     });
+    var ld = document.createElement('script');
+    ld.type = 'application/ld+json';
+    ld.textContent = JSON.stringify(itemList);
+    document.head.appendChild(ld);
   });
-  var ld = document.createElement('script');
-  ld.type = 'application/ld+json';
-  ld.textContent = JSON.stringify(itemList);
-  document.head.appendChild(ld);
 })();
 </script>
 </body>

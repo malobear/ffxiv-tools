@@ -148,10 +148,13 @@
   }
   #clear-search:hover { color: var(--text); }
   #clear-search[hidden] { display: none; }
-  #tag-bar {
+  #tag-bar, #lang-bar {
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
+  }
+  #lang-bar {
+    margin-bottom: 16px;
   }
   .tag-pill {
     background: var(--card);
@@ -272,80 +275,81 @@
 <body>
 <main>
   <header>
-    <h1>FFXIV Watchlist</h1>
-    <p>Tools I've heard about or seen others use, but haven't tried myself. A holding place to explore later.</p>
+    <h1 data-i18n="pages.watchlist.h1">FFXIV Watchlist</h1>
+    <p data-i18n="pages.watchlist.tagline">Tools I've heard about or seen others use, but haven't tried myself. A holding place to explore later.</p>
   </header>
 
-  <p class="note">Nothing here is a recommendation from me yet, it's a reminder to check these out. Once I've actually used one and it earns a spot, it moves to the <a href="./">main list</a>.</p>
+  <p class="note" data-i18n-rich="pages.watchlist.note">Nothing here is a recommendation from me yet, it's a reminder to check these out. Once I've actually used one and it earns a spot, it moves to the <a href="./" data-token="main" data-i18n="pages.watchlist.mainLinkLabel">main list</a>.</p>
 
   <div class="page-layout columns">
   <div class="sidebar-col column is-3">
-    <nav class="page-nav"><a href="./">Tools I use</a><a class="current" href="watchlist.html">Watchlist</a><a href="plugins.html">Plugins</a></nav>
+    <nav class="page-nav"><a href="./" data-i18n="shared.nav.tools">Tools I use</a><a class="current" href="watchlist.html" data-i18n="shared.nav.watchlist">Watchlist</a><a href="plugins.html" data-i18n="shared.nav.plugins">Plugins</a></nav>
+    <div id="lang-bar"></div>
     <div class="search-bar">
-      <input id="search" type="search" placeholder="Search watchlist by name, description, or tag..." autocomplete="off">
-      <button id="clear-search" type="button" title="Clear" hidden>&times;</button>
+      <input id="search" type="search" data-i18n="pages.watchlist.searchPlaceholder" data-i18n-placeholder placeholder="Search watchlist by name, description, or tag..." autocomplete="off">
+      <button id="clear-search" type="button" data-i18n="shared.clearSearchTitle" data-i18n-title title="Clear" hidden>&times;</button>
     </div>
     <div id="tag-bar"></div>
   </div>
 
   <div class="content-col column is-9">
-  <p id="empty-state" hidden>Nothing on the watchlist matches that search. <button id="empty-clear" type="button">Clear it</button>.</p>
+  <p id="empty-state" hidden><span data-i18n="pages.watchlist.emptyStateText">Nothing on the watchlist matches that search.</span> <button id="empty-clear" type="button" data-i18n="shared.emptyClear">Clear it</button>.</p>
 
   <section>
-    <h2>Theorycrafting &amp; Calculators</h2>
+    <h2 data-i18n="pages.watchlist.sections.theorycrafting">Theorycrafting &amp; Calculators</h2>
     <ul>
       <li data-tags="theorycrafting, rotations, community">
-        <a href="https://www.thebalanceffxiv.com/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">The Balance<span class="desc">Job theorycrafting hub, rotation guides, discord</span></span></a>
+        <a href="https://www.thebalanceffxiv.com/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">The Balance<span class="desc" data-i18n="items.thebalance">Job theorycrafting hub, rotation guides, discord</span></span></a>
         <div class="tags"><button type="button">theorycrafting</button><button type="button">rotations</button><button type="button">community</button></div>
       </li>
       <li data-tags="gear, theorycrafting">
-        <a href="https://etro.gg/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Etro<span class="desc">Gearset planner and BiS builder</span></span></a>
+        <a href="https://etro.gg/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Etro<span class="desc" data-i18n="items.etro">Gearset planner and BiS builder</span></span></a>
         <div class="tags"><button type="button">gear</button><button type="button">theorycrafting</button></div>
       </li>
       <li data-tags="gear, glamour">
-        <a href="https://ffxiv.ariyala.com/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Ariyala's Toolbox<span class="desc">Alternate gearset/glamour planner</span></span></a>
+        <a href="https://ffxiv.ariyala.com/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Ariyala's Toolbox<span class="desc" data-i18n="items.ariyala">Alternate gearset/glamour planner</span></span></a>
         <div class="tags"><button type="button">gear</button><button type="button">glamour</button></div>
       </li>
     </ul>
   </section>
 
   <section>
-    <h2>Guides &amp; Reference</h2>
+    <h2 data-i18n="pages.watchlist.sections.guides">Guides &amp; Reference</h2>
     <ul>
       <li data-tags="wiki, items, quests">
-        <a href="https://ffxiv.gamerescape.com/wiki/Main_Page" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Gamer Escape Wiki<span class="desc">General item, quest, and game info. Alternate to the Console Games Wiki</span></span></a>
+        <a href="https://ffxiv.gamerescape.com/wiki/Main_Page" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Gamer Escape Wiki<span class="desc" data-i18n="items.gamerescapewiki">General item, quest, and game info. Alternate to the Console Games Wiki</span></span></a>
         <div class="tags"><button type="button">wiki</button><button type="button">items</button><button type="button">quests</button></div>
       </li>
       <li data-tags="maps, hunts, gathering">
-        <a href="http://heavenswhere.com/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Heavenswhere<span class="desc">Interactive maps for hunts, gathering nodes, aether currents, and treasure (currently showing a maintenance page, recheck before relying on it)</span></span></a>
+        <a href="http://heavenswhere.com/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Heavenswhere<span class="desc" data-i18n="items.heavenswhere">Interactive maps for hunts, gathering nodes, aether currents, and treasure (currently showing a maintenance page, recheck before relying on it)</span></span></a>
         <div class="tags"><button type="button">maps</button><button type="button">hunts</button><button type="button">gathering</button></div>
       </li>
     </ul>
   </section>
 
   <section>
-    <h2>Progress &amp; Checklists</h2>
+    <h2 data-i18n="pages.watchlist.sections.progress">Progress &amp; Checklists</h2>
     <ul>
       <li data-tags="relic, checklist, tracker">
-        <a href="https://ffxivrelictracker.com/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">FFXIV Relic Tracker<span class="desc">Tracks relic weapon progress and what's still needed</span></span></a>
+        <a href="https://ffxivrelictracker.com/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">FFXIV Relic Tracker<span class="desc" data-i18n="items.relictracker">Tracks relic weapon progress and what's still needed</span></span></a>
         <div class="tags"><button type="button">relic</button><button type="button">checklist</button><button type="button">tracker</button></div>
       </li>
       <li data-tags="sightseeing, checklist">
-        <a href="https://tylian.net/sslog/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Sightseeing Log Helper<span class="desc">Helper for the in-game Sightseeing Log bingo</span></span></a>
+        <a href="https://tylian.net/sslog/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Sightseeing Log Helper<span class="desc" data-i18n="items.sightseeinglog">Helper for the in-game Sightseeing Log bingo</span></span></a>
         <div class="tags"><button type="button">sightseeing</button><button type="button">checklist</button></div>
       </li>
       <li data-tags="fishing, schedule">
-        <a href="https://ffxiv.pf-n.co/ocean-fishing" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Ocean Fishing Schedule<span class="desc">Upcoming ocean fishing voyage schedule, blue fish, and achievement info</span></span></a>
+        <a href="https://ffxiv.pf-n.co/ocean-fishing" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Ocean Fishing Schedule<span class="desc" data-i18n="items.oceanfishing">Upcoming ocean fishing voyage schedule, blue fish, and achievement info</span></span></a>
         <div class="tags"><button type="button">fishing</button><button type="button">schedule</button></div>
       </li>
     </ul>
   </section>
 
   <section>
-    <h2>Plugins</h2>
+    <h2 data-i18n="pages.watchlist.sections.plugins">Plugins</h2>
     <ul>
       <li data-tags="plugins, immersion, experimental">
-        <a href="https://aetherphone.net/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Aetherphone<span class="desc">Adds a full smartphone interface in-game, social feed, messaging, photo sharing, market board, games. Recreates a lot of a home-screen experience. Custom repo, not in the default plugin directory</span></span></a>
+        <a href="https://aetherphone.net/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Aetherphone<span class="desc" data-i18n="items.aetherphone">Adds a full smartphone interface in-game, social feed, messaging, photo sharing, market board, games. Recreates a lot of a home-screen experience. Custom repo, not in the default plugin directory</span></span></a>
         <div class="tags"><button type="button">plugins</button><button type="button">immersion</button><button type="button">experimental</button></div>
       </li>
     </ul>
@@ -354,12 +358,16 @@
   </div>
 
   <footer>
-    Actually use one of these regularly? Move it to the <a href="./">main list</a>.
-    Source on <a href="https://github.com/malobear/ffxiv-tools">GitHub</a>. See something missing? Open a PR or ping me.
-    <p class="legal">FINAL FANTASY XIV is a registered trademark of Square Enix Holdings Co., Ltd. This is an unofficial, fan-made list, not affiliated with or endorsed by Square Enix.</p>
+    <span data-i18n-rich="pages.watchlist.footerLine1">Actually use one of these regularly? Move it to the <a href="./" data-token="main" data-i18n="pages.watchlist.mainLinkLabel">main list</a>.</span>
+    <span data-i18n-rich="shared.footerGithubLine">Source on <a href="https://github.com/malobear/ffxiv-tools" data-token="github" data-i18n="shared.githubLinkLabel">GitHub</a>. See something missing? Open a PR or ping me.</span>
+    <p class="legal" data-i18n="shared.legal">FINAL FANTASY XIV is a registered trademark of Square Enix Holdings Co., Ltd. This is an unofficial, fan-made list, not affiliated with or endorsed by Square Enix.</p>
   </footer>
 </main>
 
+<script src="https://cdn.jsdelivr.net/npm/i18next@26.4.0/dist/umd/i18next.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/i18next-http-backend@4.0.1/i18nextHttpBackend.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/i18next-browser-languagedetector@8.2.1/dist/umd/i18nextBrowserLanguageDetector.min.js"></script>
+<script src="i18n.js"></script>
 <script>
 (function () {
   var items = Array.prototype.slice.call(document.querySelectorAll('li[data-tags]'));
@@ -393,14 +401,16 @@
     btn.type = 'button';
     btn.className = 'tag-pill';
     btn.textContent = tag;
+    btn.dataset.tagKey = tag;
     btn.addEventListener('click', function () { setQuery(tag); });
     tagBar.appendChild(btn);
   });
 
   document.querySelectorAll('li .tags button').forEach(function (btn) {
+    btn.dataset.tagKey = btn.textContent.trim();
     btn.addEventListener('click', function (e) {
       e.preventDefault();
-      setQuery(btn.textContent.trim());
+      setQuery(btn.dataset.tagKey);
     });
   });
 
@@ -421,10 +431,9 @@
   function applyFilter() {
     var q = input.value.trim().toLowerCase();
     var anyVisible = false;
-    var activeTags = allTags.filter(function (t) { return t.toLowerCase() === q; });
 
     tagBar.querySelectorAll('.tag-pill').forEach(function (pill) {
-      pill.classList.toggle('active', pill.textContent.toLowerCase() === q);
+      pill.classList.toggle('active', pill.dataset.tagKey === q);
     });
 
     sections.forEach(function (section) {
@@ -454,28 +463,31 @@
   if (initQ) input.value = initQ;
   applyFilter();
 
-  var itemList = {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    "name": "FFXIV Watchlist",
-    "itemListElement": []
-  };
-  var pos = 1;
-  document.querySelectorAll('main li[data-tags] > a').forEach(function (a) {
-    var descEl = a.querySelector('.desc');
-    var bodyEl = a.querySelector('.link-body');
-    itemList.itemListElement.push({
-      "@type": "ListItem",
-      "position": pos++,
-      "url": a.href,
-      "name": bodyEl ? bodyEl.childNodes[0].textContent.trim() : a.textContent.trim(),
-      "description": descEl ? descEl.textContent.trim() : ""
+  document.addEventListener('i18nready', function () {
+    applyFilter();
+    var itemList = {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "FFXIV Watchlist",
+      "itemListElement": []
+    };
+    var pos = 1;
+    document.querySelectorAll('main li[data-tags] > a').forEach(function (a) {
+      var descEl = a.querySelector('.desc');
+      var bodyEl = a.querySelector('.link-body');
+      itemList.itemListElement.push({
+        "@type": "ListItem",
+        "position": pos++,
+        "url": a.href,
+        "name": bodyEl ? bodyEl.childNodes[0].textContent.trim() : a.textContent.trim(),
+        "description": descEl ? descEl.textContent.trim() : ""
+      });
     });
+    var ld = document.createElement('script');
+    ld.type = 'application/ld+json';
+    ld.textContent = JSON.stringify(itemList);
+    document.head.appendChild(ld);
   });
-  var ld = document.createElement('script');
-  ld.type = 'application/ld+json';
-  ld.textContent = JSON.stringify(itemList);
-  document.head.appendChild(ld);
 })();
 </script>
 </body>

@@ -138,10 +138,13 @@
   }
   #clear-search:hover { color: var(--text); }
   #clear-search[hidden] { display: none; }
-  #tag-bar {
+  #tag-bar, #lang-bar {
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
+  }
+  #lang-bar {
+    margin-bottom: 16px;
   }
   .tag-pill {
     background: var(--card);
@@ -262,164 +265,165 @@
 <body>
 <main>
   <header>
-    <h1>FFXIV Tools &amp; Links</h1>
-    <p>A running list of things I actually use. Updated whenever I find something worth keeping.</p>
+    <h1 data-i18n="pages.index.h1">FFXIV Tools &amp; Links</h1>
+    <p data-i18n="pages.index.tagline">A running list of things I actually use. Updated whenever I find something worth keeping.</p>
   </header>
 
   <div class="page-layout columns">
   <div class="sidebar-col column is-3">
-    <nav class="page-nav"><a class="current" href="./">Tools I use</a><a href="watchlist.html">Watchlist</a><a href="plugins.html">Plugins</a></nav>
+    <nav class="page-nav"><a class="current" href="./" data-i18n="shared.nav.tools">Tools I use</a><a href="watchlist.html" data-i18n="shared.nav.watchlist">Watchlist</a><a href="plugins.html" data-i18n="shared.nav.plugins">Plugins</a></nav>
+    <div id="lang-bar"></div>
     <div class="search-bar">
-      <input id="search" type="search" placeholder="Search tools by name, description, or tag..." autocomplete="off">
-      <button id="clear-search" type="button" title="Clear" hidden>&times;</button>
+      <input id="search" type="search" data-i18n="pages.index.searchPlaceholder" data-i18n-placeholder placeholder="Search tools by name, description, or tag..." autocomplete="off">
+      <button id="clear-search" type="button" data-i18n="shared.clearSearchTitle" data-i18n-title title="Clear" hidden>&times;</button>
     </div>
     <div id="tag-bar"></div>
   </div>
 
   <div class="content-col column is-9">
-  <p id="empty-state" hidden>No tools match that search. <button id="empty-clear" type="button">Clear it</button>.</p>
+  <p id="empty-state" hidden><span data-i18n="pages.index.emptyStateText">No tools match that search.</span> <button id="empty-clear" type="button" data-i18n="shared.emptyClear">Clear it</button>.</p>
 
   <section>
-    <h2>Market &amp; Economy</h2>
+    <h2 data-i18n="pages.index.sections.market">Market &amp; Economy</h2>
     <ul>
       <li data-tags="market, economy">
-        <a href="https://universalis.app/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Universalis<span class="desc">Cross-world market board data</span></span></a>
+        <a href="https://universalis.app/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Universalis<span class="desc" data-i18n="items.universalis">Cross-world market board data</span></span></a>
         <div class="tags"><button type="button">market</button><button type="button">economy</button></div>
       </li>
       <li data-tags="crafting, gathering, market">
-        <a href="https://ffxivteamcraft.com/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Teamcraft<span class="desc">Crafting lists, alarms, gathering routes</span></span></a>
+        <a href="https://ffxivteamcraft.com/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Teamcraft<span class="desc" data-i18n="items.teamcraft">Crafting lists, alarms, gathering routes</span></span></a>
         <div class="tags"><button type="button">crafting</button><button type="button">gathering</button><button type="button">market</button></div>
       </li>
     </ul>
   </section>
 
   <section>
-    <h2>Progress &amp; Checklists</h2>
+    <h2 data-i18n="pages.index.sections.progress">Progress &amp; Checklists</h2>
     <ul>
       <li data-tags="checklist, dungeons, raids">
-        <a href="https://xivtodo.com/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">XIV To-Do<span class="desc">Duty completion tracker for dungeons, raids, and trials (less useful for the dailies checklist)</span></span></a>
+        <a href="https://xivtodo.com/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">XIV To-Do<span class="desc" data-i18n="items.xivtodo">Duty completion tracker for dungeons, raids, and trials (less useful for the dailies checklist)</span></span></a>
         <div class="tags"><button type="button">checklist</button><button type="button">dungeons</button><button type="button">raids</button></div>
       </li>
       <li data-tags="msq, tracker, checklist">
-        <a href="https://msqtracker.com/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">MSQTracker<span class="desc">Main Scenario Quest progress tracker, kept current through Dawntrail (progress saves to your browser only; export/import to move it, no shareable link)</span></span></a>
+        <a href="https://msqtracker.com/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">MSQTracker<span class="desc" data-i18n="items.msqtracker">Main Scenario Quest progress tracker, kept current through Dawntrail (progress saves to your browser only; export/import to move it, no shareable link)</span></span></a>
         <div class="tags"><button type="button">msq</button><button type="button">tracker</button><button type="button">checklist</button></div>
       </li>
       <li data-tags="msq, tracker, checklist">
-        <a href="https://ffxiv-progress.com/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">FFXIV Progress<span class="desc">MSQ progress tracker; stopped receiving updates after Endwalker, so use MSQTracker above for anything post-Endwalker</span></span></a>
+        <a href="https://ffxiv-progress.com/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">FFXIV Progress<span class="desc" data-i18n="items.ffxivprogress">MSQ progress tracker; stopped receiving updates after Endwalker, so use MSQTracker above for anything post-Endwalker</span></span></a>
         <div class="tags"><button type="button">msq</button><button type="button">tracker</button><button type="button">checklist</button></div>
       </li>
       <li data-tags="collectibles, minions, mounts">
-        <a href="https://ffxivcollect.com/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">FFXIV Collect<span class="desc">Look up and compare minions, mounts, and other collectibles you're tracking</span></span></a>
+        <a href="https://ffxivcollect.com/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">FFXIV Collect<span class="desc" data-i18n="items.ffxivcollect">Look up and compare minions, mounts, and other collectibles you're tracking</span></span></a>
         <div class="tags"><button type="button">collectibles</button><button type="button">minions</button><button type="button">mounts</button></div>
       </li>
       <li data-tags="eureka, tracker, nm">
-        <a href="https://ffxiv-eureka.com/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Eureka Tracker<span class="desc">Eureka NM pop time tracker, the community standard</span></span></a>
+        <a href="https://ffxiv-eureka.com/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Eureka Tracker<span class="desc" data-i18n="items.eurekatracker">Eureka NM pop time tracker, the community standard</span></span></a>
         <div class="tags"><button type="button">eureka</button><button type="button">tracker</button><button type="button">nm</button></div>
       </li>
       <li data-tags="housing, tracker">
-        <a href="https://zhu.codes/paissa" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">PAISSA DB<span class="desc">Tracks open housing plots and wards in real time, what I use to find and review options before bidding</span></span></a>
+        <a href="https://zhu.codes/paissa" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">PAISSA DB<span class="desc" data-i18n="items.paissadb">Tracks open housing plots and wards in real time, what I use to find and review options before bidding</span></span></a>
         <div class="tags"><button type="button">housing</button><button type="button">tracker</button></div>
       </li>
       <li data-tags="housing, browser, screenshots">
-        <a href="https://gametora.com/ffxiv/housing-plot-viewer" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Housing Plot Viewer<span class="desc">Browse screenshots and views for every plot so you can judge whether you'd like it without visiting in game</span></span></a>
+        <a href="https://gametora.com/ffxiv/housing-plot-viewer" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Housing Plot Viewer<span class="desc" data-i18n="items.housingplotviewer">Browse screenshots and views for every plot so you can judge whether you'd like it without visiting in game</span></span></a>
         <div class="tags"><button type="button">housing</button><button type="button">browser</button><button type="button">screenshots</button></div>
       </li>
     </ul>
   </section>
 
   <section>
-    <h2>Venues &amp; Nightlife</h2>
+    <h2 data-i18n="pages.index.sections.venues">Venues &amp; Nightlife</h2>
     <ul>
       <li data-tags="venues, nightlife, roleplay">
-        <a href="https://ffxivvenues.com/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">FFXIV Venues<span class="desc">Directory and schedule of player-run venues across NA/EU data centers</span></span></a>
+        <a href="https://ffxivvenues.com/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">FFXIV Venues<span class="desc" data-i18n="items.ffxivvenues">Directory and schedule of player-run venues across NA/EU data centers</span></span></a>
         <div class="tags"><button type="button">venues</button><button type="button">nightlife</button><button type="button">roleplay</button></div>
       </li>
     </ul>
   </section>
 
   <section>
-    <h2>Glamour</h2>
+    <h2 data-i18n="pages.index.sections.glamour">Glamour</h2>
     <ul>
       <li data-tags="glamour, gallery, community">
-        <a href="https://ffxiv.eorzeacollection.com/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Eorzea Collection<span class="desc">Vanilla (no-mod) glamour gallery. Browse and save outfits for in-game use</span></span></a>
+        <a href="https://ffxiv.eorzeacollection.com/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Eorzea Collection<span class="desc" data-i18n="items.eorzeacollection">Vanilla (no-mod) glamour gallery. Browse and save outfits for in-game use</span></span></a>
         <div class="tags"><button type="button">glamour</button><button type="button">gallery</button><button type="button">community</button></div>
       </li>
     </ul>
   </section>
 
   <section>
-    <h2>General &amp; Community</h2>
+    <h2 data-i18n="pages.index.sections.community">General &amp; Community</h2>
     <ul>
       <li data-tags="community, chat">
-        <a href="https://discord.com/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Discord<span class="desc">Main way I message friends and stay in touch with the community (heavy daily use)</span></span></a>
+        <a href="https://discord.com/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Discord<span class="desc" data-i18n="items.discord">Main way I message friends and stay in touch with the community (heavy daily use)</span></span></a>
         <div class="tags"><button type="button">community</button><button type="button">chat</button></div>
       </li>
       <li data-tags="streaming, events">
-        <a href="https://www.twitch.tv/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Twitch<span class="desc">In-game event streams and DJ sets</span></span></a>
+        <a href="https://www.twitch.tv/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Twitch<span class="desc" data-i18n="items.twitch">In-game event streams and DJ sets</span></span></a>
         <div class="tags"><button type="button">streaming</button><button type="button">events</button></div>
       </li>
     </ul>
   </section>
 
   <section>
-    <h2>Guides &amp; Reference</h2>
+    <h2 data-i18n="pages.index.sections.guides">Guides &amp; Reference</h2>
     <ul>
       <li data-tags="meta-list, resources, dev">
-        <a href="https://karashiiro.github.io/xiv-resources/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">XIV Resources<span class="desc">Exhaustive, uncurated directory of FFXIV sites, APIs, and dev tools, for when this list doesn't have it</span></span></a>
+        <a href="https://karashiiro.github.io/xiv-resources/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">XIV Resources<span class="desc" data-i18n="items.xivresources">Exhaustive, uncurated directory of FFXIV sites, APIs, and dev tools, for when this list doesn't have it</span></span></a>
         <div class="tags"><button type="button">meta-list</button><button type="button">resources</button><button type="button">dev</button></div>
       </li>
       <li data-tags="chocobo, calculator">
-        <a href="https://ffxivchocobo.com/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">FFXIV Chocobo Colour Calculator<span class="desc">Plan out chocobo color breeding/feeding paths</span></span></a>
+        <a href="https://ffxivchocobo.com/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">FFXIV Chocobo Colour Calculator<span class="desc" data-i18n="items.chocobocalc">Plan out chocobo color breeding/feeding paths</span></span></a>
         <div class="tags"><button type="button">chocobo</button><button type="button">calculator</button></div>
       </li>
       <li data-tags="database, reference">
-        <a href="https://www.garlandtools.org/db/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Garland Tools<span class="desc">Item, recipe, and quest database</span></span></a>
+        <a href="https://www.garlandtools.org/db/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Garland Tools<span class="desc" data-i18n="items.garlandtools">Item, recipe, and quest database</span></span></a>
         <div class="tags"><button type="button">database</button><button type="button">reference</button></div>
       </li>
       <li data-tags="database, housing, reference">
-        <a href="https://xivstats.com/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">XIVStats<span class="desc">General-purpose database with datasets you won't find elsewhere, like desynthesis results. The housing viewer for plot numbers is what I use most</span></span></a>
+        <a href="https://xivstats.com/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">XIVStats<span class="desc" data-i18n="items.xivstats">General-purpose database with datasets you won't find elsewhere, like desynthesis results. The housing viewer for plot numbers is what I use most</span></span></a>
         <div class="tags"><button type="button">database</button><button type="button">housing</button><button type="button">reference</button></div>
       </li>
       <li data-tags="job-guides, controller, hotbars">
-        <a href="https://www.icy-veins.com/ffxiv" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Icy Veins: FFXIV<span class="desc">Job guides. I use it for a default crossbar/hotbar setup when leveling a new class on controller</span></span></a>
+        <a href="https://www.icy-veins.com/ffxiv" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Icy Veins: FFXIV<span class="desc" data-i18n="items.icyveins">Job guides. I use it for a default crossbar/hotbar setup when leveling a new class on controller</span></span></a>
         <div class="tags"><button type="button">job-guides</button><button type="button">controller</button><button type="button">hotbars</button></div>
       </li>
       <li data-tags="wiki, items, quests">
-        <a href="https://ffxiv.consolegameswiki.com/wiki/FF14_Wiki" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Console Games Wiki: FFXIV<span class="desc">General item and quest info, easy to figure out what or how to go get something</span></span></a>
+        <a href="https://ffxiv.consolegameswiki.com/wiki/FF14_Wiki" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Console Games Wiki: FFXIV<span class="desc" data-i18n="items.consolegameswiki">General item and quest info, easy to figure out what or how to go get something</span></span></a>
         <div class="tags"><button type="button">wiki</button><button type="button">items</button><button type="button">quests</button></div>
       </li>
       <li data-tags="guide, retainer, minions">
-        <a href="https://www.thegamer.com/final-fantasy-14-retainer-ventures-minions-guide/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Retainer Ventures Minions Guide<span class="desc">List of every minion obtainable from retainer exploration ventures, and which venture unlocks each one</span></span></a>
+        <a href="https://www.thegamer.com/final-fantasy-14-retainer-ventures-minions-guide/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Retainer Ventures Minions Guide<span class="desc" data-i18n="items.retainerventures">List of every minion obtainable from retainer exploration ventures, and which venture unlocks each one</span></span></a>
         <div class="tags"><button type="button">guide</button><button type="button">retainer</button><button type="button">minions</button></div>
       </li>
       <li data-tags="gardening, crossbreeding, guide">
-        <a href="https://www.ffxivgardening.com/cross-diagrams" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">FFXIV Gardening: Crossbreed Diagrams<span class="desc">Hybrid seed crossbreeding paths. I use it for Thavnair onions</span></span></a>
+        <a href="https://www.ffxivgardening.com/cross-diagrams" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">FFXIV Gardening: Crossbreed Diagrams<span class="desc" data-i18n="items.ffxivgardening">Hybrid seed crossbreeding paths. I use it for Thavnair onions</span></span></a>
         <div class="tags"><button type="button">gardening</button><button type="button">crossbreeding</button><button type="button">guide</button></div>
       </li>
       <li data-tags="official, news">
-        <a href="https://na.finalfantasyxiv.com/lodestone/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">The Lodestone<span class="desc">Official news, maintenance, and lore updates</span></span></a>
+        <a href="https://na.finalfantasyxiv.com/lodestone/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">The Lodestone<span class="desc" data-i18n="items.lodestone">Official news, maintenance, and lore updates</span></span></a>
         <div class="tags"><button type="button">official</button><button type="button">news</button></div>
       </li>
     </ul>
   </section>
 
   <section>
-    <h2>Unicode &amp; Special Characters</h2>
+    <h2 data-i18n="pages.index.sections.unicode">Unicode &amp; Special Characters</h2>
     <ul>
       <li data-tags="unicode, symbols, reddit">
-        <a href="https://www.reddit.com/r/ffxiv/comments/f4jlks/unicode_ffxiv_symbols_and_more_shadowbringers/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Unicode FFXIV Symbols and More (Reddit)<span class="desc">Community-cataloged Unicode symbols that render in FFXIV chat and names</span></span></a>
+        <a href="https://www.reddit.com/r/ffxiv/comments/f4jlks/unicode_ffxiv_symbols_and_more_shadowbringers/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Unicode FFXIV Symbols and More (Reddit)<span class="desc" data-i18n="items.unicodereddit">Community-cataloged Unicode symbols that render in FFXIV chat and names</span></span></a>
         <div class="tags"><button type="button">unicode</button><button type="button">symbols</button><button type="button">reddit</button></div>
       </li>
       <li data-tags="unicode, symbols, reference">
-        <a href="https://gist.github.com/ivandrofly/0fe20773bd712b303f78#file-unicode-table-L1907" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Unicode Character Table (Gist)<span class="desc">Broader Unicode reference table, linked to the FFXIV-relevant range</span></span></a>
+        <a href="https://gist.github.com/ivandrofly/0fe20773bd712b303f78#file-unicode-table-L1907" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Unicode Character Table (Gist)<span class="desc" data-i18n="items.unicodegist">Broader Unicode reference table, linked to the FFXIV-relevant range</span></span></a>
         <div class="tags"><button type="button">unicode</button><button type="button">symbols</button><button type="button">reference</button></div>
       </li>
       <li data-tags="unicode, symbols, lodestone">
-        <a href="https://eu.finalfantasyxiv.com/lodestone/character/12444232/blog/5384056/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Special Characters (Lodestone Blog)<span class="desc">Player-written Lodestone blog post listing special characters for names and chat</span></span></a>
+        <a href="https://eu.finalfantasyxiv.com/lodestone/character/12444232/blog/5384056/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Special Characters (Lodestone Blog)<span class="desc" data-i18n="items.unicodelodestoneblog">Player-written Lodestone blog post listing special characters for names and chat</span></span></a>
         <div class="tags"><button type="button">unicode</button><button type="button">symbols</button><button type="button">lodestone</button></div>
       </li>
       <li data-tags="unicode, symbols, wiki">
-        <a href="https://ffxiv.consolegameswiki.com/wiki/Special_chat_characters" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Special Chat Characters (Wiki)<span class="desc">Wiki page listing the special characters FFXIV's chat and name fields support</span></span></a>
+        <a href="https://ffxiv.consolegameswiki.com/wiki/Special_chat_characters" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">Special Chat Characters (Wiki)<span class="desc" data-i18n="items.unicodewiki">Wiki page listing the special characters FFXIV's chat and name fields support</span></span></a>
         <div class="tags"><button type="button">unicode</button><button type="button">symbols</button><button type="button">wiki</button></div>
       </li>
     </ul>
@@ -428,12 +432,16 @@
   </div>
 
   <footer>
-    Found something I haven't tried? See the <a href="watchlist.html">watchlist</a>. Looking for plugins? See the <a href="plugins.html">plugins page</a>.
-    Source on <a href="https://github.com/malobear/ffxiv-tools">GitHub</a>. See something missing? Open a PR or ping me.
-    <p class="legal">FINAL FANTASY XIV is a registered trademark of Square Enix Holdings Co., Ltd. This is an unofficial, fan-made list, not affiliated with or endorsed by Square Enix.</p>
+    <span data-i18n-rich="pages.index.footerLine1">Found something I haven't tried? See the <a href="watchlist.html" data-token="watchlist" data-i18n="pages.index.watchlistLinkLabel">watchlist</a>. Looking for plugins? See the <a href="plugins.html" data-token="plugins" data-i18n="pages.index.pluginsLinkLabel">plugins page</a>.</span>
+    <span data-i18n-rich="shared.footerGithubLine">Source on <a href="https://github.com/malobear/ffxiv-tools" data-token="github" data-i18n="shared.githubLinkLabel">GitHub</a>. See something missing? Open a PR or ping me.</span>
+    <p class="legal" data-i18n="shared.legal">FINAL FANTASY XIV is a registered trademark of Square Enix Holdings Co., Ltd. This is an unofficial, fan-made list, not affiliated with or endorsed by Square Enix.</p>
   </footer>
 </main>
 
+<script src="https://cdn.jsdelivr.net/npm/i18next@26.4.0/dist/umd/i18next.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/i18next-http-backend@4.0.1/i18nextHttpBackend.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/i18next-browser-languagedetector@8.2.1/dist/umd/i18nextBrowserLanguageDetector.min.js"></script>
+<script src="i18n.js"></script>
 <script>
 (function () {
   var items = Array.prototype.slice.call(document.querySelectorAll('li[data-tags]'));
@@ -467,14 +475,16 @@
     btn.type = 'button';
     btn.className = 'tag-pill';
     btn.textContent = tag;
+    btn.dataset.tagKey = tag;
     btn.addEventListener('click', function () { setQuery(tag); });
     tagBar.appendChild(btn);
   });
 
   document.querySelectorAll('li .tags button').forEach(function (btn) {
+    btn.dataset.tagKey = btn.textContent.trim();
     btn.addEventListener('click', function (e) {
       e.preventDefault();
-      setQuery(btn.textContent.trim());
+      setQuery(btn.dataset.tagKey);
     });
   });
 
@@ -495,10 +505,9 @@
   function applyFilter() {
     var q = input.value.trim().toLowerCase();
     var anyVisible = false;
-    var activeTags = allTags.filter(function (t) { return t.toLowerCase() === q; });
 
     tagBar.querySelectorAll('.tag-pill').forEach(function (pill) {
-      pill.classList.toggle('active', pill.textContent.toLowerCase() === q);
+      pill.classList.toggle('active', pill.dataset.tagKey === q);
     });
 
     sections.forEach(function (section) {
@@ -528,28 +537,31 @@
   if (initQ) input.value = initQ;
   applyFilter();
 
-  var itemList = {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    "name": "FFXIV Tools & Links",
-    "itemListElement": []
-  };
-  var pos = 1;
-  document.querySelectorAll('main li[data-tags] > a').forEach(function (a) {
-    var descEl = a.querySelector('.desc');
-    var bodyEl = a.querySelector('.link-body');
-    itemList.itemListElement.push({
-      "@type": "ListItem",
-      "position": pos++,
-      "url": a.href,
-      "name": bodyEl ? bodyEl.childNodes[0].textContent.trim() : a.textContent.trim(),
-      "description": descEl ? descEl.textContent.trim() : ""
+  document.addEventListener('i18nready', function () {
+    applyFilter();
+    var itemList = {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "FFXIV Tools & Links",
+      "itemListElement": []
+    };
+    var pos = 1;
+    document.querySelectorAll('main li[data-tags] > a').forEach(function (a) {
+      var descEl = a.querySelector('.desc');
+      var bodyEl = a.querySelector('.link-body');
+      itemList.itemListElement.push({
+        "@type": "ListItem",
+        "position": pos++,
+        "url": a.href,
+        "name": bodyEl ? bodyEl.childNodes[0].textContent.trim() : a.textContent.trim(),
+        "description": descEl ? descEl.textContent.trim() : ""
+      });
     });
+    var ld = document.createElement('script');
+    ld.type = 'application/ld+json';
+    ld.textContent = JSON.stringify(itemList);
+    document.head.appendChild(ld);
   });
-  var ld = document.createElement('script');
-  ld.type = 'application/ld+json';
-  ld.textContent = JSON.stringify(itemList);
-  document.head.appendChild(ld);
 })();
 </script>
 </body>

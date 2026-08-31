@@ -53,6 +53,18 @@ The `application/ld+json` structured-data block (helps Google show rich results)
 generated at page load directly from the visible `<li>` content, so it's always in
 sync with what's on the page, and you never need to touch it by hand.
 
+### Translations
+
+The site is localized into English, Japanese, German, and French via `i18n.js` and
+the `i18n/*.json` files. Item **names** stay in English/original form in every
+language (they're mostly brand names); only descriptions, tags, and UI chrome are
+translated. When you add a new `<li>`, also add its description under a unique slug
+in `i18n/en.json`'s `items` object (e.g. `"myslug": "Short description"`), then set
+`data-i18n="items.myslug"` on the `<span class="desc">` in each of the three HTML
+files where it's needed. Adding the same key to `i18n/ja.json`, `de.json`, and
+`fr.json` is optional — a missing key falls back to the English text automatically,
+so the site never breaks, it just shows English for that one entry until translated.
+
 ### Searching / sharing a filtered view
 
 Typing in the search box filters by name, description, or tag, and updates the URL
