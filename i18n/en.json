@@ -109,6 +109,7 @@
     "garlandtools": "Item, recipe, and quest database",
     "xivstats": "General-purpose database with datasets you won't find elsewhere, like desynthesis results. The housing viewer for plot numbers is what I use most",
     "icyveins": "Job guides. I use it for a default crossbar/hotbar setup when leveling a new class on controller",
+    "xivbars": "Visual drag-and-drop hotbar/crossbar builder that generates macros to import a layout on another device or share it, no screenshot needed",
     "consolegameswiki": "General item and quest info, easy to figure out what or how to go get something",
     "retainerventures": "List of every minion obtainable from retainer exploration ventures, and which venture unlocks each one",
     "ffxivgardening": "Hybrid seed crossbreeding paths. I use it for Thavnair onions",

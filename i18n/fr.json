@@ -109,6 +109,7 @@
     "garlandtools": "Base de données des objets, recettes et quêtes",
     "xivstats": "Base de données généraliste avec des données introuvables ailleurs, comme les résultats de désynthèse. Le visualiseur de logement pour les numéros de parcelle est ce que j'utilise le plus",
     "icyveins": "Guides de job. Je l'utilise pour une configuration par défaut de barres de raccourcis quand je monte un nouveau job à la manette",
+    "xivbars": "Constructeur visuel de barres d'action/croisées par glisser-déposer qui génère des macros pour importer une configuration sur un autre appareil ou la partager, sans capture d'écran",
     "consolegameswiki": "Infos générales sur les objets et les quêtes, pratique pour comprendre quoi ou comment obtenir quelque chose",
     "retainerventures": "Liste de toutes les mascottes obtenables via les explorations de servants, et quelle exploration débloque laquelle",
     "ffxivgardening": "Chemins de croisement de graines hybrides. Je l'utilise pour les oignons de Thavnair",
