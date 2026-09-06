@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-T5W5558V82"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-T5W5558V82');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jump Puzzle Macros</title>
+<meta name="description" content="Timed macro-and-hotbar technique for jumping exact, repeatable distances in FFXIV, useful for precision jumping puzzles. Copyable macros, screenshots, and a calibration spot.">
+<link rel="canonical" href="https://malobear.github.io/ffxiv-tools/jump-puzzle-macros.html">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta name="theme-color" content="#12151c">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="FFXIV Tools & Links">
+<meta property="og:title" content="Jump Puzzle Macros">
+<meta property="og:description" content="Timed macro-and-hotbar technique for jumping exact, repeatable distances in FFXIV, useful for precision jumping puzzles.">
+<meta property="og:url" content="https://malobear.github.io/ffxiv-tools/jump-puzzle-macros.html">
+<meta property="og:image" content="https://malobear.github.io/ffxiv-tools/og-jump-puzzle-macros.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Jump Puzzle Macros">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Jump Puzzle Macros">
+<meta name="twitter:description" content="Timed macro-and-hotbar technique for jumping exact, repeatable distances in FFXIV, useful for precision jumping puzzles.">
+<meta name="twitter:image" content="https://malobear.github.io/ffxiv-tools/og-jump-puzzle-macros.png">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #12151c;
+    --card: #1b1f2a;
+    --border: #2a2f3d;
+    --text: #e8e9ed;
+    --muted: #9aa1b2;
+    --accent: #7db8ff;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: linear-gradient(180deg, var(--bg) 0%, #0d0f14 100%);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+  }
+  main {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 48px 20px 80px;
+  }
+  header {
+    margin-bottom: 24px;
+  }
+  .page-layout {
+    align-items: flex-start;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .sidebar-col {
+    padding-left: 0;
+  }
+  @media (min-width: 769px) {
+    .sidebar-col {
+      position: sticky;
+      top: 24px;
+    }
+  }
+  .content-col {
+    padding-right: 0;
+    min-width: 0;
+  }
+  h1 {
+    font-size: 1.8rem;
+    margin: 0 0 6px;
+  }
+  header p {
+    color: var(--muted);
+    margin: 0;
+  }
+  .page-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .page-nav a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    padding-bottom: 2px;
+    border-bottom: 2px solid transparent;
+  }
+  .page-nav a:hover {
+    color: var(--accent);
+  }
+  #lang-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+  .tag-pill {
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    border-radius: 999px;
+    padding: 4px 10px;
+    font-size: 0.78rem;
+    cursor: pointer;
+  }
+  .tag-pill:hover, .tag-pill.active {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+  .credit-banner {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 6px;
+    padding: 14px 16px;
+    margin-bottom: 28px;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  .credit-banner p {
+    margin: 4px 0;
+  }
+  .credit-banner strong {
+    color: var(--text);
+  }
+  .credit-banner a {
+    color: var(--accent);
+  }
+  h2 {
+    font-size: 1.05rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+    margin: 36px 0 12px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 8px;
+  }
+  h2:first-of-type {
+    margin-top: 0;
+  }
+  .step p {
+    margin: 0 0 12px;
+  }
+  .video-embed {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    margin: 16px 0 8px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: #000;
+  }
+  .video-embed iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+  .video-fallback {
+    color: var(--muted);
+    font-size: 0.8rem;
+  }
+  .video-fallback a {
+    color: var(--accent);
+  }
+  .step ul {
+    margin: 0 0 12px;
+    padding-left: 20px;
+  }
+  .step figure {
+    margin: 16px 0;
+  }
+  .step img {
+    max-width: 100%;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    display: block;
+  }
+  .step figcaption {
+    color: var(--muted);
+    font-size: 0.8rem;
+    margin-top: 6px;
+  }
+  .note {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 6px;
+    padding: 12px 14px;
+    color: var(--muted);
+    font-size: 0.85rem;
+    margin-bottom: 16px;
+  }
+  .macro-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 10px;
+    margin: 16px 0 24px;
+  }
+  .macro-card {
+    border: 1px solid var(--border);
+    background: var(--card);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .macro-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .macro-head span {
+    font-size: 0.78rem;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  .macro-copy {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    border-radius: 999px;
+    width: 22px;
+    height: 22px;
+    line-height: 1;
+    font-size: 0.72rem;
+    padding: 0;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  .macro-copy:hover, .macro-copy.copied {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+  .macro-body {
+    margin: 0;
+    padding: 10px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.75rem;
+    color: var(--text);
+    white-space: pre-wrap;
+  }
+  footer {
+    margin-top: 60px;
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+  footer a { color: var(--accent); }
+  footer .legal {
+    margin-top: 12px;
+    font-size: 0.75rem;
+    opacity: 0.7;
+  }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Jump Puzzle Macros</h1>
+    <p>A macro-and-hotbar trick for jumping exact, repeatable distances, useful for precision jumping puzzles.</p>
+  </header>
+
+  <div class="page-layout columns">
+  <div class="sidebar-col column is-3">
+    <nav class="page-nav"><a href="./" data-i18n="shared.nav.tools">Tools I use</a><a href="watchlist.html" data-i18n="shared.nav.watchlist">Watchlist</a><a href="plugins.html" data-i18n="shared.nav.plugins">Plugins</a><a href="venues.html" data-i18n="shared.nav.venues">Venues</a></nav>
+    <div id="lang-bar"></div>
+  </div>
+
+  <div class="content-col column is-9">
+
+  <div class="credit-banner">
+    <p><strong>Original technique:</strong> <a href="https://space.bilibili.com/49321526/" target="_blank" rel="noopener noreferrer">西瓜皮皮狗</a> on bilibili, demonstrated in <a href="https://www.bilibili.com/video/BV1NQpjzAEgr/" target="_blank" rel="noopener noreferrer">this video</a>.</p>
+    <p><strong>English write-up:</strong> posted to r/ffxiv by <a href="https://www.reddit.com/user/AbstractBible/" target="_blank" rel="noopener noreferrer">u/AbstractBible</a> in <a href="https://www.reddit.com/r/ffxiv/comments/1nh9ogn/jumping_puzzle_macroquantifying_jumping_distance/" target="_blank" rel="noopener noreferrer">the original thread</a>. This page reproduces that write-up with the screenshots preserved locally, since Reddit's own image hosting isn't reliable long-term.</p>
+  </div>
+
+  <section class="step">
+    <h2>How it works</h2>
+    <p>The idea: turn your hotbar into a ruler. A macro that holds <code>/automove</code> for a fixed number of frames before triggering <code>/gaction Jump</code> produces a jump of a very consistent, specific distance, as long as your frame rate is locked. Build one macro per distance, calibrate them once against a fixed landmark, and afterward you can read off exactly which number to press for any given gap.</p>
+    <div class="video-embed">
+      <iframe src="https://player.bilibili.com/player.html?bvid=BV1NQpjzAEgr&page=1&high_quality=1&danmaku=0&autoplay=0" scrolling="no" frameborder="0" allowfullscreen loading="lazy" title="Original jump distance macro demonstration by 西瓜皮皮狗 on bilibili"></iframe>
+    </div>
+    <p class="video-fallback">Video not loading? <a href="https://www.bilibili.com/video/BV1NQpjzAEgr/" target="_blank" rel="noopener noreferrer">Watch it directly on bilibili</a> instead; the CDN can be slow outside mainland China.</p>
+  </section>
+
+  <section class="step">
+    <h2>Step 1: resolution</h2>
+    <p>Set your game to 4K at 60 FPS, and UI size to 200%. If you don't have a 4K monitor, use the highest resolution available and adjust the UI size proportionally during calibration. It has to be 60 FPS, or the timing won't line up.</p>
+  </section>
+
+  <section class="step">
+    <h2>Step 2: macros</h2>
+    <p>Create macros 1&ndash;10 below (icon numbers optional, just for readability) exactly as written. Each one holds auto-move for a different number of frames before jumping, which is what produces a different, repeatable distance per macro.</p>
+    <div class="macro-grid" id="macro-grid"></div>
+  </section>
+
+  <section class="step">
+    <h2>Step 3: hotbar</h2>
+    <p>Make a blank 1&times;12 hotbar and place it low on screen, in front of your character, with the camera pointed straight down. After calibration you'll be able to look at this bar and click whichever number matches the distance you need.</p>
+    <figure>
+      <img src="img/jump-puzzle-macros-1.png" width="501" height="603" alt="Blank 1x12 hotbar positioned in front of the character with the camera angled straight down" loading="lazy">
+    </figure>
+  </section>
+
+  <section class="step">
+    <h2>Step 4: calibration</h2>
+    <p>Go to New Gridania (X: 9.8, Y: 12.5) and find the row of wooden stakes there. Stand on the bottom-right stake and adjust your hotbar's position and your camera depth (scroll in/out) until the number 8 lines up over the 4th stake and the number 4 lines up over the 3rd stake. If the hotbar doesn't fit the screen well, try 150% or 100% UI size instead and recheck the alignment. Nudge the camera depth in small steps until the fit is exact.</p>
+    <figure>
+      <img src="img/jump-puzzle-macros-2.png" width="488" height="550" alt="Hotbar numbers aligned against the wooden stakes in New Gridania for calibration" loading="lazy">
+    </figure>
+    <p>Once it's aligned, it should look something like this:</p>
+    <figure>
+      <img src="img/jump-puzzle-macros-3.png" width="438" height="560" alt="Calibrated hotbar overlay lined up with the stakes, ready to use" loading="lazy">
+    </figure>
+  </section>
+
+  <section class="step">
+    <h2>Using it</h2>
+    <p>Whatever number lines up with your target distance is the macro to press. Remember your camera depth (how many scroll steps up or down you used), since the calibration only holds at that specific zoom level.</p>
+    <div class="note">When jumping to a higher elevation, use one number farther than what your visuals suggest. Jumping to a lower elevation likely needs one number less, though that hasn't been tested as thoroughly. Macros 9 and 10 are for long jumps and don't align with the calibrated hotbar: 9 is a plain running jump, 10 is a sprinting running jump.</div>
+    <p>And yes, this does take some of the fun out of jumping puzzles, so skip it if you'd rather just eyeball the jumps.</p>
+  </section>
+
+  </div>
+  </div>
+
+  <footer>
+    <span>See the <a href="./">main list</a> for the rest of the tools I use.</span>
+    <span data-i18n-rich="shared.footerGithubLine">Source on <a href="https://github.com/malobear/ffxiv-tools" data-token="github" data-i18n="shared.githubLinkLabel">GitHub</a>. See something missing? Open a PR or ping me.</span>
+    <p class="legal" data-i18n="shared.legal">FINAL FANTASY XIV is a registered trademark of Square Enix Holdings Co., Ltd. This is an unofficial, fan-made list, not affiliated with or endorsed by Square Enix.</p>
+  </footer>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/i18next@26.4.0/dist/umd/i18next.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/i18next-http-backend@4.0.1/i18nextHttpBackend.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/i18next-browser-languagedetector@8.2.1/dist/umd/i18nextBrowserLanguageDetector.min.js"></script>
+<script src="i18n.js"></script>
+<script>
+(function () {
+  var MACROS = [
+    { n: 1, holds: 1, jumps: 6 },
+    { n: 2, holds: 2, jumps: 6 },
+    { n: 3, holds: 3, jumps: 6 },
+    { n: 4, holds: 4, jumps: 6 },
+    { n: 5, holds: 5, jumps: 6 },
+    { n: 6, holds: 6, jumps: 6 },
+    { n: 7, holds: 7, jumps: 6 },
+    { n: 8, holds: 8, jumps: 6 }
+  ];
+
+  function buildMacroText(m) {
+    var lines = [];
+    for (var i = 0; i < m.holds; i++) lines.push('/automove on');
+    for (var j = 0; j < m.jumps; j++) lines.push('/gaction Jump');
+    lines.push('/automove off');
+    return lines.join('\n');
+  }
+
+  var grid = document.getElementById('macro-grid');
+
+  MACROS.forEach(function (m) {
+    addMacroCard(m.n, buildMacroText(m));
+  });
+
+  addMacroCard(9, [
+    '/automove on', '/automove on', '/automove on', '/automove on',
+    '/automove on', '/automove on', '/automove on', '/automove on', '/automove on',
+    '/gaction Jump <wait.1>',
+    '/automove off'
+  ].join('\n'));
+
+  addMacroCard(10, [
+    '/ac sprint',
+    '/automove on', '/automove on', '/automove on', '/automove on', '/automove on',
+    '/automove on', '/automove on', '/automove on', '/automove on', '/automove on',
+    '/gaction Jump <wait.1>',
+    '/automove off'
+  ].join('\n'));
+
+  function addMacroCard(num, text) {
+    var card = document.createElement('div');
+    card.className = 'macro-card';
+
+    var head = document.createElement('div');
+    head.className = 'macro-head';
+    var label = document.createElement('span');
+    label.textContent = 'Macro ' + num;
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'macro-copy';
+    btn.textContent = '📋';
+    btn.setAttribute('aria-label', 'Copy Macro ' + num);
+    btn.title = 'Copy';
+    head.appendChild(label);
+    head.appendChild(btn);
+
+    var body = document.createElement('pre');
+    body.className = 'macro-body';
+    body.textContent = text;
+
+    card.appendChild(head);
+    card.appendChild(body);
+    grid.appendChild(card);
+
+    btn.addEventListener('click', function () {
+      var icon = btn.textContent;
+      var showCopied = function () {
+        btn.classList.add('copied');
+        btn.textContent = '✓';
+        setTimeout(function () {
+          btn.textContent = icon;
+          btn.classList.remove('copied');
+        }, 1500);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(showCopied, function () {});
+      }
+    });
+  }
+})();
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Jump Puzzle Macros",
+  "name": "Jump Puzzle Macros",
+  "description": "Timed macro-and-hotbar technique for jumping exact, repeatable distances in FFXIV, useful for precision jumping puzzles.",
+  "url": "https://malobear.github.io/ffxiv-tools/jump-puzzle-macros.html",
+  "image": "https://malobear.github.io/ffxiv-tools/og-jump-puzzle-macros.png",
+  "inLanguage": "en",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "FFXIV Tools & Links",
+    "url": "https://malobear.github.io/ffxiv-tools/"
+  },
+  "creditText": "Original technique by 西瓜皮皮狗 on bilibili; English write-up by u/AbstractBible on r/ffxiv"
+}
+</script>
+</body>
+</html>
