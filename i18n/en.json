@@ -47,8 +47,10 @@
     "immersion": "immersion",
     "items": "items",
     "job-guides": "job-guides",
+    "launcher": "launcher",
     "lodestone": "lodestone",
     "lounge": "lounge",
+    "macos": "macos",
     "maps": "maps",
     "market": "market",
     "meta-list": "meta-list",
@@ -147,7 +149,8 @@
     "ff14fish": "Predicts weather/time windows for catching specific fish, the community standard for fishing spreadsheets",
     "lifestream": "Travel to another world, data center, or house with a single command. Custom repo, not in the default plugin directory",
     "theeventide": "Eorzea's Weirdest Tavern",
-    "aetherphone": "Adds a full smartphone interface in-game, social feed, messaging, photo sharing, market board, games. Recreates a lot of a home-screen experience. Custom repo, not in the default plugin directory"
+    "aetherphone": "Adds a full smartphone interface in-game, social feed, messaging, photo sharing, market board, games. Recreates a lot of a home-screen experience. Custom repo, not in the default plugin directory",
+    "xivmac": "Free, open-source macOS launcher that runs FFXIV through Wine, with one-click Dalamud setup built in, no separate Windows install needed for plugins"
   },
   "pages": {
     "index": {

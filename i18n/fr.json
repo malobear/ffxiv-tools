@@ -47,8 +47,10 @@
     "immersion": "immersion",
     "items": "objets",
     "job-guides": "guides de job",
+    "launcher": "lanceur",
     "lodestone": "Lodestone",
     "lounge": "lounge",
+    "macos": "macOS",
     "maps": "cartes",
     "market": "marché",
     "meta-list": "méta-liste",
@@ -147,7 +149,8 @@
     "ff14fish": "Prédit les fenêtres météo/horaires pour attraper des poissons spécifiques, la référence communautaire des tableurs de pêche",
     "lifestream": "Voyagez vers un autre monde, data center ou logement avec une seule commande. Dépôt personnalisé, absent du répertoire de plugins par défaut",
     "theeventide": "La taverne la plus étrange d'Éorzéa",
-    "aetherphone": "Ajoute une interface complète de smartphone en jeu : fil social, messagerie, partage de photos, marché, jeux. Recrée en grande partie l'expérience d'un écran d'accueil. Dépôt personnalisé, absent du répertoire de plugins par défaut"
+    "aetherphone": "Ajoute une interface complète de smartphone en jeu : fil social, messagerie, partage de photos, marché, jeux. Recrée en grande partie l'expérience d'un écran d'accueil. Dépôt personnalisé, absent du répertoire de plugins par défaut",
+    "xivmac": "Lanceur macOS gratuit et open source qui exécute FFXIV via Wine, avec une configuration Dalamud en un clic intégrée, sans avoir besoin d'une installation Windows séparée pour les plugins"
   },
   "pages": {
     "index": {
