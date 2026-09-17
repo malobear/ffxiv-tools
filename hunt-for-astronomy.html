@@ -242,7 +242,7 @@ footer li{margin:5px 0}
     <li data-i18n-rich="hfa.footer.src1">Reward list and costs: <a href="https://na.finalfantasyxiv.com/lodestone/special/mogmog-collection/202609/lsekubsk45" target="_blank" rel="noopener noreferrer" data-token="link1" data-i18n="hfa.footer.src1Link">official Lodestone event page</a>.</li>
     <li data-i18n-rich="hfa.footer.src2">Item IDs and tradeability: <a href="https://github.com/xivapi/ffxiv-datamining" target="_blank" rel="noopener noreferrer" data-token="link2">xivapi/ffxiv-datamining</a> Item.csv.</li>
     <li data-i18n-rich="hfa.footer.src3">Alternate sources (shops, drops, FATEs, crafts, ventures): <a href="https://github.com/ffxiv-teamcraft/ffxiv-teamcraft" target="_blank" rel="noopener noreferrer" data-token="link3">FFXIV Teamcraft</a> extracts, linked per item. Teamcraft's drop data can be incomplete, so an item with "no other source" is worth a second look on Garland Tools.</li>
-    <li data-i18n-rich="hfa.footer.src4">Market prices: <a href="https://ultros.app/" target="_blank" rel="noopener noreferrer" data-token="link4a">Ultros</a> (built on <a href="https://universalis.app/" target="_blank" rel="noopener noreferrer" data-token="link4b">Universalis</a>), North America region. Domakin was only captured from the Europe region on Universalis, so treat that number as a ballpark. Items marked "not captured" have live links only.</li>
+    <li data-i18n-rich="hfa.footer.src4">Market prices: lowest current listing and recent average sale price, pulled live from the <a href="https://universalis.app/" target="_blank" rel="noopener noreferrer" data-token="link4b">Universalis</a> API for the North America region. Also browsable on <a href="https://ultros.app/" target="_blank" rel="noopener noreferrer" data-token="link4a">Ultros</a>. Items marked "not captured" have live links only.</li>
     <li data-i18n="hfa.footer.src5">Tomestone payouts per objective aren't listed on the event page; check the Mogpendium in game for the exact numbers.</li>
   </ul>
 
@@ -286,10 +286,13 @@ const ITEMS = [
  {id:30107,db:"68cbf969203",name:"Ramuh Crystal",cost:50,trade:false,mb:false,v:"trove",
   otherLinks:[[["Teamcraft",TCX("instance",30095)]]]},
  {id:33117,db:"901a124bffb",name:"The Legendary Beast Orchestrion Roll",cost:50,trade:true,mb:true,v:"buy",
+  price:{low:300000,where:"Famfrit",avg:775549,perDay:13,region:"NA"},
   otherLinks:[[["Teamcraft",TCX("instance",30101)]]]},
  {id:32794,db:"0cda2eaa295",name:"Skyworker's Singlet",cost:30,trade:true,mb:true,v:"buy",
+  price:{low:218000,where:"Marilith",avg:999388,perDay:17,region:"NA"},
   otherLinks:[[["Scrip",TC(28063)],["Teamcraft",TC(32794)]],[["Teamcraft",TC(33441)]]]},
  {id:30052,db:"10d1ba3159d",name:"Craftsman's Apron",cost:30,trade:true,mb:true,v:"buy",
+  price:{low:239998,where:"Malboro",avg:397320,perDay:14,region:"NA"},
   otherLinks:[[["Scrip",TC(28063)],["Teamcraft",TC(30052)]],[["Teamcraft",TC(33441)]]]},
  {id:27936,db:"760042f3f18",name:"Toad Head",cost:30,trade:false,mb:false,v:"trove",
   otherLinks:[[["Horn",TC(27972)],["NPC",TCX("npc",1027565)]],[["FATE",TCX("fate",1432)]]]},
@@ -298,6 +301,7 @@ const ITEMS = [
  {id:23367,db:"b22f164eb29",name:"Ballroom Etiquette - Stimulating Soliloquies",cost:30,trade:false,mb:false,v:"trove",
   otherLinks:[[["Wolf Mark",TC(25)],["NPC",TCX("npc",1005244)]]]},
  {id:24635,db:"7ed61351336",name:"Conditional Virtue",cost:30,trade:true,mb:true,v:"buy",
+  price:{low:199968,where:"Golem",avg:500225,perDay:18,region:"NA"},
   otherLinks:[[["Container",TC(36636)],["Teamcraft",TC(24635)]]]},
  {id:12077,db:"cf953a18569",name:"Ishgardian Half Barding",cost:30,trade:false,mb:false,v:"trove",
   otherLinks:[[["FATE",TCX("fate",871)]]]},
@@ -306,10 +310,13 @@ const ITEMS = [
  {id:16784,db:"0fcae87494f",name:"MGP Platinum Card",cost:30,trade:false,mb:false,v:"meh",
   otherLinks:[[["Teamcraft",TC(16784)]]]},
  {id:38585,db:"6b90dd50b7d",name:"Cheese Fondue Set",cost:20,trade:true,mb:true,v:"buy",
+  price:{low:99,where:"Jenova",avg:927,perDay:11,region:"NA"},
   otherLinks:[[["Teamcraft",TC(38585)]]]},
  {id:38605,db:"1c01181b4f6",name:"Korpokkur Chronometer",cost:20,trade:true,mb:true,v:"buy",
+  price:{low:450,where:"Golem",avg:1578,perDay:14,region:"NA"},
   otherLinks:[[["Teamcraft",TC(38605)]]]},
  {id:38622,db:"b58338ec043",name:"Bamboo Fence",cost:20,trade:true,mb:true,v:"buy",
+  price:{low:900,where:"Ultros",avg:10712,perDay:20,region:"NA"},
   otherLinks:[[["Teamcraft",TC(38622)]]]},
  {id:13162,db:"c6b3ccc0592",name:"Coat of the Defiant Duelist",cost:15,trade:false,mb:false,v:"meh",
   otherLinks:[[["Arboretum",TCX("instance",41)],["Pharos Sirius",TCX("instance",40)]]]},
@@ -318,6 +325,7 @@ const ITEMS = [
  {id:13186,db:"38dfc2e663d",name:"Coat of the Ghost Thief",cost:15,trade:false,mb:false,v:"meh",
   otherLinks:[[["Arboretum",TCX("instance",41)],["Pharos Sirius",TCX("instance",40)]]]},
  {id:33847,db:"7403adb0c1f",name:"What Is Love? Orchestrion Roll",cost:15,trade:true,mb:true,v:"buy",
+  price:{low:145000,where:"Balmung",avg:394127,perDay:12,region:"NA"},
   otherLinks:[[["Scrip",TC(28063)],["Teamcraft",TC(33847)]],[["Teamcraft",TC(33441)]]]},
  {id:39918,db:"63e628a56d5",name:"Conceivably Special Timeworn Map",cost:15,trade:false,mb:false,v:"meh",
   otherLinks:[[["Teamcraft",TC(39918)]]]},
@@ -330,15 +338,16 @@ const ITEMS = [
  {id:12273,db:"22fdcec29ae",name:"Fat Chocobo Card",cost:7,trade:false,mb:false,v:"trove",
   otherLinks:[[["FATE",TCX("fate",838)]]]},
  {id:16703,db:"6517213940b",name:"Modern Aesthetics - Samsonian Locks",cost:7,trade:true,mb:true,v:"buy",
+  price:{low:40000,where:"Kraken",avg:90213,perDay:21,region:"NA"},
   otherLinks:[[["Teamcraft",TC(16703)]]]},
  {id:28624,db:"5ebd9d25cc6",name:"Domakin",cost:7,trade:true,mb:true,v:"gil",
-  price:{low:60000,where:"Moogle",median:null,region:"EU (proxy)"},
+  price:{low:75000,where:"Rafflesia",avg:315827,perDay:14,region:"NA"},
   otherLinks:[[["Teamcraft",TC(28624)]]]},
  {id:28124,db:"91bbfd9d596",name:"Dhalmel Whistle",cost:7,trade:true,mb:true,v:"gil",
-  price:{low:64900,where:"Jenova",median:138000,perDay:42,region:"NA"},
+  price:{low:64900,where:"Jenova",avg:243879,perDay:19,region:"NA"},
   otherLinks:[[["Wiki",'https://ffxiv.consolegameswiki.com/wiki/Dhalmel_Whistle'],["Teamcraft",TC(28124)]]]},
  {id:32823,db:"d326149d19f",name:"Emerald Barding",cost:5,trade:true,mb:true,v:"gil",
-  price:{low:44990,where:"Brynhildr",median:148995,perDay:27,region:"NA"},
+  price:{low:45000,where:"Rafflesia",avg:163840,perDay:17,region:"NA"},
   otherLinks:[[["Book",TC(29486)],["Teamcraft",TC(32823)]]]},
  {id:25005,db:"7df9a5ab439",name:"Magicked Prism (Job Mastery) x10",cost:1,trade:true,mb:false,v:"meh",
   otherLinks:[[["Teamcraft",TC(25005)]]]}
@@ -431,7 +440,7 @@ function priceCell(it){
     const per = Math.round(it.price.low/it.cost);
     return `<div class="price"><span class="big">${fmt(it.price.low)}</span>
       <span class="na">${t('hfa.price.lowest',{shop:it.price.where,region:it.price.region})}</span>
-      ${it.price.median?`<span class="na">${t('hfa.price.medianSale',{median:fmt(it.price.median)})}${it.price.perDay?t('hfa.price.perDay',{n:it.price.perDay}):""}</span>`:""}
+      ${it.price.avg?`<span class="na">${t('hfa.price.averageSale',{avg:fmt(it.price.avg)})}${it.price.perDay?t('hfa.price.perDay',{n:it.price.perDay}):""}</span>`:""}
       <span class="per">${t('hfa.price.perTome',{gil:fmt(per)})}</span>${links}</div>`;
   }
   return `<div class="price"><span class="na">${t('hfa.price.notCaptured')}</span><span class="na">${t('hfa.price.checkLive')}</span>${links}</div>`;

@@ -303,11 +303,11 @@
       "tradeableNotListable": "Handelbar, nicht listbar",
       "notOnBoard": "Nicht auf dem Marktbrett",
       "lowest": "günstigste, {{shop}} ({{region}})",
-      "medianSale": "Median {{median}}",
       "perDay": ", ~{{n}}/Tag",
       "perTome": "≈ {{gil}} Gil pro Stein",
       "notCaptured": "Preis nicht erfasst",
-      "checkLive": "Live prüfen"
+      "checkLive": "Live prüfen",
+      "averageSale": "durchschnittlicher Verkauf {{avg}}"
     },
     "footer": {
       "heading": "Quellen und wie diese Seite entstanden ist",
@@ -315,7 +315,7 @@
       "src1Link": "offizielle Lodestone-Eventseite",
       "src2": "Item-IDs und Handelbarkeit: {link2} Item.csv.",
       "src3": "Alternative Quellen (Shops, Drops, FATEs, Crafting, Aufträge): Auszüge von {link3}, pro Item verlinkt. Teamcrafts Drop-Daten können unvollständig sein, daher lohnt sich bei „keine andere Quelle“ ein zweiter Blick auf Garland Tools.",
-      "src4": "Marktpreise: {link4a} (basiert auf {link4b}), Region Nordamerika. Domakin wurde bei Universalis nur für die Region Europa erfasst, die Zahl also nur als grobe Orientierung nehmen. Als „nicht erfasst“ markierte Items haben nur Live-Links.",
+      "src4": "Marktpreise: günstigste aktuelle Listung und durchschnittlicher Verkaufspreis der letzten Zeit, live über die {link4b}-API für die Region Nordamerika abgerufen. Auch auf {link4a} einsehbar. Als „nicht erfasst“ markierte Items haben nur Live-Links.",
       "src5": "Die Steinzahl pro Ziel steht nicht auf der Eventseite; die genauen Zahlen findest du im Spiel im Mogpendium."
     },
     "items": {
@@ -516,14 +516,14 @@
       },
       "28124": {
         "kind": "Reittier",
-        "take": "Bestes Gil-pro-Stein-Verhältnis im Shop. In NA verkaufen sich etwa 42 pro Tag, aber die Preise rutschen durch das Tausch-Angebot schon unter den Median. Früh kaufen und früh verkaufen.",
+        "take": "Bestes Gil-pro-Stein-Verhältnis im Shop. In NA verkaufen sich etwa 19 pro Tag, aber die Preise rutschen durch das Tausch-Angebot schon unter den Durchschnitt. Früh kaufen und früh verkaufen.",
         "other": [
           "Kupo of Fortune (Gold Saucer)"
         ]
       },
       "32823": {
         "kind": "Chocobo-Zaumzeug",
-        "take": "5 Steine für etwas, das um die 150k verkauft wird. Gleiche Warnung wie bei der Pfeife: der Preis fällt schnell.",
+        "take": "5 Steine für etwas, das um die 160k verkauft wird. Gleiche Warnung wie bei der Pfeife: der Preis fällt schnell.",
         "other": [
           "Herstellbar, Plattner Stufe 80 (benötigt Meisterplattner VIII)"
         ]

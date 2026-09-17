@@ -303,11 +303,11 @@
       "tradeableNotListable": "Tradeable, not listable",
       "notOnBoard": "Not on market board",
       "lowest": "lowest, {{shop}} ({{region}})",
-      "medianSale": "median sale {{median}}",
       "perDay": ", ~{{n}}/day",
       "perTome": "≈ {{gil}} gil per tome",
       "notCaptured": "Price not captured",
-      "checkLive": "Check live"
+      "checkLive": "Check live",
+      "averageSale": "average sale {{avg}}"
     },
     "footer": {
       "heading": "Sources and how this was built",
@@ -315,7 +315,7 @@
       "src1Link": "official Lodestone event page",
       "src2": "Item IDs and tradeability: {link2} Item.csv.",
       "src3": "Alternate sources (shops, drops, FATEs, crafts, ventures): {link3} extracts, linked per item. Teamcraft's drop data can be incomplete, so an item with \"no other source\" is worth a second look on Garland Tools.",
-      "src4": "Market prices: {link4a} (built on {link4b}), North America region. Domakin was only captured from the Europe region on Universalis, so treat that number as a ballpark. Items marked \"not captured\" have live links only.",
+      "src4": "Market prices: lowest current listing and recent average sale price, pulled live from the {link4b} API for the North America region. Also browsable on {link4a}. Items marked \"not captured\" have live links only.",
       "src5": "Tomestone payouts per objective aren't listed on the event page; check the Mogpendium in game for the exact numbers."
     },
     "items": {
@@ -516,14 +516,14 @@
       },
       "28124": {
         "kind": "Mount",
-        "take": "Best gil per tome in the shop. It moves about 42 a day in NA, but listings are already sliding under the median as trove supply lands. Buy and sell early.",
+        "take": "Best gil per tome in the shop. It moves about 19 a day in NA, but listings are already sliding under the average as trove supply lands. Buy and sell early.",
         "other": [
           "Kupo of Fortune (Gold Saucer)"
         ]
       },
       "32823": {
         "kind": "Chocobo barding",
-        "take": "5 tomes for something that's been selling around 150k. Same caveat as the whistle: the floor is dropping fast.",
+        "take": "5 tomes for something that's been selling around 160k. Same caveat as the whistle: the floor is dropping fast.",
         "other": [
           "Crafted, Armorer level 80 (needs Master Armorer VIII)"
         ]

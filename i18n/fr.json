@@ -303,11 +303,11 @@
       "tradeableNotListable": "Échangeable, non listable",
       "notOnBoard": "Pas sur le marché",
       "lowest": "le plus bas, {{shop}} ({{region}})",
-      "medianSale": "médiane {{median}}",
       "perDay": ", ~{{n}}/jour",
       "perTome": "≈ {{gil}} gil par mémoquartz",
       "notCaptured": "Prix non relevé",
-      "checkLive": "Vérifier en direct"
+      "checkLive": "Vérifier en direct",
+      "averageSale": "vente moyenne {{avg}}"
     },
     "footer": {
       "heading": "Sources et méthode de création de cette page",
@@ -315,7 +315,7 @@
       "src1Link": "page officielle de l'événement sur le Lodestone",
       "src2": "ID d'objets et échangeabilité : Item.csv de {link2}.",
       "src3": "Autres sources (boutiques, butins, FATE, artisanat, missions) : extraits de {link3}, liés par objet. Les données de drop de Teamcraft peuvent être incomplètes, donc un objet marqué « aucune autre source » mérite une vérification sur Garland Tools.",
-      "src4": "Prix du marché : {link4a} (basé sur {link4b}), région Amérique du Nord. Domakin n'a été relevé que sur la région Europe d'Universalis, à considérer donc comme une estimation. Les objets marqués « non relevé » n'ont que des liens en direct.",
+      "src4": "Prix du marché : listing le plus bas actuel et prix de vente moyen récent, récupérés en direct via l'API {link4b} pour la région Amérique du Nord. Également consultable sur {link4a}. Les objets marqués « non relevé » n'ont que des liens en direct.",
       "src5": "Le nombre de mémoquartz par objectif n'est pas indiqué sur la page de l'événement ; consultez le Mogpendium en jeu pour les chiffres exacts."
     },
     "items": {
@@ -516,14 +516,14 @@
       },
       "28124": {
         "kind": "Monture",
-        "take": "Le meilleur ratio gil/mémoquartz de la boutique. Il s'en vend environ 42 par jour en NA, mais les prix glissent déjà sous la médiane avec l'arrivée de l'offre de l'échange. Achetez et revendez tôt.",
+        "take": "Le meilleur ratio gil/mémoquartz de la boutique. Il s'en vend environ 19 par jour en NA, mais les prix glissent déjà sous la moyenne avec l'arrivée de l'offre de l'échange. Achetez et revendez tôt.",
         "other": [
           "Kupo of Fortune (Gold Saucer)"
         ]
       },
       "32823": {
         "kind": "Harnais de chocobo",
-        "take": "5 mémoquartz pour un objet qui se vendait autour de 150k. Même mise en garde que pour le sifflet : le prix plancher chute vite.",
+        "take": "5 mémoquartz pour un objet qui se vendait autour de 160k. Même mise en garde que pour le sifflet : le prix plancher chute vite.",
         "other": [
           "Craftable, Armurier niveau 80 (nécessite Maître armurier VIII)"
         ]
