@@ -495,8 +495,9 @@
       },
       "12273": {
         "kind": "Carte Triple Triad",
-        "take": "7 mémoquartz valent mieux qu'attendre un spawn de FATE. Nécessite la quête principale Where the Chocobos Roam.",
+        "take": "En fait pas exclusif à l'échange : vous pouvez aussi la gagner contre Vath Deftarm dans The Dravanian Forelands, sans attendre le FATE. Dans les deux cas, la quête principale Where the Chocobos Roam reste nécessaire.",
         "other": [
+          "Match de Triple Triad, Vath Deftarm (The Dravanian Forelands, X:23.6 Y:19.1)",
           "Récompense de FATE, Special Tarasque Force (The Dravanian Forelands)"
         ]
       },

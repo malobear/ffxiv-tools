@@ -495,8 +495,9 @@
       },
       "12273": {
         "kind": "トリプルトライアドカード",
-        "take": "FATEの湧きを待つよりも7個で交換した方が早い。MSQ「Where the Chocobos Roam」が必要。",
+        "take": "実はトローブ限定ではない。The Dravanian ForelandsのVath Deftarmに勝てばFATE待ちをせず入手可能。いずれの方法でもMSQ「Where the Chocobos Roam」が必要な点は同じ。",
         "other": [
+          "トリプルトライアド対戦、Vath Deftarm (The Dravanian Forelands, X:23.6 Y:19.1)",
           "FATE報酬、Special Tarasque Force (The Dravanian Forelands)"
         ]
       },

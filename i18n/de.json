@@ -495,8 +495,9 @@
       },
       "12273": {
         "kind": "Triple-Triad-Karte",
-        "take": "7 Steine schlagen das Warten auf einen FATE-Spawn. Erfordert die Hauptszenario-Quest Where the Chocobos Roam.",
+        "take": "Doch nicht nur im Tausch erhältlich: Du kannst sie auch von Vath Deftarm in The Dravanian Forelands gewinnen, statt auf das FATE zu warten. In beiden Fällen brauchst du die Hauptszenario-Quest Where the Chocobos Roam.",
         "other": [
+          "Triple-Triad-Match, Vath Deftarm (The Dravanian Forelands, X:23.6 Y:19.1)",
           "FATE-Belohnung, Special Tarasque Force (The Dravanian Forelands)"
         ]
       },

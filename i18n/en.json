@@ -495,8 +495,9 @@
       },
       "12273": {
         "kind": "Triple Triad card",
-        "take": "7 tomes beats waiting on a FATE spawn. Requires the MSQ Where the Chocobos Roam.",
+        "take": "Not trove-exclusive: you can win it from Vath Deftarm in The Dravanian Forelands instead of waiting on the FATE. Still requires the MSQ Where the Chocobos Roam either way.",
         "other": [
+          "Triple Triad match, Vath Deftarm (The Dravanian Forelands, X:23.6 Y:19.1)",
           "FATE reward, Special Tarasque Force (The Dravanian Forelands)"
         ]
       },
