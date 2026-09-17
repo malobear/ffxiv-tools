@@ -239,16 +239,16 @@ footer li{margin:5px 0}
 <footer>
   <h2 data-i18n="hfa.footer.heading">Sources and how this was built</h2>
   <ul>
-    <li data-i18n-rich="hfa.footer.src1">Reward list and costs: <a href="https://na.finalfantasyxiv.com/lodestone/special/mogmog-collection/202609/lsekubsk45" data-token="link1" data-i18n="hfa.footer.src1Link">official Lodestone event page</a>.</li>
-    <li data-i18n-rich="hfa.footer.src2">Item IDs and tradeability: <a href="https://github.com/xivapi/ffxiv-datamining" data-token="link2">xivapi/ffxiv-datamining</a> Item.csv.</li>
-    <li data-i18n-rich="hfa.footer.src3">Alternate sources (shops, drops, FATEs, crafts, ventures): <a href="https://github.com/ffxiv-teamcraft/ffxiv-teamcraft" data-token="link3">FFXIV Teamcraft</a> extracts, linked per item. Teamcraft's drop data can be incomplete, so an item with "no other source" is worth a second look on Garland Tools.</li>
-    <li data-i18n-rich="hfa.footer.src4">Market prices: <a href="https://ultros.app/" data-token="link4a">Ultros</a> (built on <a href="https://universalis.app/" data-token="link4b">Universalis</a>), North America region. Domakin was only captured from the Europe region on Universalis, so treat that number as a ballpark. Items marked "not captured" have live links only.</li>
+    <li data-i18n-rich="hfa.footer.src1">Reward list and costs: <a href="https://na.finalfantasyxiv.com/lodestone/special/mogmog-collection/202609/lsekubsk45" target="_blank" rel="noopener noreferrer" data-token="link1" data-i18n="hfa.footer.src1Link">official Lodestone event page</a>.</li>
+    <li data-i18n-rich="hfa.footer.src2">Item IDs and tradeability: <a href="https://github.com/xivapi/ffxiv-datamining" target="_blank" rel="noopener noreferrer" data-token="link2">xivapi/ffxiv-datamining</a> Item.csv.</li>
+    <li data-i18n-rich="hfa.footer.src3">Alternate sources (shops, drops, FATEs, crafts, ventures): <a href="https://github.com/ffxiv-teamcraft/ffxiv-teamcraft" target="_blank" rel="noopener noreferrer" data-token="link3">FFXIV Teamcraft</a> extracts, linked per item. Teamcraft's drop data can be incomplete, so an item with "no other source" is worth a second look on Garland Tools.</li>
+    <li data-i18n-rich="hfa.footer.src4">Market prices: <a href="https://ultros.app/" target="_blank" rel="noopener noreferrer" data-token="link4a">Ultros</a> (built on <a href="https://universalis.app/" target="_blank" rel="noopener noreferrer" data-token="link4b">Universalis</a>), North America region. Domakin was only captured from the Europe region on Universalis, so treat that number as a ballpark. Items marked "not captured" have live links only.</li>
     <li data-i18n="hfa.footer.src5">Tomestone payouts per objective aren't listed on the event page; check the Mogpendium in game for the exact numbers.</li>
   </ul>
 
   <div class="site-footer">
     <p>See the <a href="./">main list</a> for the rest of the tools I use.</p>
-    <p data-i18n-rich="shared.footerGithubLine">Source on <a href="https://github.com/malobear/ffxiv-tools" data-token="github" data-i18n="shared.githubLinkLabel">GitHub</a>. See something missing? Open a PR or ping me.</p>
+    <p data-i18n-rich="shared.footerGithubLine">Source on <a href="https://github.com/malobear/ffxiv-tools" target="_blank" rel="noopener noreferrer" data-token="github" data-i18n="shared.githubLinkLabel">GitHub</a>. See something missing? Open a PR or ping me.</p>
     <p class="legal" data-i18n="shared.legal">FINAL FANTASY XIV is a registered trademark of Square Enix Holdings Co., Ltd. This is an unofficial, fan-made list, not affiliated with or endorsed by Square Enix.</p>
   </div>
 </footer>
@@ -426,7 +426,7 @@ function priceCell(it){
   if(!it.mb){
     return `<div class="price"><span class="na">${it.trade ? t('hfa.price.tradeableNotListable') : t('hfa.meta.untradeable')}</span><span class="na">${t('hfa.price.notOnBoard')}</span></div>`;
   }
-  const links = `<span class="lk"><a href="${ULT(it.id)}">Ultros NA</a><a href="${UNI(it.id)}">Universalis</a></span>`;
+  const links = `<span class="lk"><a href="${ULT(it.id)}" target="_blank" rel="noopener noreferrer">Ultros NA</a><a href="${UNI(it.id)}" target="_blank" rel="noopener noreferrer">Universalis</a></span>`;
   if(it.price){
     const per = Math.round(it.price.low/it.cost);
     return `<div class="price"><span class="big">${fmt(it.price.low)}</span>
@@ -447,15 +447,15 @@ function render(){
   ul.innerHTML = list.map(it=>{
     const hidden = (state.filter!=="all" && it.v!==state.filter) || (state.mbOnly && !it.mb);
     const otherTexts = t(`hfa.items.${it.id}.other`, {returnObjects:true});
-    const other = it.otherLinks.map((ls,i)=>`<li>${otherTexts[i]} ${ls.map(([l,u])=>`<a href="${u}">${l}</a>`).join(" ")}</li>`).join("");
+    const other = it.otherLinks.map((ls,i)=>`<li>${otherTexts[i]} ${ls.map(([l,u])=>`<a href="${u}" target="_blank" rel="noopener noreferrer">${l}</a>`).join(" ")}</li>`).join("");
     return `<li class="item v-${it.v} ${hidden?"hidden":""}" id="item-${it.id}">
       <input class="pick" type="checkbox" aria-label="${t('hfa.meta.pickAria',{name:it.name})}" data-id="${it.id}" ${state.picked.has(it.id)?"checked":""}>
       <div class="cost">${it.cost}<small>${it.tokens?t('hfa.controls.hornTokens',{n:it.tokens}):t('hfa.controls.tomesUnit')}</small></div>
       <div class="main">
-        <h3><img class="item-icon" src="${ICON(it.id)}" alt="" width="32" height="32" loading="lazy"><a href="${LDB(it.db)}">${it.name}</a></h3>
+        <h3><img class="item-icon" src="${ICON(it.id)}" alt="" width="32" height="32" loading="lazy"><a href="${LDB(it.db)}" target="_blank" rel="noopener noreferrer">${it.name}</a></h3>
         <div class="meta">${t(`hfa.items.${it.id}.kind`)}, ${it.trade?t('hfa.meta.tradeable'):t('hfa.meta.untradeable')}</div>
         <p class="take">${it.exclusive?`<span class="flag">${t('hfa.meta.troveOnlyFlag')}</span>`:""}<span class="tag">${t('hfa.verdicts.'+it.v+'.label')}</span>${t(`hfa.items.${it.id}.take`)}</p>
-        <details><summary>${t('hfa.meta.otherWays')}</summary><ul>${other}<li>${t('hfa.meta.databases')} <a href="${TC(it.id)}">Teamcraft</a> <a href="${GT(it.id)}">Garland Tools</a> <a href="${LDB(it.db)}">Lodestone</a></li></ul></details>
+        <details><summary>${t('hfa.meta.otherWays')}</summary><ul>${other}<li>${t('hfa.meta.databases')} <a href="${TC(it.id)}" target="_blank" rel="noopener noreferrer">Teamcraft</a> <a href="${GT(it.id)}" target="_blank" rel="noopener noreferrer">Garland Tools</a> <a href="${LDB(it.db)}" target="_blank" rel="noopener noreferrer">Lodestone</a></li></ul></details>
       </div>
       ${priceCell(it)}
     </li>`;
