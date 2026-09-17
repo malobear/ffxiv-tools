@@ -383,13 +383,14 @@
         "kind": "Émote",
         "take": "Le meilleur gain de temps de la boutique. L'alternative est 15 000 marques de loup, ce qui représente beaucoup de JcJ si vous n'y jouez pas déjà.",
         "other": [
-          "15 000 marques de loup auprès du quartier-maître, Wolves' Den Pier"
+          "15 000 marques de loup auprès du quartier-maître, Wolves' Den Pier, nécessite la quête A Pup No Longer"
         ]
       },
       "24635": {
         "kind": "Mascotte",
         "take": "Mascotte échangeable qui tombe aussi des conteneurs de matériel de compagnie. Vérifiez le marché avant de dépenser 30 mémoquartz.",
         "other": [
+          "Butin d'instance, The Baldesion Arsenal (Eureka Hydatos), plus fiable que la loterie du conteneur",
           "Conteneur de matériel 4.0 (compagnie, 20 000 sceaux, aléatoire)"
         ]
       },
@@ -397,14 +398,14 @@
         "kind": "Harnais de chocobo",
         "take": "Lié à un FATE dans The Churning Mists, une affaire d'attente de spawn. Un achat raisonnable à l'échange si vous le voulez.",
         "other": [
-          "Récompense de FATE, Vedrfolnir Devoteth (The Churning Mists), selon Teamcraft"
+          "Récompense de FATE, Vedrfolnir Devoteth (The Churning Mists), nécessite une évaluation Or sur le FATE"
         ]
       },
       "24623": {
         "kind": "Monture",
         "take": "Seiryu Extrême se farm en solo et désynchronisé, mais 99 talismans représentent beaucoup de runs si le drop ne coopère pas. 30 mémoquartz vous épargnent ce farm.",
         "other": [
-          "99 talismans de Seiryu auprès de la représentante de Rowena (Kugane) ou d'Eschina (Rhalgr's Reach)",
+          "99 talismans de Seiryu auprès de la représentante de Rowena (Kugane) ou d'Eschina (Rhalgr's Reach), nécessite la quête Surpassing the Samurai",
           "Butin d'instance, the Wreath of Snakes (Extreme)"
         ]
       },
@@ -412,7 +413,9 @@
         "kind": "50 000 PMG",
         "take": "Utile seulement s'il vous manque des PMG pour un objet précis du Gold Saucer. Disponible à chaque échange et dans les anciens échanges de mémoquartz aussi.",
         "other": [
-          "Également vendu contre d'anciens mémoquartz inhabituels (Aphorism, Pageantry)"
+          "Également vendu contre d'anciens mémoquartz inhabituels (Aphorism, Pageantry)",
+          "Points de seconde chance du Registre des merveilles : 2 cartes pour 2 lignes complétées, 20 pour les 3",
+          "Tombe aussi en déballant un Cadeau emballé"
         ]
       },
       "38585": {
@@ -469,7 +472,8 @@
         "kind": "Carte au trésor niveau 90",
         "take": "Portail garanti, donc un bon choix si vous faites les cartes avec votre CL ou des amis. Un habitué de l'échange, rien ne presse.",
         "other": [
-          "Également vendue contre des mémoquartz inhabituels Aphorism dans l'échange précédent"
+          "Également vendue contre des mémoquartz inhabituels Aphorism dans l'échange précédent",
+          "Également vendue contre 15 mémoquartz inhabituels Revelation (échange général)"
         ]
       },
       "44349": {
@@ -505,28 +509,31 @@
         "kind": "Coiffure",
         "take": "Échangeable, donc vérifiez d'abord le marché. À 7 mémoquartz, c'est aussi un bon choix si les prix sont délirants.",
         "other": [
-          "Sacs au trésor des donjons profonds (bronze, fer, argenté)"
+          "Sacs bordés de bronze, d'or ou d'argent qui droppent dans The Occult Crescent: North Horn"
         ]
       },
       "28624": {
         "kind": "Mascotte",
         "take": "7 mémoquartz pour une mascotte qui se vend dans les dizaines de milliers de gils. Bon moyen d'écouler des mémoquartz restants pour du gil.",
         "other": [
-          "Mission d'intendant, Waterside Exploration XXV"
+          "Mission d'intendant, Waterside Exploration XXV",
+          "Mission d'intendant, Quick Exploration (Pêcheur)",
+          "50 mémoquartz inhabituels Genesis II (Moogle itinérant, Limsa Lominsa Lower Decks)"
         ]
       },
       "28124": {
         "kind": "Monture",
         "take": "Le meilleur ratio gil/mémoquartz de la boutique. Il s'en vend environ 19 par jour en NA, mais les prix glissent déjà sous la moyenne avec l'arrivée de l'offre de l'échange. Achetez et revendez tôt.",
         "other": [
-          "Kupo of Fortune (Gold Saucer)"
+          "Kupo of Fortune (Reconstruction d'Ishgard)"
         ]
       },
       "32823": {
         "kind": "Harnais de chocobo",
         "take": "5 mémoquartz pour un objet qui se vendait autour de 160k. Même mise en garde que pour le sifflet : le prix plancher chute vite.",
         "other": [
-          "Craftable, Armurier niveau 80 (nécessite Maître armurier VIII)"
+          "Craftable, Armurier niveau 80 (nécessite Maître armurier VIII)",
+          "Sac teinté de bronze depuis Eureka Orthos (étages 1 à 30)"
         ]
       },
       "25005": {

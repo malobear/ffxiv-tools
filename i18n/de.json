@@ -383,13 +383,14 @@
         "kind": "Emote",
         "take": "Der beste Zeitspar-Deal im Shop. Die Alternative sind 15.000 Wolfsmarken, was viel PvP bedeutet, falls du es nicht schon spielst.",
         "other": [
-          "15.000 Wolfsmarken beim Quartiermeister, Wolves' Den Pier"
+          "15.000 Wolfsmarken beim Quartiermeister, Wolves' Den Pier, erfordert die Quest A Pup No Longer"
         ]
       },
       "24635": {
         "kind": "Minion",
         "take": "Handelbares Minion, das auch aus GC-Materialcontainern fällt. Vor dem Ausgeben von 30 Steinen das Marktbrett prüfen.",
         "other": [
+          "Instanz-Drop, The Baldesion Arsenal (Eureka Hydatos), zuverlässiger als das Container-Glücksspiel",
           "Materialcontainer 4.0 (Kompanie, 20.000 Siegel, zufällig)"
         ]
       },
@@ -397,14 +398,14 @@
         "kind": "Chocobo-Zaumzeug",
         "take": "An ein FATE in den Churning Mists gebunden, reines Spawn-und-Warten. Ein vernünftiger Tauschkauf, falls gewünscht.",
         "other": [
-          "FATE-Belohnung, Vedrfolnir Devoteth (The Churning Mists), laut Teamcraft"
+          "FATE-Belohnung, Vedrfolnir Devoteth (The Churning Mists), erfordert Gold-Wertung beim FATE"
         ]
       },
       "24623": {
         "kind": "Reittier",
         "take": "Seiryu Extrem lässt sich solo und ungesynct farmen, aber 99 Talismane sind viele Runs, wenn der Drop nicht mitspielt. 30 Steine sparen dir das Grinden.",
         "other": [
-          "99 Seiryu-Talismane bei Rowenas Vertreterin (Kugane) oder Eschina (Rhalgr's Reach)",
+          "99 Seiryu-Talismane bei Rowenas Vertreterin (Kugane) oder Eschina (Rhalgr's Reach), erfordert die Quest Surpassing the Samurai",
           "Instanz-Drop, the Wreath of Snakes (Extreme)"
         ]
       },
@@ -412,7 +413,9 @@
         "kind": "50.000 MGP",
         "take": "Nur sinnvoll, wenn dir MGP für ein bestimmtes Gold-Saucer-Item fehlen. Gibt es in jedem Tausch und auch in älteren Steintauschen.",
         "other": [
-          "Auch gegen ältere ungewöhnliche Steine erhältlich (Aphorism, Pageantry)"
+          "Auch gegen ältere ungewöhnliche Steine erhältlich (Aphorism, Pageantry)",
+          "Sonderpunkte aus Verheißungsvolle Wege: 2 Karten für 2 abgeschlossene Reihen, 20 für alle 3",
+          "Fällt auch beim Auspacken eines eingepackten Geschenks"
         ]
       },
       "38585": {
@@ -469,7 +472,8 @@
         "kind": "Level-90-Schatzkarte",
         "take": "Garantiertes Portal, also durchaus lohnend, wenn du mit FC oder Freunden Karten läufst. Ein Tausch-Regular, keine Eile.",
         "other": [
-          "Im vorherigen Tausch auch gegen ungewöhnliche Steine der Aphorism erhältlich"
+          "Im vorherigen Tausch auch gegen ungewöhnliche Steine der Aphorism erhältlich",
+          "Auch im „Allgemein“-Tausch gegen 15 ungewöhnliche Steine der Revelation erhältlich"
         ]
       },
       "44349": {
@@ -505,28 +509,31 @@
         "kind": "Frisur",
         "take": "Handelbar, also zuerst das Marktbrett prüfen. Für 7 Steine auch eine gute Wahl, falls die Preise albern sind.",
         "other": [
-          "Schatzsäcke aus tiefen Verliesen (Bronze, Eisen, Silber)"
+          "Bronze-, Gold- oder Silberbesetzter Beutel droppt in The Occult Crescent: North Horn"
         ]
       },
       "28624": {
         "kind": "Minion",
         "take": "7 Steine für ein Minion, das sich für einige Zehntausend Gil verkauft. Guter Weg, übrige Steine in Gil umzuwandeln.",
         "other": [
-          "Gehilfen-Auftrag, Waterside Exploration XXV"
+          "Gehilfen-Auftrag, Waterside Exploration XXV",
+          "Gehilfen-Auftrag, Quick Exploration (Fischer)",
+          "50 ungewöhnliche Steine der Genesis II (Wandermoogle, Limsa Lominsa Lower Decks)"
         ]
       },
       "28124": {
         "kind": "Reittier",
         "take": "Bestes Gil-pro-Stein-Verhältnis im Shop. In NA verkaufen sich etwa 19 pro Tag, aber die Preise rutschen durch das Tausch-Angebot schon unter den Durchschnitt. Früh kaufen und früh verkaufen.",
         "other": [
-          "Kupo of Fortune (Gold Saucer)"
+          "Kupo of Fortune (Wiederaufbau von Ishgard)"
         ]
       },
       "32823": {
         "kind": "Chocobo-Zaumzeug",
         "take": "5 Steine für etwas, das um die 160k verkauft wird. Gleiche Warnung wie bei der Pfeife: der Preis fällt schnell.",
         "other": [
-          "Herstellbar, Plattner Stufe 80 (benötigt Meisterplattner VIII)"
+          "Herstellbar, Plattner Stufe 80 (benötigt Meisterplattner VIII)",
+          "Bronzefarbener Beutel aus Eureka Orthos (Ebenen 1–30)"
         ]
       },
       "25005": {

@@ -383,13 +383,14 @@
         "kind": "Emote",
         "take": "The best time-saver in the shop. The alternative is 15,000 Wolf Marks, which is a lot of PvP if you don't already play it.",
         "other": [
-          "15,000 Wolf Marks from the mark quartermaster, Wolves' Den Pier"
+          "15,000 Wolf Marks from the mark quartermaster, Wolves' Den Pier, requires the quest A Pup No Longer"
         ]
       },
       "24635": {
         "kind": "Minion",
         "take": "Tradeable minion that also falls out of GC materiel containers. Check the board before spending 30 tomes.",
         "other": [
+          "Duty drop, The Baldesion Arsenal (Eureka Hydatos), more reliable than the container RNG",
           "Materiel Container 4.0 (Grand Company, 20,000 seals, random)"
         ]
       },
@@ -397,14 +398,14 @@
         "kind": "Chocobo barding",
         "take": "Tied to a FATE in the Churning Mists, which is a spawn-and-wait job. Reasonable trove buy if you want it.",
         "other": [
-          "FATE reward, Vedrfolnir Devoteth (The Churning Mists), per Teamcraft"
+          "FATE reward, Vedrfolnir Devoteth (The Churning Mists), requires a Gold rating on the FATE"
         ]
       },
       "24623": {
         "kind": "Mount",
         "take": "You can solo farm the Seiryu extreme unsynced, but 99 totems is a lot of clears if the drop won't cooperate. 30 tomes skips the grind.",
         "other": [
-          "99 Seiryu Totems at Rowena's representative (Kugane) or Eschina (Rhalgr's Reach)",
+          "99 Seiryu Totems at Rowena's representative (Kugane) or Eschina (Rhalgr's Reach), requires the quest Surpassing the Samurai",
           "Duty drop, the Wreath of Snakes (Extreme)"
         ]
       },
@@ -412,7 +413,9 @@
         "kind": "50,000 MGP",
         "take": "Only worth it if you're short MGP for a specific Gold Saucer item. It's in every trove and the older tomestone exchanges too.",
         "other": [
-          "Also sold for older irregular tomestones (Aphorism, Pageantry)"
+          "Also sold for older irregular tomestones (Aphorism, Pageantry)",
+          "Wondrous Tails second-chance points: 2 cards for completing 2 lines, 20 for completing all 3",
+          "Also drops from unwrapping a Wrapped Present"
         ]
       },
       "38585": {
@@ -469,7 +472,8 @@
         "kind": "Level 90 treasure map",
         "take": "Guaranteed portal, so decent value if you run maps with your FC or friends. A trove regular, no urgency.",
         "other": [
-          "Also sold for Irregular Tomestones of Aphorism in the previous exchange"
+          "Also sold for Irregular Tomestones of Aphorism in the previous exchange",
+          "Also sold for 15 Irregular Tomestones of Revelation (General Exchange)"
         ]
       },
       "44349": {
@@ -505,28 +509,31 @@
         "kind": "Hairstyle",
         "take": "Tradeable, so check the board first. At 7 tomes it's also a fine pick if the listings are silly.",
         "other": [
-          "Deep dungeon treasure sacks (bronze, iron, silver-trimmed)"
+          "Bronze-, Gold-, or Silver-trimmed Sack drops in The Occult Crescent: North Horn"
         ]
       },
       "28624": {
         "kind": "Minion",
         "take": "7 tomes for a minion that sells in the tens of thousands. Good dump for leftover tomes if you want gil.",
         "other": [
-          "Retainer venture, Waterside Exploration XXV"
+          "Retainer venture, Waterside Exploration XXV",
+          "Retainer venture, Quick Exploration (Fisher)",
+          "50 Irregular Tomestone of Genesis II (Itinerant Moogle, Limsa Lominsa Lower Decks)"
         ]
       },
       "28124": {
         "kind": "Mount",
         "take": "Best gil per tome in the shop. It moves about 19 a day in NA, but listings are already sliding under the average as trove supply lands. Buy and sell early.",
         "other": [
-          "Kupo of Fortune (Gold Saucer)"
+          "Kupo of Fortune (Ishgardian Restoration)"
         ]
       },
       "32823": {
         "kind": "Chocobo barding",
         "take": "5 tomes for something that's been selling around 160k. Same caveat as the whistle: the floor is dropping fast.",
         "other": [
-          "Crafted, Armorer level 80 (needs Master Armorer VIII)"
+          "Crafted, Armorer level 80 (needs Master Armorer VIII)",
+          "Bronze-tinged Sack from Eureka Orthos (floors 1-30)"
         ]
       },
       "25005": {

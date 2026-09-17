@@ -383,13 +383,14 @@
         "kind": "エモート",
         "take": "このショップで最も時短になるアイテム。代替手段は15,000ウルフマークで、PvPをやり込んでいなければかなりの量になる。",
         "other": [
-          "Wolves' Den Pierの軍曹からウルフマーク15,000枚と交換"
+          "Wolves' Den Pierの軍曹からウルフマーク15,000枚と交換。クエスト「A Pup No Longer」が必要"
         ]
       },
       "24635": {
         "kind": "ミニオン",
         "take": "取引可能なミニオンで、GC(グランドカンパニー)の物資コンテナからも出現する。30個を使う前にマーケットボードを確認。",
         "other": [
+          "ダンジョンドロップ、The Baldesion Arsenal (Eureka Hydatos)。コンテナの運任せより確実",
           "物資コンテナ4.0(グランドカンパニー、軍票20,000枚、ランダム)"
         ]
       },
@@ -397,14 +398,14 @@
         "kind": "チョコボ装飾",
         "take": "The Churning MistsのFATEに紐付いており、湧き待ちが必要。欲しいならトローブでの交換が妥当。",
         "other": [
-          "FATE報酬、Vedrfolnir Devoteth (The Churning Mists)、Teamcraft情報より"
+          "FATE報酬、Vedrfolnir Devoteth (The Churning Mists)。FATEでゴールド評価が必要"
         ]
       },
       "24623": {
         "kind": "マウント",
         "take": "Seiryu(極)はアンシンクロでソロ周回可能だが、ドロップが渋いと99個の御符集めにかなりの周回数が必要。30個ならその周回を丸ごとスキップできる。",
         "other": [
-          "KuganeのRowena代理人、またはRhalgr's ReachのEschinaでSeiryu Totem99枚と交換",
+          "KuganeのRowena代理人、またはRhalgr's ReachのEschinaでSeiryu Totem99枚と交換。クエスト「Surpassing the Samurai」が必要",
           "ダンジョンドロップ、the Wreath of Snakes (Extreme)"
         ]
       },
@@ -412,7 +413,9 @@
         "kind": "MGP 50,000枚",
         "take": "Gold Saucerの特定アイテム用にMGPが足りない場合のみ価値がある。毎回のトローブや旧トームストーン交換所でも扱われている。",
         "other": [
-          "旧希少トームストーン(Aphorism、Pageantry)でも交換可能"
+          "旧希少トームストーン(Aphorism、Pageantry)でも交換可能",
+          "覚醒双六のセカンドチャンスポイント：2列達成で2枚、3列達成で20枚",
+          "包まれたプレゼントを開封しても入手可能"
         ]
       },
       "38585": {
@@ -469,7 +472,8 @@
         "kind": "レベル90宝の地図",
         "take": "確定でポータルが出現するため、FCや友人と地図を回るなら価値がある。トローブの定番なので急ぐ必要はない。",
         "other": [
-          "以前の交換所では希少トームストーン「Aphorism」でも交換可能"
+          "以前の交換所では希少トームストーン「Aphorism」でも交換可能",
+          "「一般」交換では希少トームストーン「Revelation」15個でも交換可能"
         ]
       },
       "44349": {
@@ -505,28 +509,31 @@
         "kind": "髪型",
         "take": "取引可能なので、まずマーケットボードを確認。相場が高すぎる場合は7個での交換も悪くない。",
         "other": [
-          "深層迷宮の宝物袋(青銅、鉄、銀縁)"
+          "The Occult Crescent: North HornでBronze-trimmed/Gold-trimmed/Silver-trimmed Sackがドロップ"
         ]
       },
       "28624": {
         "kind": "ミニオン",
         "take": "数万ギルで売れるミニオンが7個で交換可能。ギルが欲しいなら余ったトームストーンの使い道として優秀。",
         "other": [
-          "リテイナー探索任務、Waterside Exploration XXV"
+          "リテイナー探索任務、Waterside Exploration XXV",
+          "リテイナー探索任務、Quick Exploration(漁師)",
+          "希少トームストーン「Genesis II」50個(Limsa Lominsa Lower DecksのItinerant Moogle)"
         ]
       },
       "28124": {
         "kind": "マウント",
         "take": "このショップで最もギル効率が良い。NAで1日約19個売れているが、トローブの供給が入り始めて相場は平均を割り込みつつある。早めに購入して早めに売ること。",
         "other": [
-          "Kupo of Fortune (Gold Saucer)"
+          "Kupo of Fortune(イシュガルド復興)"
         ]
       },
       "32823": {
         "kind": "チョコボ装飾",
         "take": "16万ギル前後で売れているものが5個で交換可能。ホイッスルと同様、相場の下落が早いので注意。",
         "other": [
-          "制作、甲冑師レベル80(マスター甲冑師VIIIが必要)"
+          "制作、甲冑師レベル80(マスター甲冑師VIIIが必要)",
+          "Eureka Orthos(1〜30層)のBronze-tinged Sackからドロップ"
         ]
       },
       "25005": {
