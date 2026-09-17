@@ -140,6 +140,7 @@
     "gamerescapewiki": "General item, quest, and game info. Alternate to the Console Games Wiki",
     "heavenswhere": "Interactive maps for hunts, gathering nodes, aether currents, and treasure (currently showing a maintenance page, recheck before relying on it)",
     "jumppuzzlemacro": "Timed macro technique for producing consistent, specific jump distances, with copyable macros and a calibration spot, useful for precision jumping puzzles",
+    "huntforastronomy": "Every reward in the Hunt for Astronomy trove, its alternate sources, market board prices, and a straight verdict on what's worth the tomestones",
     "relictracker": "Tracks relic weapon progress and what's still needed",
     "sightseeinglog": "Helper for the in-game Sightseeing Log bingo",
     "oceanfishing": "Upcoming ocean fishing voyage schedule, blue fish, and achievement info",
@@ -216,6 +217,323 @@
       "pluginsLinkLabel": "plugins page",
       "sections": {
         "nightlife": "Bars & Lounges"
+      }
+    }
+  },
+  "hfa": {
+    "hero": {
+      "h1": "Hunt for Astronomy: what's worth the tomes",
+      "lede": "Every item in the First Hunt for Astronomy trove, where else it drops, what it goes for on the NA market board, and a straight call on whether the event is the right way to get it. Tick what you want and it keeps a running tomestone total.",
+      "factEvent": "Event:",
+      "factMog": "Mogpendium claims:",
+      "factShop": "Shop exchanges:",
+      "factPrices": "Prices captured:"
+    },
+    "sky": {
+      "aria": "Every reward plotted by tomestone cost, coloured by verdict",
+      "axisLabel": "tomestones",
+      "hornCaption": "{{name}}, {{cost}} + {{tokens}} tokens",
+      "tooltip": "{{name}}: {{cost}} tomes",
+      "circleAria": "{{name}}, {{cost}} tomes"
+    },
+    "verdicts": {
+      "grind": {
+        "label": "Worth the grind",
+        "blurb": "Event-only right now, or no sane alternative."
+      },
+      "trove": {
+        "label": "Trove is the easy route",
+        "blurb": "Untradeable, and the permanent source is a slog."
+      },
+      "gil": {
+        "label": "Cheap tomes, real gil",
+        "blurb": "Tradeable and sells for a lot relative to the tome cost."
+      },
+      "buy": {
+        "label": "Buy or farm instead",
+        "blurb": "Tradeable or easy elsewhere. Don't burn tomes on these."
+      },
+      "meh": {
+        "label": "Only if you care",
+        "blurb": "Niche, recurring, or trivially farmable."
+      }
+    },
+    "short": {
+      "heading": "The short version",
+      "sub": "Most of this shop is stuff you can get elsewhere. The event matters for one mount, a couple of oddballs, and a few cheap items that sell for real gil."
+    },
+    "fomo": {
+      "heading": "FOMO check",
+      "item1Bold": "The uolon horn comes back.",
+      "item1": "{bold} The official page says it returns in the Second Hunt for Astronomy, and tokens from this hunt carry over. Teamcraft's data also shows a second-hunt listing that sells tokens for 30 Astronomy II tomes, so missing a minimog week isn't fatal (datamined, could change).",
+      "item2Bold": "MGP card, both special maps and the job mastery prisms are trove regulars.",
+      "item2": "{bold} They're also stocked in the “previous” and “past” irregular tomestone exchanges, so there's no rush.",
+      "item3Bold": "Genuinely trove-only right now:",
+      "item3": "{bold} the uolon horn (until the Second Hunt), the Mameshiba Neckerchief, and per Teamcraft the Ananta and Kotokaze cards. Everything else has a permanent source.",
+      "item4Bold": "Tradeable trove items get flooded.",
+      "item4": "{bold} Dhalmel whistles and emerald bardings are already listing well under their recent median. If you're buying to sell, sell early."
+    },
+    "itemsSection": {
+      "heading": "Every reward",
+      "sub": "Tap a row's \"other ways to get it\" for sources. Prices are North America region-wide lowest listings from Ultros (Universalis data) at capture time. Use the live links before you commit, they move fast during a trove."
+    },
+    "controls": {
+      "mbOnly": "On market board",
+      "sortLabel": "Sort",
+      "sortShop": "Shop order",
+      "sortCostAsc": "Cheapest first",
+      "sortCostDesc": "Priciest first",
+      "sortVerdict": "By verdict",
+      "pickedLabel": "Picked:",
+      "tomesUnit": "tomes",
+      "clear": "Clear",
+      "allChip": "All",
+      "hornTokens": "+ {{n}} horn tokens"
+    },
+    "empty": "No rewards match these filters. Pick \"All\" to see the full shop.",
+    "meta": {
+      "tradeable": "tradeable",
+      "untradeable": "untradeable",
+      "troveOnlyFlag": "Trove-only now",
+      "otherWays": "Other ways to get it",
+      "databases": "Databases:",
+      "pickAria": "Pick {{name}}"
+    },
+    "price": {
+      "tradeableNotListable": "Tradeable, not listable",
+      "notOnBoard": "Not on market board",
+      "lowest": "lowest, {{shop}} ({{region}})",
+      "medianSale": "median sale {{median}}",
+      "perDay": ", ~{{n}}/day",
+      "perTome": "≈ {{gil}} gil per tome",
+      "notCaptured": "Price not captured",
+      "checkLive": "Check live"
+    },
+    "footer": {
+      "heading": "Sources and how this was built",
+      "src1": "Reward list and costs: {link1}.",
+      "src1Link": "official Lodestone event page",
+      "src2": "Item IDs and tradeability: {link2} Item.csv.",
+      "src3": "Alternate sources (shops, drops, FATEs, crafts, ventures): {link3} extracts, linked per item. Teamcraft's drop data can be incomplete, so an item with \"no other source\" is worth a second look on Garland Tools.",
+      "src4": "Market prices: {link4a} (built on {link4b}), North America region. Domakin was only captured from the Europe region on Universalis, so treat that number as a ballpark. Items marked \"not captured\" have live links only.",
+      "src5": "Tomestone payouts per objective aren't listed on the event page; check the Mogpendium in game for the exact numbers."
+    },
+    "items": {
+      "50440": {
+        "kind": "Mount",
+        "take": "The headline reward and the only thing here that should shape your week. Do the ultimog challenge once (5 tokens) and a minimog each week (1 token). No need to panic: it's back in the Second Hunt and tokens carry over.",
+        "other": [
+          "New mount, only sold in the irregular tomestone exchange. Returns in the Second Hunt for Astronomy."
+        ]
+      },
+      "24615": {
+        "kind": "Glamour (necklace)",
+        "take": "Teamcraft has no active source for it outside this shop, so if it's on your glam list, this is the window. If you've never thought about it, 50 tomes is a lot for a neck slot.",
+        "other": [
+          "No current source outside the trove per Teamcraft (marked deprecated)."
+        ]
+      },
+      "30107": {
+        "kind": "Mount",
+        "take": "The alternative is a drop-rate lottery in an old savage fight. If you want the mount and don't feel like farming chests, 50 tomes is a fair trade.",
+        "other": [
+          "Duty drop, Eden's Verse: Refulgence (Savage)"
+        ]
+      },
+      "33117": {
+        "kind": "Orchestrion roll",
+        "take": "50 tomes for a roll that drops from an easy unsynced normal raid and is on the board. Farm it or buy it.",
+        "other": [
+          "Duty drop, Eden's Promise: Anamorphosis"
+        ]
+      },
+      "32794": {
+        "kind": "Glamour (body)",
+        "take": "Permanent scrip item and tradeable. If you craft or gather at all, scrips are the cheaper route; otherwise check the board.",
+        "other": [
+          "2,200 Skybuilders' Scrips from Enie in the Firmament",
+          "Fête Present (Firmament fête)"
+        ]
+      },
+      "30052": {
+        "kind": "Glamour (body)",
+        "take": "Same deal as the singlet: scrips or market board, not tomes.",
+        "other": [
+          "2,200 Skybuilders' Scrips from Enie in the Firmament",
+          "Fête Present (Firmament fête)"
+        ]
+      },
+      "27936": {
+        "kind": "Glamour (head)",
+        "take": "The permanent route means camping a special FATE in The Tempest for horns. 30 tomes saves you a lot of waiting around.",
+        "other": [
+          "5 Archaeotania's Horns at Fathard (Glorious Gewgaws), Eulmore",
+          "Horns drop from the FATE The Head, the Tail, the Whole Damned Thing (The Tempest)"
+        ]
+      },
+      "27937": {
+        "kind": "Glamour (body)",
+        "take": "Needs 7 horns the hard way, so the trove price is the better deal of the two toad pieces.",
+        "other": [
+          "7 Archaeotania's Horns at Fathard (Glorious Gewgaws), Eulmore",
+          "Horns drop from the FATE The Head, the Tail, the Whole Damned Thing (The Tempest)"
+        ]
+      },
+      "23367": {
+        "kind": "Emote",
+        "take": "The best time-saver in the shop. The alternative is 15,000 Wolf Marks, which is a lot of PvP if you don't already play it.",
+        "other": [
+          "15,000 Wolf Marks from the mark quartermaster, Wolves' Den Pier"
+        ]
+      },
+      "24635": {
+        "kind": "Minion",
+        "take": "Tradeable minion that also falls out of GC materiel containers. Check the board before spending 30 tomes.",
+        "other": [
+          "Materiel Container 4.0 (Grand Company, 20,000 seals, random)"
+        ]
+      },
+      "12077": {
+        "kind": "Chocobo barding",
+        "take": "Tied to a FATE in the Churning Mists, which is a spawn-and-wait job. Reasonable trove buy if you want it.",
+        "other": [
+          "FATE reward, Vedrfolnir Devoteth (The Churning Mists), per Teamcraft"
+        ]
+      },
+      "24623": {
+        "kind": "Mount",
+        "take": "You can solo farm the Seiryu extreme unsynced, but 99 totems is a lot of clears if the drop won't cooperate. 30 tomes skips the grind.",
+        "other": [
+          "99 Seiryu Totems at Rowena's representative (Kugane) or Eschina (Rhalgr's Reach)",
+          "Duty drop, the Wreath of Snakes (Extreme)"
+        ]
+      },
+      "16784": {
+        "kind": "50,000 MGP",
+        "take": "Only worth it if you're short MGP for a specific Gold Saucer item. It's in every trove and the older tomestone exchanges too.",
+        "other": [
+          "Also sold for older irregular tomestones (Aphorism, Pageantry)"
+        ]
+      },
+      "38585": {
+        "kind": "Housing (tabletop)",
+        "take": "Crafted furniture. Buy it or craft it.",
+        "other": [
+          "Crafted, Culinarian level 90"
+        ]
+      },
+      "38605": {
+        "kind": "Housing (wall-mounted)",
+        "take": "Crafted furniture. Buy it or craft it.",
+        "other": [
+          "Crafted, Carpenter level 90"
+        ]
+      },
+      "38622": {
+        "kind": "Housing (outdoor)",
+        "take": "Crafted furniture. Buy it or craft it.",
+        "other": [
+          "Crafted, Carpenter level 90"
+        ]
+      },
+      "13162": {
+        "kind": "Glamour (body)",
+        "take": "Old dungeon drop you can steamroll unsynced. Fine as a leftover-tome buy if you want the look.",
+        "other": [
+          "Duty drop, Saint Mocianne's Arboretum or Pharos Sirius (Hard)"
+        ]
+      },
+      "13174": {
+        "kind": "Glamour (body)",
+        "take": "Same as the other coats: easy to farm, cheap in tomes, only matters if it's your glam.",
+        "other": [
+          "Duty drop, Saint Mocianne's Arboretum or Pharos Sirius (Hard)"
+        ]
+      },
+      "13186": {
+        "kind": "Glamour (body)",
+        "take": "Same as the other coats: easy to farm, cheap in tomes, only matters if it's your glam.",
+        "other": [
+          "Duty drop, Saint Mocianne's Arboretum or Pharos Sirius (Hard)"
+        ]
+      },
+      "33847": {
+        "kind": "Orchestrion roll",
+        "take": "Scrip item, tradeable. Board or scrips.",
+        "other": [
+          "1,200 Skybuilders' Scrips from Enie in the Firmament",
+          "Fête Present (Firmament fête)"
+        ]
+      },
+      "39918": {
+        "kind": "Level 90 treasure map",
+        "take": "Guaranteed portal, so decent value if you run maps with your FC or friends. A trove regular, no urgency.",
+        "other": [
+          "Also sold for Irregular Tomestones of Aphorism in the previous exchange"
+        ]
+      },
+      "44349": {
+        "kind": "Level 100 treasure map",
+        "take": "Level 100 guaranteed portal. Same logic: good for a map night, not worth grinding for.",
+        "other": [
+          "Trove exchange only, returns across hunts"
+        ]
+      },
+      "20242": {
+        "kind": "Triple Triad card",
+        "take": "Cheap, and Teamcraft shows no other source. If you're chasing the card list, grab it. Requires the quest Delicate as a Flower.",
+        "other": [
+          "No other source found in Teamcraft data. Worth confirming on Garland."
+        ]
+      },
+      "20244": {
+        "kind": "Triple Triad card",
+        "take": "Same as Ananta: cheap and no other listed source. Requires the MSQ By the Grace of Lord Lolorito.",
+        "other": [
+          "No other source found in Teamcraft data. Worth confirming on Garland."
+        ]
+      },
+      "12273": {
+        "kind": "Triple Triad card",
+        "take": "7 tomes beats waiting on a FATE spawn. Requires the MSQ Where the Chocobos Roam.",
+        "other": [
+          "FATE reward, Special Tarasque Force (The Dravanian Forelands)"
+        ]
+      },
+      "16703": {
+        "kind": "Hairstyle",
+        "take": "Tradeable, so check the board first. At 7 tomes it's also a fine pick if the listings are silly.",
+        "other": [
+          "Deep dungeon treasure sacks (bronze, iron, silver-trimmed)"
+        ]
+      },
+      "28624": {
+        "kind": "Minion",
+        "take": "7 tomes for a minion that sells in the tens of thousands. Good dump for leftover tomes if you want gil.",
+        "other": [
+          "Retainer venture, Waterside Exploration XXV"
+        ]
+      },
+      "28124": {
+        "kind": "Mount",
+        "take": "Best gil per tome in the shop. It moves about 42 a day in NA, but listings are already sliding under the median as trove supply lands. Buy and sell early.",
+        "other": [
+          "Kupo of Fortune (Gold Saucer)"
+        ]
+      },
+      "32823": {
+        "kind": "Chocobo barding",
+        "take": "5 tomes for something that's been selling around 150k. Same caveat as the whistle: the floor is dropping fast.",
+        "other": [
+          "Crafted, Armorer level 80 (needs Master Armorer VIII)"
+        ]
+      },
+      "25005": {
+        "kind": "Fashion accessory effect",
+        "take": "Tome sink for the last few you can't spend. Tradeable but can't be listed on the board.",
+        "other": [
+          "Sold in every current and past irregular tomestone exchange"
+        ]
       }
     }
   }

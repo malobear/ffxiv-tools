@@ -140,6 +140,7 @@
     "gamerescapewiki": "Infos générales sur les objets, quêtes et le jeu. Alternative au Console Games Wiki",
     "heavenswhere": "Cartes interactives pour les chasses, points de récolte, courants d'éther et trésors (affiche actuellement une page de maintenance, à revérifier avant utilisation)",
     "jumppuzzlemacro": "Technique de macro chronométrée pour obtenir des distances de saut précises et constantes, avec des macros à copier et un point de calibration, utile pour les puzzles de saut de précision",
+    "huntforastronomy": "Toutes les récompenses de l'échange de la Collection Mog Mog Astronomie Kupo, leurs autres sources, les prix du marché, et un avis tranché sur ce qui vaut vraiment vos mémoquartz allagois inhabituels",
     "relictracker": "Suit la progression des armes reliques et ce qu'il reste à faire",
     "sightseeinglog": "Aide pour le bingo du journal de tourisme en jeu",
     "oceanfishing": "Calendrier à venir des sorties de pêche en mer, poissons bleus et infos de hauts faits",
@@ -216,6 +217,323 @@
       "pluginsLinkLabel": "page des plugins",
       "sections": {
         "nightlife": "Bars & Lounges"
+      }
+    }
+  },
+  "hfa": {
+    "hero": {
+      "h1": "Hunt for Astronomy : où mettre vos mémoquartz",
+      "lede": "Tous les objets de l'échange de la Hunt for Astronomy, leurs autres sources, leur prix sur le marché NA, et un avis tranché sur l'intérêt de les échanger contre des mémoquartz. Cochez ce qui vous intéresse pour suivre le total en temps réel.",
+      "factEvent": "Événement :",
+      "factMog": "Réclamations Mogpendium :",
+      "factShop": "Échanges boutique :",
+      "factPrices": "Prix relevés :"
+    },
+    "sky": {
+      "aria": "Toutes les récompenses selon leur coût en mémoquartz, colorées par verdict",
+      "axisLabel": "mémoquartz",
+      "hornCaption": "{{name}}, {{cost}} + {{tokens}} jetons",
+      "tooltip": "{{name}} : {{cost}} mémoquartz",
+      "circleAria": "{{name}}, {{cost}} mémoquartz"
+    },
+    "verdicts": {
+      "grind": {
+        "label": "Vaut le grind",
+        "blurb": "Exclusif à l'événement pour l'instant, ou pas d'alternative raisonnable."
+      },
+      "trove": {
+        "label": "L'échange est la voie facile",
+        "blurb": "Non échangeable, et la source permanente est fastidieuse."
+      },
+      "gil": {
+        "label": "Peu de mémoquartz, du vrai gil",
+        "blurb": "Échangeable et se vend cher par rapport à son coût en mémoquartz."
+      },
+      "buy": {
+        "label": "Achetez ou farmez plutôt",
+        "blurb": "Échangeable ou facile à trouver ailleurs. Ne gaspillez pas vos mémoquartz ici."
+      },
+      "meh": {
+        "label": "Seulement si ça vous intéresse",
+        "blurb": "Niche, récurrent, ou trivial à farmer."
+      }
+    },
+    "short": {
+      "heading": "En bref",
+      "sub": "La majeure partie de cette boutique est disponible ailleurs. L'événement compte vraiment pour une monture, quelques objets particuliers, et quelques articles bon marché qui se revendent cher en gil."
+    },
+    "fomo": {
+      "heading": "Vérif' FOMO",
+      "item1Bold": "Le cor uolon revient.",
+      "item1": "{bold} La page officielle indique qu'il revient lors du Second Hunt for Astronomy, et que les jetons de cette chasse sont conservés. Les données de Teamcraft montrent aussi une entrée pour la deuxième chasse où les jetons s'échangent contre 30 mémoquartz Astronomy II, donc rater une semaine de minimog n'est pas fatal (info dataminée, sujette à changement).",
+      "item2Bold": "La carte MGP, les deux cartes spéciales et les prismes de maîtrise de métier sont des habitués de l'échange.",
+      "item2": "{bold} Ils sont aussi disponibles dans les échanges « précédent » et « passé » de mémoquartz inhabituels, donc rien ne presse.",
+      "item3Bold": "Réellement exclusif à l'échange pour l'instant :",
+      "item3": "{bold} le cor uolon (jusqu'au Second Hunt), le foulard Mameshiba, et selon Teamcraft les cartes Ananta et Kotokaze. Tout le reste a une source permanente.",
+      "item4Bold": "Les objets échangeables de la boutique inondent le marché.",
+      "item4": "{bold} Les sifflets dhalmel et les harnais émeraude se vendent déjà bien en dessous de leur médiane récente. Si vous achetez pour revendre, vendez tôt."
+    },
+    "itemsSection": {
+      "heading": "Toutes les récompenses",
+      "sub": "Touchez « Autres façons de l'obtenir » sur une ligne pour voir les sources. Les prix sont les listings les plus bas pour la région Amérique du Nord, via Ultros (données Universalis) au moment du relevé. Vérifiez les liens en direct avant d'acheter, les prix bougent vite pendant un échange."
+    },
+    "controls": {
+      "mbOnly": "Sur le marché",
+      "sortLabel": "Trier",
+      "sortShop": "Ordre boutique",
+      "sortCostAsc": "Moins cher d'abord",
+      "sortCostDesc": "Plus cher d'abord",
+      "sortVerdict": "Par verdict",
+      "pickedLabel": "Sélectionné :",
+      "tomesUnit": "mémoquartz",
+      "clear": "Effacer",
+      "allChip": "Tout",
+      "hornTokens": "+ {{n}} jetons de cor"
+    },
+    "empty": "Aucune récompense ne correspond à ces filtres. Choisissez « Tout » pour voir toute la boutique.",
+    "meta": {
+      "tradeable": "échangeable",
+      "untradeable": "non échangeable",
+      "troveOnlyFlag": "Exclusif à l'échange",
+      "otherWays": "Autres façons de l'obtenir",
+      "databases": "Bases de données :",
+      "pickAria": "Choisir {{name}}"
+    },
+    "price": {
+      "tradeableNotListable": "Échangeable, non listable",
+      "notOnBoard": "Pas sur le marché",
+      "lowest": "le plus bas, {{shop}} ({{region}})",
+      "medianSale": "médiane {{median}}",
+      "perDay": ", ~{{n}}/jour",
+      "perTome": "≈ {{gil}} gil par mémoquartz",
+      "notCaptured": "Prix non relevé",
+      "checkLive": "Vérifier en direct"
+    },
+    "footer": {
+      "heading": "Sources et méthode de création de cette page",
+      "src1": "Liste des récompenses et coûts : {link1}.",
+      "src1Link": "page officielle de l'événement sur le Lodestone",
+      "src2": "ID d'objets et échangeabilité : Item.csv de {link2}.",
+      "src3": "Autres sources (boutiques, butins, FATE, artisanat, missions) : extraits de {link3}, liés par objet. Les données de drop de Teamcraft peuvent être incomplètes, donc un objet marqué « aucune autre source » mérite une vérification sur Garland Tools.",
+      "src4": "Prix du marché : {link4a} (basé sur {link4b}), région Amérique du Nord. Domakin n'a été relevé que sur la région Europe d'Universalis, à considérer donc comme une estimation. Les objets marqués « non relevé » n'ont que des liens en direct.",
+      "src5": "Le nombre de mémoquartz par objectif n'est pas indiqué sur la page de l'événement ; consultez le Mogpendium en jeu pour les chiffres exacts."
+    },
+    "items": {
+      "50440": {
+        "kind": "Monture",
+        "take": "La récompense phare, la seule chose ici qui mérite d'organiser votre semaine. Faites le défi ultimog une fois (5 jetons) et le minimog chaque semaine (1 jeton). Pas de panique : elle revient lors du Second Hunt for Astronomy et les jetons sont conservés.",
+        "other": [
+          "Nouvelle monture, vendue uniquement contre les mémoquartz inhabituels. Revient lors du Second Hunt for Astronomy."
+        ]
+      },
+      "24615": {
+        "kind": "Glamour (collier)",
+        "take": "Teamcraft ne recense aucune source active en dehors de cette boutique, donc si l'objet est sur votre liste glamour, c'est le moment. Si vous n'y aviez jamais pensé, 50 mémoquartz, c'est cher pour un emplacement de collier.",
+        "other": [
+          "Aucune source actuelle en dehors de l'échange selon Teamcraft (marqué obsolète)."
+        ]
+      },
+      "30107": {
+        "kind": "Monture",
+        "take": "L'alternative est une loterie de drop dans un vieux combat savage. Si vous voulez la monture sans farmer les coffres, 50 mémoquartz, c'est un bon échange.",
+        "other": [
+          "Butin d'instance, Eden's Verse: Refulgence (Savage)"
+        ]
+      },
+      "33117": {
+        "kind": "Rouleau d'orchestrion",
+        "take": "50 mémoquartz pour un rouleau qui drop d'un raid normal facile en désynchronisé et qui est sur le marché. Farmez-le ou achetez-le.",
+        "other": [
+          "Butin d'instance, Eden's Promise: Anamorphosis"
+        ]
+      },
+      "32794": {
+        "kind": "Glamour (torse)",
+        "take": "Objet permanent contre bons, et échangeable. Si vous craftez ou récoltez ne serait-ce qu'un peu, les bons sont la voie la moins chère ; sinon vérifiez le marché.",
+        "other": [
+          "2 200 bons des bâtisseurs du ciel auprès d'Enie dans le Firmament",
+          "Cadeau de fête (fête du Firmament)"
+        ]
+      },
+      "30052": {
+        "kind": "Glamour (torse)",
+        "take": "Même logique que le débardeur : bons ou marché, pas de mémoquartz.",
+        "other": [
+          "2 200 bons des bâtisseurs du ciel auprès d'Enie dans le Firmament",
+          "Cadeau de fête (fête du Firmament)"
+        ]
+      },
+      "27936": {
+        "kind": "Glamour (tête)",
+        "take": "La voie permanente implique de camper un FATE spécial dans The Tempest pour les cornes. 30 mémoquartz vous épargnent une longue attente.",
+        "other": [
+          "5 Archaeotania's Horns auprès de Fathard (Glorious Gewgaws), Eulmore",
+          "Les cornes droppent du FATE The Head, the Tail, the Whole Damned Thing (The Tempest)"
+        ]
+      },
+      "27937": {
+        "kind": "Glamour (torse)",
+        "take": "Nécessite 7 cornes par la voie difficile, donc le prix en échange est la meilleure affaire des deux pièces Toad.",
+        "other": [
+          "7 Archaeotania's Horns auprès de Fathard (Glorious Gewgaws), Eulmore",
+          "Les cornes droppent du FATE The Head, the Tail, the Whole Damned Thing (The Tempest)"
+        ]
+      },
+      "23367": {
+        "kind": "Émote",
+        "take": "Le meilleur gain de temps de la boutique. L'alternative est 15 000 marques de loup, ce qui représente beaucoup de JcJ si vous n'y jouez pas déjà.",
+        "other": [
+          "15 000 marques de loup auprès du quartier-maître, Wolves' Den Pier"
+        ]
+      },
+      "24635": {
+        "kind": "Mascotte",
+        "take": "Mascotte échangeable qui tombe aussi des conteneurs de matériel de compagnie. Vérifiez le marché avant de dépenser 30 mémoquartz.",
+        "other": [
+          "Conteneur de matériel 4.0 (compagnie, 20 000 sceaux, aléatoire)"
+        ]
+      },
+      "12077": {
+        "kind": "Harnais de chocobo",
+        "take": "Lié à un FATE dans The Churning Mists, une affaire d'attente de spawn. Un achat raisonnable à l'échange si vous le voulez.",
+        "other": [
+          "Récompense de FATE, Vedrfolnir Devoteth (The Churning Mists), selon Teamcraft"
+        ]
+      },
+      "24623": {
+        "kind": "Monture",
+        "take": "Seiryu Extrême se farm en solo et désynchronisé, mais 99 talismans représentent beaucoup de runs si le drop ne coopère pas. 30 mémoquartz vous épargnent ce farm.",
+        "other": [
+          "99 talismans de Seiryu auprès de la représentante de Rowena (Kugane) ou d'Eschina (Rhalgr's Reach)",
+          "Butin d'instance, the Wreath of Snakes (Extreme)"
+        ]
+      },
+      "16784": {
+        "kind": "50 000 PMG",
+        "take": "Utile seulement s'il vous manque des PMG pour un objet précis du Gold Saucer. Disponible à chaque échange et dans les anciens échanges de mémoquartz aussi.",
+        "other": [
+          "Également vendu contre d'anciens mémoquartz inhabituels (Aphorism, Pageantry)"
+        ]
+      },
+      "38585": {
+        "kind": "Habitation (table)",
+        "take": "Meuble crafté. Achetez-le ou craftez-le.",
+        "other": [
+          "Craftable, Cuisinier niveau 90"
+        ]
+      },
+      "38605": {
+        "kind": "Habitation (mural)",
+        "take": "Meuble crafté. Achetez-le ou craftez-le.",
+        "other": [
+          "Craftable, Menuisier niveau 90"
+        ]
+      },
+      "38622": {
+        "kind": "Habitation (extérieur)",
+        "take": "Meuble crafté. Achetez-le ou craftez-le.",
+        "other": [
+          "Craftable, Menuisier niveau 90"
+        ]
+      },
+      "13162": {
+        "kind": "Glamour (torse)",
+        "take": "Ancien butin de donjon que vous écrasez facilement en désynchronisé. Correct comme achat pour écouler des mémoquartz si le look vous plaît.",
+        "other": [
+          "Butin d'instance, Saint Mocianne's Arboretum ou Pharos Sirius (Hard)"
+        ]
+      },
+      "13174": {
+        "kind": "Glamour (torse)",
+        "take": "Comme les autres manteaux : facile à farmer, peu coûteux en mémoquartz, ne compte que si c'est votre glamour.",
+        "other": [
+          "Butin d'instance, Saint Mocianne's Arboretum ou Pharos Sirius (Hard)"
+        ]
+      },
+      "13186": {
+        "kind": "Glamour (torse)",
+        "take": "Comme les autres manteaux : facile à farmer, peu coûteux en mémoquartz, ne compte que si c'est votre glamour.",
+        "other": [
+          "Butin d'instance, Saint Mocianne's Arboretum ou Pharos Sirius (Hard)"
+        ]
+      },
+      "33847": {
+        "kind": "Rouleau d'orchestrion",
+        "take": "Objet contre bons, échangeable. Marché ou bons.",
+        "other": [
+          "1 200 bons des bâtisseurs du ciel auprès d'Enie dans le Firmament",
+          "Cadeau de fête (fête du Firmament)"
+        ]
+      },
+      "39918": {
+        "kind": "Carte au trésor niveau 90",
+        "take": "Portail garanti, donc un bon choix si vous faites les cartes avec votre CL ou des amis. Un habitué de l'échange, rien ne presse.",
+        "other": [
+          "Également vendue contre des mémoquartz inhabituels Aphorism dans l'échange précédent"
+        ]
+      },
+      "44349": {
+        "kind": "Carte au trésor niveau 100",
+        "take": "Portail garanti niveau 100. Même logique : bien pour une soirée cartes, pas la peine de farmer pour ça.",
+        "other": [
+          "Uniquement à l'échange, revient à chaque chasse"
+        ]
+      },
+      "20242": {
+        "kind": "Carte Triple Triad",
+        "take": "Peu chère, et Teamcraft ne montre aucune autre source. Si vous chassez la collection de cartes, prenez-la. Nécessite la quête Delicate as a Flower.",
+        "other": [
+          "Aucune autre source trouvée dans les données Teamcraft. Vaut la peine de vérifier sur Garland."
+        ]
+      },
+      "20244": {
+        "kind": "Carte Triple Triad",
+        "take": "Comme Ananta : peu chère et aucune autre source listée. Nécessite la quête principale By the Grace of Lord Lolorito.",
+        "other": [
+          "Aucune autre source trouvée dans les données Teamcraft. Vaut la peine de vérifier sur Garland."
+        ]
+      },
+      "12273": {
+        "kind": "Carte Triple Triad",
+        "take": "7 mémoquartz valent mieux qu'attendre un spawn de FATE. Nécessite la quête principale Where the Chocobos Roam.",
+        "other": [
+          "Récompense de FATE, Special Tarasque Force (The Dravanian Forelands)"
+        ]
+      },
+      "16703": {
+        "kind": "Coiffure",
+        "take": "Échangeable, donc vérifiez d'abord le marché. À 7 mémoquartz, c'est aussi un bon choix si les prix sont délirants.",
+        "other": [
+          "Sacs au trésor des donjons profonds (bronze, fer, argenté)"
+        ]
+      },
+      "28624": {
+        "kind": "Mascotte",
+        "take": "7 mémoquartz pour une mascotte qui se vend dans les dizaines de milliers de gils. Bon moyen d'écouler des mémoquartz restants pour du gil.",
+        "other": [
+          "Mission d'intendant, Waterside Exploration XXV"
+        ]
+      },
+      "28124": {
+        "kind": "Monture",
+        "take": "Le meilleur ratio gil/mémoquartz de la boutique. Il s'en vend environ 42 par jour en NA, mais les prix glissent déjà sous la médiane avec l'arrivée de l'offre de l'échange. Achetez et revendez tôt.",
+        "other": [
+          "Kupo of Fortune (Gold Saucer)"
+        ]
+      },
+      "32823": {
+        "kind": "Harnais de chocobo",
+        "take": "5 mémoquartz pour un objet qui se vendait autour de 150k. Même mise en garde que pour le sifflet : le prix plancher chute vite.",
+        "other": [
+          "Craftable, Armurier niveau 80 (nécessite Maître armurier VIII)"
+        ]
+      },
+      "25005": {
+        "kind": "Effet d'accessoire de mode",
+        "take": "Puits à mémoquartz pour les derniers que vous ne pouvez pas dépenser ailleurs. Échangeable mais non listable sur le marché.",
+        "other": [
+          "Vendu dans tous les échanges de mémoquartz inhabituels, actuels et passés"
+        ]
       }
     }
   }

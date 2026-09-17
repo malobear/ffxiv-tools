@@ -140,6 +140,7 @@
     "gamerescapewiki": "Allgemeine Item-, Quest- und Spielinfos. Alternative zum Console Games Wiki",
     "heavenswhere": "Interaktive Karten für Jagden, Sammelpunkte, Ätherströme und Schätze (zeigt derzeit eine Wartungsseite, vor Verwendung nochmal prüfen)",
     "jumppuzzlemacro": "Getimte Makro-Technik für gleichbleibende, gezielte Sprungweiten, mit kopierbaren Makros und einer Kalibrierstelle, nützlich für Präzisions-Sprungrätsel",
+    "huntforastronomy": "Alle Belohnungen aus dem Tausch für Astronomische Abenteuer, ihre alternativen Bezugsquellen, Marktpreise und eine klare Einschätzung, wofür sich die Ungewöhnlichen Allagischen Steine wirklich lohnen",
     "relictracker": "Verfolgt den Fortschritt bei Relikt-Waffen und was noch fehlt",
     "sightseeinglog": "Helfer für das Ingame-Sightseeing-Log-Bingo",
     "oceanfishing": "Kommender Zeitplan für Ozeanangel-Ausfahrten, blaue Fische und Achievement-Infos",
@@ -216,6 +217,323 @@
       "pluginsLinkLabel": "Plugin-Seite",
       "sections": {
         "nightlife": "Bars & Lounges"
+      }
+    }
+  },
+  "hfa": {
+    "hero": {
+      "h1": "Hunt for Astronomy: Wofür sich die Steine lohnen",
+      "lede": "Alle Gegenstände im Tausch der Hunt for Astronomy, ihre alternativen Bezugsquellen, die Preise auf dem NA-Marktbrett und eine klare Einschätzung, ob sich der Tausch dafür lohnt. Hake an, was du willst, und die Gesamtsumme an Steinen wird laufend berechnet.",
+      "factEvent": "Event:",
+      "factMog": "Mogpendium-Ansprüche:",
+      "factShop": "Shop-Tausch:",
+      "factPrices": "Preise erfasst:"
+    },
+    "sky": {
+      "aria": "Alle Belohnungen nach Steinkosten aufgetragen, farblich nach Einschätzung",
+      "axisLabel": "Steine",
+      "hornCaption": "{{name}}, {{cost}} + {{tokens}} Marken",
+      "tooltip": "{{name}}: {{cost}} Steine",
+      "circleAria": "{{name}}, {{cost}} Steine"
+    },
+    "verdicts": {
+      "grind": {
+        "label": "Grinden lohnt sich",
+        "blurb": "Aktuell nur im Event erhältlich, oder keine vernünftige Alternative."
+      },
+      "trove": {
+        "label": "Der Tausch ist der einfache Weg",
+        "blurb": "Nicht handelbar, und die dauerhafte Quelle ist mühsam."
+      },
+      "gil": {
+        "label": "Günstige Steine, echtes Gil",
+        "blurb": "Handelbar und verkauft sich gut im Verhältnis zum Steinpreis."
+      },
+      "buy": {
+        "label": "Lieber kaufen oder farmen",
+        "blurb": "Handelbar oder anderswo leicht zu bekommen. Verschwende hierfür keine Steine."
+      },
+      "meh": {
+        "label": "Nur bei Interesse",
+        "blurb": "Nische, wiederkehrend, oder trivial zu farmen."
+      }
+    },
+    "short": {
+      "heading": "Kurzfassung",
+      "sub": "Das meiste in diesem Shop bekommst du auch anderswo. Das Event zählt wirklich nur für eine Mount, ein paar Sonderfälle und einige günstige Items, die für echtes Gil verkauft werden."
+    },
+    "fomo": {
+      "heading": "FOMO-Check",
+      "item1Bold": "Das Uolon-Horn kommt zurück.",
+      "item1": "{bold} Laut offizieller Seite kehrt es in der Second Hunt for Astronomy zurück, und Marken aus dieser Jagd werden übertragen. Teamcrafts Daten zeigen zudem einen Eintrag für die zweite Jagd, bei dem Marken für 30 Astronomy-II-Steine eingetauscht werden können – eine verpasste Minimog-Woche ist also nicht fatal (aus Data-Mining, kann sich noch ändern).",
+      "item2Bold": "Die MGP-Karte, beide Spezialkarten und die Job-Mastery-Prismen sind feste Tausch-Regulars.",
+      "item2": "{bold} Sie sind auch im „vorherigen“ und „vergangenen“ Tausch für ungewöhnliche Steine erhältlich, es besteht also keine Eile.",
+      "item3Bold": "Wirklich nur im Tausch erhältlich, aktuell:",
+      "item3": "{bold} das Uolon-Horn (bis zur Second Hunt), das Mameshiba-Halstuch, sowie laut Teamcraft die Ananta- und Kotokaze-Karten. Alles andere hat eine dauerhafte Bezugsquelle.",
+      "item4Bold": "Handelbare Tausch-Items fluten den Markt.",
+      "item4": "{bold} Dhalmel-Pfeifen und Smaragd-Zaumzeug werden bereits deutlich unter ihrem jüngsten Medianpreis gelistet. Wer zum Weiterverkauf kauft, sollte früh verkaufen."
+    },
+    "itemsSection": {
+      "heading": "Alle Belohnungen",
+      "sub": "Tippe bei einer Zeile auf „Andere Bezugsquellen“ für die Quellen. Die Preise sind die günstigsten Listungen für die Region Nordamerika von Ultros (Universalis-Daten) zum Zeitpunkt der Erfassung. Prüfe vor dem Kauf die Live-Links, die Preise bewegen sich während eines Tauschs schnell."
+    },
+    "controls": {
+      "mbOnly": "Auf dem Marktbrett",
+      "sortLabel": "Sortieren",
+      "sortShop": "Shop-Reihenfolge",
+      "sortCostAsc": "Günstigste zuerst",
+      "sortCostDesc": "Teuerste zuerst",
+      "sortVerdict": "Nach Einschätzung",
+      "pickedLabel": "Ausgewählt:",
+      "tomesUnit": "Steine",
+      "clear": "Zurücksetzen",
+      "allChip": "Alle",
+      "hornTokens": "+ {{n}} Horn-Marken"
+    },
+    "empty": "Keine Belohnungen entsprechen diesen Filtern. Wähle „Alle“, um den gesamten Shop zu sehen.",
+    "meta": {
+      "tradeable": "handelbar",
+      "untradeable": "nicht handelbar",
+      "troveOnlyFlag": "Aktuell nur im Tausch",
+      "otherWays": "Andere Bezugsquellen",
+      "databases": "Datenbanken:",
+      "pickAria": "{{name}} auswählen"
+    },
+    "price": {
+      "tradeableNotListable": "Handelbar, nicht listbar",
+      "notOnBoard": "Nicht auf dem Marktbrett",
+      "lowest": "günstigste, {{shop}} ({{region}})",
+      "medianSale": "Median {{median}}",
+      "perDay": ", ~{{n}}/Tag",
+      "perTome": "≈ {{gil}} Gil pro Stein",
+      "notCaptured": "Preis nicht erfasst",
+      "checkLive": "Live prüfen"
+    },
+    "footer": {
+      "heading": "Quellen und wie diese Seite entstanden ist",
+      "src1": "Belohnungsliste und Kosten: {link1}.",
+      "src1Link": "offizielle Lodestone-Eventseite",
+      "src2": "Item-IDs und Handelbarkeit: {link2} Item.csv.",
+      "src3": "Alternative Quellen (Shops, Drops, FATEs, Crafting, Aufträge): Auszüge von {link3}, pro Item verlinkt. Teamcrafts Drop-Daten können unvollständig sein, daher lohnt sich bei „keine andere Quelle“ ein zweiter Blick auf Garland Tools.",
+      "src4": "Marktpreise: {link4a} (basiert auf {link4b}), Region Nordamerika. Domakin wurde bei Universalis nur für die Region Europa erfasst, die Zahl also nur als grobe Orientierung nehmen. Als „nicht erfasst“ markierte Items haben nur Live-Links.",
+      "src5": "Die Steinzahl pro Ziel steht nicht auf der Eventseite; die genauen Zahlen findest du im Spiel im Mogpendium."
+    },
+    "items": {
+      "50440": {
+        "kind": "Reittier",
+        "take": "Die Hauptbelohnung und das Einzige hier, das deine Wochenplanung beeinflussen sollte. Erledige die Ultimog-Herausforderung einmal (5 Marken) und das Minimog jede Woche (1 Marke). Keine Panik: Sie kehrt in der Second Hunt for Astronomy zurück, und Marken werden übertragen.",
+        "other": [
+          "Neues Reittier, nur im Tausch für ungewöhnliche Steine erhältlich. Kehrt in der Second Hunt for Astronomy zurück."
+        ]
+      },
+      "24615": {
+        "kind": "Glamour (Halskette)",
+        "take": "Laut Teamcraft gibt es außerhalb dieses Shops keine aktive Bezugsquelle, also ist jetzt das Zeitfenster, falls es auf deiner Glamour-Liste steht. Wenn dir das Teil bisher egal war, sind 50 Steine viel für einen Halsslot.",
+        "other": [
+          "Laut Teamcraft aktuell keine Bezugsquelle außerhalb dieses Tauschs (als veraltet markiert)."
+        ]
+      },
+      "30107": {
+        "kind": "Reittier",
+        "take": "Die Alternative ist eine Drop-Lotterie in einem alten Savage-Kampf. Wenn du die Mount willst und keine Lust auf Truhen-Farmen hast, sind 50 Steine ein fairer Tausch.",
+        "other": [
+          "Instanz-Drop, Eden's Verse: Refulgence (Savage)"
+        ]
+      },
+      "33117": {
+        "kind": "Orchestrion-Walze",
+        "take": "50 Steine für eine Walze, die aus einem leichten, ungesynchten Normal-Raid droppt und handelbar ist. Farmen oder kaufen.",
+        "other": [
+          "Instanz-Drop, Eden's Promise: Anamorphosis"
+        ]
+      },
+      "32794": {
+        "kind": "Glamour (Oberteil)",
+        "take": "Dauerhaftes Bordmarken-Item und handelbar. Wenn du überhaupt craftest oder sammelst, sind Bordmarken der günstigere Weg; sonst das Marktbrett prüfen.",
+        "other": [
+          "2.200 Himmelswerker-Bordmarken bei Enie im Firmament",
+          "Fest-Geschenk (Firmament-Fest)"
+        ]
+      },
+      "30052": {
+        "kind": "Glamour (Oberteil)",
+        "take": "Gleiches Prinzip wie beim Unterhemd: Bordmarken oder Marktbrett, keine Steine.",
+        "other": [
+          "2.200 Himmelswerker-Bordmarken bei Enie im Firmament",
+          "Fest-Geschenk (Firmament-Fest)"
+        ]
+      },
+      "27936": {
+        "kind": "Glamour (Kopf)",
+        "take": "Der dauerhafte Weg bedeutet, in The Tempest auf ein spezielles FATE für Hörner zu campen. 30 Steine ersparen dir viel Wartezeit.",
+        "other": [
+          "5 Archaeotania's Horns bei Fathard (Glorious Gewgaws), Eulmore",
+          "Hörner droppen vom FATE The Head, the Tail, the Whole Damned Thing (The Tempest)"
+        ]
+      },
+      "27937": {
+        "kind": "Glamour (Oberteil)",
+        "take": "Erfordert auf dem harten Weg 7 Hörner, daher ist der Tauschpreis das bessere Angebot der beiden Kröten-Teile.",
+        "other": [
+          "7 Archaeotania's Horns bei Fathard (Glorious Gewgaws), Eulmore",
+          "Hörner droppen vom FATE The Head, the Tail, the Whole Damned Thing (The Tempest)"
+        ]
+      },
+      "23367": {
+        "kind": "Emote",
+        "take": "Der beste Zeitspar-Deal im Shop. Die Alternative sind 15.000 Wolfsmarken, was viel PvP bedeutet, falls du es nicht schon spielst.",
+        "other": [
+          "15.000 Wolfsmarken beim Quartiermeister, Wolves' Den Pier"
+        ]
+      },
+      "24635": {
+        "kind": "Minion",
+        "take": "Handelbares Minion, das auch aus GC-Materialcontainern fällt. Vor dem Ausgeben von 30 Steinen das Marktbrett prüfen.",
+        "other": [
+          "Materialcontainer 4.0 (Kompanie, 20.000 Siegel, zufällig)"
+        ]
+      },
+      "12077": {
+        "kind": "Chocobo-Zaumzeug",
+        "take": "An ein FATE in den Churning Mists gebunden, reines Spawn-und-Warten. Ein vernünftiger Tauschkauf, falls gewünscht.",
+        "other": [
+          "FATE-Belohnung, Vedrfolnir Devoteth (The Churning Mists), laut Teamcraft"
+        ]
+      },
+      "24623": {
+        "kind": "Reittier",
+        "take": "Seiryu Extrem lässt sich solo und ungesynct farmen, aber 99 Talismane sind viele Runs, wenn der Drop nicht mitspielt. 30 Steine sparen dir das Grinden.",
+        "other": [
+          "99 Seiryu-Talismane bei Rowenas Vertreterin (Kugane) oder Eschina (Rhalgr's Reach)",
+          "Instanz-Drop, the Wreath of Snakes (Extreme)"
+        ]
+      },
+      "16784": {
+        "kind": "50.000 MGP",
+        "take": "Nur sinnvoll, wenn dir MGP für ein bestimmtes Gold-Saucer-Item fehlen. Gibt es in jedem Tausch und auch in älteren Steintauschen.",
+        "other": [
+          "Auch gegen ältere ungewöhnliche Steine erhältlich (Aphorism, Pageantry)"
+        ]
+      },
+      "38585": {
+        "kind": "Wohnungseinrichtung (Tisch)",
+        "take": "Hergestelltes Möbelstück. Kaufen oder selbst herstellen.",
+        "other": [
+          "Herstellbar, Gourmet Stufe 90"
+        ]
+      },
+      "38605": {
+        "kind": "Wohnungseinrichtung (Wand)",
+        "take": "Hergestelltes Möbelstück. Kaufen oder selbst herstellen.",
+        "other": [
+          "Herstellbar, Zimmermann Stufe 90"
+        ]
+      },
+      "38622": {
+        "kind": "Wohnungseinrichtung (Außen)",
+        "take": "Hergestelltes Möbelstück. Kaufen oder selbst herstellen.",
+        "other": [
+          "Herstellbar, Zimmermann Stufe 90"
+        ]
+      },
+      "13162": {
+        "kind": "Glamour (Oberteil)",
+        "take": "Alter Dungeon-Drop, den du ungesynct problemlos plättest. Als Verwendung für übrige Steine okay, wenn dir der Look gefällt.",
+        "other": [
+          "Instanz-Drop, Saint Mocianne's Arboretum oder Pharos Sirius (Hard)"
+        ]
+      },
+      "13174": {
+        "kind": "Glamour (Oberteil)",
+        "take": "Wie die anderen Mäntel: leicht zu farmen, günstig in Steinen, zählt nur, wenn es dein Glamour ist.",
+        "other": [
+          "Instanz-Drop, Saint Mocianne's Arboretum oder Pharos Sirius (Hard)"
+        ]
+      },
+      "13186": {
+        "kind": "Glamour (Oberteil)",
+        "take": "Wie die anderen Mäntel: leicht zu farmen, günstig in Steinen, zählt nur, wenn es dein Glamour ist.",
+        "other": [
+          "Instanz-Drop, Saint Mocianne's Arboretum oder Pharos Sirius (Hard)"
+        ]
+      },
+      "33847": {
+        "kind": "Orchestrion-Walze",
+        "take": "Bordmarken-Item, handelbar. Marktbrett oder Bordmarken.",
+        "other": [
+          "1.200 Himmelswerker-Bordmarken bei Enie im Firmament",
+          "Fest-Geschenk (Firmament-Fest)"
+        ]
+      },
+      "39918": {
+        "kind": "Level-90-Schatzkarte",
+        "take": "Garantiertes Portal, also durchaus lohnend, wenn du mit FC oder Freunden Karten läufst. Ein Tausch-Regular, keine Eile.",
+        "other": [
+          "Im vorherigen Tausch auch gegen ungewöhnliche Steine der Aphorism erhältlich"
+        ]
+      },
+      "44349": {
+        "kind": "Level-100-Schatzkarte",
+        "take": "Garantiertes Level-100-Portal. Gleiche Logik: gut für einen Kartenabend, aber kein Grinden wert.",
+        "other": [
+          "Nur im Tausch, kehrt bei jeder Jagd zurück"
+        ]
+      },
+      "20242": {
+        "kind": "Triple-Triad-Karte",
+        "take": "Günstig, und Teamcraft zeigt keine andere Quelle. Wenn du die Kartenliste vervollständigen willst, schnapp sie dir. Erfordert die Quest Delicate as a Flower.",
+        "other": [
+          "Laut Teamcraft-Daten keine andere Quelle bekannt. Lohnt sich, auf Garland nachzuprüfen."
+        ]
+      },
+      "20244": {
+        "kind": "Triple-Triad-Karte",
+        "take": "Wie Ananta: günstig und keine andere gelistete Quelle. Erfordert die Hauptszenario-Quest By the Grace of Lord Lolorito.",
+        "other": [
+          "Laut Teamcraft-Daten keine andere Quelle bekannt. Lohnt sich, auf Garland nachzuprüfen."
+        ]
+      },
+      "12273": {
+        "kind": "Triple-Triad-Karte",
+        "take": "7 Steine schlagen das Warten auf einen FATE-Spawn. Erfordert die Hauptszenario-Quest Where the Chocobos Roam.",
+        "other": [
+          "FATE-Belohnung, Special Tarasque Force (The Dravanian Forelands)"
+        ]
+      },
+      "16703": {
+        "kind": "Frisur",
+        "take": "Handelbar, also zuerst das Marktbrett prüfen. Für 7 Steine auch eine gute Wahl, falls die Preise albern sind.",
+        "other": [
+          "Schatzsäcke aus tiefen Verliesen (Bronze, Eisen, Silber)"
+        ]
+      },
+      "28624": {
+        "kind": "Minion",
+        "take": "7 Steine für ein Minion, das sich für einige Zehntausend Gil verkauft. Guter Weg, übrige Steine in Gil umzuwandeln.",
+        "other": [
+          "Gehilfen-Auftrag, Waterside Exploration XXV"
+        ]
+      },
+      "28124": {
+        "kind": "Reittier",
+        "take": "Bestes Gil-pro-Stein-Verhältnis im Shop. In NA verkaufen sich etwa 42 pro Tag, aber die Preise rutschen durch das Tausch-Angebot schon unter den Median. Früh kaufen und früh verkaufen.",
+        "other": [
+          "Kupo of Fortune (Gold Saucer)"
+        ]
+      },
+      "32823": {
+        "kind": "Chocobo-Zaumzeug",
+        "take": "5 Steine für etwas, das um die 150k verkauft wird. Gleiche Warnung wie bei der Pfeife: der Preis fällt schnell.",
+        "other": [
+          "Herstellbar, Plattner Stufe 80 (benötigt Meisterplattner VIII)"
+        ]
+      },
+      "25005": {
+        "kind": "Modeaccessoire-Effekt",
+        "take": "Steinsenke für die letzten Reste, die du nicht anders ausgeben kannst. Handelbar, aber nicht auf dem Marktbrett listbar.",
+        "other": [
+          "In jedem aktuellen und vergangenen Tausch für ungewöhnliche Steine erhältlich"
+        ]
       }
     }
   }
