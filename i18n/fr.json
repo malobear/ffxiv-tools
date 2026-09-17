@@ -269,7 +269,7 @@
       "item2Bold": "La carte MGP, les deux cartes spéciales et les prismes de maîtrise de métier sont des habitués de l'échange.",
       "item2": "{bold} Ils sont aussi disponibles dans les échanges « précédent » et « passé » de mémoquartz inhabituels, donc rien ne presse.",
       "item3Bold": "Réellement exclusif à l'échange pour l'instant :",
-      "item3": "{bold} le cor uolon (jusqu'au Second Hunt), le foulard Mameshiba, et selon Teamcraft les cartes Ananta et Kotokaze. Tout le reste a une source permanente.",
+      "item3": "{bold} le cor uolon (jusqu'au Second Hunt) et le foulard Mameshiba. Tout le reste, y compris les cartes Ananta et Kotokaze, a une source permanente via Triple Triad ou un PNJ.",
       "item4Bold": "Les objets échangeables de la boutique inondent le marché.",
       "item4": "{bold} Les sifflets dhalmel et les harnais émeraude se vendent déjà bien en dessous de leur médiane récente. Si vous achetez pour revendre, vendez tôt."
     },
@@ -481,16 +481,16 @@
       },
       "20242": {
         "kind": "Carte Triple Triad",
-        "take": "Peu chère, et Teamcraft ne montre aucune autre source. Si vous chassez la collection de cartes, prenez-la. Nécessite la quête Delicate as a Flower.",
+        "take": "En fait pas exclusif à l'échange : vous pouvez aussi la gagner contre Garima dans The Fringes, sans dépenser de mémoquartz. Dans les deux cas, la quête Delicate as a Flower reste nécessaire.",
         "other": [
-          "Aucune autre source trouvée dans les données Teamcraft. Vaut la peine de vérifier sur Garland."
+          "Match de Triple Triad, Garima (The Fringes, X:28.2 Y:19.9)"
         ]
       },
       "20244": {
         "kind": "Carte Triple Triad",
-        "take": "Comme Ananta : peu chère et aucune autre source listée. Nécessite la quête principale By the Grace of Lord Lolorito.",
+        "take": "En fait pas exclusif à l'échange : vous pouvez aussi la gagner contre le PNJ Kotokaze à Kugane, sans dépenser de mémoquartz. Dans les deux cas, la quête principale By the Grace of Lord Lolorito reste nécessaire.",
         "other": [
-          "Aucune autre source trouvée dans les données Teamcraft. Vaut la peine de vérifier sur Garland."
+          "Match de Triple Triad, Kotokaze (Kugane, X:10.2 Y:10.2)"
         ]
       },
       "12273": {

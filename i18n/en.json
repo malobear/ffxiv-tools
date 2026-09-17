@@ -269,7 +269,7 @@
       "item2Bold": "MGP card, both special maps and the job mastery prisms are trove regulars.",
       "item2": "{bold} They're also stocked in the “previous” and “past” irregular tomestone exchanges, so there's no rush.",
       "item3Bold": "Genuinely trove-only right now:",
-      "item3": "{bold} the uolon horn (until the Second Hunt), the Mameshiba Neckerchief, and per Teamcraft the Ananta and Kotokaze cards. Everything else has a permanent source.",
+      "item3": "{bold} the uolon horn (until the Second Hunt) and the Mameshiba Neckerchief. Everything else, including the Ananta and Kotokaze cards, has a permanent Triple Triad or NPC source.",
       "item4Bold": "Tradeable trove items get flooded.",
       "item4": "{bold} Dhalmel whistles and emerald bardings are already listing well under their recent median. If you're buying to sell, sell early."
     },
@@ -481,16 +481,16 @@
       },
       "20242": {
         "kind": "Triple Triad card",
-        "take": "Cheap, and Teamcraft shows no other source. If you're chasing the card list, grab it. Requires the quest Delicate as a Flower.",
+        "take": "Not trove-exclusive: you can win it from Garima in The Fringes instead of spending tomes. Still requires the quest Delicate as a Flower either way.",
         "other": [
-          "No other source found in Teamcraft data. Worth confirming on Garland."
+          "Triple Triad match, Garima (The Fringes, X:28.2 Y:19.9)"
         ]
       },
       "20244": {
         "kind": "Triple Triad card",
-        "take": "Same as Ananta: cheap and no other listed source. Requires the MSQ By the Grace of Lord Lolorito.",
+        "take": "Not trove-exclusive: you can win it from the NPC Kotokaze in Kugane instead of spending tomes. Still requires the MSQ By the Grace of Lord Lolorito either way.",
         "other": [
-          "No other source found in Teamcraft data. Worth confirming on Garland."
+          "Triple Triad match, Kotokaze (Kugane, X:10.2 Y:10.2)"
         ]
       },
       "12273": {

@@ -269,7 +269,7 @@
       "item2Bold": "MGPカード、特殊地図2種、ジョブマスタリー用の魔法の光珠はいずれもトローブの定番。",
       "item2": "{bold} 「以前の」「過去の」希少トームストーン交換所でも扱われるため、急いで交換する必要はない。",
       "item3Bold": "現状本当にトローブ限定なのは：",
-      "item3": "{bold} Uolon Horn(Second Huntまで)、Mameshiba Neckerchief、そしてTeamcraft情報ではAnanta CardとKotokaze Card。それ以外は恒常的な入手手段がある。",
+      "item3": "{bold} Uolon Horn(Second Huntまで)とMameshiba Neckerchief。Ananta CardとKotokaze Cardを含め、それ以外はトリプルトライアド対戦やNPCなど恒常的な入手手段がある。",
       "item4Bold": "取引可能なトローブアイテムは市場に溢れやすい。",
       "item4": "{bold} Dhalmel WhistleやEmerald Bardingはすでに直近の中央値を大きく下回る価格で出品されている。転売目的なら早めに売り切るべき。"
     },
@@ -481,16 +481,16 @@
       },
       "20242": {
         "kind": "トリプルトライアドカード",
-        "take": "安価で、Teamcraftでは他に入手手段が見つからない。カードコンプを狙っているなら取っておくべき。クエスト「Delicate as a Flower」が必要。",
+        "take": "実はトローブ限定ではない。The FringesのGarimaに勝てばトームストーンを使わず入手可能。いずれの方法でもクエスト「Delicate as a Flower」が必要な点は同じ。",
         "other": [
-          "Teamcraftのデータでは他の入手手段が見つからない。Garlandでの再確認推奨。"
+          "トリプルトライアド対戦、Garima (The Fringes, X:28.2 Y:19.9)"
         ]
       },
       "20244": {
         "kind": "トリプルトライアドカード",
-        "take": "Anantaと同様、安価で他に入手手段が見つからない。MSQ「By the Grace of Lord Lolorito」が必要。",
+        "take": "実はトローブ限定ではない。KuganeのNPC Kotokazeに勝てばトームストーンを使わず入手可能。いずれの方法でもMSQ「By the Grace of Lord Lolorito」が必要な点は同じ。",
         "other": [
-          "Teamcraftのデータでは他の入手手段が見つからない。Garlandでの再確認推奨。"
+          "トリプルトライアド対戦、Kotokaze (Kugane, X:10.2 Y:10.2)"
         ]
       },
       "12273": {

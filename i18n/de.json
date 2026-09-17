@@ -269,7 +269,7 @@
       "item2Bold": "Die MGP-Karte, beide Spezialkarten und die Job-Mastery-Prismen sind feste Tausch-Regulars.",
       "item2": "{bold} Sie sind auch im „vorherigen“ und „vergangenen“ Tausch für ungewöhnliche Steine erhältlich, es besteht also keine Eile.",
       "item3Bold": "Wirklich nur im Tausch erhältlich, aktuell:",
-      "item3": "{bold} das Uolon-Horn (bis zur Second Hunt), das Mameshiba-Halstuch, sowie laut Teamcraft die Ananta- und Kotokaze-Karten. Alles andere hat eine dauerhafte Bezugsquelle.",
+      "item3": "{bold} das Uolon-Horn (bis zur Second Hunt) und das Mameshiba-Halstuch. Alles andere, einschließlich der Ananta- und Kotokaze-Karten, hat eine dauerhafte Quelle über Triple Triad oder einen NPC.",
       "item4Bold": "Handelbare Tausch-Items fluten den Markt.",
       "item4": "{bold} Dhalmel-Pfeifen und Smaragd-Zaumzeug werden bereits deutlich unter ihrem jüngsten Medianpreis gelistet. Wer zum Weiterverkauf kauft, sollte früh verkaufen."
     },
@@ -481,16 +481,16 @@
       },
       "20242": {
         "kind": "Triple-Triad-Karte",
-        "take": "Günstig, und Teamcraft zeigt keine andere Quelle. Wenn du die Kartenliste vervollständigen willst, schnapp sie dir. Erfordert die Quest Delicate as a Flower.",
+        "take": "Doch nicht nur im Tausch erhältlich: Du kannst sie auch von Garima in The Fringes gewinnen, ganz ohne Steine. In beiden Fällen brauchst du die Quest Delicate as a Flower.",
         "other": [
-          "Laut Teamcraft-Daten keine andere Quelle bekannt. Lohnt sich, auf Garland nachzuprüfen."
+          "Triple-Triad-Match, Garima (The Fringes, X:28.2 Y:19.9)"
         ]
       },
       "20244": {
         "kind": "Triple-Triad-Karte",
-        "take": "Wie Ananta: günstig und keine andere gelistete Quelle. Erfordert die Hauptszenario-Quest By the Grace of Lord Lolorito.",
+        "take": "Doch nicht nur im Tausch erhältlich: Du kannst sie auch vom NPC Kotokaze in Kugane gewinnen, ganz ohne Steine. In beiden Fällen brauchst du die Hauptszenario-Quest By the Grace of Lord Lolorito.",
         "other": [
-          "Laut Teamcraft-Daten keine andere Quelle bekannt. Lohnt sich, auf Garland nachzuprüfen."
+          "Triple-Triad-Match, Kotokaze (Kugane, X:10.2 Y:10.2)"
         ]
       },
       "12273": {
