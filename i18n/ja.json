@@ -165,8 +165,10 @@
         "glamour": "ミラプリ",
         "community": "一般&コミュニティ",
         "guides": "ガイド&リファレンス",
-        "unicode": "Unicode&特殊文字"
-      }
+        "unicode": "Unicode&特殊文字",
+        "featured": "厳選ガイド"
+      },
+      "featuredNote": "リンクを貼るだけでなく、このサイトで直接公開している厳選ガイド。"
     },
     "plugins": {
       "h1": "FFXIV プラグイン",

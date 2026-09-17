@@ -165,8 +165,10 @@
         "glamour": "Glamour",
         "community": "Général & Communauté",
         "guides": "Guides & Référence",
-        "unicode": "Unicode & Caractères spéciaux"
-      }
+        "unicode": "Unicode & Caractères spéciaux",
+        "featured": "Guides sélectionnés"
+      },
+      "featuredNote": "Des guides complets que j'ai sélectionnés et que j'héberge directement sur ce site, pas juste un lien externe."
     },
     "plugins": {
       "h1": "FFXIV Plugins",

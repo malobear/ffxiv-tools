@@ -232,6 +232,48 @@
     font-size: 0.72rem;
     cursor: pointer;
   }
+  .featured-guides h2 {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+  .featured-note {
+    color: var(--muted);
+    font-size: 0.85rem;
+    margin: 0 0 14px;
+  }
+  .featured-guides ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+  }
+  .featured-guides li {
+    margin-bottom: 0;
+    overflow: hidden;
+  }
+  .featured-guides li a {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0;
+    gap: 0;
+  }
+  .featured-guides li .favicon {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1200 / 630;
+    border-radius: 0;
+    object-fit: cover;
+  }
+  .featured-guides li .link-body {
+    display: block;
+    padding: 12px 14px 4px;
+    font-weight: 600;
+  }
+  .featured-guides li .desc {
+    font-weight: 400;
+  }
+  .featured-guides li .tags {
+    padding: 0 14px 12px;
+  }
   li .tags button:hover {
     color: var(--accent);
     border-color: var(--accent);
@@ -282,6 +324,21 @@
 
   <div class="content-col column is-9">
   <p id="empty-state" hidden><span data-i18n="pages.index.emptyStateText">No tools match that search.</span> <button id="empty-clear" type="button" data-i18n="shared.emptyClear">Clear it</button>.</p>
+
+  <section class="featured-guides">
+    <h2 data-i18n="pages.index.sections.featured">Curated Guides</h2>
+    <p class="featured-note" data-i18n="pages.index.featuredNote">Full guides I've curated and host directly on this site, not just a link out.</p>
+    <ul>
+      <li data-tags="guide, macro">
+        <a href="jump-puzzle-macros.html"><img class="favicon" alt="" loading="lazy" decoding="async" data-icon="og-jump-puzzle-macros.png"><span class="link-body">Jump Puzzle Macros<span class="desc" data-i18n="items.jumppuzzlemacro">Timed macro technique for producing consistent, specific jump distances, with copyable macros and a calibration spot, useful for precision jumping puzzles</span></span></a>
+        <div class="tags"><button type="button">guide</button><button type="button">macro</button></div>
+      </li>
+      <li data-tags="guide, events, market">
+        <a href="hunt-for-astronomy.html"><img class="favicon" alt="" loading="lazy" decoding="async" data-icon="og-hunt-for-astronomy.png"><span class="link-body">Hunt for Astronomy: What's Worth the Tomes<span class="desc" data-i18n="items.huntforastronomy">Every reward in the Hunt for Astronomy trove, its alternate sources, market board prices, and a straight verdict on what's worth the tomestones</span></span></a>
+        <div class="tags"><button type="button">guide</button><button type="button">events</button><button type="button">market</button></div>
+      </li>
+    </ul>
+  </section>
 
   <section>
     <h2 data-i18n="pages.index.sections.market">Market &amp; Economy</h2>
@@ -407,14 +464,6 @@
       <li data-tags="gardening, crossbreeding, guide">
         <a href="https://www.ffxivgardening.com/cross-diagrams" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">FFXIV Gardening: Crossbreed Diagrams<span class="desc" data-i18n="items.ffxivgardening">Hybrid seed crossbreeding paths. I use it for Thavnair onions</span></span></a>
         <div class="tags"><button type="button">gardening</button><button type="button">crossbreeding</button><button type="button">guide</button></div>
-      </li>
-      <li data-tags="guide, macro">
-        <a href="jump-puzzle-macros.html"><img class="favicon" alt="" loading="lazy" decoding="async" data-icon="https://beta.xivapi.com/api/1/asset?path=ui/icon/002000/002576.tex&format=png"><span class="link-body">Jump Puzzle Macros<span class="desc" data-i18n="items.jumppuzzlemacro">Timed macro technique for producing consistent, specific jump distances, with copyable macros and a calibration spot, useful for precision jumping puzzles</span></span></a>
-        <div class="tags"><button type="button">guide</button><button type="button">macro</button></div>
-      </li>
-      <li data-tags="guide, events, market">
-        <a href="hunt-for-astronomy.html"><img class="favicon" alt="" loading="lazy" decoding="async" data-icon="https://beta.xivapi.com/api/1/asset?path=ui/icon/026000/026350.tex&format=png"><span class="link-body">Hunt for Astronomy: What's Worth the Tomes<span class="desc" data-i18n="items.huntforastronomy">Every reward in the Hunt for Astronomy trove, its alternate sources, market board prices, and a straight verdict on what's worth the tomestones</span></span></a>
-        <div class="tags"><button type="button">guide</button><button type="button">events</button><button type="button">market</button></div>
       </li>
       <li data-tags="official, news">
         <a href="https://na.finalfantasyxiv.com/lodestone/" target="_blank" rel="noopener noreferrer"><img class="favicon" alt="" loading="lazy" decoding="async"><span class="link-body">The Lodestone<span class="desc" data-i18n="items.lodestone">Official news, maintenance, and lore updates</span></span></a>
