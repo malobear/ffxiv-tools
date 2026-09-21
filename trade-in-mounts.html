@@ -148,7 +148,7 @@ footer li{margin:5px 0}
 <header class="hero">
   <h1>Trade-in mounts: grind vs. buy the mats</h1>
   <p class="lede">Every mount unlocked by trading in items or currency: what you actually need, where to turn it in, whether the trade-in materials (or the mount itself) are marketboardable, and a straight verdict on grinding it out versus buying your way there.</p>
-  <div class="wip-note">Pilot page: a few mounts in so far, while the format gets worked out before a full data-gathering pass. Scope is currently-obtainable trade-in mounts only &mdash; permanently unavailable seasonal/collab mounts won't be included. Not linked from the main list yet.</div>
+  <div class="wip-note">Work in progress: every currently-obtainable tribal-quest mount is covered so far, with other trade-in categories (tomestones, Bozja/Zadnor, Island Sanctuary, seasonal currencies, Doman Mahjong) still to come. Scope is currently-obtainable trade-in mounts only &mdash; permanently unavailable seasonal/collab mounts won't be included. Not linked from the main list yet.</div>
 </header>
 
 <section id="items">
@@ -227,7 +227,18 @@ const ICON_PATHS = {
   14083: "026000/026038", // Zu Horn
   15112: "025000/025951", // Iron Voyage Spoil
   41650: "026000/026039", // Island Adenium Whistle
-  41709: "026000/026185"  // Vegetal Voucher
+  41709: "026000/026185", // Vegetal Voucher
+  21081: "065000/065058", // Kojin Sango
+  22525: "065000/065064", // Namazu Koban
+  28186: "065000/065074", // Fae Fancy
+  28188: "065000/065080", // Hammered Frogment
+  28187: "065000/065077", // Qitari Compliment
+  36657: "065000/065091", // Arkasodara Pana
+  37854: "065000/065095", // Omicron Omnitoken
+  38952: "065000/065100", // Loporrit Carat
+  46178: "065000/065132", // Yok Huy Ward
+  48084: "065000/065116", // Mamool Ja Nanook
+  44472: "065000/065111"  // Pelu Pelplume
 };
 const ICON = id => `https://beta.xivapi.com/api/1/asset?path=ui/icon/${ICON_PATHS[id]}.tex&format=png`;
 
@@ -236,7 +247,27 @@ const ICON = id => `https://beta.xivapi.com/api/1/asset?path=ui/icon/${ICON_PATH
 const MOUNT_ICON_PATHS = {
   21904: "004000/004112", // Marid
   14083: "004000/004052", // Zu
-  41650: "004000/004280"  // Island Adenium
+  41650: "004000/004280", // Island Adenium
+  6991: "004000/004009",  // Cavalry Drake
+  7554: "004000/004014",  // Cavalry Elbst
+  6992: "004000/004010",  // Laurel Goobbue
+  7555: "004000/004015",  // Bomb Palanquin
+  8208: "004000/004023",  // Direwolf
+  12071: "004000/004038", // Sanuwa
+  14082: "004000/004051", // Kongamato
+  15429: "004000/004063", // Cloud Mallow
+  22459: "004000/004113", // True Griffin
+  21048: "004000/004103", // Striped Ray
+  23022: "004000/004118", // Mikoshi
+  28117: "004000/004159", // Portly Porxie
+  30860: "004000/004178", // Rolling Tankard
+  30103: "004000/004174", // Great Vessel of Ronka
+  36907: "004000/004228", // Hippo Cart
+  38456: "004000/004236", // Miw Miisv
+  39485: "004000/004245", // Moon-hopper
+  46830: "004000/004318", // Vurgar the Loyal
+  47977: "004000/004310", // Branchbearer
+  44497: "004000/004296"  // Punutiy
 };
 const MOUNT_ICON = id => `https://beta.xivapi.com/api/1/asset?path=ui/icon/${MOUNT_ICON_PATHS[id]}_hr1.tex&format=png`;
 
@@ -262,6 +293,166 @@ const ITEMS = [
     cost: { currency: "Ananta Dreamstaff", currencyId: 21935, qty: 18, marketable: false },
     itemMarketable: false,
     take: "Both the Ananta Dreamstaff currency and the Marid Horn itself are bound, so there's no way to buy your way past this one. Reach Sworn rank with the Ananta (three dailies a day, plus Dreamstaff turn-ins toward rank) and buy it outright for 18 Dreamstaff."
+  },
+  {
+    id: 6991, name: "Cavalry Drake", itemName: "Drake Horn", category: "tribal",
+    source: "Amalj'aa tribal quests, Trusted rank (Rank 4)",
+    vendor: { name: "Amalj'aa Vendor", zone: "Southern Thanalan", coords: "X:23.3 Y:14.1" },
+    cost: { currency: "Gil", currencyId: null, qty: 120000, marketable: false },
+    itemMarketable: false,
+    take: "Bound item, flat Gil cost — nothing to price-shop here. Grind Amalj'aa dailies to Trusted rank and buy it outright for 120,000 gil."
+  },
+  {
+    id: 7554, name: "Cavalry Elbst", itemName: "Elbst Horn", category: "tribal",
+    source: "Sahagin tribal quests, Trusted rank (Rank 4)",
+    vendor: { name: "Sahagin Vendor", zone: "Western La Noscea", coords: "X:16.0 Y:22.0" },
+    cost: { currency: "Gil", currencyId: null, qty: 120000, marketable: false },
+    itemMarketable: false,
+    take: "Bound item, flat Gil cost — nothing to compare prices on. Grind Sahagin dailies to Trusted rank and buy it outright for 120,000 gil."
+  },
+  {
+    id: 6992, name: "Laurel Goobbue", itemName: "Laurel Goobbue Horn", category: "tribal",
+    source: "Sylph tribal quests, Trusted rank (Rank 4)",
+    vendor: { name: "Sylphic Vendor", zone: "East Shroud", coords: "X:22.3 Y:26.3" },
+    cost: { currency: "Gil", currencyId: null, qty: 120000, marketable: false },
+    itemMarketable: false,
+    take: "Bound item, flat Gil cost — no grind-vs-buy comparison to make. Reach Trusted rank with the Sylph and buy it outright for 120,000 gil."
+  },
+  {
+    id: 7555, name: "Bomb Palanquin", itemName: "Bomb Palanquin Horn", category: "tribal",
+    source: "Kobold tribal quests, Trusted rank (Rank 4)",
+    vendor: { name: "Kobold Vendor", zone: "Outer La Noscea", coords: "X:21.6 Y:17.8" },
+    cost: { currency: "Gil", currencyId: null, qty: 120000, marketable: false },
+    itemMarketable: false,
+    take: "No market shortcut exists — the horn is bound, and 120,000 gil is just money. Reach Trusted rank with the Kobold (a relatively low, early bar) and buy it outright."
+  },
+  {
+    id: 8208, name: "Direwolf", itemName: "Direwolf Whistle", category: "tribal",
+    source: "Ixali tribal quests, Sworn rank (Rank 7)",
+    vendor: { name: "Ixali Vendor", zone: "North Shroud", coords: "X:24.9 Y:22.7" },
+    cost: { currency: "Gil", currencyId: null, qty: 120000, marketable: false },
+    itemMarketable: false,
+    take: "There's no market angle here at all — the Direwolf Whistle is bound and Gil isn't something to price-check. Grind Ixali dailies to Sworn rank, then pay 120,000 gil outright."
+  },
+  {
+    id: 12071, name: "Sanuwa", itemName: "Sanuwa Whistle", category: "tribal",
+    source: "Vanu Vanu tribal quests, Sworn rank (Rank 7)",
+    vendor: { name: "Luna Vanu", zone: "The Sea of Clouds", coords: "X:7.0 Y:14.3" },
+    cost: { currency: "Gil", currencyId: null, qty: 200000, marketable: false },
+    itemMarketable: false,
+    take: "The Vanu Vanu also gate their mount behind Sworn rank plus a flat 200,000 gil rather than a farmable currency, so grinding reputation is the only real cost here."
+  },
+  {
+    id: 14082, name: "Kongamato", itemName: "Kongamato Whistle", category: "tribal",
+    source: "Vath tribal quests, Sworn rank (Rank 7)",
+    vendor: { name: "Vath Stickpeddler", zone: "The Dravanian Forelands", coords: "X:23.6 Y:19.0" },
+    cost: { currency: "Gil", currencyId: null, qty: 200000, marketable: false },
+    itemMarketable: false,
+    take: "Same shape as the other Gil-cost tribal mounts: a flat 200,000 gil once you hit Sworn rank with the Vath, no tradeable material involved to shop around for."
+  },
+  {
+    id: 15429, name: "Cloud Mallow", itemName: "Cloud Mallow Seeds", category: "tribal",
+    source: "Moogle tribal quests, Sworn rank (Rank 7)",
+    vendor: { name: "Mogmul Mogbelly", zone: "The Churning Mists", coords: "X:15.9 Y:28.5" },
+    cost: { currency: "Gil", currencyId: null, qty: 200000, marketable: false },
+    itemMarketable: false,
+    take: "No market angle at all here — the cost is a flat 200,000 gil, not a farmable item, so there's nothing to compare prices on. Reach Sworn rank with the Moogles and pay outright; the only \"grind\" is the reputation, not the gil."
+  },
+  {
+    id: 22459, name: "True Griffin", itemName: "True Griffin Whistle", category: "tribal",
+    source: "Ananta tribal quests, Bloodsworn rank (Rank 8)",
+    vendor: { name: "Madhura", zone: "The Fringes", coords: "X:20.9 Y:26.2" },
+    cost: { currency: "Ananta Dreamstaff", currencyId: 21935, qty: 18, marketable: false },
+    itemMarketable: false,
+    take: "Same vendor and currency as the Marid, one tribal rank higher (Bloodsworn instead of Sworn). Both the Ananta Dreamstaff currency and the True Griffin Whistle are bound, so there's no shortcut here either — push to Rank 8 and buy it outright for 18 Dreamstaff."
+  },
+  {
+    id: 21048, name: "Striped Ray", itemName: "Striped Ray Whistle", category: "tribal",
+    source: "Kojin tribal quests, Bloodsworn rank (Rank 8)",
+    vendor: { name: "Shikitahe", zone: "The Ruby Sea", coords: "X:29.3 Y:16.8" },
+    cost: { currency: "Kojin Sango", currencyId: 21081, qty: 12, marketable: false },
+    itemMarketable: false,
+    take: "Kojin Sango is bound the moment you earn it, and the Striped Ray Whistle can't be resold either, so there's no way to buy around this one. Reach Bloodsworn with the Kojin and buy it outright for 12 Sango."
+  },
+  {
+    id: 23022, name: "Mikoshi", itemName: "Mikoshi Flute", category: "tribal",
+    source: "Namazu tribal quests, Bloodsworn rank (Rank 8)",
+    vendor: { name: "Gyosho", zone: "The Azim Steppe", coords: "X:5.8 Y:23.4" },
+    cost: { currency: "Namazu Koban", currencyId: 22525, qty: 20, marketable: false },
+    itemMarketable: false,
+    take: "Both the Namazu Koban currency and the Mikoshi Flute are bound, so it's Bloodsworn rank or nothing. Reach Bloodsworn with the Namazu and buy it outright for 20 Koban."
+  },
+  {
+    id: 28117, name: "Portly Porxie", itemName: "Portly Porxie Horn", category: "tribal",
+    source: "Pixie tribal quests, Sworn rank (Rank 7)",
+    vendor: { name: "Jul Oul", zone: "Il Mheg", coords: "X:12.5 Y:32.8" },
+    cost: { currency: "Fae Fancy", currencyId: 28186, qty: 18, marketable: false },
+    itemMarketable: false,
+    take: "Both the Fae Fancy currency and the Portly Porxie Horn are bound, so there's no way to shortcut this one either. Reach Sworn rank with the Pixies and buy it outright for 18 Fancies."
+  },
+  {
+    id: 30860, name: "Rolling Tankard", itemName: "Rolling Tankard Ignition Key", category: "tribal",
+    source: "Dwarf tribal quests, Sworn rank (Rank 7)",
+    vendor: { name: "Mizutt", zone: "Lakeland", coords: "X:9.4 Y:13.0" },
+    cost: { currency: "Hammered Frogment", currencyId: 28188, qty: 18, marketable: false },
+    itemMarketable: false,
+    take: "Both the Hammered Frogment currency and the Rolling Tankard Ignition Key are bound, so there's no market shortcut here either. Reach Sworn rank with the Dwarves and buy it outright for 18 Frogments."
+  },
+  {
+    id: 30103, name: "Great Vessel of Ronka", itemName: "Ronkan Flute", category: "tribal",
+    source: "Qitari tribal quests, Sworn rank (Rank 7)",
+    vendor: { name: "Yuqurl Manl", zone: "The Rak'tika Greatwood", coords: "X:37.2 Y:17.2" },
+    cost: { currency: "Qitari Compliment", currencyId: 28187, qty: 18, marketable: false },
+    itemMarketable: false,
+    take: "Both the Qitari Compliment currency and the Ronkan Flute are bound, so grinding reputation is the only route. Reach Sworn rank with the Qitari and buy it outright for 18 Compliments."
+  },
+  {
+    id: 36907, name: "Hippo Cart", itemName: "Hippo Cart Horn", category: "tribal",
+    source: "Arkasodara tribal quests, Sworn rank (Rank 7)",
+    vendor: { name: "Ghanta", zone: "Thavnair", coords: "X:20.4 Y:28.4" },
+    cost: { currency: "Arkasodara Pana", currencyId: 36657, qty: 18, marketable: false },
+    itemMarketable: false,
+    take: "Both the Arkasodara Pana currency and the Hippo Cart Horn itself are bound, so there's no way to buy your way past this one. Reach Sworn rank with the Arkasodara and buy it outright for 18 Pana."
+  },
+  {
+    id: 38456, name: "Miw Miisv", itemName: "Miw Miisv Horn", category: "tribal",
+    source: "Omicron tribal quests, Sworn rank (Rank 7)",
+    vendor: { name: "N-0598", zone: "Ultima Thule", coords: "X:27.7 Y:24.7" },
+    cost: { currency: "Omicron Omnitoken", currencyId: 37854, qty: 18, marketable: false },
+    itemMarketable: false,
+    take: "Both the Omicron Omnitoken currency and the Miw Miisv Horn are bound, so Sworn rank with the Omicron and 18 Omnitokens is the only route."
+  },
+  {
+    id: 39485, name: "Moon-hopper", itemName: "Moon-hopper Identification Key", category: "tribal",
+    source: "Loporrit tribal quests, Sworn rank (Rank 7)",
+    vendor: { name: "Coiningway", zone: "Mare Lamentorum", coords: "X:17.4 Y:15.8" },
+    cost: { currency: "Loporrit Carat", currencyId: 38952, qty: 18, marketable: false },
+    itemMarketable: false,
+    take: "Both the Loporrit Carat currency and the Identification Key are bound. Sworn rank with the Loporrit and 18 Carats is the only path to this one."
+  },
+  {
+    id: 46830, name: "Vurgar the Loyal", itemName: "Vurgar the Loyal Horn", category: "tribal",
+    source: "Yok Huy tribal quests, Sworn rank (Rank 7)",
+    vendor: { name: "Rarkorgor", zone: "Urqopacha", coords: "X:31.2 Y:37.3" },
+    cost: { currency: "Yok Huy Ward", currencyId: 46178, qty: 18, marketable: false },
+    itemMarketable: false,
+    take: "Both the Yok Huy Ward currency and the Vurgar the Loyal Horn are bound, so there's no shortcut here. Reach Sworn rank with the Yok Huy through dailies and buy it outright for 18 Wards."
+  },
+  {
+    id: 47977, name: "Branchbearer", itemName: "Branchbearer Horn", category: "tribal",
+    source: "Mamool Ja tribal quests, Trusted rank (Rank 4)",
+    vendor: { name: "Veerul Ja", zone: "Yak T'el", coords: "X:33.3 Y:36.0" },
+    cost: { currency: "Mamool Ja Nanook", currencyId: 48084, qty: 18, marketable: false },
+    itemMarketable: false,
+    take: "Both the Mamool Ja Nanook currency and the Branchbearer Horn are bound. Trusted rank is the lowest reputation tier of any tribal mount on this list, so it's the fastest grind here, but still no way to buy past it."
+  },
+  {
+    id: 44497, name: "Punutiy", itemName: "Punutiy Horn", category: "tribal",
+    source: "Pelupelu tribal quests, Respected rank (Rank 5)",
+    vendor: { name: "Pavli", zone: "Kozama'uka", coords: "X:37.0 Y:16.0" },
+    cost: { currency: "Pelu Pelplume", currencyId: 44472, qty: 18, marketable: false },
+    itemMarketable: false,
+    take: "Both the Pelu Pelplume currency and the Punutiy Horn are bound, so it's dailies to Respected rank and 18 Pelplumes, no way around it."
   },
   {
     id: 14083, name: "Zu", itemName: "Zu Horn", category: "voyage",
@@ -310,7 +501,7 @@ function drawChips() {
 
 function costCell(it) {
   const icon = ICON_PATHS[it.cost.currencyId] ? `<img class="currency-icon" src="${ICON(it.cost.currencyId)}" alt="" loading="lazy">` : "";
-  return `<div class="cost">${icon}${it.cost.qty}<small>${it.cost.currency}</small></div>`;
+  return `<div class="cost">${icon}${fmt(it.cost.qty)}<small>${it.cost.currency}</small></div>`;
 }
 
 // Live pricing: fetched client-side from Universalis on load, not baked in at
@@ -453,7 +644,9 @@ function priceCell(it) {
   const parts = [];
   parts.push(it.cost.marketable
     ? priceBlock(it.cost.currency, it.cost.currencyId, it.cost.qty)
-    : `<span class="na">${it.cost.currency}: not marketboardable</span>`);
+    : it.cost.currencyId === null
+      ? `<span class="na">Flat cost: ${fmt(it.cost.qty)} gil</span>`
+      : `<span class="na">${it.cost.currency}: not marketboardable</span>`);
   parts.push(it.itemMarketable
     ? priceBlock(it.itemName, it.id)
     : `<span class="na">${it.itemName}: untradeable</span>`);
