@@ -220,17 +220,15 @@ const ITEMS = [
     vendor: { name: "Resident Caretaker / Spoils Collector", zone: "any housing ward", coords: "" },
     cost: { currency: "Iron Voyage Spoil", currencyId: 15112, qty: 1, marketable: false },
     itemMarketable: true,
-    itemPrice: { low: 100000, avg: 168769, perDay: 20, world: "Lamia" },
     take: "Iron Voyage Spoil only drops as RNG loot from FC airship voyages, and it isn't marketboardable itself — but the Zu Horn it turns into is one of only a small handful of mount items that can be resold. Skip the voyage grind entirely and just buy it outright."
   },
   {
     id: 41650, name: "Island Adenium", itemName: "Island Adenium Whistle", category: "island", v: "buyMats",
     source: "Island Sanctuary, Sanctuary Rank 19 + Felicitous Favors unlocked",
     vendor: { name: "The Horrendous Hoarder", zone: "Unnamed Island", coords: "X:12.6 Y:28.3" },
-    cost: { currency: "Vegetal Voucher", currencyId: 41709, qty: 200, marketable: true, price: { low: 2500, avg: 4361, perDay: 204, world: "Ultros" } },
+    cost: { currency: "Vegetal Voucher", currencyId: 41709, qty: 200, marketable: true },
     itemMarketable: true,
-    itemPrice: { low: 979999, avg: 1385379, perDay: 13, world: "Lamia" },
-    take: "Both the Vegetal Voucher currency and the finished whistle are tradeable, so Island Sanctuary is fully optional here. Buying 200 Vegetal Vouchers runs about half the price of buying the Island Adenium Whistle outright — mats are the better deal unless you just want it right now."
+    take: "Both the Vegetal Voucher currency and the finished whistle are tradeable, so Island Sanctuary is fully optional here. Buying 200 Vegetal Vouchers has historically run well under the price of buying the Island Adenium Whistle outright — check the live numbers below, but mats are usually the better deal."
   }
 ];
 
@@ -250,10 +248,57 @@ function costCell(it) {
   return `<div class="cost">${icon}${it.cost.qty}<small>${it.cost.currency}</small></div>`;
 }
 
-function priceBlock(label, id, price, qty) {
+// Live pricing: fetched client-side from Universalis on load, not baked in at
+// build time, since (unlike the time-boxed Hunt for Astronomy event) this guide
+// is meant to stay accurate as a long-lived reference. Individual per-item
+// requests, not a batched multi-id one — batched Universalis requests were
+// unreliable (504s) during testing; individual ones were consistently fine.
+const priceCache = {};   // id -> {low, world, avg, perDay} | null (null = failed/no data)
+const priceLoading = new Set();
+
+function priceIdsNeeded() {
+  const ids = new Set();
+  ITEMS.forEach(it => {
+    if (it.cost.marketable) ids.add(it.cost.currencyId);
+    if (it.itemMarketable) ids.add(it.id);
+  });
+  return [...ids];
+}
+
+async function fetchLivePrice(id) {
+  try {
+    const ctrl = new AbortController();
+    const timeout = setTimeout(() => ctrl.abort(), 12000);
+    const res = await fetch(`https://universalis.app/api/v2/North-America/${id}`, { signal: ctrl.signal });
+    clearTimeout(timeout);
+    if (!res.ok) { priceCache[id] = null; return; }
+    const d = await res.json();
+    if (!d.hasData || !d.listings || !d.listings.length) { priceCache[id] = null; return; }
+    const low = d.listings.reduce((a, b) => a.pricePerUnit < b.pricePerUnit ? a : b);
+    priceCache[id] = { low: low.pricePerUnit, world: low.worldName, avg: Math.round(d.averagePrice || 0), perDay: Math.round(d.regularSaleVelocity || 0) };
+  } catch (e) {
+    priceCache[id] = null;
+  }
+}
+
+async function loadPrices() {
+  // Sequential, not parallel: firing every request at once made Universalis
+  // drop/slow some of them during testing; one at a time was consistently fine.
+  for (const id of priceIdsNeeded()) {
+    await fetchLivePrice(id);
+    priceLoading.delete(id);
+    render();
+  }
+}
+
+function priceBlock(label, id, qty) {
   const links = `<span class="lk"><a href="${ULT(id)}" target="_blank" rel="noopener noreferrer">Ultros NA</a><a href="${UNI(id)}" target="_blank" rel="noopener noreferrer">Universalis</a></span>`;
+  if (priceLoading.has(id)) {
+    return `<div class="price-block"><span class="na">${label}: marketboardable</span><span class="na">Checking live price…</span></div>`;
+  }
+  const price = priceCache[id];
   if (!price) {
-    return `<div class="price-block"><span class="na">${label}: marketboardable</span><span class="na">price not captured</span>${links}</div>`;
+    return `<div class="price-block"><span class="na">${label}: marketboardable</span><span class="na">Live price check failed</span>${links}</div>`;
   }
   const totalFrag = qty && qty > 1 ? ` &middot; ≈ ${fmt(price.low * qty)} gil for ${qty}` : "";
   return `<div class="price-block">
@@ -268,10 +313,10 @@ function priceBlock(label, id, price, qty) {
 function priceCell(it) {
   const parts = [];
   parts.push(it.cost.marketable
-    ? priceBlock(it.cost.currency, it.cost.currencyId, it.cost.price, it.cost.qty)
+    ? priceBlock(it.cost.currency, it.cost.currencyId, it.cost.qty)
     : `<span class="na">${it.cost.currency}: not marketboardable</span>`);
   parts.push(it.itemMarketable
-    ? priceBlock(it.itemName, it.id, it.itemPrice)
+    ? priceBlock(it.itemName, it.id)
     : `<span class="na">${it.itemName}: untradeable</span>`);
   return `<div class="price">${parts.join("")}</div>`;
 }
@@ -303,7 +348,9 @@ function render() {
 $("#mbOnly").addEventListener("change", e => { state.mbOnly = e.target.checked; render(); });
 $("#sort").addEventListener("change", e => { state.sort = e.target.value; render(); });
 
+priceIdsNeeded().forEach(id => priceLoading.add(id));
 render();
+loadPrices();
 </script>
 <script type="application/ld+json">
 {
