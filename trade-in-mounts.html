@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-T5W5558V82"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-T5W5558V82');
+</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trade-In Mounts: Grind vs. Buy the Mats</title>
+<meta name="description" content="Every mount unlocked by trading in items or currency, whether the trade-in materials are marketboardable, and a straight verdict on grinding it out versus buying your way there.">
+<link rel="canonical" href="https://malobear.github.io/ffxiv-tools/trade-in-mounts.html">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta name="theme-color" content="#12151c">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="FFXIV Tools & Links">
+<meta property="og:title" content="Trade-In Mounts: Grind vs. Buy the Mats">
+<meta property="og:description" content="Every mount unlocked by trading in items or currency, whether the trade-in materials are marketboardable, and a straight verdict on grinding it out versus buying your way there.">
+<meta property="og:url" content="https://malobear.github.io/ffxiv-tools/trade-in-mounts.html">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Trade-In Mounts: Grind vs. Buy the Mats">
+<meta name="twitter:description" content="Every mount unlocked by trading in items or currency, whether the trade-in materials are marketboardable, and a straight verdict on grinding it out versus buying your way there.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#EDF0F3; --surface:#F8F9FB; --ink:#18233B; --muted:#56617A; --rule:#C8D0DB;
+  --cyan:#1B7C93; --moss:#4E6A2C; --gold:#94640E; --rose:#9A3F55; --slate:#6B7385;
+  --chip:#E1E6EC; --focus:#1B7C93;
+  --display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body:"Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#131A29; --surface:#1A2336; --ink:#E4E9F1; --muted:#9BA6B9; --rule:#2E3A52;
+    --cyan:#63C3D8; --moss:#A5C674; --gold:#E3B45E; --rose:#E08AA0; --slate:#A3ABBD;
+    --chip:#243049; --focus:#63C3D8;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#131A29; --surface:#1A2336; --ink:#E4E9F1; --muted:#9BA6B9; --rule:#2E3A52;
+  --cyan:#63C3D8; --moss:#A5C674; --gold:#E3B45E; --rose:#E08AA0; --slate:#A3ABBD;
+  --chip:#243049; --focus:#63C3D8;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55}
+a{color:var(--cyan);text-underline-offset:2px}
+a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:3px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+img{max-width:100%}
+
+.site-nav{display:flex;flex-wrap:wrap;align-items:center;gap:10px 20px;padding:18px 0 0;font-size:14px}
+.site-nav a{color:var(--muted);text-decoration:none;border-bottom:2px solid transparent;padding-bottom:2px}
+.site-nav a:hover{color:var(--ink)}
+.site-footer{border-top:1px solid var(--rule);margin-top:32px;padding-top:20px;font-size:14px;color:var(--muted)}
+.site-footer p{margin:6px 0}
+.site-footer .legal{margin-top:10px;font-size:13px;opacity:.75}
+
+header.hero{padding:28px 0 12px}
+.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(34px,6vw,56px);line-height:1.05;letter-spacing:-.02em;margin:0 0 14px;max-width:18ch}
+.hero .lede{max-width:64ch;color:var(--muted);margin:0 0 6px}
+.wip-note{background:var(--surface);border-left:4px solid var(--gold);padding:12px 16px;margin:20px 0 0;max-width:78ch;font-size:15px;color:var(--muted)}
+
+section{padding:36px 0 8px}
+h2{font-family:var(--display);font-weight:800;font-size:clamp(24px,3.4vw,34px);letter-spacing:-.01em;margin:0 0 6px}
+.sub{color:var(--muted);margin:0 0 20px;max-width:70ch}
+
+.controls{position:sticky;top:0;z-index:5;background:var(--paper);padding:12px 0;border-bottom:1px solid var(--rule);display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font:14px var(--body);border:1px solid var(--rule);background:var(--surface);color:var(--ink);padding:5px 11px;border-radius:999px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.ctl{font-size:14px;color:var(--muted);display:flex;align-items:center;gap:6px}
+select{font:14px var(--body);background:var(--surface);color:var(--ink);border:1px solid var(--rule);border-radius:6px;padding:4px 6px}
+
+.list{list-style:none;margin:0;padding:0}
+.item{border-bottom:1px solid var(--rule);display:grid;grid-template-columns:100px 1fr 220px;gap:0 14px;padding:16px 0;align-items:start}
+.item.hidden{display:none}
+.cost{font-family:var(--display);font-weight:800;font-size:24px;line-height:1.15;text-align:left}
+.cost .currency-icon{width:22px;height:22px;border-radius:4px;vertical-align:-5px;margin-right:4px}
+.cost small{display:block;font:12px var(--body);color:var(--muted);margin-top:3px;font-weight:400}
+.main h3{font-family:var(--display);font-weight:600;font-size:19px;margin:0;line-height:1.25;display:flex;align-items:center;gap:8px}
+.main h3 a{color:var(--ink);text-decoration:none}
+.main h3 a:hover{text-decoration:underline}
+.item-icon{width:32px;height:32px;border-radius:5px;flex:none;background:var(--surface);border:1px solid var(--rule)}
+.meta{font-size:14px;color:var(--muted);margin:2px 0 6px}
+.tag{display:inline-block;font-size:13px;font-weight:700;color:var(--v);border:1px solid var(--v);border-radius:4px;padding:0 6px;margin-right:6px;vertical-align:1px}
+.take{margin:0;max-width:68ch}
+.v-grind{--v:var(--gold)} .v-buyMats{--v:var(--moss)} .v-buyMount{--v:var(--rose)}
+.price{font-size:14px}
+.price .na{color:var(--muted);display:block;margin-bottom:2px}
+.price .big{font-family:var(--display);font-weight:800;font-size:20px;font-variant-numeric:tabular-nums;display:block;line-height:1.1}
+.price .lk a{display:inline-block;margin-right:8px}
+.empty{padding:24px 0;color:var(--muted)}
+
+footer{padding:40px 0 60px;color:var(--muted);font-size:15px}
+footer h2{color:var(--ink)}
+footer ul{padding-left:18px;max-width:78ch}
+footer li{margin:5px 0}
+
+@media (max-width:760px){
+  body{font-size:16px}
+  .item{grid-template-columns:1fr;gap:8px}
+  .cost{order:1}
+  .main{order:0}
+  .price{order:2}
+  .controls{position:static}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<nav class="site-nav">
+  <a href="./">Tools I use</a>
+  <a href="watchlist.html">Watchlist</a>
+  <a href="plugins.html">Plugins</a>
+  <a href="venues.html">Venues</a>
+</nav>
+
+<header class="hero">
+  <h1>Trade-in mounts: grind vs. buy the mats</h1>
+  <p class="lede">Every mount unlocked by trading in items or currency: what you actually need, where to turn it in, whether the trade-in materials (or the mount itself) are marketboardable, and a straight verdict on grinding it out versus buying your way there.</p>
+  <div class="wip-note">Pilot page: one mount in so far, while the format gets worked out before a full data-gathering pass across every trade-in mount. Not linked from the main list yet.</div>
+</header>
+
+<section id="items">
+  <h2>Every mount</h2>
+  <p class="sub">Prices, where shown, are live North America region lowest listings and recent average sale price from the Universalis API.</p>
+
+  <div class="controls" role="region" aria-label="Filters">
+    <div class="chips" id="chips"></div>
+    <label class="ctl"><input type="checkbox" id="mbOnly"> Trade-in is marketboardable</label>
+    <label class="ctl">Sort
+      <select id="sort">
+        <option value="shop">List order</option>
+        <option value="verdict">By verdict</option>
+      </select>
+    </label>
+  </div>
+
+  <ul class="list" id="list"></ul>
+  <p class="empty" id="empty" hidden>No mounts match these filters. Pick "All" to see the full list.</p>
+</section>
+
+<footer>
+  <h2>Sources and how this was built</h2>
+  <ul>
+    <li>Acquisition details (cost, reputation rank, vendor, tradeability): <a href="https://ffxiv.consolegameswiki.com/" target="_blank" rel="noopener noreferrer">Console Games Wiki</a> item pages, checked directly rather than taken from Teamcraft.</li>
+    <li>Market prices: lowest current listing and recent average sale price, pulled live from the <a href="https://universalis.app/" target="_blank" rel="noopener noreferrer">Universalis</a> API for the North America region, for any trade-in material that turns out to be marketboardable.</li>
+    <li>Item IDs and icons: <a href="https://github.com/xivapi/ffxiv-datamining" target="_blank" rel="noopener noreferrer">xivapi/ffxiv-datamining</a> Item.csv, icons served via XIVAPI.</li>
+  </ul>
+
+  <div class="site-footer">
+    <p>See the <a href="./">main list</a> for the rest of the tools I use.</p>
+    <p>Source on <a href="https://github.com/malobear/ffxiv-tools" target="_blank" rel="noopener noreferrer">GitHub</a>. See something missing? Open a PR or ping me.</p>
+    <p class="legal">FINAL FANTASY XIV is a registered trademark of Square Enix Holdings Co., Ltd. This is an unofficial, fan-made list, not affiliated with or endorsed by Square Enix.</p>
+  </div>
+</footer>
+</div>
+
+<script>
+const TC = id => `https://ffxivteamcraft.com/db/en/item/${id}`;
+const GT = id => `https://www.garlandtools.org/db/#item/${id}`;
+const UNI = id => `https://universalis.app/market/${id}`;
+const ULT = id => `https://ultros.app/item/North-America/${id}`;
+
+// Game icon paths, from XIVAPI's Item sheet (Icon field).
+const ICON_PATHS = {
+  21904: "026000/026038", // Marid Horn
+  21935: "065000/065061"  // Ananta Dreamstaff
+};
+const ICON = id => `https://beta.xivapi.com/api/1/asset?path=ui/icon/${ICON_PATHS[id]}.tex&format=png`;
+
+const VERDICTS = {
+  grind: { label: "Grind it out", blurb: "No market shortcut exists for the trade-in currency or the mount itself — reputation and dailies only." },
+  buyMats: { label: "Buy the mats", blurb: "The trade-in materials are marketboardable — skip the grind and buy your way to the turn-in." },
+  buyMount: { label: "Just buy the mount", blurb: "The mount item itself is resellable. Rare, but worth checking before you grind for it." }
+};
+const ORDER = ["grind", "buyMats", "buyMount"];
+
+const ITEMS = [
+  {
+    id: 21904, name: "Marid", itemName: "Marid Horn", category: "tribal", v: "grind",
+    source: "Ananta tribal quests, Sworn rank (Rank 7)",
+    vendor: { name: "Madhura", zone: "The Fringes", coords: "X:20.9 Y:26.2" },
+    cost: { currency: "Ananta Dreamstaff", currencyId: 21935, qty: 18, marketable: false },
+    itemMarketable: false,
+    take: "Both the Ananta Dreamstaff currency and the Marid Horn itself are bound, so there's no way to buy your way past this one. Reach Sworn rank with the Ananta (three dailies a day, plus Dreamstaff turn-ins toward rank) and buy it outright for 18 Dreamstaff."
+  }
+];
+
+const fmt = n => n.toLocaleString("en-US");
+const $ = s => document.querySelector(s);
+const state = { filter: "all", mbOnly: false, sort: "shop" };
+
+function drawChips() {
+  const cats = [...new Set(ITEMS.map(i => i.category))];
+  const opts = [["all", "All"]].concat(cats.map(c => [c, c[0].toUpperCase() + c.slice(1)]));
+  $("#chips").innerHTML = opts.map(([k, l]) => `<button type="button" class="chip" data-f="${k}" aria-pressed="${state.filter === k}">${l}</button>`).join("");
+  $("#chips").querySelectorAll(".chip").forEach(b => b.addEventListener("click", () => { state.filter = b.dataset.f; render(); }));
+}
+
+function costCell(it) {
+  const icon = ICON_PATHS[it.cost.currencyId] ? `<img class="currency-icon" src="${ICON(it.cost.currencyId)}" alt="" loading="lazy">` : "";
+  return `<div class="cost">${icon}${it.cost.qty}<small>${it.cost.currency}</small></div>`;
+}
+
+function priceCell(it) {
+  if (!it.cost.marketable && !it.itemMarketable) {
+    return `<div class="price"><span class="na">${it.cost.currency}: not marketboardable</span><span class="na">${it.itemName}: untradeable</span></div>`;
+  }
+  const parts = [];
+  if (it.cost.marketable) {
+    const links = `<span class="lk"><a href="${ULT(it.cost.currencyId)}" target="_blank" rel="noopener noreferrer">Ultros NA</a><a href="${UNI(it.cost.currencyId)}" target="_blank" rel="noopener noreferrer">Universalis</a></span>`;
+    parts.push(`<span class="na">${it.cost.currency}: marketboardable</span>${links}`);
+  } else {
+    parts.push(`<span class="na">${it.cost.currency}: not marketboardable</span>`);
+  }
+  parts.push(`<span class="na">${it.itemName}: ${it.itemMarketable ? "resellable" : "untradeable"}</span>`);
+  return `<div class="price">${parts.join("")}</div>`;
+}
+
+function render() {
+  drawChips();
+  let list = ITEMS.map((it, i) => ({ ...it, _i: i }));
+  if (state.sort === "verdict") list.sort((a, b) => ORDER.indexOf(a.v) - ORDER.indexOf(b.v) || a._i - b._i);
+  const ul = $("#list");
+  ul.innerHTML = list.map(it => {
+    const hidden = (state.filter !== "all" && it.category !== state.filter) || (state.mbOnly && !it.cost.marketable);
+    return `<li class="item v-${it.v} ${hidden ? "hidden" : ""}" id="item-${it.id}">
+      ${costCell(it)}
+      <div class="main">
+        <h3><img class="item-icon" src="${ICON(it.id)}" alt="" width="32" height="32" loading="lazy"><a href="${TC(it.id)}" target="_blank" rel="noopener noreferrer">${it.name}</a></h3>
+        <div class="meta">${it.source} &middot; bought from ${it.vendor.name}, ${it.vendor.zone} (${it.vendor.coords})</div>
+        <p class="take"><span class="tag">${VERDICTS[it.v].label}</span>${it.take}</p>
+        <details><summary>Databases</summary><ul><li><a href="${TC(it.id)}" target="_blank" rel="noopener noreferrer">Teamcraft</a> <a href="${GT(it.id)}" target="_blank" rel="noopener noreferrer">Garland Tools</a></li></ul></details>
+      </div>
+      ${priceCell(it)}
+    </li>`;
+  }).join("");
+  $("#empty").hidden = list.some(it => !((state.filter !== "all" && it.category !== state.filter) || (state.mbOnly && !it.cost.marketable)));
+}
+
+$("#mbOnly").addEventListener("change", e => { state.mbOnly = e.target.checked; render(); });
+$("#sort").addEventListener("change", e => { state.sort = e.target.value; render(); });
+
+render();
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Trade-in mounts: grind vs. buy the mats",
+  "name": "Trade-In Mounts: Grind vs. Buy the Mats",
+  "description": "Every mount unlocked by trading in items or currency, whether the trade-in materials are marketboardable, and a straight verdict on grinding it out versus buying your way there.",
+  "url": "https://malobear.github.io/ffxiv-tools/trade-in-mounts.html",
+  "inLanguage": "en",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "FFXIV Tools & Links",
+    "url": "https://malobear.github.io/ffxiv-tools/"
+  }
+}
+</script>
+</body>
+</html>
