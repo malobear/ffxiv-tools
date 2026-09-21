@@ -91,7 +91,7 @@ select{font:14px var(--body);background:var(--surface);color:var(--ink);border:1
 .main h3{font-family:var(--display);font-weight:600;font-size:19px;margin:0;line-height:1.25;display:flex;align-items:center;gap:8px}
 .main h3 a{color:var(--ink);text-decoration:none}
 .main h3 a:hover{text-decoration:underline}
-.item-icon{width:32px;height:32px;border-radius:5px;flex:none;background:var(--surface);border:1px solid var(--rule)}
+.item-icon{width:44px;height:44px;border-radius:6px;flex:none;background:var(--surface);border:1px solid var(--rule);object-fit:cover}
 .meta{font-size:14px;color:var(--muted);margin:2px 0 6px}
 .tag{display:inline-block;font-size:13px;font-weight:700;color:var(--v);border:1px solid var(--v);border-radius:4px;padding:0 6px;margin-right:6px;vertical-align:1px}
 .take{margin:0;max-width:68ch}
@@ -189,6 +189,15 @@ const ICON_PATHS = {
 };
 const ICON = id => `https://beta.xivapi.com/api/1/asset?path=ui/icon/${ICON_PATHS[id]}.tex&format=png`;
 
+// Mount portrait icons, from XIVAPI's Mount sheet (Icon field) — keyed by the
+// same item id used elsewhere in ITEMS, not the Mount sheet's own row id.
+const MOUNT_ICON_PATHS = {
+  21904: "004000/004112", // Marid
+  14083: "004000/004052", // Zu
+  41650: "004000/004280"  // Island Adenium
+};
+const MOUNT_ICON = id => `https://beta.xivapi.com/api/1/asset?path=ui/icon/${MOUNT_ICON_PATHS[id]}_hr1.tex&format=png`;
+
 const VERDICTS = {
   grind: { label: "Grind it out", blurb: "No market shortcut exists for the trade-in currency or the mount itself — reputation and dailies only." },
   buyMats: { label: "Buy the mats", blurb: "The trade-in materials are marketboardable — skip the grind and buy your way to the turn-in." },
@@ -280,7 +289,7 @@ function render() {
     return `<li class="item v-${it.v} ${hidden ? "hidden" : ""}" id="item-${it.id}">
       ${costCell(it)}
       <div class="main">
-        <h3><img class="item-icon" src="${ICON(it.id)}" alt="" width="32" height="32" loading="lazy"><a href="${TC(it.id)}" target="_blank" rel="noopener noreferrer">${it.name}</a></h3>
+        <h3><img class="item-icon" src="${MOUNT_ICON(it.id)}" alt="" width="44" height="44" loading="lazy"><a href="${TC(it.id)}" target="_blank" rel="noopener noreferrer">${it.name}</a></h3>
         <div class="meta">${it.source} &middot; bought from ${it.vendor.name}, ${it.vendor.zone}${it.vendor.coords ? ` (${it.vendor.coords})` : ""}</div>
         <p class="take"><span class="tag">${VERDICTS[it.v].label}</span>${it.take}</p>
         <details><summary>Databases</summary><ul><li><a href="${TC(it.id)}" target="_blank" rel="noopener noreferrer">Teamcraft</a> <a href="${GT(it.id)}" target="_blank" rel="noopener noreferrer">Garland Tools</a></li></ul></details>
