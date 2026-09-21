@@ -95,7 +95,7 @@ select{font:14px var(--body);background:var(--surface);color:var(--ink);border:1
 .meta{font-size:14px;color:var(--muted);margin:2px 0 6px}
 .tag{display:inline-block;font-size:13px;font-weight:700;color:var(--v);border:1px solid var(--v);border-radius:4px;padding:0 6px;margin-right:6px;vertical-align:1px}
 .take{margin:0;max-width:68ch}
-.v-grind{--v:var(--gold)} .v-buyMats{--v:var(--moss)} .v-buyMount{--v:var(--rose)}
+.v-grind{--v:var(--gold)} .v-buyMats{--v:var(--moss)} .v-buyMount{--v:var(--rose)} .v-checking{--v:var(--slate)}
 .price{font-size:14px}
 .price>.na{display:block;margin-bottom:10px}
 .price-block{margin-bottom:10px}
@@ -142,7 +142,7 @@ footer li{margin:5px 0}
 <header class="hero">
   <h1>Trade-in mounts: grind vs. buy the mats</h1>
   <p class="lede">Every mount unlocked by trading in items or currency: what you actually need, where to turn it in, whether the trade-in materials (or the mount itself) are marketboardable, and a straight verdict on grinding it out versus buying your way there.</p>
-  <div class="wip-note">Pilot page: one mount in so far, while the format gets worked out before a full data-gathering pass across every trade-in mount. Not linked from the main list yet.</div>
+  <div class="wip-note">Pilot page: a few mounts in so far, while the format gets worked out before a full data-gathering pass. Scope is currently-obtainable trade-in mounts only &mdash; permanently unavailable seasonal/collab mounts won't be included. Not linked from the main list yet.</div>
 </header>
 
 <section id="items">
@@ -232,16 +232,23 @@ const MOUNT_ICON_PATHS = {
 };
 const MOUNT_ICON = id => `https://beta.xivapi.com/api/1/asset?path=ui/icon/${MOUNT_ICON_PATHS[id]}_hr1.tex&format=png`;
 
+// Verdicts are computed, not stored on each item — see computeVerdict() below.
+// When only one side of a mount is marketable, the verdict is a structural fact
+// (grind / buyMats / buyMount) that never changes. When *both* sides are
+// marketable (so far, only Island Adenium), which one is actually cheaper can
+// shift as live prices move, so that case is decided fresh on every render
+// from whatever's currently in priceCache, not hardcoded at research time.
 const VERDICTS = {
   grind: { label: "Grind it out", blurb: "No market shortcut exists for the trade-in currency or the mount itself — reputation and dailies only." },
   buyMats: { label: "Buy the mats", blurb: "The trade-in materials are marketboardable — skip the grind and buy your way to the turn-in." },
-  buyMount: { label: "Just buy the mount", blurb: "The mount item itself is resellable. Rare, but worth checking before you grind for it." }
+  buyMount: { label: "Just buy the mount", blurb: "The mount item itself is resellable. Rare, but worth checking before you grind for it." },
+  checking: { label: "Comparing prices…", blurb: "Both sides are marketable — working out which is actually cheaper right now." }
 };
-const ORDER = ["grind", "buyMats", "buyMount"];
+const ORDER = ["grind", "buyMats", "buyMount", "checking"];
 
 const ITEMS = [
   {
-    id: 21904, name: "Marid", itemName: "Marid Horn", category: "tribal", v: "grind",
+    id: 21904, name: "Marid", itemName: "Marid Horn", category: "tribal",
     source: "Ananta tribal quests, Sworn rank (Rank 7)",
     vendor: { name: "Madhura", zone: "The Fringes", coords: "X:20.9 Y:26.2" },
     cost: { currency: "Ananta Dreamstaff", currencyId: 21935, qty: 18, marketable: false },
@@ -249,7 +256,7 @@ const ITEMS = [
     take: "Both the Ananta Dreamstaff currency and the Marid Horn itself are bound, so there's no way to buy your way past this one. Reach Sworn rank with the Ananta (three dailies a day, plus Dreamstaff turn-ins toward rank) and buy it outright for 18 Dreamstaff."
   },
   {
-    id: 14083, name: "Zu", itemName: "Zu Horn", category: "voyage", v: "buyMount",
+    id: 14083, name: "Zu", itemName: "Zu Horn", category: "voyage",
     source: "Free Company airship voyage loot (Sea of Clouds – Sector 24)",
     vendor: { name: "Resident Caretaker / Spoils Collector", zone: "any housing ward", coords: "" },
     cost: { currency: "Iron Voyage Spoil", currencyId: 15112, qty: 1, marketable: false },
@@ -257,7 +264,7 @@ const ITEMS = [
     take: "Iron Voyage Spoil only drops as RNG loot from FC airship voyages, and it isn't marketboardable itself — but the Zu Horn it turns into is one of only a small handful of mount items that can be resold. Skip the voyage grind entirely and just buy it outright."
   },
   {
-    id: 41650, name: "Island Adenium", itemName: "Island Adenium Whistle", category: "island", v: "buyMats",
+    id: 41650, name: "Island Adenium", itemName: "Island Adenium Whistle", category: "island",
     source: "Island Sanctuary, Sanctuary Rank 19 + Felicitous Favors unlocked",
     vendor: { name: "The Horrendous Hoarder", zone: "Unnamed Island", coords: "X:12.6 Y:28.3" },
     cost: { currency: "Vegetal Voucher", currencyId: 41709, qty: 200, marketable: true },
@@ -427,9 +434,25 @@ function priceCell(it) {
 
 const hasShortcut = it => it.cost.marketable || it.itemMarketable;
 
+// Structural cases (only one side marketable, or neither) are fixed facts.
+// The "both marketable" case is decided fresh from whatever prices are
+// currently loaded, so it can change as prices move or as a refresh lands —
+// "checking" means we don't have both numbers yet to compare.
+function computeVerdict(it) {
+  if (!it.cost.marketable && !it.itemMarketable) return "grind";
+  if (it.cost.marketable && !it.itemMarketable) return "buyMats";
+  if (!it.cost.marketable && it.itemMarketable) return "buyMount";
+  const region = state.region;
+  const matsPrice = priceCache[cacheKey(region, it.cost.currencyId)];
+  const itemPrice = priceCache[cacheKey(region, it.id)];
+  if (!matsPrice || !itemPrice) return "checking";
+  const totalMats = matsPrice.low * it.cost.qty;
+  return totalMats <= itemPrice.low ? "buyMats" : "buyMount";
+}
+
 function render() {
   drawChips();
-  let list = ITEMS.map((it, i) => ({ ...it, _i: i }));
+  let list = ITEMS.map((it, i) => ({ ...it, _i: i, v: computeVerdict(it) }));
   if (state.sort === "verdict") list.sort((a, b) => ORDER.indexOf(a.v) - ORDER.indexOf(b.v) || a._i - b._i);
   const ul = $("#list");
   const isHidden = it => (state.filter !== "all" && it.category !== state.filter) || (state.mbOnly && !hasShortcut(it));
