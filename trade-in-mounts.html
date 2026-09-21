@@ -81,6 +81,10 @@ h2{font-family:var(--display);font-weight:800;font-size:clamp(24px,3.4vw,34px);l
 .chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 .chip:disabled{opacity:.6;cursor:default}
 #refreshPrices{margin-left:auto}
+.price-progress{color:var(--muted);font-size:13px;margin:-8px 0 14px;display:flex;align-items:center;gap:7px}
+.price-progress[hidden]{display:none}
+.price-progress::before{content:"";width:11px;height:11px;flex:none;border:2px solid var(--rule);border-top-color:var(--cyan);border-radius:50%;animation:spin .7s linear infinite}
+@media (prefers-reduced-motion:reduce){.price-progress::before{animation:none;border-top-color:var(--cyan)}}
 .ctl{font-size:14px;color:var(--muted);display:flex;align-items:center;gap:6px}
 select{font:14px var(--body);background:var(--surface);color:var(--ink);border:1px solid var(--rule);border-radius:6px;padding:4px 6px}
 
@@ -188,6 +192,7 @@ footer li{margin:5px 0}
     </label>
     <button type="button" id="refreshPrices" class="chip">Refresh prices</button>
   </div>
+  <p class="price-progress" id="priceProgress" hidden></p>
 
   <ul class="list" id="list"></ul>
   <p class="empty" id="empty" hidden>No mounts match these filters. Pick "All" to see the full list.</p>
@@ -382,11 +387,21 @@ function seedPriceState() {
   });
 }
 
+function setProgress(done, total) {
+  const el = $("#priceProgress");
+  if (done >= total) { el.hidden = true; return; }
+  el.hidden = false;
+  el.textContent = `Loading live prices… ${done} of ${total}`;
+}
+
 async function loadPrices() {
   const region = state.region;
+  const ids = priceIdsNeeded();
+  setProgress(0, ids.length);
   // Sequential, not parallel: firing every request at once made Universalis
   // drop/slow some of them during testing; one at a time was consistently fine.
-  for (const id of priceIdsNeeded()) {
+  for (let i = 0; i < ids.length; i++) {
+    const id = ids[i];
     const key = cacheKey(region, id);
     const result = await fetchLivePrice(id, region);
     priceLoading.delete(key);
@@ -400,6 +415,7 @@ async function loadPrices() {
     } else {
       priceFailed.add(key); // keep whatever's already cached, just mark it stale
     }
+    setProgress(i + 1, ids.length);
     render();
   }
 }
