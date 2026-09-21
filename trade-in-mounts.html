@@ -97,6 +97,9 @@ select{font:14px var(--body);background:var(--surface);color:var(--ink);border:1
 .take{margin:0;max-width:68ch}
 .v-grind{--v:var(--gold)} .v-buyMats{--v:var(--moss)} .v-buyMount{--v:var(--rose)}
 .price{font-size:14px}
+.price>.na{display:block;margin-bottom:10px}
+.price-block{margin-bottom:10px}
+.price-block:last-child{margin-bottom:0}
 .price .na{color:var(--muted);display:block;margin-bottom:2px}
 .price .big{font-family:var(--display);font-weight:800;font-size:20px;font-variant-numeric:tabular-nums;display:block;line-height:1.1}
 .price .lk a{display:inline-block;margin-right:8px}
@@ -140,7 +143,7 @@ footer li{margin:5px 0}
 
   <div class="controls" role="region" aria-label="Filters">
     <div class="chips" id="chips"></div>
-    <label class="ctl"><input type="checkbox" id="mbOnly"> Trade-in is marketboardable</label>
+    <label class="ctl"><input type="checkbox" id="mbOnly"> Has a market shortcut</label>
     <label class="ctl">Sort
       <select id="sort">
         <option value="shop">List order</option>
@@ -178,7 +181,9 @@ const ULT = id => `https://ultros.app/item/North-America/${id}`;
 // Game icon paths, from XIVAPI's Item sheet (Icon field).
 const ICON_PATHS = {
   21904: "026000/026038", // Marid Horn
-  21935: "065000/065061"  // Ananta Dreamstaff
+  21935: "065000/065061", // Ananta Dreamstaff
+  14083: "026000/026038", // Zu Horn
+  15112: "025000/025951"  // Iron Voyage Spoil
 };
 const ICON = id => `https://beta.xivapi.com/api/1/asset?path=ui/icon/${ICON_PATHS[id]}.tex&format=png`;
 
@@ -197,6 +202,15 @@ const ITEMS = [
     cost: { currency: "Ananta Dreamstaff", currencyId: 21935, qty: 18, marketable: false },
     itemMarketable: false,
     take: "Both the Ananta Dreamstaff currency and the Marid Horn itself are bound, so there's no way to buy your way past this one. Reach Sworn rank with the Ananta (three dailies a day, plus Dreamstaff turn-ins toward rank) and buy it outright for 18 Dreamstaff."
+  },
+  {
+    id: 14083, name: "Zu", itemName: "Zu Horn", category: "voyage", v: "buyMount",
+    source: "Free Company airship voyage loot (Sea of Clouds – Sector 24)",
+    vendor: { name: "Resident Caretaker / Spoils Collector", zone: "any housing ward", coords: "" },
+    cost: { currency: "Iron Voyage Spoil", currencyId: 15112, qty: 1, marketable: false },
+    itemMarketable: true,
+    itemPrice: { low: 100000, avg: 168769, perDay: 20, world: "Lamia" },
+    take: "Iron Voyage Spoil only drops as RNG loot from FC airship voyages, and it isn't marketboardable itself — but the Zu Horn it turns into is one of only a small handful of mount items that can be resold. Skip the voyage grind entirely and just buy it outright."
   }
 ];
 
@@ -216,40 +230,54 @@ function costCell(it) {
   return `<div class="cost">${icon}${it.cost.qty}<small>${it.cost.currency}</small></div>`;
 }
 
+function priceBlock(label, id, price, qty) {
+  const links = `<span class="lk"><a href="${ULT(id)}" target="_blank" rel="noopener noreferrer">Ultros NA</a><a href="${UNI(id)}" target="_blank" rel="noopener noreferrer">Universalis</a></span>`;
+  if (!price) {
+    return `<div class="price-block"><span class="na">${label}: marketboardable</span><span class="na">price not captured</span>${links}</div>`;
+  }
+  const totalFrag = qty && qty > 1 ? ` &middot; ≈ ${fmt(price.low * qty)} gil for ${qty}` : "";
+  return `<div class="price-block">
+    <span class="na">${label}: marketboardable</span>
+    <span class="big">${fmt(price.low)}</span>
+    <span class="na">lowest, ${price.world} (NA)${totalFrag}</span>
+    <span class="na">average sale ${fmt(price.avg)}${price.perDay ? `, ~${price.perDay}/day` : ""}</span>
+    ${links}
+  </div>`;
+}
+
 function priceCell(it) {
-  if (!it.cost.marketable && !it.itemMarketable) {
-    return `<div class="price"><span class="na">${it.cost.currency}: not marketboardable</span><span class="na">${it.itemName}: untradeable</span></div>`;
-  }
   const parts = [];
-  if (it.cost.marketable) {
-    const links = `<span class="lk"><a href="${ULT(it.cost.currencyId)}" target="_blank" rel="noopener noreferrer">Ultros NA</a><a href="${UNI(it.cost.currencyId)}" target="_blank" rel="noopener noreferrer">Universalis</a></span>`;
-    parts.push(`<span class="na">${it.cost.currency}: marketboardable</span>${links}`);
-  } else {
-    parts.push(`<span class="na">${it.cost.currency}: not marketboardable</span>`);
-  }
-  parts.push(`<span class="na">${it.itemName}: ${it.itemMarketable ? "resellable" : "untradeable"}</span>`);
+  parts.push(it.cost.marketable
+    ? priceBlock(it.cost.currency, it.cost.currencyId, it.cost.price, it.cost.qty)
+    : `<span class="na">${it.cost.currency}: not marketboardable</span>`);
+  parts.push(it.itemMarketable
+    ? priceBlock(it.itemName, it.id, it.itemPrice)
+    : `<span class="na">${it.itemName}: untradeable</span>`);
   return `<div class="price">${parts.join("")}</div>`;
 }
+
+const hasShortcut = it => it.cost.marketable || it.itemMarketable;
 
 function render() {
   drawChips();
   let list = ITEMS.map((it, i) => ({ ...it, _i: i }));
   if (state.sort === "verdict") list.sort((a, b) => ORDER.indexOf(a.v) - ORDER.indexOf(b.v) || a._i - b._i);
   const ul = $("#list");
+  const isHidden = it => (state.filter !== "all" && it.category !== state.filter) || (state.mbOnly && !hasShortcut(it));
   ul.innerHTML = list.map(it => {
-    const hidden = (state.filter !== "all" && it.category !== state.filter) || (state.mbOnly && !it.cost.marketable);
+    const hidden = isHidden(it);
     return `<li class="item v-${it.v} ${hidden ? "hidden" : ""}" id="item-${it.id}">
       ${costCell(it)}
       <div class="main">
         <h3><img class="item-icon" src="${ICON(it.id)}" alt="" width="32" height="32" loading="lazy"><a href="${TC(it.id)}" target="_blank" rel="noopener noreferrer">${it.name}</a></h3>
-        <div class="meta">${it.source} &middot; bought from ${it.vendor.name}, ${it.vendor.zone} (${it.vendor.coords})</div>
+        <div class="meta">${it.source} &middot; bought from ${it.vendor.name}, ${it.vendor.zone}${it.vendor.coords ? ` (${it.vendor.coords})` : ""}</div>
         <p class="take"><span class="tag">${VERDICTS[it.v].label}</span>${it.take}</p>
         <details><summary>Databases</summary><ul><li><a href="${TC(it.id)}" target="_blank" rel="noopener noreferrer">Teamcraft</a> <a href="${GT(it.id)}" target="_blank" rel="noopener noreferrer">Garland Tools</a></li></ul></details>
       </div>
       ${priceCell(it)}
     </li>`;
   }).join("");
-  $("#empty").hidden = list.some(it => !((state.filter !== "all" && it.category !== state.filter) || (state.mbOnly && !it.cost.marketable)));
+  $("#empty").hidden = list.some(it => !isHidden(it));
 }
 
 $("#mbOnly").addEventListener("change", e => { state.mbOnly = e.target.checked; render(); });
