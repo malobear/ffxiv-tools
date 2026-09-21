@@ -79,6 +79,8 @@ h2{font-family:var(--display);font-weight:800;font-size:clamp(24px,3.4vw,34px);l
 .chips{display:flex;flex-wrap:wrap;gap:6px}
 .chip{font:14px var(--body);border:1px solid var(--rule);background:var(--surface);color:var(--ink);padding:5px 11px;border-radius:999px;cursor:pointer}
 .chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.chip:disabled{opacity:.6;cursor:default}
+#refreshPrices{margin-left:auto}
 .ctl{font-size:14px;color:var(--muted);display:flex;align-items:center;gap:6px}
 select{font:14px var(--body);background:var(--surface);color:var(--ink);border:1px solid var(--rule);border-radius:6px;padding:4px 6px}
 
@@ -184,6 +186,7 @@ footer li{margin:5px 0}
         </optgroup>
       </select>
     </label>
+    <button type="button" id="refreshPrices" class="chip">Refresh prices</button>
   </div>
 
   <ul class="list" id="list"></ul>
@@ -275,7 +278,16 @@ const ITEMS = [
 
 const fmt = n => n.toLocaleString("en-US");
 const $ = s => document.querySelector(s);
-const state = { filter: "all", mbOnly: false, sort: "shop", region: "North-America" };
+
+// Remembered per-user, in this browser only — not shared, not a live price.
+function loadSavedRegion() {
+  try { return localStorage.getItem("tim-region") || "North-America"; } catch (e) { return "North-America"; }
+}
+function saveRegion(region) {
+  try { localStorage.setItem("tim-region", region); } catch (e) {}
+}
+
+const state = { filter: "all", mbOnly: false, sort: "shop", region: loadSavedRegion() };
 
 const REGION_LABEL = {
   "North-America": "NA, all DCs", "Aether": "Aether", "Crystal": "Crystal", "Dynamis": "Dynamis", "Primal": "Primal",
@@ -476,11 +488,29 @@ $("#mbOnly").addEventListener("change", e => { state.mbOnly = e.target.checked; 
 $("#sort").addEventListener("change", e => { state.sort = e.target.value; render(); });
 $("#dcSelect").addEventListener("change", e => {
   state.region = e.target.value;
+  saveRegion(state.region);
   seedPriceState();
   render();
   loadPrices();
 });
 
+let refreshing = false;
+async function refreshPrices() {
+  if (refreshing) return;
+  refreshing = true;
+  const btn = $("#refreshPrices");
+  btn.disabled = true;
+  btn.textContent = "Refreshing…";
+  priceIdsNeeded().forEach(id => { priceLoading.add(cacheKey(state.region, id)); priceFailed.delete(cacheKey(state.region, id)); });
+  render();
+  await loadPrices();
+  btn.disabled = false;
+  btn.textContent = "Refresh prices";
+  refreshing = false;
+}
+$("#refreshPrices").addEventListener("click", refreshPrices);
+
+$("#dcSelect").value = state.region;
 seedPriceState();
 render();
 loadPrices();
