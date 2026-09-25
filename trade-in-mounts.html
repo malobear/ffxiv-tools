@@ -152,7 +152,7 @@ footer li{margin:5px 0}
 <header class="hero">
   <h1>Trade-in mounts: grind vs. buy the mats</h1>
   <p class="lede">Every mount unlocked by trading in items or currency: what you actually need, where to turn it in, whether the trade-in materials (or the mount itself) are marketboardable, and a straight verdict on grinding it out versus buying your way there.</p>
-  <div class="wip-note">Work in progress: every currently-obtainable tribal-quest mount is covered so far, with other trade-in categories (tomestones, Bozja/Zadnor, Island Sanctuary, seasonal currencies, Doman Mahjong) still to come. Scope is currently-obtainable trade-in mounts only &mdash; permanently unavailable seasonal/collab mounts won't be included. Not linked from the main list yet.</div>
+  <div class="wip-note">Work in progress: tribal quests, Bozja/Occult Crescent, Cosmic Exploration, the Firmament, hunt currencies, FC voyages, and Island Sanctuary are covered so far, with tomestones, Zadnor proper, and seasonal currencies still to come. Scope is currently-obtainable trade-in mounts only &mdash; permanently unavailable seasonal/collab mounts won't be included. Not linked from the main list yet.</div>
 </header>
 
 <section id="items">
@@ -243,7 +243,19 @@ const ICON_PATHS = {
   38952: "065000/065100", // Loporrit Carat
   46178: "065000/065132", // Yok Huy Ward
   48084: "065000/065116", // Mamool Ja Nanook
-  44472: "065000/065111"  // Pelu Pelplume
+  44472: "065000/065111", // Pelu Pelplume
+  31135: "065000/065082", // Bozjan Cluster
+  51977: "065000/065141", // Arcane Amulet
+  47868: "021000/021467", // Sanguinite
+  45043: "065000/065119", // Enlightenment Silver Piece
+  45690: "065000/065112", // Cosmocredit
+  52091: "026000/026176", // Auxesia Token Booklet
+  50829: "026000/026176", // Oizys Token Booklet
+  47343: "026000/026176", // Phaenna Token Booklet
+  26533: "065000/065068", // Sack of Nuts
+  13625: "026000/026169", // Clan Mark Log
+  28063: "065000/065073", // Skybuilders' Scrip
+  33870: "026000/026171"  // Fête Token
 };
 const ICON = id => `https://beta.xivapi.com/api/1/asset?path=ui/icon/${ICON_PATHS[id]}.tex&format=png`;
 
@@ -272,7 +284,31 @@ const MOUNT_ICON_PATHS = {
   39485: "004000/004245", // Moon-hopper
   46830: "004000/004318", // Vurgar the Loyal
   47977: "004000/004310", // Branchbearer
-  44497: "004000/004296"  // Punutiy
+  44497: "004000/004296", // Punutiy
+  30102: "004000/004175", // Construct 14
+  52266: "004000/004352", // Duck-billed Porter
+  47979: "004000/004308", // Petalodus
+  47975: "004000/004312", // Ancient Airship
+  52272: "004000/004358", // Carbide Grey Warp Loader
+  52271: "004000/004357", // Excavating Vacuum Suit
+  50446: "004000/004341", // Alert Red Warp Loader
+  50445: "004000/004340", // Rapid-fab Vacuum Suit
+  46825: "004000/004325", // Interstellar Dhalmel
+  52268: "004000/004354", // Cosmic Predator
+  50442: "004000/004337", // Cosmic Armored Weapon
+  47336: "004000/004326", // Cosmoboard
+  33674: "004000/004197", // Antelope Doe
+  32841: "004000/004190", // Big Shell
+  30862: "004000/004180", // Megalotragus
+  28125: "004000/004167", // Albino Karakul
+  28917: "004000/004168", // Ufiti
+  13287: "004000/004047", // Pegasus
+  33675: "004000/004198", // Antelope Stag
+  45071: "004000/004304", // Brachiosaur
+  44245: "004000/004291", // Automatoise
+  36909: "004000/004231", // Vinegaroon
+  28123: "004000/004165", // Forgiven Reticence
+  13288: "004000/004050"  // Wyvern
 };
 const MOUNT_ICON = id => `https://beta.xivapi.com/api/1/asset?path=ui/icon/${MOUNT_ICON_PATHS[id]}_hr1.tex&format=png`;
 
@@ -474,6 +510,198 @@ const ITEMS = [
     cost: { currency: "Vegetal Voucher", currencyId: 41709, qty: 200, marketable: true },
     itemMarketable: true,
     take: "Both the Vegetal Voucher currency and the finished whistle are tradeable, so Island Sanctuary is fully optional here. Buying 200 Vegetal Vouchers has historically run well under the price of buying the Island Adenium Whistle outright — check the live numbers below, but mats are usually the better deal."
+  },
+  {
+    id: 30102, name: "Construct 14", itemName: "Construct 14 Identification Key", category: "bozja",
+    source: "Bozjan Southern Front or Zadnor field operations",
+    vendor: { name: "Resistance Quartermaster", zone: "The Bozjan Southern Front", coords: "X:14.2 Y:29.6" },
+    cost: { currency: "Bozjan Cluster", currencyId: 31135, qty: 180, marketable: false },
+    itemMarketable: true,
+    take: "Bozjan Clusters are bound the moment you earn them, but the Construct 14 Identification Key itself can be resold — skip the Bozja grind entirely and just buy it outright."
+  },
+  {
+    id: 52266, name: "Duck-billed Porter", itemName: "Duck-billed Porter Whistle", category: "occult",
+    source: "Occult Crescent: North Horn, after completing \"In the Shadow of the Tower\"",
+    vendor: { name: "Expedition Antiquarian", zone: "The Occult Crescent: North Horn", coords: "X:39.4 Y:38.7" },
+    cost: { currency: "Arcane Amulet", currencyId: 51977, qty: 500, marketable: false },
+    itemMarketable: true,
+    take: "Arcane Amulets are bound, but the Duck-billed Porter Whistle itself is marketboardable — skip 500 Amulets of farming and just buy it outright."
+  },
+  {
+    id: 47979, name: "Petalodus", itemName: "Petalodus Whistle", category: "occult",
+    source: "Occult Crescent: South Horn, after completing \"Past and Crescent\"",
+    vendor: { name: "Expedition Antiquarian", zone: "The Occult Crescent: South Horn", coords: "X:38.1 Y:7.0" },
+    cost: { currency: "Sanguinite", currencyId: 47868, qty: 99, marketable: false },
+    itemMarketable: true,
+    take: "Sanguinite is bound, but the Petalodus Whistle is marketboardable and usually cheap — the wiki itself notes this mount drops often enough from South Horn's overworld coffers that farming 99 Sanguinite for it isn't worth the trouble. Buy it outright."
+  },
+  {
+    id: 47975, name: "Ancient Airship", itemName: "Ancient Airship Identification Key", category: "occult",
+    source: "Occult Crescent: South Horn",
+    vendor: { name: "Expedition Antiquarian", zone: "The Occult Crescent: South Horn", coords: "X:38.1 Y:7.0" },
+    cost: { currency: "Enlightenment Silver Piece", currencyId: 45043, qty: 5000, marketable: false },
+    itemMarketable: false,
+    take: "Both the Enlightenment Silver Piece currency and the Ancient Airship Identification Key are bound, so there's no shortcut here — grind out 5,000 Silver Pieces in the Occult Crescent and buy it outright."
+  },
+  {
+    id: 52272, name: "Carbide Grey Warp Loader", itemName: "Carbide Grey Warp Loader Identification Key", category: "cosmic",
+    source: "Cosmic Exploration, on Auxesia (after \"The Forests of Paradise\")",
+    vendor: { name: "Mesouaidonque", zone: "Auxesia", coords: "X:27.8 Y:29.0" },
+    cost: { currency: "Cosmocredit", currencyId: 45690, qty: 20000, marketable: false },
+    itemMarketable: true,
+    take: "Cosmocredits are bound, but the Warp Loader itself sells freely on the marketboard. Skip the exchange grind and just buy it outright."
+  },
+  {
+    id: 52271, name: "Excavating Vacuum Suit", itemName: "Excavating Vacuum Suit Identification Key", category: "cosmic",
+    source: "Cosmic Exploration, on Auxesia (after \"The Forests of Paradise\")",
+    vendor: { name: "Mesouaidonque", zone: "Auxesia", coords: "X:27.8 Y:29.0" },
+    cost: { currency: "Cosmocredit", currencyId: 45690, qty: 20000, marketable: false },
+    itemMarketable: true,
+    take: "Same shape as the other Cosmic Exploration mounts: the Cosmocredit cost is bound, but the suit itself is resellable, so buying it outright skips the exchange grind entirely."
+  },
+  {
+    id: 50446, name: "Alert Red Warp Loader", itemName: "Alert Red Warp Loader Identification Key", category: "cosmic",
+    source: "Cosmic Exploration, on Oizys (after \"Mission of Gravity\")",
+    vendor: { name: "Mesouaidonque", zone: "Oizys", coords: "X:17.4 Y:24.5" },
+    cost: { currency: "Cosmocredit", currencyId: 45690, qty: 20000, marketable: false },
+    itemMarketable: true,
+    take: "Just a recolor of the standard Warp Loader, but priced the same in Cosmocredits. Bound currency, resellable mount — buy it outright."
+  },
+  {
+    id: 50445, name: "Rapid-fab Vacuum Suit", itemName: "Rapid-fab Vacuum Suit Identification Key", category: "cosmic",
+    source: "Cosmic Exploration, on Oizys (after \"Mission of Gravity\")",
+    vendor: { name: "Mesouaidonque", zone: "Oizys", coords: "X:17.4 Y:24.5" },
+    cost: { currency: "Cosmocredit", currencyId: 45690, qty: 20000, marketable: false },
+    itemMarketable: true,
+    take: "Same deal as the rest of this set: Cosmocredits are bound, the suit isn't, so there's no reason to grind for it when it's on the board."
+  },
+  {
+    id: 46825, name: "Interstellar Dhalmel", itemName: "Interstellar Dhalmel Whistle", category: "cosmic",
+    source: "Cosmic Exploration, on Phaenna (after \"Go Forth, Brave Explorers\")",
+    vendor: { name: "Mesouaidonque", zone: "Phaenna", coords: "X:28.6 Y:13.5" },
+    cost: { currency: "Cosmocredit", currencyId: 45690, qty: 29000, marketable: false },
+    itemMarketable: true,
+    take: "The priciest of the Cosmocredit exchanges at 29,000, but same logic applies: the whistle is resellable, so buying it outright is the straightforward move."
+  },
+  {
+    id: 52268, name: "Cosmic Predator", itemName: "Cosmic Predator Identification Key", category: "cosmic",
+    source: "Cosmic Exploration, on Auxesia (after \"The Forests of Paradise\")",
+    vendor: { name: "Mesouaidonque", zone: "Auxesia", coords: "X:27.8 Y:29.0" },
+    cost: { currency: "Auxesia Token Booklet", currencyId: 52091, qty: 60, marketable: true },
+    itemMarketable: true,
+    take: "Both the Auxesia Token Booklet currency and the Cosmic Predator Identification Key are tradeable, so this one's a genuine price comparison, not a fixed answer — check the live numbers below to see which side is actually cheaper right now."
+  },
+  {
+    id: 50442, name: "Cosmic Armored Weapon", itemName: "Cosmic Armored Weapon Identification Key", category: "cosmic",
+    source: "Cosmic Exploration, on Oizys (after \"Mission of Gravity\")",
+    vendor: { name: "Mesouaidonque", zone: "Oizys", coords: "X:17.4 Y:24.5" },
+    cost: { currency: "Oizys Token Booklet", currencyId: 50829, qty: 60, marketable: true },
+    itemMarketable: true,
+    take: "Both the Oizys Token Booklet currency and the Cosmic Armored Weapon Identification Key are tradeable, so it's worth comparing live prices rather than assuming — check the numbers below before grinding either side."
+  },
+  {
+    id: 47336, name: "Cosmoboard", itemName: "Cosmoboard", category: "cosmic",
+    source: "Cosmic Exploration, on Phaenna (after \"Go Forth, Brave Explorers\")",
+    vendor: { name: "Mesouaidonque", zone: "Phaenna", coords: "X:28.6 Y:13.5" },
+    cost: { currency: "Phaenna Token Booklet", currencyId: 47343, qty: 60, marketable: true },
+    itemMarketable: true,
+    take: "Both the Phaenna Token Booklet currency and the Cosmoboard itself are tradeable, so this is a live comparison rather than a fixed call — check the numbers below to see which side actually wins right now."
+  },
+  {
+    id: 33674, name: "Antelope Doe", itemName: "Antelope Doe Horn", category: "skybuilders",
+    source: "Ishgardian Restoration, Skybuilders' Scrip exchange",
+    vendor: { name: "Enie", zone: "The Firmament", coords: "X:12.0 Y:14.0" },
+    cost: { currency: "Skybuilders' Scrip", currencyId: 28063, qty: 8400, marketable: false },
+    itemMarketable: true,
+    take: "Skybuilders' Scrips are bound, but the Antelope Doe Horn itself is resellable. Skip the Firmament grind and just buy it outright."
+  },
+  {
+    id: 32841, name: "Big Shell", itemName: "Big Shell Whistle", category: "skybuilders",
+    source: "Ishgardian Restoration, Skybuilders' Scrip exchange",
+    vendor: { name: "Enie", zone: "The Firmament", coords: "X:12.0 Y:14.0" },
+    cost: { currency: "Skybuilders' Scrip", currencyId: 28063, qty: 8400, marketable: false },
+    itemMarketable: true,
+    take: "Same shape as the other Skybuilders' Scrip mounts: the scrips are bound, but the Big Shell Whistle is resellable. Buy it outright instead of grinding scrips."
+  },
+  {
+    id: 30862, name: "Megalotragus", itemName: "Megalotragus Horn", category: "skybuilders",
+    source: "Ishgardian Restoration, Skybuilders' Scrip exchange",
+    vendor: { name: "Enie", zone: "The Firmament", coords: "X:12.0 Y:14.0" },
+    cost: { currency: "Skybuilders' Scrip", currencyId: 28063, qty: 8400, marketable: false },
+    itemMarketable: true,
+    take: "The scrips can't be bought, but the Megalotragus Horn can be resold, so skipping the grind and buying it outright is the straightforward move."
+  },
+  {
+    id: 28125, name: "Albino Karakul", itemName: "Albino Karakul Horn", category: "skybuilders",
+    source: "Ishgardian Restoration, Skybuilders' Scrip exchange",
+    vendor: { name: "Enie", zone: "The Firmament", coords: "X:12.0 Y:14.0" },
+    cost: { currency: "Skybuilders' Scrip", currencyId: 28063, qty: 8400, marketable: false },
+    itemMarketable: true,
+    take: "Bound scrips, resellable horn — buy the Albino Karakul Horn outright rather than farming 8,400 scrips."
+  },
+  {
+    id: 28917, name: "Ufiti", itemName: "Ufiti Whistle", category: "skybuilders",
+    source: "Ishgardian Restoration, Skybuilders' Scrip exchange",
+    vendor: { name: "Enie", zone: "The Firmament", coords: "X:12.0 Y:14.0" },
+    cost: { currency: "Skybuilders' Scrip", currencyId: 28063, qty: 8400, marketable: false },
+    itemMarketable: true,
+    take: "The Ufiti Whistle is resellable even though Skybuilders' Scrips aren't, so buying it outright beats grinding the Firmament for scrips."
+  },
+  {
+    id: 13287, name: "Pegasus", itemName: "Pegasus Whistle", category: "skybuilders",
+    source: "Ishgardian Restoration, Skybuilders' Scrip exchange",
+    vendor: { name: "Enie", zone: "The Firmament", coords: "X:12.0 Y:14.0" },
+    cost: { currency: "Skybuilders' Scrip", currencyId: 28063, qty: 4200, marketable: false },
+    itemMarketable: false,
+    take: "Unlike its Skybuilders' Scrip siblings, the Pegasus Whistle is bound, not resellable — so this one really is grind-only. At least the scrip cost is half the others (4,200 vs. 8,400)."
+  },
+  {
+    id: 33675, name: "Antelope Stag", itemName: "Antelope Stag Horn", category: "skybuilders",
+    source: "Ishgardian Restoration, Fête Token exchange (Fêtes: recurring 24-hour event cycles in the Firmament)",
+    vendor: { name: "Enie", zone: "The Firmament", coords: "X:12.0 Y:14.0" },
+    cost: { currency: "Fête Token", currencyId: 33870, qty: 30, marketable: false },
+    itemMarketable: true,
+    take: "Fête Tokens only come from playing the Firmament's recurring Fête minigames and are bound, but the Antelope Stag Horn itself is resellable — buy it outright instead of waiting on the next Fête cycle."
+  },
+  {
+    id: 45071, name: "Brachiosaur", itemName: "Brachiosaur Horn", category: "hunts",
+    source: "Hunt board (Sacks of Nuts), after \"The Hunt Goes On\" and \"A New Dawn, a New Hunt\"",
+    vendor: { name: "Ryubool Ja", zone: "Tuliyollal", coords: "X:13.9 Y:13.5" },
+    cost: { currency: "Sack of Nuts", currencyId: 26533, qty: 3200, marketable: false },
+    itemMarketable: false,
+    take: "Both the Sacks of Nuts and the Brachiosaur Horn are bound, so this is hunt-train grinding with no shortcut. Clear the prerequisite hunt feature quests, then buy it outright for 3,200 Sacks."
+  },
+  {
+    id: 44245, name: "Automatoise", itemName: "Automatoise Identification Key", category: "hunts",
+    source: "Hunt board (Sacks of Nuts), after \"A New Dawn, a New Hunt\"",
+    vendor: { name: "Ryubool Ja", zone: "Tuliyollal", coords: "X:13.9 Y:13.5" },
+    cost: { currency: "Sack of Nuts", currencyId: 26533, qty: 3200, marketable: false },
+    itemMarketable: false,
+    take: "Same vendor and currency as the Brachiosaur — both sides bound, so it's hunt-train grinding to 3,200 Sacks with no way to buy around it."
+  },
+  {
+    id: 36909, name: "Vinegaroon", itemName: "Vinegaroon Horn", category: "hunts",
+    source: "Hunt board (Sacks of Nuts), after \"The Hunt for Specimens\"",
+    vendor: { name: "J'lakshai", zone: "Old Sharlayan", coords: "X:11.8 Y:13.2" },
+    cost: { currency: "Sack of Nuts", currencyId: 26533, qty: 3200, marketable: false },
+    itemMarketable: false,
+    take: "Bound currency, bound mount — grind hunt trains to 3,200 Sacks of Nuts and buy it outright. (Wilmetta in Radz-at-Han sells the same thing at the same price, if that vendor's closer.)"
+  },
+  {
+    id: 28123, name: "Forgiven Reticence", itemName: "Forgiven Reticence Horn", category: "hunts",
+    source: "Hunt board (Sacks of Nuts), after \"Nuts to You\"",
+    vendor: { name: "Xylle", zone: "The Crystarium", coords: "X:9.4 Y:9.5" },
+    cost: { currency: "Sack of Nuts", currencyId: 26533, qty: 3200, marketable: false },
+    itemMarketable: false,
+    take: "No market angle here either — grind to 3,200 Sacks of Nuts and buy it outright. (Ilfroy in Eulmore is the equivalent vendor if that's more convenient.)"
+  },
+  {
+    id: 13288, name: "Wyvern", itemName: "Wyvern Horn", category: "hunts",
+    source: "Hunt board (Clan Mark Log)",
+    vendor: { name: "Bertana", zone: "Idyllshire", coords: "X:5.9 Y:5.2" },
+    cost: { currency: "Clan Mark Log", currencyId: 13625, qty: 6, marketable: false },
+    itemMarketable: false,
+    take: "Both the Clan Mark Log currency and the Wyvern Horn are bound. Only 6 Logs needed, the smallest ask on this list, but still grind-only."
   }
 ];
 
