@@ -371,7 +371,7 @@ const MOUNT_ICON_PATHS = {
   47334: "004000/004317", // Pilgrim's Protector
   46834: "004000/004323"  // Felyne Support Team Cart
 };
-const MOUNT_ICON = id => `https://beta.xivapi.com/api/1/asset?path=ui/icon/${MOUNT_ICON_PATHS[id]}_hr1.tex&format=png`;
+const MOUNT_ICON = id => MOUNT_ICON_PATHS[id] ? `https://beta.xivapi.com/api/1/asset?path=ui/icon/${MOUNT_ICON_PATHS[id]}_hr1.tex&format=png` : null;
 
 // Verdicts are computed, not stored on each item — see computeVerdict() below.
 // When only one side of a mount is marketable, the verdict is a structural fact
@@ -1112,6 +1112,9 @@ const ITEMS = [
 
 const fmt = n => n.toLocaleString("en-US");
 const $ = s => document.querySelector(s);
+// Universalis is trusted, but its world names still flow into innerHTML —
+// escape defensively rather than assume the response shape never changes.
+const escapeHtml = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
 // Remembered per-user, in this browser only — not shared, not a live price.
 function loadSavedRegion() {
@@ -1164,10 +1167,21 @@ function drawViewTabs() {
   $("#itemsSub").textContent = VIEWS[state.view].sub;
 }
 
+// Display labels for category slugs that don't read correctly under simple
+// capitalization (multi-word or abbreviated slugs). Anything not listed here
+// just gets its first letter capitalized.
+const CATEGORY_LABELS = {
+  fauxhollows: "Faux Hollows",
+  vcdungeon: "V&C Dungeon",
+  solution9: "Solution Nine",
+  sharedfate: "Shared FATEs"
+};
+const categoryLabel = c => CATEGORY_LABELS[c] || (c[0].toUpperCase() + c.slice(1));
+
 function drawChips() {
   const viewItems = ITEMS.filter(it => tabOf(it) === state.view);
   const cats = [...new Set(viewItems.map(i => i.category))];
-  const opts = [["all", "All"]].concat(cats.map(c => [c, c[0].toUpperCase() + c.slice(1)]));
+  const opts = [["all", "All"]].concat(cats.map(c => [c, categoryLabel(c)]));
   $("#chips").innerHTML = opts.map(([k, l]) => `<button type="button" class="chip" data-f="${k}" aria-pressed="${state.filter === k}">${l}</button>`).join("");
   $("#chips").querySelectorAll(".chip").forEach(b => b.addEventListener("click", () => { state.filter = b.dataset.f; render(); }));
 }
@@ -1319,7 +1333,7 @@ function priceBlock(label, id, qty) {
     return `<div class="price-block">
       <span class="na">${label}: marketboardable</span>
       <span class="big">${fmt(price.low)}</span>
-      <span class="na">lowest, ${price.world} (${REGION_LABEL[region]})${totalFrag}</span>
+      <span class="na">lowest, ${escapeHtml(price.world)} (${REGION_LABEL[region]})${totalFrag}</span>
       <span class="na">average sale ${fmt(price.avg)}${price.perDay ? `, ~${price.perDay}/day` : ""}</span>
       <span class="na timestamp">${loading ? `<span class="spinner" role="status" aria-label="Refreshing price"></span>` : ""}${note}</span>
       ${links}
@@ -1369,16 +1383,23 @@ function render() {
   let list = ITEMS.map((it, i) => ({ ...it, _i: i, v: computeVerdict(it) }));
   if (state.sort === "verdict") list.sort((a, b) => ORDER.indexOf(a.v) - ORDER.indexOf(b.v) || a._i - b._i);
   const ul = $("#list");
+  // Preserve any open "Databases" panel across the rebuild below — render()
+  // fires repeatedly while live prices stream in (once per completed fetch),
+  // and a plain innerHTML replace would otherwise snap every open <details>
+  // shut mid-read.
+  const openIds = new Set([...ul.querySelectorAll("details[open]")].map(d => d.closest("li").id));
   const isHidden = it => (state.filter !== "all" && it.category !== state.filter) || (tabOf(it) !== state.view);
   ul.innerHTML = list.map(it => {
     const hidden = isHidden(it);
-    return `<li class="item v-${it.v} ${hidden ? "hidden" : ""}" id="item-${it.id}">
+    const liId = `item-${it.id}`;
+    const open = openIds.has(liId) ? " open" : "";
+    return `<li class="item v-${it.v} ${hidden ? "hidden" : ""}" id="${liId}">
       ${costCell(it)}
       <div class="main">
-        <h3><img class="item-icon" src="${MOUNT_ICON(it.id)}" alt="" width="44" height="44" loading="lazy"><a href="${TC(it.id)}" target="_blank" rel="noopener noreferrer">${it.name}</a></h3>
+        <h3>${MOUNT_ICON(it.id) ? `<img class="item-icon" src="${MOUNT_ICON(it.id)}" alt="" width="44" height="44" loading="lazy">` : ""}<a href="${TC(it.id)}" target="_blank" rel="noopener noreferrer">${it.name}</a></h3>
         <div class="meta">${it.source} &middot; bought from ${it.vendor.name}, ${it.vendor.zone}${it.vendor.coords ? ` (${it.vendor.coords})` : ""}</div>
         <p class="take"><span class="tag">${VERDICTS[it.v].label}</span>${it.take}</p>
-        <details><summary>Databases</summary><ul><li><a href="${TC(it.id)}" target="_blank" rel="noopener noreferrer">Teamcraft</a> <a href="${GT(it.id)}" target="_blank" rel="noopener noreferrer">Garland Tools</a></li></ul></details>
+        <details${open}><summary>Databases</summary><ul><li><a href="${TC(it.id)}" target="_blank" rel="noopener noreferrer">Teamcraft</a> <a href="${GT(it.id)}" target="_blank" rel="noopener noreferrer">Garland Tools</a></li></ul></details>
       </div>
       ${priceCell(it)}
     </li>`;
