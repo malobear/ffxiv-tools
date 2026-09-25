@@ -80,7 +80,7 @@ h2{font-family:var(--display);font-weight:800;font-size:clamp(24px,3.4vw,34px);l
 .chip{font:14px var(--body);border:1px solid var(--rule);background:var(--surface);color:var(--ink);padding:5px 11px;border-radius:999px;cursor:pointer}
 .chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 .chip:disabled{opacity:.6;cursor:default}
-.view-tabs{display:flex;gap:22px;margin:18px 0 4px;border-bottom:1px solid var(--rule)}
+.view-tabs{display:flex;flex-wrap:wrap;gap:8px 22px;margin:18px 0 4px;border-bottom:1px solid var(--rule)}
 .view-tab{font:600 15px var(--body);background:none;border:none;border-bottom:2px solid transparent;color:var(--muted);padding:6px 2px 10px;cursor:pointer}
 .view-tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--cyan)}
 .view-tab .count{font-weight:400;color:var(--muted);margin-left:5px}
@@ -875,9 +875,9 @@ function saveRegion(region) {
 
 // "mats" is the default view: this guide's whole premise is buying the mats
 // instead of grinding for them, which only means anything when the mats
-// themselves are marketable. The much larger set of mounts whose trade-in
-// currency can't be bought — even where the finished mount can be resold
-// instead — lives in the second tab, not the default.
+// themselves are marketable. Mounts split three ways (see tabOf()): buy the
+// mats, buy the finished mount instead (bound currency, resellable mount),
+// or grind only (nothing on either side is ever for sale).
 const state = { view: "mats", filter: "all", sort: "shop", region: loadSavedRegion() };
 
 const REGION_LABEL = {
@@ -889,13 +889,21 @@ const REGION_LABEL = {
 
 const VIEWS = {
   mats: { label: "Buy the mats", heading: "Buy the mats", sub: "Mounts where the trade-in currency or material is itself marketable — you can skip earning it entirely and buy your way to the turn-in. Prices, where shown, are live lowest listings and recent average sale price from the Universalis API, for the region or data center selected below." },
-  noMats: { label: "No marketable trade-in", heading: "No marketable trade-in", sub: "Mounts where the trade-in currency or material can't be bought off the marketboard — it's a pure grind to earn it, no shortcut. Some of these mounts are still resellable outright once finished (look for the “Just buy the mount” tag), but the materials themselves are never for sale." }
+  buyMount: { label: "Buy the mount instead", heading: "Buy the mount instead", sub: "The trade-in currency itself is bound and can't be bought — but the finished mount can be resold, so buying it outright skips the grind entirely. Prices below are live lowest listings and recent average sale price from the Universalis API." },
+  grind: { label: "Grind only", heading: "Grind only", sub: "No market angle anywhere: the trade-in currency is bound and the finished mount can't be resold either. Reputation grinding is the only way to get these — listed here for reference, not comparison." }
 };
 
+// Which tab a mount belongs in: buyable mats, buyable-mount-only, or a pure
+// grind where neither side ever touches the marketboard.
+function tabOf(it) {
+  if (it.cost.marketable) return "mats";
+  return it.itemMarketable ? "buyMount" : "grind";
+}
+
 function drawViewTabs() {
-  const matsCount = ITEMS.filter(matsMarketable).length;
-  const noMatsCount = ITEMS.length - matsCount;
-  const tabs = [["mats", matsCount], ["noMats", noMatsCount]];
+  const counts = { mats: 0, buyMount: 0, grind: 0 };
+  ITEMS.forEach(it => counts[tabOf(it)]++);
+  const tabs = ["mats", "buyMount", "grind"].map(k => [k, counts[k]]);
   $("#viewTabs").innerHTML = tabs.map(([k, n]) =>
     `<button type="button" class="view-tab" role="tab" data-view="${k}" aria-selected="${state.view === k}">${VIEWS[k].label}<span class="count">${n}</span></button>`
   ).join("");
@@ -909,7 +917,7 @@ function drawViewTabs() {
 }
 
 function drawChips() {
-  const viewItems = ITEMS.filter(it => matsMarketable(it) === (state.view === "mats"));
+  const viewItems = ITEMS.filter(it => tabOf(it) === state.view);
   const cats = [...new Set(viewItems.map(i => i.category))];
   const opts = [["all", "All"]].concat(cats.map(c => [c, c[0].toUpperCase() + c.slice(1)]));
   $("#chips").innerHTML = opts.map(([k, l]) => `<button type="button" class="chip" data-f="${k}" aria-pressed="${state.filter === k}">${l}</button>`).join("");
@@ -1070,8 +1078,6 @@ function priceCell(it) {
   return `<div class="price">${parts.join("")}</div>`;
 }
 
-const matsMarketable = it => it.cost.marketable;
-
 // Structural cases (only one side marketable, or neither) are fixed facts.
 // The "both marketable" case is decided fresh from whatever prices are
 // currently loaded, so it can change as prices move or as a refresh lands —
@@ -1094,7 +1100,7 @@ function render() {
   let list = ITEMS.map((it, i) => ({ ...it, _i: i, v: computeVerdict(it) }));
   if (state.sort === "verdict") list.sort((a, b) => ORDER.indexOf(a.v) - ORDER.indexOf(b.v) || a._i - b._i);
   const ul = $("#list");
-  const isHidden = it => (state.filter !== "all" && it.category !== state.filter) || (matsMarketable(it) !== (state.view === "mats"));
+  const isHidden = it => (state.filter !== "all" && it.category !== state.filter) || (tabOf(it) !== state.view);
   ul.innerHTML = list.map(it => {
     const hidden = isHidden(it);
     return `<li class="item v-${it.v} ${hidden ? "hidden" : ""}" id="item-${it.id}">
