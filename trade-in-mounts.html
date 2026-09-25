@@ -96,7 +96,7 @@ select{font:14px var(--body);background:var(--surface);color:var(--ink);border:1
 .list{list-style:none;margin:0;padding:0}
 .item{border-bottom:1px solid var(--rule);display:grid;grid-template-columns:100px 1fr 220px;gap:0 14px;padding:16px 0;align-items:start}
 .item.hidden{display:none}
-.cost{font-family:var(--display);font-weight:800;font-size:24px;line-height:1.15;text-align:left}
+.cost{font-family:var(--display);font-weight:800;font-size:24px;line-height:1.15;text-align:left;overflow-wrap:anywhere}
 .cost .currency-icon{width:22px;height:22px;border-radius:4px;vertical-align:-5px;margin-right:4px}
 .cost small{display:block;font:12px var(--body);color:var(--muted);margin-top:3px;font-weight:400}
 .main h3{font-family:var(--display);font-weight:600;font-size:19px;margin:0;line-height:1.25;display:flex;align-items:center;gap:8px}
@@ -256,7 +256,10 @@ const ICON_PATHS = {
   26533: "065000/065068", // Sack of Nuts
   13625: "026000/026169", // Clan Mark Log
   28063: "065000/065073", // Skybuilders' Scrip
-  33870: "026000/026171"  // Fête Token
+  33870: "026000/026171", // Fête Token
+  37549: "065000/065096", // Seafarer's Cowrie
+  41805: "021000/021333", // Twilight Gemstone
+  37491: "021000/021907"  // Resplendent Feather
 };
 const ICON = id => `https://beta.xivapi.com/api/1/asset?path=ui/icon/${ICON_PATHS[id]}.tex&format=png`;
 
@@ -309,7 +312,24 @@ const MOUNT_ICON_PATHS = {
   44245: "004000/004291", // Automatoise
   36909: "004000/004231", // Vinegaroon
   28123: "004000/004165", // Forgiven Reticence
-  13288: "004000/004050"  // Wyvern
+  13288: "004000/004050", // Wyvern
+  33678: "004000/004202", // Island Mandragora
+  33679: "004000/004203", // Island Onion Prince
+  33680: "004000/004204", // Island Eggplant Knight
+  33681: "004000/004205", // Island Garlic Jester
+  33682: "004000/004206", // Island Tomato King
+  33683: "004000/004207", // Island Mandragora Queen
+  38455: "004000/004235", // Garlond GL-II
+  39495: "004000/004255", // Island Alligator
+  40382: "004000/004265", // Island Buffalo
+  41496: "004000/004275", // Garlond GL-IIT
+  43600: "004000/004290", // Qeziigural
+  36906: "004000/004226", // Alkonost
+  43591: "004000/004281", // Air-wheeler A9
+  39494: "004000/004254", // Chrysomallos
+  39493: "004000/004253", // Magitek Avenger G1
+  33688: "004000/004212", // Resplendent Vessel of Ronka
+  33687: "004000/004211"  // Gilded Mikoshi
 };
 const MOUNT_ICON = id => `https://beta.xivapi.com/api/1/asset?path=ui/icon/${MOUNT_ICON_PATHS[id]}_hr1.tex&format=png`;
 
@@ -703,6 +723,142 @@ const ITEMS = [
     cost: { currency: "Clan Mark Log", currencyId: 13625, qty: 6, marketable: false },
     itemMarketable: false,
     take: "Both the Clan Mark Log currency and the Wyvern Horn are bound. Only 6 Logs needed, the smallest ask on this list, but still grind-only."
+  },
+  {
+    id: 33678, name: "Island Mandragora", itemName: "Island Mandragora", category: "island",
+    source: "Island Sanctuary, Seafarer's Cowrie exchange",
+    vendor: { name: "The Horrendous Hoarder", zone: "Unnamed Island", coords: "X:12.6 Y:28.3" },
+    cost: { currency: "Seafarer's Cowrie", currencyId: 37549, qty: 12000, marketable: false },
+    itemMarketable: false,
+    take: "Both the Seafarer's Cowrie currency and the Island Mandragora itself are bound, so there's no shortcut here — earn 12,000 Cowries on your island and buy it outright."
+  },
+  {
+    id: 33679, name: "Island Onion Prince", itemName: "Island Onion Prince", category: "island",
+    source: "Island Sanctuary, Seafarer's Cowrie exchange",
+    vendor: { name: "The Horrendous Hoarder", zone: "Unnamed Island", coords: "X:12.6 Y:28.3" },
+    cost: { currency: "Seafarer's Cowrie", currencyId: 37549, qty: 12000, marketable: false },
+    itemMarketable: false,
+    take: "Same shape as the other Cowrie exchanges: both sides bound, so it's 12,000 Cowries from island upkeep and no way to buy around it."
+  },
+  {
+    id: 33680, name: "Island Eggplant Knight", itemName: "Island Eggplant Knight", category: "island",
+    source: "Island Sanctuary, Seafarer's Cowrie exchange",
+    vendor: { name: "The Horrendous Hoarder", zone: "Unnamed Island", coords: "X:12.6 Y:28.3" },
+    cost: { currency: "Seafarer's Cowrie", currencyId: 37549, qty: 12000, marketable: false },
+    itemMarketable: false,
+    take: "Bound currency, bound mount — grind out 12,000 Cowries on your island and buy it outright."
+  },
+  {
+    id: 33681, name: "Island Garlic Jester", itemName: "Island Garlic Jester", category: "island",
+    source: "Island Sanctuary, Seafarer's Cowrie exchange",
+    vendor: { name: "The Horrendous Hoarder", zone: "Unnamed Island", coords: "X:12.6 Y:28.3" },
+    cost: { currency: "Seafarer's Cowrie", currencyId: 37549, qty: 18000, marketable: false },
+    itemMarketable: false,
+    take: "No market angle either side — 18,000 Cowries from island activities is the only path to this one."
+  },
+  {
+    id: 33682, name: "Island Tomato King", itemName: "Island Tomato King", category: "island",
+    source: "Island Sanctuary, Seafarer's Cowrie exchange",
+    vendor: { name: "The Horrendous Hoarder", zone: "Unnamed Island", coords: "X:12.6 Y:28.3" },
+    cost: { currency: "Seafarer's Cowrie", currencyId: 37549, qty: 18000, marketable: false },
+    itemMarketable: false,
+    take: "Both the Cowries and the mount are bound, so it's 18,000 Cowries from your island, grind-only."
+  },
+  {
+    id: 33683, name: "Island Mandragora Queen", itemName: "Island Mandragora Queen", category: "island",
+    source: "Island Sanctuary, Seafarer's Cowrie exchange",
+    vendor: { name: "The Horrendous Hoarder", zone: "Unnamed Island", coords: "X:12.6 Y:28.3" },
+    cost: { currency: "Seafarer's Cowrie", currencyId: 37549, qty: 18000, marketable: false },
+    itemMarketable: false,
+    take: "Same deal as the rest of the Cowrie exchange line: bound currency, bound mount, 18,000 Cowries with no shortcut."
+  },
+  {
+    id: 38455, name: "Garlond GL-II", itemName: "Garlond GL-II Ignition Key", category: "island",
+    source: "Island Sanctuary, Sanctuary Rank 10, Seafarer's Cowrie exchange",
+    vendor: { name: "The Horrendous Hoarder", zone: "Unnamed Island", coords: "X:12.6 Y:28.3" },
+    cost: { currency: "Seafarer's Cowrie", currencyId: 37549, qty: 24000, marketable: false },
+    itemMarketable: false,
+    take: "Bound currency, bound mount, and gated behind Sanctuary Rank 10 on top — 24,000 Cowries with no market shortcut."
+  },
+  {
+    id: 39495, name: "Island Alligator", itemName: "Island Alligator Horn", category: "island",
+    source: "Island Sanctuary, Sanctuary Rank 12, Seafarer's Cowrie exchange",
+    vendor: { name: "The Horrendous Hoarder", zone: "Unnamed Island", coords: "X:12.6 Y:28.3" },
+    cost: { currency: "Seafarer's Cowrie", currencyId: 37549, qty: 35000, marketable: false },
+    itemMarketable: false,
+    take: "Rank 12 plus 35,000 Cowries, both bound — no way to buy your way past this one."
+  },
+  {
+    id: 40382, name: "Island Buffalo", itemName: "Island Buffalo Horn", category: "island",
+    source: "Island Sanctuary, Sanctuary Rank 16, Seafarer's Cowrie exchange",
+    vendor: { name: "The Horrendous Hoarder", zone: "Unnamed Island", coords: "X:12.6 Y:28.3" },
+    cost: { currency: "Seafarer's Cowrie", currencyId: 37549, qty: 50000, marketable: false },
+    itemMarketable: false,
+    take: "Rank 16 and 50,000 Cowries, both bound — a long grind with no market shortcut."
+  },
+  {
+    id: 41496, name: "Garlond GL-IIT", itemName: "Garlond GL-IIT Ignition Key", category: "island",
+    source: "Island Sanctuary, Sanctuary Rank 20, Seafarer's Cowrie exchange",
+    vendor: { name: "The Horrendous Hoarder", zone: "Unnamed Island", coords: "X:12.6 Y:28.3" },
+    cost: { currency: "Seafarer's Cowrie", currencyId: 37549, qty: 100000, marketable: false },
+    itemMarketable: false,
+    take: "The steepest Island Sanctuary exchange: Rank 20 and 100,000 Cowries, both bound, no shortcut available."
+  },
+  {
+    id: 43600, name: "Qeziigural", itemName: "Qeziigural Horn", category: "variant",
+    source: "Twilight Gemstones, dropped in Cenote Ja Ja Gural or Vault Oneiron (variant dungeons)",
+    vendor: { name: "Uah'shepya", zone: "Solution Nine", coords: "X:8.6 Y:13.5" },
+    cost: { currency: "Twilight Gemstone", currencyId: 41805, qty: 3, marketable: true },
+    itemMarketable: true,
+    take: "Both the Twilight Gemstone currency and the Qeziigural Horn are tradeable, so this is a real price comparison rather than a fixed call — check the live numbers below to see which side is actually cheaper right now."
+  },
+  {
+    id: 36906, name: "Alkonost", itemName: "Alkonost Whistle", category: "variant",
+    source: "Resplendent Feathers, dropped in The Excitatron 6000 or The Shifting Gymnasion Agonon (or from Timeworn Kumbhiraskin/Ophiotauroskin treasure maps)",
+    vendor: { name: "Nesvaaz", zone: "Radz-at-Han", coords: "X:10.6 Y:10.0" },
+    cost: { currency: "Resplendent Feather", currencyId: 37491, qty: 3, marketable: true },
+    itemMarketable: true,
+    take: "Both the Resplendent Feather currency and the Alkonost Whistle are tradeable, so it's worth comparing live prices rather than assuming — check the numbers below before farming either side."
+  },
+  {
+    id: 43591, name: "Air-wheeler A9", itemName: "Air-wheeler A9 Identification Key", category: "purchase",
+    source: "Purchase Items shop, no unlock requirement",
+    vendor: { name: "Neon", zone: "Solution Nine", coords: "X:8.3 Y:13.3" },
+    cost: { currency: "Gil", currencyId: null, qty: 7500000, marketable: false },
+    itemMarketable: true,
+    take: "There's no grind here at all — Neon just sells it for 7,500,000 gil outright. The only real question is whether the vendor price beats what it's currently reselling for on the marketboard."
+  },
+  {
+    id: 39494, name: "Chrysomallos", itemName: "Chrysomallos Horn", category: "purchase",
+    source: "Purchase Luxuries shop, no unlock requirement",
+    vendor: { name: "Edelina", zone: "Mor Dhona", coords: "X:22.1 Y:4.9" },
+    cost: { currency: "Gil", currencyId: null, qty: 50000000, marketable: false },
+    itemMarketable: true,
+    take: "50,000,000 gil straight from Edelina's shop, no grind or currency involved. Worth checking the marketboard first — resold copies have historically undercut the vendor price."
+  },
+  {
+    id: 39493, name: "Magitek Avenger G1", itemName: "Magitek Avenger G1 Identification Key", category: "purchase",
+    source: "Purchase Luxuries shop, no unlock requirement",
+    vendor: { name: "Edelina", zone: "Mor Dhona", coords: "X:22.1 Y:4.9" },
+    cost: { currency: "Gil", currencyId: null, qty: 50000000, marketable: false },
+    itemMarketable: true,
+    take: "Same shop, same 50,000,000 gil price as Edelina's other luxury mounts. Compare against the marketboard before paying the vendor outright."
+  },
+  {
+    id: 33688, name: "Resplendent Vessel of Ronka", itemName: "Golden Ronkan Flute", category: "purchase",
+    source: "Purchase Luxuries shop, no unlock requirement",
+    vendor: { name: "Tabeth", zone: "Eulmore", coords: "X:10.0 Y:11.3" },
+    cost: { currency: "Gil", currencyId: null, qty: 25000000, marketable: false },
+    itemMarketable: true,
+    take: "A shinier version of the tribal Great Vessel of Ronka, sold outright for 25,000,000 gil with no other requirement. Check the marketboard — it's often cheaper than paying Tabeth direct."
+  },
+  {
+    id: 33687, name: "Gilded Mikoshi", itemName: "Gilded Mikoshi Flute", category: "purchase",
+    source: "Purchase Luxuries shop, no unlock requirement",
+    vendor: { name: "Edelina", zone: "Mor Dhona", coords: "X:22.1 Y:4.9" },
+    cost: { currency: "Gil", currencyId: null, qty: 50000000, marketable: false },
+    itemMarketable: true,
+    take: "A gilded reskin of the tribal Mikoshi, unrelated to it in acquisition — just 50,000,000 gil at Edelina's counter. Worth a marketboard check before buying outright."
   }
 ];
 
