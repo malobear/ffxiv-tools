@@ -85,10 +85,11 @@ h2{font-family:var(--display);font-weight:800;font-size:clamp(24px,3.4vw,34px);l
 .view-tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--cyan)}
 .view-tab .count{font-weight:400;color:var(--muted);margin-left:5px}
 #refreshPrices{margin-left:auto}
-.price-progress{color:var(--muted);font-size:13px;margin:-8px 0 14px;display:flex;align-items:center;gap:7px}
+.price-progress{position:fixed;bottom:20px;right:20px;z-index:50;color:var(--ink);font-size:13px;background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:10px 16px;box-shadow:0 6px 20px rgba(0,0,0,.2);display:flex;align-items:center;gap:9px}
 .price-progress[hidden]{display:none}
-.price-progress::before{content:"";width:11px;height:11px;flex:none;border:2px solid var(--rule);border-top-color:var(--cyan);border-radius:50%;animation:spin .7s linear infinite}
+.price-progress::before{content:"";width:12px;height:12px;flex:none;border:2px solid var(--rule);border-top-color:var(--cyan);border-radius:50%;animation:spin .7s linear infinite}
 @media (prefers-reduced-motion:reduce){.price-progress::before{animation:none;border-top-color:var(--cyan)}}
+@media (max-width:520px){.price-progress{left:16px;right:16px;bottom:16px}}
 .ctl{font-size:14px;color:var(--muted);display:flex;align-items:center;gap:6px}
 select{font:14px var(--body);background:var(--surface);color:var(--ink);border:1px solid var(--rule);border-radius:6px;padding:4px 6px}
 
@@ -197,7 +198,7 @@ footer li{margin:5px 0}
     </label>
     <button type="button" id="refreshPrices" class="chip">Refresh prices</button>
   </div>
-  <p class="price-progress" id="priceProgress" hidden></p>
+  <p class="price-progress" id="priceProgress" role="status" aria-live="polite" hidden></p>
 
   <ul class="list" id="list"></ul>
   <p class="empty" id="empty" hidden>No mounts match these filters. Pick "All" to see the full list.</p>
