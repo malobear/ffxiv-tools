@@ -873,11 +873,12 @@ function saveRegion(region) {
   try { localStorage.setItem("tim-region", region); } catch (e) {}
 }
 
-// "shortcut" is the default view: this guide is about comparing grind vs. buy,
-// so it opens on the mounts where that comparison is actually possible. The
-// far larger set of grind-only mounts (no market angle either side) lives in
-// the second tab as a reference list, not the default.
-const state = { view: "shortcut", filter: "all", sort: "shop", region: loadSavedRegion() };
+// "mats" is the default view: this guide's whole premise is buying the mats
+// instead of grinding for them, which only means anything when the mats
+// themselves are marketable. The much larger set of mounts whose trade-in
+// currency can't be bought — even where the finished mount can be resold
+// instead — lives in the second tab, not the default.
+const state = { view: "mats", filter: "all", sort: "shop", region: loadSavedRegion() };
 
 const REGION_LABEL = {
   "North-America": "NA, all DCs", "Aether": "Aether", "Crystal": "Crystal", "Dynamis": "Dynamis", "Primal": "Primal",
@@ -887,14 +888,14 @@ const REGION_LABEL = {
 };
 
 const VIEWS = {
-  shortcut: { label: "Grind vs. buy", heading: "Grind vs. buy", sub: "Mounts where a market shortcut exists on at least one side — the trade-in currency, the mount itself, or both — so grinding it out is an actual choice, not the only option. Prices, where shown, are live lowest listings and recent average sale price from the Universalis API, for the region or data center selected below." },
-  grindOnly: { label: "Grind-only reference", heading: "Grind-only reference", sub: "Mounts with no market angle at all: both the trade-in currency and the mount itself are bound, so reputation grinding is the only route. Listed here for reference, not comparison." }
+  mats: { label: "Buy the mats", heading: "Buy the mats", sub: "Mounts where the trade-in currency or material is itself marketable — you can skip earning it entirely and buy your way to the turn-in. Prices, where shown, are live lowest listings and recent average sale price from the Universalis API, for the region or data center selected below." },
+  noMats: { label: "No marketable trade-in", heading: "No marketable trade-in", sub: "Mounts where the trade-in currency or material can't be bought off the marketboard — it's a pure grind to earn it, no shortcut. Some of these mounts are still resellable outright once finished (look for the “Just buy the mount” tag), but the materials themselves are never for sale." }
 };
 
 function drawViewTabs() {
-  const shortcutCount = ITEMS.filter(hasShortcut).length;
-  const grindOnlyCount = ITEMS.length - shortcutCount;
-  const tabs = [["shortcut", shortcutCount], ["grindOnly", grindOnlyCount]];
+  const matsCount = ITEMS.filter(matsMarketable).length;
+  const noMatsCount = ITEMS.length - matsCount;
+  const tabs = [["mats", matsCount], ["noMats", noMatsCount]];
   $("#viewTabs").innerHTML = tabs.map(([k, n]) =>
     `<button type="button" class="view-tab" role="tab" data-view="${k}" aria-selected="${state.view === k}">${VIEWS[k].label}<span class="count">${n}</span></button>`
   ).join("");
@@ -908,7 +909,7 @@ function drawViewTabs() {
 }
 
 function drawChips() {
-  const viewItems = ITEMS.filter(it => hasShortcut(it) === (state.view === "shortcut"));
+  const viewItems = ITEMS.filter(it => matsMarketable(it) === (state.view === "mats"));
   const cats = [...new Set(viewItems.map(i => i.category))];
   const opts = [["all", "All"]].concat(cats.map(c => [c, c[0].toUpperCase() + c.slice(1)]));
   $("#chips").innerHTML = opts.map(([k, l]) => `<button type="button" class="chip" data-f="${k}" aria-pressed="${state.filter === k}">${l}</button>`).join("");
@@ -1069,7 +1070,7 @@ function priceCell(it) {
   return `<div class="price">${parts.join("")}</div>`;
 }
 
-const hasShortcut = it => it.cost.marketable || it.itemMarketable;
+const matsMarketable = it => it.cost.marketable;
 
 // Structural cases (only one side marketable, or neither) are fixed facts.
 // The "both marketable" case is decided fresh from whatever prices are
@@ -1093,7 +1094,7 @@ function render() {
   let list = ITEMS.map((it, i) => ({ ...it, _i: i, v: computeVerdict(it) }));
   if (state.sort === "verdict") list.sort((a, b) => ORDER.indexOf(a.v) - ORDER.indexOf(b.v) || a._i - b._i);
   const ul = $("#list");
-  const isHidden = it => (state.filter !== "all" && it.category !== state.filter) || (hasShortcut(it) !== (state.view === "shortcut"));
+  const isHidden = it => (state.filter !== "all" && it.category !== state.filter) || (matsMarketable(it) !== (state.view === "mats"));
   ul.innerHTML = list.map(it => {
     const hidden = isHidden(it);
     return `<li class="item v-${it.v} ${hidden ? "hidden" : ""}" id="item-${it.id}">
