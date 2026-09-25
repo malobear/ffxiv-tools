@@ -259,7 +259,21 @@ const ICON_PATHS = {
   33870: "026000/026171", // Fête Token
   37549: "065000/065096", // Seafarer's Cowrie
   41805: "021000/021333", // Twilight Gemstone
-  37491: "021000/021907"  // Resplendent Feather
+  37491: "021000/021907", // Resplendent Feather
+  30341: "065000/065078", // Faux Leaf
+  49125: "065000/065136", // Corvosi Manuscript
+  41079: "065000/065105", // Aloalo Coin
+  50847: "026000/026348", // Corvosi Brass
+  39885: "065000/065102", // Shishu Coin
+  38534: "065000/065098", // Sil'dihn Silver
+  39592: "022000/022204", // Burning Horn
+  39590: "022000/022663", // Exciting Tonic
+  44869: "020000/020264", // Clouddark Demimateria II
+  41807: "026000/026177", // Mount Token
+  43961: "026000/026183", // Turali Bicolor Gemstone Voucher
+  35833: "025000/025906", // Bicolor Gemstone Voucher
+  46263: "021000/021282", // First Light Relic
+  47101: "026000/026462"  // Guardian Arkveld Certificate
 };
 const ICON = id => `https://beta.xivapi.com/api/1/asset?path=ui/icon/${ICON_PATHS[id]}.tex&format=png`;
 
@@ -329,7 +343,33 @@ const MOUNT_ICON_PATHS = {
   39494: "004000/004254", // Chrysomallos
   39493: "004000/004253", // Magitek Avenger G1
   33688: "004000/004212", // Resplendent Vessel of Ronka
-  33687: "004000/004211"  // Gilded Mikoshi
+  33687: "004000/004211", // Gilded Mikoshi
+  44504: "004000/004297", // Alexandrian Axe Beak
+  50437: "004000/004332", // Dynamite
+  44503: "004000/004306", // Eggeater
+  36003: "004000/004219", // Calydontis
+  33145: "004000/004196", // Construct VI-S
+  30865: "004000/004185", // Incitatus
+  40390: "004000/004262", // Magicked Children's Bed
+  41494: "004000/004273", // Sabotender De La Luna
+  36904: "004000/004229", // Troll
+  44958: "004000/004303", // Venturous Kamuy
+  38457: "004000/004237", // Wondrous Lanner
+  50438: "004000/004333", // Genie of the Lamp
+  41499: "004000/004278", // Quaqua
+  50447: "004000/004342", // Royal Magicked Carpet
+  40388: "004000/004260", // Shishioji
+  38461: "004000/004243", // Sil'dihn Throne
+  39490: "004000/004250", // Phaethon
+  39491: "004000/004251", // Pinky
+  44500: "004000/004299", // Dais of Darkness
+  44502: "004000/004294", // Barreltender
+  43598: "004000/004288", // Rroneek
+  43590: "004000/004292", // Ty'aitya
+  36005: "004000/004223", // Wivre
+  46831: "004000/004319", // Forgiven Mimicry
+  47334: "004000/004317", // Pilgrim's Protector
+  46834: "004000/004323"  // Felyne Support Team Cart
 };
 const MOUNT_ICON = id => `https://beta.xivapi.com/api/1/asset?path=ui/icon/${MOUNT_ICON_PATHS[id]}_hr1.tex&format=png`;
 
@@ -859,6 +899,214 @@ const ITEMS = [
     cost: { currency: "Gil", currencyId: null, qty: 50000000, marketable: false },
     itemMarketable: true,
     take: "A gilded reskin of the tribal Mikoshi, unrelated to it in acquisition — just 50,000,000 gil at Edelina's counter. Worth a marketboard check before buying outright."
+  },
+  {
+    id: 44504, name: "Alexandrian Axe Beak", itemName: "Alexandrian Axe Beak Horn", category: "fauxhollows",
+    source: "Faux Hollows minigame",
+    vendor: { name: "Faux Commander", zone: "Idyllshire", coords: "X:5.7 Y:6.1" },
+    cost: { currency: "Faux Leaf", currencyId: 30341, qty: 600, marketable: false },
+    itemMarketable: true,
+    take: "Faux Leaf is bound the moment you earn it from Faux Hollows, but the Alexandrian Axe Beak Horn itself is marketboardable — skip the grind and buy it outright."
+  },
+  {
+    id: 50437, name: "Dynamite", itemName: "Dynamite Whistle", category: "fauxhollows",
+    source: "Faux Hollows minigame",
+    vendor: { name: "Faux Commander", zone: "Idyllshire", coords: "X:5.7 Y:6.1" },
+    cost: { currency: "Faux Leaf", currencyId: 30341, qty: 600, marketable: false },
+    itemMarketable: true,
+    take: "Same shape as the other Faux Hollows exchanges: Faux Leaf is bound, but the Dynamite Whistle is resellable — buy it outright instead of grinding 600 Leaves."
+  },
+  {
+    id: 44503, name: "Eggeater", itemName: "Eggeater Horn", category: "fauxhollows",
+    source: "Faux Hollows minigame",
+    vendor: { name: "Faux Commander", zone: "Idyllshire", coords: "X:5.7 Y:6.1" },
+    cost: { currency: "Faux Leaf", currencyId: 30341, qty: 600, marketable: false },
+    itemMarketable: true,
+    take: "Faux Leaf can't be bought or sold, but the Eggeater Horn can — skip the minigame grind and buy it off the marketboard."
+  },
+  {
+    id: 36003, name: "Calydontis", itemName: "Calydontis Horn", category: "fauxhollows",
+    source: "Faux Hollows minigame",
+    vendor: { name: "Faux Commander", zone: "Idyllshire", coords: "X:5.7 Y:6.1" },
+    cost: { currency: "Faux Leaf", currencyId: 30341, qty: 600, marketable: false },
+    itemMarketable: true,
+    take: "Faux Leaf is bound, but the Calydontis Horn is marketboardable — buy it outright rather than grinding 600 Leaves through Faux Hollows."
+  },
+  {
+    id: 33145, name: "Construct VI-S", itemName: "Construct VI-S Core", category: "fauxhollows",
+    source: "Faux Hollows minigame",
+    vendor: { name: "Faux Commander", zone: "Idyllshire", coords: "X:5.7 Y:6.1" },
+    cost: { currency: "Faux Leaf", currencyId: 30341, qty: 250, marketable: false },
+    itemMarketable: true,
+    take: "The cheapest of the Faux Hollows exchanges at 250 Leaves, though Faux Leaf itself still can't be traded — the Construct VI-S Core can be, so buying it outright is the easier route."
+  },
+  {
+    id: 30865, name: "Incitatus", itemName: "Incitatus Whistle", category: "fauxhollows",
+    source: "Faux Hollows minigame",
+    vendor: { name: "Faux Commander", zone: "Idyllshire", coords: "X:5.7 Y:6.1" },
+    cost: { currency: "Faux Leaf", currencyId: 30341, qty: 250, marketable: false },
+    itemMarketable: true,
+    take: "Same 250-Leaf price as Construct VI-S. Faux Leaf is bound, but the Incitatus Whistle is resellable — buy it outright."
+  },
+  {
+    id: 40390, name: "Magicked Children's Bed", itemName: "Magicked Children's Bed", category: "fauxhollows",
+    source: "Faux Hollows minigame",
+    vendor: { name: "Faux Commander", zone: "Idyllshire", coords: "X:5.7 Y:6.1" },
+    cost: { currency: "Faux Leaf", currencyId: 30341, qty: 600, marketable: false },
+    itemMarketable: true,
+    take: "Faux Leaf is bound, but the Magicked Children's Bed itself is marketboardable — buy it outright instead of grinding 600 Leaves."
+  },
+  {
+    id: 41494, name: "Sabotender De La Luna", itemName: "Sabotender de la Luna Whistle", category: "fauxhollows",
+    source: "Faux Hollows minigame",
+    vendor: { name: "Faux Commander", zone: "Idyllshire", coords: "X:5.7 Y:6.1" },
+    cost: { currency: "Faux Leaf", currencyId: 30341, qty: 600, marketable: false },
+    itemMarketable: true,
+    take: "Faux Leaf can't be traded, but the Sabotender de la Luna Whistle can — buy it outright rather than farming 600 Leaves."
+  },
+  {
+    id: 36904, name: "Troll", itemName: "Troll Horn", category: "fauxhollows",
+    source: "Faux Hollows minigame",
+    vendor: { name: "Faux Commander", zone: "Idyllshire", coords: "X:5.7 Y:6.1" },
+    cost: { currency: "Faux Leaf", currencyId: 30341, qty: 600, marketable: false },
+    itemMarketable: true,
+    take: "Faux Leaf is bound, but the Troll Horn is resellable — buy it outright instead of grinding through Faux Hollows."
+  },
+  {
+    id: 44958, name: "Venturous Kamuy", itemName: "Venturous Kamuy Flute", category: "fauxhollows",
+    source: "Faux Hollows minigame",
+    vendor: { name: "Faux Commander", zone: "Idyllshire", coords: "X:5.7 Y:6.1" },
+    cost: { currency: "Faux Leaf", currencyId: 30341, qty: 600, marketable: false },
+    itemMarketable: true,
+    take: "Faux Leaf can't be bought or sold, but the Venturous Kamuy Flute can — skip the minigame grind and buy it outright."
+  },
+  {
+    id: 38457, name: "Wondrous Lanner", itemName: "Wondrous Lanner Whistle", category: "fauxhollows",
+    source: "Faux Hollows minigame",
+    vendor: { name: "Faux Commander", zone: "Idyllshire", coords: "X:5.7 Y:6.1" },
+    cost: { currency: "Faux Leaf", currencyId: 30341, qty: 600, marketable: false },
+    itemMarketable: true,
+    take: "Faux Leaf is bound, but the Wondrous Lanner Whistle is marketboardable — buy it outright rather than grinding 600 Leaves."
+  },
+  {
+    id: 50438, name: "Genie of the Lamp", itemName: "Genie Lamp", category: "vcdungeon",
+    source: "Another Merchant's Tale (V&C Dungeon)",
+    vendor: { name: "Trisassant", zone: "Old Sharlayan", coords: "X:12.0 Y:13.3" },
+    cost: { currency: "Corvosi Manuscript", currencyId: 49125, qty: 100, marketable: false },
+    itemMarketable: true,
+    take: "Corvosi Manuscripts are bound, but the Genie Lamp itself is resellable — buy it outright instead of farming Another Merchant's Tale."
+  },
+  {
+    id: 41499, name: "Quaqua", itemName: "Quaqua Horn", category: "vcdungeon",
+    source: "Another Aloalo Island (V&C Dungeon)",
+    vendor: { name: "Trisassant", zone: "Old Sharlayan", coords: "X:12.0 Y:13.3" },
+    cost: { currency: "Aloalo Coin", currencyId: 41079, qty: 100, marketable: false },
+    itemMarketable: true,
+    take: "Aloalo Coins are bound, but the Quaqua Horn can be resold — buy it outright instead of farming Another Aloalo Island."
+  },
+  {
+    id: 50447, name: "Royal Magicked Carpet", itemName: "Royal Magicked Carpet", category: "vcdungeon",
+    source: "The Merchant's Tale (Advanced) (V&C Dungeon)",
+    vendor: { name: "Trisassant", zone: "Old Sharlayan", coords: "X:12.0 Y:13.3" },
+    cost: { currency: "Corvosi Brass", currencyId: 50847, qty: 100, marketable: false },
+    itemMarketable: true,
+    take: "Corvosi Brass is bound, but the Royal Magicked Carpet is marketboardable — buy it outright rather than farming the Advanced Merchant's Tale."
+  },
+  {
+    id: 40388, name: "Shishioji", itemName: "Shishioji Flute", category: "vcdungeon",
+    source: "Another Mount Rokkon (V&C Dungeon)",
+    vendor: { name: "Trisassant", zone: "Old Sharlayan", coords: "X:12.0 Y:13.3" },
+    cost: { currency: "Shishu Coin", currencyId: 39885, qty: 100, marketable: false },
+    itemMarketable: true,
+    take: "Shishu Coins are bound, but the Shishioji Flute can be resold — buy it outright instead of farming Another Mount Rokkon."
+  },
+  {
+    id: 38461, name: "Sil'dihn Throne", itemName: "Sil'dihn Throne", category: "vcdungeon",
+    source: "Another Sil'dihn Subterrane (V&C Dungeon)",
+    vendor: { name: "Trisassant", zone: "Old Sharlayan", coords: "X:12.0 Y:13.3" },
+    cost: { currency: "Sil'dihn Silver", currencyId: 38534, qty: 100, marketable: false },
+    itemMarketable: true,
+    take: "Sil'dihn Silver is bound, but the Sil'dihn Throne is marketboardable — buy it outright rather than farming Another Sil'dihn Subterrane."
+  },
+  {
+    id: 39490, name: "Phaethon", itemName: "Phaethon Horn", category: "variant",
+    source: "Burning Horns, dropped in The Shifting Gymnasion Agonon (variant dungeon)",
+    vendor: { name: "Nesvaaz", zone: "Radz-at-Han", coords: "X:10.6 Y:10.0" },
+    cost: { currency: "Burning Horn", currencyId: 39592, qty: 3, marketable: true },
+    itemMarketable: true,
+    take: "Both the Burning Horn currency and the Phaethon Horn are tradeable, so this is a real price comparison rather than a fixed call — check the live numbers below to see which side is actually cheaper right now."
+  },
+  {
+    id: 39491, name: "Pinky", itemName: "Pinky Identification Key", category: "variant",
+    source: "Exciting Tonics, dropped in The Excitatron 6000 (variant dungeon)",
+    vendor: { name: "Nesvaaz", zone: "Radz-at-Han", coords: "X:10.6 Y:10.0" },
+    cost: { currency: "Exciting Tonic", currencyId: 39590, qty: 3, marketable: true },
+    itemMarketable: true,
+    take: "Both the Exciting Tonic currency and the Pinky Identification Key are tradeable, so it's worth comparing live prices rather than assuming — check the numbers below before farming either side."
+  },
+  {
+    id: 44500, name: "Dais of Darkness", itemName: "Dais of Darkness", category: "solution9",
+    source: "Solution Nine, Clouddark Demimateria II exchange",
+    vendor: { name: "Uah'shepya", zone: "Solution Nine", coords: "X:8.6 Y:13.5" },
+    cost: { currency: "Clouddark Demimateria II", currencyId: 44869, qty: 75, marketable: false },
+    itemMarketable: true,
+    take: "Clouddark Demimateria II is bound, but the Dais of Darkness itself is marketboardable — buy it outright instead of farming 75 Demimateria."
+  },
+  {
+    id: 44502, name: "Barreltender", itemName: "Barreltender Whistle", category: "solution9",
+    source: "Solution Nine, Mount Token exchange (from Orange Gatherer's Scrips)",
+    vendor: { name: "Splendors Vendor", zone: "Solution Nine", coords: "X:9.1 Y:13.2" },
+    cost: { currency: "Mount Token", currencyId: 41807, qty: 100, marketable: true },
+    itemMarketable: true,
+    take: "Both the Mount Token currency and the Barreltender Whistle are tradeable, so check the live numbers below rather than assuming which side is cheaper."
+  },
+  {
+    id: 43598, name: "Rroneek", itemName: "Rroneek Horn", category: "solution9",
+    source: "Solution Nine, Mount Token exchange (from Orange Gatherer's Scrips)",
+    vendor: { name: "Splendors Vendor", zone: "Solution Nine", coords: "X:9.1 Y:13.2" },
+    cost: { currency: "Mount Token", currencyId: 41807, qty: 100, marketable: true },
+    itemMarketable: true,
+    take: "Same shop as the Barreltender: both the Mount Token currency and the Rroneek Horn are tradeable, so it's worth checking live prices before farming either side."
+  },
+  {
+    id: 43590, name: "Ty'aitya", itemName: "Ty'aitya Whistle", category: "sharedfate",
+    source: "Shared FATEs, Turali Bicolor Gemstone Voucher exchange",
+    vendor: { name: "Edelina", zone: "Mor Dhona", coords: "X:22.1 Y:4.9" },
+    cost: { currency: "Turali Bicolor Gemstone Voucher", currencyId: 43961, qty: 500, marketable: true },
+    itemMarketable: true,
+    take: "Both the Turali Bicolor Gemstone Voucher currency and the Ty'aitya Whistle are tradeable, so check the live numbers below to see which side is actually cheaper."
+  },
+  {
+    id: 36005, name: "Wivre", itemName: "Wivre Horn", category: "sharedfate",
+    source: "Shared FATEs, Bicolor Gemstone Voucher exchange",
+    vendor: { name: "Edelina", zone: "Mor Dhona", coords: "X:22.1 Y:4.9" },
+    cost: { currency: "Bicolor Gemstone Voucher", currencyId: 35833, qty: 500, marketable: true },
+    itemMarketable: true,
+    take: "Both the Bicolor Gemstone Voucher currency and the Wivre Horn are tradeable, so this is a live comparison rather than a fixed call — check the numbers below."
+  },
+  {
+    id: 46831, name: "Forgiven Mimicry", itemName: "Forgiven Mimicry Resonator", category: "pilgrim",
+    source: "Pilgrim's Traverse, First Light Relic exchange",
+    vendor: { name: "Ose Wyd", zone: "Il Mheg", coords: "X:29.9 Y:5.9" },
+    cost: { currency: "First Light Relic", currencyId: 46263, qty: 99, marketable: false },
+    itemMarketable: true,
+    take: "First Light Relics are bound, but the Forgiven Mimicry Resonator is marketboardable — buy it outright instead of farming 99 Relics."
+  },
+  {
+    id: 47334, name: "Pilgrim's Protector", itemName: "Pilgrim's Protector Horn", category: "pilgrim",
+    source: "Pilgrim's Traverse, First Light Relic exchange",
+    vendor: { name: "Ose Wyd", zone: "Il Mheg", coords: "X:29.9 Y:5.9" },
+    cost: { currency: "First Light Relic", currencyId: 46263, qty: 99, marketable: false },
+    itemMarketable: true,
+    take: "Same exchange as Forgiven Mimicry: First Light Relics are bound, but the Pilgrim's Protector Horn can be resold — buy it outright."
+  },
+  {
+    id: 46834, name: "Felyne Support Team Cart", itemName: "Felyne Support Team Cart Horn", category: "trial",
+    source: "The Windward Wilds trial (standing Monster Hunter crossover content), Guardian Arkveld Certificate exchange",
+    vendor: { name: "Smithy", zone: "Tuliyollal", coords: "X:13.3 Y:13.1" },
+    cost: { currency: "Guardian Arkveld Certificate", currencyId: 47101, qty: 99, marketable: false },
+    itemMarketable: true,
+    take: "Guardian Arkveld Certificates are bound, but the Felyne Support Team Cart Horn is marketboardable — buy it outright instead of farming The Windward Wilds."
   }
 ];
 
