@@ -1258,30 +1258,51 @@ function setProgress(done, total) {
   el.textContent = `Loading live prices… ${done} of ${total}`;
 }
 
+// A fixed-size worker pool, not a single batched request and not one request
+// at a time. Direct testing settled this: Universalis's multi-id endpoint
+// (/api/v2/{region}/{id1,id2,...}) 504s constantly regardless of batch size,
+// even down to 2 ids — it's not a viable shortcut at any scale. Separate
+// single-id requests fired concurrently work fine up to about 5 in flight;
+// 6-8 concurrent starts intermittently 504ing, and 10 draws outright 429
+// rate-limiting. 5 workers pulling from a shared queue (so a finished
+// request immediately picks up the next id, rather than waiting for a whole
+// chunk to land) cut load time for 60+ ids from over a minute to ~10-15s in
+// testing, with no failures.
+const PRICE_CONCURRENCY = 5;
+
 async function loadPrices() {
   const region = state.region;
   const ids = priceIdsNeeded();
+  let done = 0;
   setProgress(0, ids.length);
-  // Sequential, not parallel: firing every request at once made Universalis
-  // drop/slow some of them during testing; one at a time was consistently fine.
-  for (let i = 0; i < ids.length; i++) {
-    const id = ids[i];
-    const key = cacheKey(region, id);
-    const result = await fetchLivePrice(id, region);
-    priceLoading.delete(key);
-    if (result.price) {
-      priceCache[key] = result.price;
-      priceFailed.delete(key);
-      saveCachedPrice(region, id, result.price);
-    } else if (result.noData) {
-      priceCache[key] = null;
-      priceFailed.delete(key);
-    } else {
-      priceFailed.add(key); // keep whatever's already cached, just mark it stale
+
+  let next = 0;
+  async function worker(startDelay) {
+    if (startDelay) await new Promise(r => setTimeout(r, startDelay));
+    while (next < ids.length) {
+      const id = ids[next++];
+      const key = cacheKey(region, id);
+      const result = await fetchLivePrice(id, region);
+      priceLoading.delete(key);
+      if (result.price) {
+        priceCache[key] = result.price;
+        priceFailed.delete(key);
+        saveCachedPrice(region, id, result.price);
+      } else if (result.noData) {
+        priceCache[key] = null;
+        priceFailed.delete(key);
+      } else {
+        priceFailed.add(key); // keep whatever's already cached, just mark it stale
+      }
+      done++;
+      setProgress(done, ids.length);
+      render();
     }
-    setProgress(i + 1, ids.length);
-    render();
   }
+  // Staggering the workers' first request by 120ms each smooths out the
+  // initial burst instead of firing all 5 in the same instant.
+  const workerCount = Math.min(PRICE_CONCURRENCY, ids.length);
+  await Promise.all(Array.from({ length: workerCount }, (_, i) => worker(i * 120)));
 }
 
 function priceBlock(label, id, qty) {
