@@ -32,5 +32,12 @@ Notes:
   vendor/turn-in NPC, item marketboardability) before any UI work starts. The wiki is
   the source of truth for this, per the existing convention of re-verifying item
   sources against the wiki rather than Teamcraft.
-- Scope question to settle before starting: cover *all* trade-in mounts, or just ones
-  still currently obtainable (exclude permanently unavailable seasonal/collab mounts)?
+- **Decided:** currently-obtainable mounts only. Permanently unavailable
+  seasonal/collab/promo mounts are excluded from the full data-gathering pass.
+- **Decided:** where both the trade-in currency and the finished mount item are
+  marketboardable, the "grind vs. buy mats vs. buy mount" verdict is computed live
+  from whatever prices are currently loaded (see `computeVerdict()` in
+  `trade-in-mounts.html`), not hardcoded at research time — a verdict based on a
+  price snapshot would silently go wrong as prices move. Verdicts are only
+  hardcoded when they're a structural fact (e.g. neither side is marketable, so
+  it's grind-only regardless of price).
