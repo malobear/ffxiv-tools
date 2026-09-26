@@ -133,7 +133,7 @@ select{font:14px var(--body);background:var(--surface);color:var(--ink);border:1
 .price-error .warn{margin-right:4px}
 @media (prefers-reduced-motion:reduce){.spinner{animation:none;border-top-color:var(--rule);border-right-color:var(--cyan)}}
 .empty{padding:24px 0;color:var(--muted)}
-.savings{display:inline-block;font-weight:700;color:var(--moss);margin-left:6px}
+.big.savings{color:var(--moss)}
 
 footer{padding:40px 0 60px;color:var(--muted);font-size:15px}
 footer h2{color:var(--ink)}
@@ -1370,6 +1370,7 @@ function priceCell(it) {
   parts.push(it.itemMarketable
     ? priceBlock(it.itemName, it.id)
     : `<span class="na">${it.itemName}: untradeable</span>`);
+  parts.push(savingsBlock(it));
   return `<div class="price">${parts.join("")}</div>`;
 }
 
@@ -1410,11 +1411,16 @@ function computeSavings(it) {
   };
 }
 
-function savingsHtml(it) {
+// Rendered as its own price-block, matching the mats/mount blocks above it
+// in the same column, rather than as a one-off aside in the take text.
+function savingsBlock(it) {
   const s = computeSavings(it);
   if (!s || s.gil <= 0) return "";
-  const whichCheaper = s.cheaper === "mats" ? "buying the mats" : "buying the mount";
-  return ` <span class="savings">${whichCheaper} saves ${fmt(s.gil)} gil (${s.pct}% cheaper)</span>`;
+  const whichCheaper = s.cheaper === "mats" ? "Buying the mats" : "Buying the mount";
+  return `<div class="price-block">
+    <span class="pb-row"><span class="lbl">Savings</span></span>
+    <span class="pb-price"><span class="big savings">${fmt(s.gil)} gil</span><span class="pb-meta">${whichCheaper}, ${s.pct}% cheaper</span></span>
+  </div>`;
 }
 
 function render() {
@@ -1438,7 +1444,7 @@ function render() {
       <div class="main">
         <h3>${MOUNT_ICON(it.id) ? `<img class="item-icon" src="${MOUNT_ICON(it.id)}" alt="" width="44" height="44" loading="lazy">` : ""}<a href="${TC(it.id)}" target="_blank" rel="noopener noreferrer">${it.name}</a></h3>
         <div class="meta">${it.source} &middot; bought from ${it.vendor.name}, ${it.vendor.zone}${it.vendor.coords ? ` (${it.vendor.coords})` : ""}</div>
-        <p class="take"><span class="tag">${VERDICTS[it.v].label}</span>${it.take}${savingsHtml(it)}</p>
+        <p class="take"><span class="tag">${VERDICTS[it.v].label}</span>${it.take}</p>
         <details${open}><summary>Databases</summary><ul><li><a href="${TC(it.id)}" target="_blank" rel="noopener noreferrer">Teamcraft</a> <a href="${GT(it.id)}" target="_blank" rel="noopener noreferrer">Garland Tools</a></li></ul></details>
       </div>
       ${priceCell(it)}
