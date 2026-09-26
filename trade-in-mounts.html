@@ -114,22 +114,26 @@ select{font:14px var(--body);background:var(--surface);color:var(--ink);border:1
 .tag{display:inline-block;font-size:13px;font-weight:700;color:var(--v);border:1px solid var(--v);border-radius:4px;padding:0 6px;margin-right:6px;vertical-align:1px}
 .take{margin:0;max-width:68ch}
 .v-grind{--v:var(--gold)} .v-buyMats{--v:var(--moss)} .v-buyMount{--v:var(--rose)} .v-checking{--v:var(--slate)}
-.price{font-size:14px}
-.price>.na{display:block;margin-bottom:10px}
-.price-block{margin-bottom:10px}
-.price-block:last-child{margin-bottom:0}
+.price{font-size:13px}
+.price>.na{display:block;margin-bottom:6px}
+.price-block{margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid var(--rule)}
+.price-block:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
 .price .na{color:var(--muted);display:block;margin-bottom:2px}
-.price .big{font-family:var(--display);font-weight:800;font-size:20px;font-variant-numeric:tabular-nums;display:block;line-height:1.1}
-.price .lk a{display:inline-block;margin-right:8px}
+.pb-row{display:flex;justify-content:space-between;align-items:baseline;gap:6px;margin-bottom:2px}
+.pb-row .lbl{color:var(--muted)}
+.price .lk{white-space:nowrap}
+.price .lk a{color:var(--muted);font-size:11px;margin-left:6px;text-decoration:underline}
+.pb-price{display:flex;align-items:baseline;gap:6px;flex-wrap:wrap}
+.price .big{font-family:var(--display);font-weight:800;font-size:19px;font-variant-numeric:tabular-nums;line-height:1.1;cursor:help}
+.pb-meta{color:var(--muted);font-size:12px}
 .price-loading{color:var(--muted);display:flex;align-items:center;gap:7px}
 .spinner{width:13px;height:13px;flex:none;border:2px solid var(--rule);border-top-color:var(--cyan);border-radius:50%;animation:spin .7s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 .price-error{color:var(--rose);display:block;margin-bottom:2px;font-weight:600}
 .price-error .warn{margin-right:4px}
-.price .timestamp{font-size:12px;opacity:.75;display:flex;align-items:center;gap:5px}
-.price .timestamp .spinner{width:10px;height:10px;border-width:2px}
 @media (prefers-reduced-motion:reduce){.spinner{animation:none;border-top-color:var(--rule);border-right-color:var(--cyan)}}
 .empty{padding:24px 0;color:var(--muted)}
+.savings{display:inline-block;font-weight:700;color:var(--moss);margin-left:6px}
 
 footer{padding:40px 0 60px;color:var(--muted);font-size:15px}
 footer h2{color:var(--ink)}
@@ -1326,33 +1330,34 @@ async function loadPrices() {
   await Promise.all(Array.from({ length: workerCount }, (_, i) => worker(i * 120)));
 }
 
+// label/links row, then a single price line with everything else (world,
+// average, velocity, freshness) folded into a hover tooltip instead of its
+// own line — this used to be 5-6 lines per side, now it's 2.
 function priceBlock(label, id, qty) {
   const region = state.region;
   const key = cacheKey(region, id);
-  const links = `<span class="lk"><a href="${ULT(id)}" target="_blank" rel="noopener noreferrer">Ultros NA</a><a href="${UNI(id)}" target="_blank" rel="noopener noreferrer">Universalis</a></span>`;
+  const links = `<span class="lk"><a href="${ULT(id)}" target="_blank" rel="noopener noreferrer">Ultros</a><a href="${UNI(id)}" target="_blank" rel="noopener noreferrer">Universalis</a></span>`;
   const price = priceCache[key];
   const loading = priceLoading.has(key);
   const failed = priceFailed.has(key);
+  const head = `<span class="pb-row"><span class="lbl">${label}</span>${links}</span>`;
 
   if (price) {
-    const totalFrag = qty && qty > 1 ? ` &middot; ≈ ${fmt(price.low * qty)} gil for ${qty}` : "";
-    const note = failed ? "stale, refresh failed" : (loading ? "refreshing…" : `as of ${relativeTime(price.fetchedAt)}`);
+    const totalFrag = qty && qty > 1 ? ` (${fmt(price.low * qty)} for ${qty})` : "";
+    const note = failed ? "Stale, refresh failed" : (loading ? "Refreshing…" : `Updated ${relativeTime(price.fetchedAt)}`);
+    const tip = `Lowest on ${price.world} (${REGION_LABEL[region]}). Average sale ${fmt(price.avg)}${price.perDay ? `, ~${price.perDay}/day` : ""}. ${note}.`;
     return `<div class="price-block">
-      <span class="na">${label}: marketboardable</span>
-      <span class="big">${fmt(price.low)}</span>
-      <span class="na">lowest, ${escapeHtml(price.world)} (${REGION_LABEL[region]})${totalFrag}</span>
-      <span class="na">average sale ${fmt(price.avg)}${price.perDay ? `, ~${price.perDay}/day` : ""}</span>
-      <span class="na timestamp">${loading ? `<span class="spinner" role="status" aria-label="Refreshing price"></span>` : ""}${note}</span>
-      ${links}
+      ${head}
+      <span class="pb-price"><span class="big" title="${escapeHtml(tip)}">${fmt(price.low)} gil</span><span class="pb-meta">${totalFrag ? totalFrag + " &middot; " : ""}avg ${fmt(price.avg)}${loading ? ` <span class="spinner" role="status" aria-label="Refreshing price"></span>` : ""}</span></span>
     </div>`;
   }
   if (loading) {
-    return `<div class="price-block"><span class="na">${label}: marketboardable</span><span class="price-loading"><span class="spinner" role="status" aria-label="Loading price"></span>Checking live price…</span></div>`;
+    return `<div class="price-block">${head}<span class="price-loading"><span class="spinner" role="status" aria-label="Loading price"></span>Checking live price…</span></div>`;
   }
   if (price === null) {
-    return `<div class="price-block"><span class="na">${label}: marketboardable</span><span class="na">No active listings on ${REGION_LABEL[region]}</span>${links}</div>`;
+    return `<div class="price-block">${head}<span class="na">No active listings on ${REGION_LABEL[region]}</span></div>`;
   }
-  return `<div class="price-block"><span class="na">${label}: marketboardable</span><span class="price-error"><span class="warn" aria-hidden="true">⚠</span>Couldn't load live price</span>${links}</div>`;
+  return `<div class="price-block">${head}<span class="price-error"><span class="warn" aria-hidden="true">⚠</span>Couldn't load live price</span></div>`;
 }
 
 function priceCell(it) {
@@ -1384,6 +1389,34 @@ function computeVerdict(it) {
   return totalMats <= itemPrice.low ? "buyMats" : "buyMount";
 }
 
+// Only meaningful when both sides are marketable and both prices are in —
+// the concrete gil/percent gap between "buy enough mats" and "just buy the
+// finished mount", to back up the buyMats/buyMount call with real numbers.
+function computeSavings(it) {
+  if (!it.cost.marketable || !it.itemMarketable) return null;
+  const region = state.region;
+  const matsPrice = priceCache[cacheKey(region, it.cost.currencyId)];
+  const itemPrice = priceCache[cacheKey(region, it.id)];
+  if (!matsPrice || !itemPrice) return null;
+  const totalMats = matsPrice.low * it.cost.qty;
+  const itemLow = itemPrice.low;
+  const cheap = Math.min(totalMats, itemLow);
+  const expensive = Math.max(totalMats, itemLow);
+  if (expensive <= 0) return null;
+  return {
+    cheaper: totalMats <= itemLow ? "mats" : "mount",
+    gil: expensive - cheap,
+    pct: Math.round(((expensive - cheap) / expensive) * 100)
+  };
+}
+
+function savingsHtml(it) {
+  const s = computeSavings(it);
+  if (!s || s.gil <= 0) return "";
+  const whichCheaper = s.cheaper === "mats" ? "buying the mats" : "buying the mount";
+  return ` <span class="savings">${whichCheaper} saves ${fmt(s.gil)} gil (${s.pct}% cheaper)</span>`;
+}
+
 function render() {
   drawViewTabs();
   drawChips();
@@ -1405,7 +1438,7 @@ function render() {
       <div class="main">
         <h3>${MOUNT_ICON(it.id) ? `<img class="item-icon" src="${MOUNT_ICON(it.id)}" alt="" width="44" height="44" loading="lazy">` : ""}<a href="${TC(it.id)}" target="_blank" rel="noopener noreferrer">${it.name}</a></h3>
         <div class="meta">${it.source} &middot; bought from ${it.vendor.name}, ${it.vendor.zone}${it.vendor.coords ? ` (${it.vendor.coords})` : ""}</div>
-        <p class="take"><span class="tag">${VERDICTS[it.v].label}</span>${it.take}</p>
+        <p class="take"><span class="tag">${VERDICTS[it.v].label}</span>${it.take}${savingsHtml(it)}</p>
         <details${open}><summary>Databases</summary><ul><li><a href="${TC(it.id)}" target="_blank" rel="noopener noreferrer">Teamcraft</a> <a href="${GT(it.id)}" target="_blank" rel="noopener noreferrer">Garland Tools</a></li></ul></details>
       </div>
       ${priceCell(it)}
