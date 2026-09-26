@@ -151,7 +151,8 @@
     "lifestream": "Travel to another world, data center, or house with a single command. Custom repo, not in the default plugin directory",
     "theeventide": "Eorzea's Weirdest Tavern",
     "aetherphone": "Adds a full smartphone interface in-game, social feed, messaging, photo sharing, market board, games. Recreates a lot of a home-screen experience. Custom repo, not in the default plugin directory",
-    "xivmac": "Free, open-source macOS launcher that runs FFXIV through Wine, with one-click Dalamud setup built in, no separate Windows install needed for plugins"
+    "xivmac": "Free, open-source macOS launcher that runs FFXIV through Wine, with one-click Dalamud setup built in, no separate Windows install needed for plugins",
+    "reshademac": "One-command ReShade install for FFXIV under XIV on Mac, with shaders and textures pre-packaged, for players wanting graphics mods without a separate Windows install"
   },
   "pages": {
     "index": {

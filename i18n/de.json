@@ -151,7 +151,8 @@
     "lifestream": "Reise mit einem einzigen Befehl zu einer anderen Welt, einem anderen Rechenzentrum oder Haus. Custom-Repo, nicht im Standard-Plugin-Verzeichnis",
     "theeventide": "Eorzeas seltsamste Taverne",
     "aetherphone": "Fügt eine vollständige Smartphone-Oberfläche ins Spiel ein: Social Feed, Nachrichten, Fotos teilen, Marktbrett, Spiele. Bringt viel vom Home-Screen-Gefühl ins Spiel. Custom-Repo, nicht im Standard-Plugin-Verzeichnis",
-    "xivmac": "Kostenloser, quelloffener macOS-Launcher, der FFXIV über Wine ausführt, mit integriertem Ein-Klick-Setup für Dalamud, sodass für Plugins keine separate Windows-Installation nötig ist"
+    "xivmac": "Kostenloser, quelloffener macOS-Launcher, der FFXIV über Wine ausführt, mit integriertem Ein-Klick-Setup für Dalamud, sodass für Plugins keine separate Windows-Installation nötig ist",
+    "reshademac": "Installiert ReShade für FFXIV unter XIV on Mac mit einem einzigen Befehl, inklusive vorverpackter Shader und Texturen, für Spieler, die Grafik-Mods ohne separate Windows-Installation wollen"
   },
   "pages": {
     "index": {
