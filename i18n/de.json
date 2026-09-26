@@ -232,8 +232,7 @@
       "lede": "Alle Gegenstände im Tausch der Hunt for Astronomy, ihre alternativen Bezugsquellen, die Preise auf dem NA-Marktbrett und eine klare Einschätzung, ob sich der Tausch dafür lohnt. Hake an, was du willst, und die Gesamtsumme an Steinen wird laufend berechnet.",
       "factEvent": "Event:",
       "factMog": "Mogpendium-Ansprüche:",
-      "factShop": "Shop-Tausch:",
-      "factPrices": "Preise erfasst:"
+      "factShop": "Shop-Tausch:"
     },
     "sky": {
       "aria": "Alle Belohnungen nach Steinkosten aufgetragen, farblich nach Einschätzung",
@@ -281,7 +280,7 @@
     },
     "itemsSection": {
       "heading": "Alle Belohnungen",
-      "sub": "Tippe bei einer Zeile auf „Andere Bezugsquellen“ für die Quellen. Die Preise sind die günstigsten Listungen für die Region Nordamerika von Ultros (Universalis-Daten) zum Zeitpunkt der Erfassung. Prüfe vor dem Kauf die Live-Links, die Preise bewegen sich während eines Tauschs schnell."
+      "sub": "Tippe bei einer Zeile auf „Andere Bezugsquellen“ für die Quellen. Die Preise sind die live abgerufenen günstigsten Listungen und der durchschnittliche Verkaufspreis für die Region Nordamerika von Universalis, beim Laden aktualisiert."
     },
     "controls": {
       "mbOnly": "Auf dem Marktbrett",
@@ -294,7 +293,9 @@
       "tomesUnit": "Steine",
       "clear": "Zurücksetzen",
       "allChip": "Alle",
-      "hornTokens": "+ {{n}} Horn-Marken"
+      "hornTokens": "+ {{n}} Horn-Marken",
+      "refresh": "Preise aktualisieren",
+      "refreshing": "Wird aktualisiert…"
     },
     "empty": "Keine Belohnungen entsprechen diesen Filtern. Wähle „Alle“, um den gesamten Shop zu sehen.",
     "meta": {
@@ -311,9 +312,17 @@
       "lowest": "günstigste, {{shop}} ({{region}})",
       "perDay": ", ~{{n}}/Tag",
       "perTome": "≈ {{gil}} Gil pro Stein",
-      "notCaptured": "Preis nicht erfasst",
-      "checkLive": "Live prüfen",
-      "averageSale": "durchschnittlicher Verkauf {{avg}}"
+      "averageSale": "durchschnittlicher Verkauf {{avg}}",
+      "loading": "Live-Preis wird geprüft…",
+      "noListings": "Keine aktiven Angebote",
+      "error": "Live-Preis konnte nicht geladen werden",
+      "stale": "Veraltet, Aktualisierung fehlgeschlagen",
+      "refreshing": "Wird aktualisiert…",
+      "updated": "Aktualisiert {{time}}",
+      "justNow": "gerade eben",
+      "minutesAgo": "vor {{n}} Min.",
+      "hoursAgo": "vor {{n}} Std.",
+      "daysAgo": "vor {{n}} Tg."
     },
     "footer": {
       "heading": "Quellen und wie diese Seite entstanden ist",
@@ -321,7 +330,7 @@
       "src1Link": "offizielle Lodestone-Eventseite",
       "src2": "Item-IDs und Handelbarkeit: {link2} Item.csv.",
       "src3": "Alternative Quellen (Shops, Drops, FATEs, Crafting, Aufträge): Auszüge von {link3}, pro Item verlinkt. Teamcrafts Drop-Daten können unvollständig sein, daher lohnt sich bei „keine andere Quelle“ ein zweiter Blick auf Garland Tools.",
-      "src4": "Marktpreise: günstigste aktuelle Listung und durchschnittlicher Verkaufspreis der letzten Zeit, live über die {link4b}-API für die Region Nordamerika abgerufen. Auch auf {link4a} einsehbar. Als „nicht erfasst“ markierte Items haben nur Live-Links.",
+      "src4": "Marktpreise: günstigste aktuelle Listung und durchschnittlicher Verkaufspreis der letzten Zeit, live über die {link4b}-API für die Region Nordamerika abgerufen und lokal zwischengespeichert, mit manueller Aktualisierungsoption. Auch auf {link4a} einsehbar.",
       "src5": "Die Steinzahl pro Ziel steht nicht auf der Eventseite; die genauen Zahlen findest du im Spiel im Mogpendium."
     },
     "items": {
@@ -549,6 +558,9 @@
           "In jedem aktuellen und vergangenen Tausch für ungewöhnliche Steine erhältlich"
         ]
       }
+    },
+    "progress": {
+      "loading": "Live-Preise werden geladen… {{done}} von {{total}}"
     }
   }
 }

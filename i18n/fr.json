@@ -232,8 +232,7 @@
       "lede": "Tous les objets de l'échange de la Hunt for Astronomy, leurs autres sources, leur prix sur le marché NA, et un avis tranché sur l'intérêt de les échanger contre des mémoquartz. Cochez ce qui vous intéresse pour suivre le total en temps réel.",
       "factEvent": "Événement :",
       "factMog": "Réclamations Mogpendium :",
-      "factShop": "Échanges boutique :",
-      "factPrices": "Prix relevés :"
+      "factShop": "Échanges boutique :"
     },
     "sky": {
       "aria": "Toutes les récompenses selon leur coût en mémoquartz, colorées par verdict",
@@ -281,7 +280,7 @@
     },
     "itemsSection": {
       "heading": "Toutes les récompenses",
-      "sub": "Touchez « Autres façons de l'obtenir » sur une ligne pour voir les sources. Les prix sont les listings les plus bas pour la région Amérique du Nord, via Ultros (données Universalis) au moment du relevé. Vérifiez les liens en direct avant d'acheter, les prix bougent vite pendant un échange."
+      "sub": "Touchez « Autres façons de l'obtenir » sur une ligne pour voir les sources. Les prix sont les listings les plus bas et le prix de vente moyen récent pour la région Amérique du Nord, récupérés en direct via Universalis et actualisés au chargement."
     },
     "controls": {
       "mbOnly": "Sur le marché",
@@ -294,7 +293,9 @@
       "tomesUnit": "mémoquartz",
       "clear": "Effacer",
       "allChip": "Tout",
-      "hornTokens": "+ {{n}} jetons de cor"
+      "hornTokens": "+ {{n}} jetons de cor",
+      "refresh": "Actualiser les prix",
+      "refreshing": "Actualisation…"
     },
     "empty": "Aucune récompense ne correspond à ces filtres. Choisissez « Tout » pour voir toute la boutique.",
     "meta": {
@@ -311,9 +312,17 @@
       "lowest": "le plus bas, {{shop}} ({{region}})",
       "perDay": ", ~{{n}}/jour",
       "perTome": "≈ {{gil}} gil par mémoquartz",
-      "notCaptured": "Prix non relevé",
-      "checkLive": "Vérifier en direct",
-      "averageSale": "vente moyenne {{avg}}"
+      "averageSale": "vente moyenne {{avg}}",
+      "loading": "Vérification du prix en direct…",
+      "noListings": "Aucune annonce active",
+      "error": "Impossible de charger le prix en direct",
+      "stale": "Obsolète, échec de l'actualisation",
+      "refreshing": "Actualisation…",
+      "updated": "Actualisé {{time}}",
+      "justNow": "à l'instant",
+      "minutesAgo": "il y a {{n}} min",
+      "hoursAgo": "il y a {{n}} h",
+      "daysAgo": "il y a {{n}} j"
     },
     "footer": {
       "heading": "Sources et méthode de création de cette page",
@@ -321,7 +330,7 @@
       "src1Link": "page officielle de l'événement sur le Lodestone",
       "src2": "ID d'objets et échangeabilité : Item.csv de {link2}.",
       "src3": "Autres sources (boutiques, butins, FATE, artisanat, missions) : extraits de {link3}, liés par objet. Les données de drop de Teamcraft peuvent être incomplètes, donc un objet marqué « aucune autre source » mérite une vérification sur Garland Tools.",
-      "src4": "Prix du marché : listing le plus bas actuel et prix de vente moyen récent, récupérés en direct via l'API {link4b} pour la région Amérique du Nord. Également consultable sur {link4a}. Les objets marqués « non relevé » n'ont que des liens en direct.",
+      "src4": "Prix du marché : listing le plus bas actuel et prix de vente moyen récent, récupérés en direct via l'API {link4b} pour la région Amérique du Nord, mis en cache localement avec une option d'actualisation manuelle. Également consultable sur {link4a}.",
       "src5": "Le nombre de mémoquartz par objectif n'est pas indiqué sur la page de l'événement ; consultez le Mogpendium en jeu pour les chiffres exacts."
     },
     "items": {
@@ -549,6 +558,9 @@
           "Vendu dans tous les échanges de mémoquartz inhabituels, actuels et passés"
         ]
       }
+    },
+    "progress": {
+      "loading": "Chargement des prix en direct… {{done}} sur {{total}}"
     }
   }
 }

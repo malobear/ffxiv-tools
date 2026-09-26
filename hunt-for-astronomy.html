@@ -151,6 +151,18 @@ details li{margin:3px 0}
 .price .na{color:var(--muted);display:block;margin-bottom:2px}
 .price .lk a{display:inline-block;margin-left:8px}
 .price .per{display:block;color:var(--moss);font-weight:700}
+.price-loading{color:var(--muted);display:flex;align-items:center;gap:7px;justify-content:flex-end}
+.price-error{color:var(--rose);display:block;margin-bottom:2px;font-weight:600}
+.price-error .warn{margin-right:4px}
+.price .timestamp{font-size:12px;opacity:.75;display:flex;align-items:center;gap:5px;justify-content:flex-end}
+.spinner{width:13px;height:13px;flex:none;border:2px solid var(--rule);border-top-color:var(--cyan);border-radius:50%;animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.spinner{animation:none;border-top-color:var(--rule);border-right-color:var(--cyan)}}
+.price-progress{position:fixed;bottom:20px;right:20px;z-index:50;color:var(--ink);font-size:13px;background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:10px 16px;box-shadow:0 6px 20px rgba(0,0,0,.2);display:flex;align-items:center;gap:9px}
+.price-progress[hidden]{display:none}
+.price-progress::before{content:"";width:12px;height:12px;flex:none;border:2px solid var(--rule);border-top-color:var(--cyan);border-radius:50%;animation:spin .7s linear infinite}
+@media (prefers-reduced-motion:reduce){.price-progress::before{animation:none;border-top-color:var(--cyan)}}
+@media (max-width:520px){.price-progress{left:16px;right:16px;bottom:16px}}
 .empty{padding:24px 0;color:var(--muted)}
 
 footer{padding:40px 0 60px;color:var(--muted);font-size:15px}
@@ -190,7 +202,6 @@ footer li{margin:5px 0}
     <li><b data-i18n="hfa.hero.factEvent">Event:</b> Sep 9 – Oct 19, 2026 (PDT)</li>
     <li><b data-i18n="hfa.hero.factMog">Mogpendium claims:</b> until patch 8.05</li>
     <li><b data-i18n="hfa.hero.factShop">Shop exchanges:</b> until patch 8.1</li>
-    <li><b data-i18n="hfa.hero.factPrices">Prices captured:</b> Sep 17, 2026</li>
   </ul>
   <div class="sky" id="sky" aria-label="Every reward plotted by tomestone cost, coloured by verdict">
     <div class="tip" id="tip"></div>
@@ -216,7 +227,7 @@ footer li{margin:5px 0}
 
 <section id="items">
   <h2 data-i18n="hfa.itemsSection.heading">Every reward</h2>
-  <p class="sub" data-i18n="hfa.itemsSection.sub">Tap a row's "other ways to get it" for sources. Prices are North America region-wide lowest listings from Ultros (Universalis data) at capture time. Use the live links before you commit, they move fast during a trove.</p>
+  <p class="sub" data-i18n="hfa.itemsSection.sub">Tap a row's "other ways to get it" for sources. Prices are live North America region-wide lowest listings and recent average sale price from Universalis, refreshed on load.</p>
 
   <div class="controls" role="region" aria-label="Filters and tomestone budget">
     <div class="chips" id="chips"></div>
@@ -229,8 +240,10 @@ footer li{margin:5px 0}
         <option value="verdict" data-i18n="hfa.controls.sortVerdict">By verdict</option>
       </select>
     </label>
+    <button type="button" id="refreshPrices" class="chip" data-i18n="hfa.controls.refresh">Refresh prices</button>
     <div class="budget" aria-live="polite"><span data-i18n="hfa.controls.pickedLabel">Picked:</span> <b id="total">0</b> <span data-i18n="hfa.controls.tomesUnit">tomes</span> <span id="tokens"></span><button id="clear" type="button" data-i18n="hfa.controls.clear">Clear</button></div>
   </div>
+  <p class="price-progress" id="priceProgress" role="status" aria-live="polite" hidden></p>
 
   <ul class="list" id="list"></ul>
   <p class="empty" id="empty" hidden data-i18n="hfa.empty">No rewards match these filters. Pick "All" to see the full shop.</p>
@@ -242,7 +255,7 @@ footer li{margin:5px 0}
     <li data-i18n-rich="hfa.footer.src1">Reward list and costs: <a href="https://na.finalfantasyxiv.com/lodestone/special/mogmog-collection/202609/lsekubsk45" target="_blank" rel="noopener noreferrer" data-token="link1" data-i18n="hfa.footer.src1Link">official Lodestone event page</a>.</li>
     <li data-i18n-rich="hfa.footer.src2">Item IDs and tradeability: <a href="https://github.com/xivapi/ffxiv-datamining" target="_blank" rel="noopener noreferrer" data-token="link2">xivapi/ffxiv-datamining</a> Item.csv.</li>
     <li data-i18n-rich="hfa.footer.src3">Alternate sources (shops, drops, FATEs, crafts, ventures): <a href="https://github.com/ffxiv-teamcraft/ffxiv-teamcraft" target="_blank" rel="noopener noreferrer" data-token="link3">FFXIV Teamcraft</a> extracts, linked per item. Teamcraft's drop data can be incomplete, so an item with "no other source" is worth a second look on Garland Tools.</li>
-    <li data-i18n-rich="hfa.footer.src4">Market prices: lowest current listing and recent average sale price, pulled live from the <a href="https://universalis.app/" target="_blank" rel="noopener noreferrer" data-token="link4b">Universalis</a> API for the North America region. Also browsable on <a href="https://ultros.app/" target="_blank" rel="noopener noreferrer" data-token="link4a">Ultros</a>. Items marked "not captured" have live links only.</li>
+    <li data-i18n-rich="hfa.footer.src4">Market prices: lowest current listing and recent average sale price, pulled live from the <a href="https://universalis.app/" target="_blank" rel="noopener noreferrer" data-token="link4b">Universalis</a> API for the North America region, cached locally with a manual refresh option. Also browsable on <a href="https://ultros.app/" target="_blank" rel="noopener noreferrer" data-token="link4a">Ultros</a>.</li>
     <li data-i18n="hfa.footer.src5">Tomestone payouts per objective aren't listed on the event page; check the Mogpendium in game for the exact numbers.</li>
   </ul>
 
@@ -286,13 +299,10 @@ const ITEMS = [
  {id:30107,db:"68cbf969203",name:"Ramuh Crystal",cost:50,trade:false,mb:false,v:"trove",
   otherLinks:[[["Teamcraft",TCX("instance",30095)]]]},
  {id:33117,db:"901a124bffb",name:"The Legendary Beast Orchestrion Roll",cost:50,trade:true,mb:true,v:"buy",
-  price:{low:300000,where:"Famfrit",avg:775549,perDay:13,region:"NA"},
   otherLinks:[[["Teamcraft",TCX("instance",30101)]]]},
  {id:32794,db:"0cda2eaa295",name:"Skyworker's Singlet",cost:30,trade:true,mb:true,v:"buy",
-  price:{low:218000,where:"Marilith",avg:999388,perDay:17,region:"NA"},
   otherLinks:[[["Scrip",TC(28063)],["Teamcraft",TC(32794)]],[["Teamcraft",TC(33441)]]]},
  {id:30052,db:"10d1ba3159d",name:"Craftsman's Apron",cost:30,trade:true,mb:true,v:"buy",
-  price:{low:239998,where:"Malboro",avg:397320,perDay:14,region:"NA"},
   otherLinks:[[["Scrip",TC(28063)],["Teamcraft",TC(30052)]],[["Teamcraft",TC(33441)]]]},
  {id:27936,db:"760042f3f18",name:"Toad Head",cost:30,trade:false,mb:false,v:"trove",
   otherLinks:[[["Horn",TC(27972)],["NPC",TCX("npc",1027565)]],[["FATE",TCX("fate",1432)]]]},
@@ -301,7 +311,6 @@ const ITEMS = [
  {id:23367,db:"b22f164eb29",name:"Ballroom Etiquette - Stimulating Soliloquies",cost:30,trade:false,mb:false,v:"trove",
   otherLinks:[[["Wolf Mark",TC(25)],["NPC",TCX("npc",1005244)]]]},
  {id:24635,db:"7ed61351336",name:"Conditional Virtue",cost:30,trade:true,mb:true,v:"buy",
-  price:{low:199968,where:"Golem",avg:500225,perDay:18,region:"NA"},
   otherLinks:[[],[["Container",TC(36636)],["Teamcraft",TC(24635)]]]},
  {id:12077,db:"cf953a18569",name:"Ishgardian Half Barding",cost:30,trade:false,mb:false,v:"trove",
   otherLinks:[[["FATE",TCX("fate",871)]]]},
@@ -310,13 +319,10 @@ const ITEMS = [
  {id:16784,db:"0fcae87494f",name:"MGP Platinum Card",cost:30,trade:false,mb:false,v:"meh",
   otherLinks:[[["Teamcraft",TC(16784)]],[],[]]},
  {id:38585,db:"6b90dd50b7d",name:"Cheese Fondue Set",cost:20,trade:true,mb:true,v:"buy",
-  price:{low:99,where:"Jenova",avg:927,perDay:11,region:"NA"},
   otherLinks:[[["Teamcraft",TC(38585)]]]},
  {id:38605,db:"1c01181b4f6",name:"Korpokkur Chronometer",cost:20,trade:true,mb:true,v:"buy",
-  price:{low:450,where:"Golem",avg:1578,perDay:14,region:"NA"},
   otherLinks:[[["Teamcraft",TC(38605)]]]},
  {id:38622,db:"b58338ec043",name:"Bamboo Fence",cost:20,trade:true,mb:true,v:"buy",
-  price:{low:900,where:"Ultros",avg:10712,perDay:20,region:"NA"},
   otherLinks:[[["Teamcraft",TC(38622)]]]},
  {id:13162,db:"c6b3ccc0592",name:"Coat of the Defiant Duelist",cost:15,trade:false,mb:false,v:"meh",
   otherLinks:[[["Arboretum",TCX("instance",41)],["Pharos Sirius",TCX("instance",40)]]]},
@@ -325,7 +331,6 @@ const ITEMS = [
  {id:13186,db:"38dfc2e663d",name:"Coat of the Ghost Thief",cost:15,trade:false,mb:false,v:"meh",
   otherLinks:[[["Arboretum",TCX("instance",41)],["Pharos Sirius",TCX("instance",40)]]]},
  {id:33847,db:"7403adb0c1f",name:"What Is Love? Orchestrion Roll",cost:15,trade:true,mb:true,v:"buy",
-  price:{low:145000,where:"Balmung",avg:394127,perDay:12,region:"NA"},
   otherLinks:[[["Scrip",TC(28063)],["Teamcraft",TC(33847)]],[["Teamcraft",TC(33441)]]]},
  {id:39918,db:"63e628a56d5",name:"Conceivably Special Timeworn Map",cost:15,trade:false,mb:false,v:"meh",
   otherLinks:[[["Teamcraft",TC(39918)]],[]]},
@@ -338,16 +343,12 @@ const ITEMS = [
  {id:12273,db:"22fdcec29ae",name:"Fat Chocobo Card",cost:7,trade:false,mb:false,v:"meh",
   otherLinks:[[["Wiki",'https://ffxiv.consolegameswiki.com/wiki/Fat_Chocobo_Card'],["Teamcraft",TC(12273)]],[["FATE",TCX("fate",838)]]]},
  {id:16703,db:"6517213940b",name:"Modern Aesthetics - Samsonian Locks",cost:7,trade:true,mb:true,v:"buy",
-  price:{low:40000,where:"Kraken",avg:90213,perDay:21,region:"NA"},
   otherLinks:[[["Teamcraft",TC(16703)]]]},
  {id:28624,db:"5ebd9d25cc6",name:"Domakin",cost:7,trade:true,mb:true,v:"gil",
-  price:{low:75000,where:"Rafflesia",avg:315827,perDay:14,region:"NA"},
   otherLinks:[[["Teamcraft",TC(28624)]],[],[]]},
  {id:28124,db:"91bbfd9d596",name:"Dhalmel Whistle",cost:7,trade:true,mb:true,v:"gil",
-  price:{low:64900,where:"Jenova",avg:243879,perDay:19,region:"NA"},
   otherLinks:[[["Wiki",'https://ffxiv.consolegameswiki.com/wiki/Dhalmel_Whistle'],["Teamcraft",TC(28124)]]]},
  {id:32823,db:"d326149d19f",name:"Emerald Barding",cost:5,trade:true,mb:true,v:"gil",
-  price:{low:45000,where:"Rafflesia",avg:163840,perDay:17,region:"NA"},
   otherLinks:[[["Book",TC(29486)],["Teamcraft",TC(32823)]],[]]},
  {id:25005,db:"7df9a5ab439",name:"Magicked Prism (Job Mastery) x10",cost:1,trade:true,mb:false,v:"meh",
   otherLinks:[[["Teamcraft",TC(25005)]]]}
@@ -355,6 +356,121 @@ const ITEMS = [
 
 const fmt = n => n.toLocaleString("en-US");
 const $ = s => document.querySelector(s);
+const escapeHtml = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+/* live pricing — ported from trade-in-mounts.html. This page's items are
+   single-unit purchases (buy 1 of the reward on the board), not a trade-in
+   quantity, so there's no need for that page's order-book-walk logic; a
+   single cheapest-listing lookup per item is enough here. Region is fixed to
+   North America to match the page's stated scope (and the Ultros links). */
+const REGION = "North-America";
+const priceCache = {};
+const priceLoading = new Set();
+const priceFailed = new Set();
+
+function loadCachedPrice(id) {
+  try { const raw = localStorage.getItem(`hfa-price-${id}`); return raw ? JSON.parse(raw) : undefined; } catch (e) { return undefined; }
+}
+function saveCachedPrice(id, price) {
+  try { localStorage.setItem(`hfa-price-${id}`, JSON.stringify(price)); } catch (e) {}
+}
+function relativeTime(ts) {
+  const s = Math.round((Date.now() - ts) / 1000);
+  if (s < 60) return t('hfa.price.justNow');
+  const m = Math.round(s / 60);
+  if (m < 60) return t('hfa.price.minutesAgo', { n: m });
+  const h = Math.round(m / 60);
+  if (h < 24) return t('hfa.price.hoursAgo', { n: h });
+  return t('hfa.price.daysAgo', { n: Math.round(h / 24) });
+}
+
+// Up to 5 attempts with a short backoff, same retry shape as trade-in-mounts.
+async function fetchLivePrice(id, attempts = 5) {
+  for (let attempt = 1; attempt <= attempts; attempt++) {
+    try {
+      const ctrl = new AbortController();
+      const timeout = setTimeout(() => ctrl.abort(), 12000);
+      const res = await fetch(`https://universalis.app/api/v2/${REGION}/${id}`, { signal: ctrl.signal });
+      clearTimeout(timeout);
+      if (res.ok) {
+        const d = await res.json();
+        if (!d.hasData || !d.listings || !d.listings.length) return { noData: true };
+        const low = d.listings.reduce((a, b) => a.pricePerUnit < b.pricePerUnit ? a : b);
+        return { price: { low: low.pricePerUnit, world: low.worldName, avg: Math.round(d.averagePrice || 0), perDay: Math.round(d.regularSaleVelocity || 0), fetchedAt: Date.now() } };
+      }
+    } catch (e) { /* fall through and retry */ }
+    if (attempt < attempts) await new Promise(r => setTimeout(r, 500 * attempt));
+  }
+  return { failed: true };
+}
+
+const priceIdsNeeded = () => ITEMS.filter(it => it.mb).map(it => it.id);
+
+function seedPriceState() {
+  priceIdsNeeded().forEach(id => {
+    const cached = loadCachedPrice(id);
+    if (cached !== undefined) priceCache[id] = cached;
+    priceLoading.add(id);
+    priceFailed.delete(id);
+  });
+}
+
+function setProgress(done, total) {
+  const el = $("#priceProgress");
+  if (!el) return;
+  if (done >= total) { el.hidden = true; return; }
+  el.hidden = false;
+  el.textContent = t('hfa.progress.loading', { done, total });
+}
+
+// Same 5-worker concurrent pool as trade-in-mounts.html: Universalis's
+// multi-id batch endpoint 504s constantly regardless of batch size, but
+// separate single-id requests are reliable up to about 5 in flight.
+const PRICE_CONCURRENCY = 5;
+async function loadPrices() {
+  const ids = priceIdsNeeded();
+  let done = 0;
+  setProgress(0, ids.length);
+  let next = 0;
+  async function worker(startDelay) {
+    if (startDelay) await new Promise(r => setTimeout(r, startDelay));
+    while (next < ids.length) {
+      const id = ids[next++];
+      const result = await fetchLivePrice(id);
+      priceLoading.delete(id);
+      if (result.price) {
+        priceCache[id] = result.price;
+        priceFailed.delete(id);
+        saveCachedPrice(id, result.price);
+      } else if (result.noData) {
+        priceCache[id] = null;
+        priceFailed.delete(id);
+      } else {
+        priceFailed.add(id); // keep whatever's already cached, just mark it stale
+      }
+      done++;
+      setProgress(done, ids.length);
+      render();
+    }
+  }
+  const workerCount = Math.min(PRICE_CONCURRENCY, ids.length);
+  await Promise.all(Array.from({ length: workerCount }, (_, i) => worker(i * 120)));
+}
+
+let refreshing = false;
+async function refreshPrices() {
+  if (refreshing) return;
+  refreshing = true;
+  const btn = $("#refreshPrices");
+  btn.disabled = true;
+  btn.textContent = t('hfa.controls.refreshing');
+  priceIdsNeeded().forEach(id => { priceLoading.add(id); priceFailed.delete(id); });
+  render();
+  await loadPrices();
+  btn.disabled = false;
+  btn.textContent = t('hfa.controls.refresh');
+  refreshing = false;
+}
 
 /* constellation */
 function drawSky(){
@@ -436,14 +552,26 @@ function priceCell(it){
     return `<div class="price"><span class="na">${it.trade ? t('hfa.price.tradeableNotListable') : t('hfa.meta.untradeable')}</span><span class="na">${t('hfa.price.notOnBoard')}</span></div>`;
   }
   const links = `<span class="lk"><a href="${ULT(it.id)}" target="_blank" rel="noopener noreferrer">Ultros NA</a><a href="${UNI(it.id)}" target="_blank" rel="noopener noreferrer">Universalis</a></span>`;
-  if(it.price){
-    const per = Math.round(it.price.low/it.cost);
-    return `<div class="price"><span class="big">${fmt(it.price.low)}</span>
-      <span class="na">${t('hfa.price.lowest',{shop:it.price.where,region:it.price.region})}</span>
-      ${it.price.avg?`<span class="na">${t('hfa.price.averageSale',{avg:fmt(it.price.avg)})}${it.price.perDay?t('hfa.price.perDay',{n:it.price.perDay}):""}</span>`:""}
-      <span class="per">${t('hfa.price.perTome',{gil:fmt(per)})}</span>${links}</div>`;
+  const price = priceCache[it.id];
+  const loading = priceLoading.has(it.id);
+  const failed = priceFailed.has(it.id);
+  if(price){
+    const per = Math.round(price.low/it.cost);
+    const note = failed ? t('hfa.price.stale') : (loading ? t('hfa.price.refreshing') : t('hfa.price.updated',{time:relativeTime(price.fetchedAt)}));
+    return `<div class="price"><span class="big">${fmt(price.low)}</span>
+      <span class="na">${t('hfa.price.lowest',{shop:escapeHtml(price.world),region:"NA"})}</span>
+      ${price.avg?`<span class="na">${t('hfa.price.averageSale',{avg:fmt(price.avg)})}${price.perDay?t('hfa.price.perDay',{n:price.perDay}):""}</span>`:""}
+      <span class="per">${t('hfa.price.perTome',{gil:fmt(per)})}</span>
+      <span class="na timestamp">${loading?`<span class="spinner" role="status" aria-label="Refreshing price"></span>`:""}${note}</span>
+      ${links}</div>`;
   }
-  return `<div class="price"><span class="na">${t('hfa.price.notCaptured')}</span><span class="na">${t('hfa.price.checkLive')}</span>${links}</div>`;
+  if(loading){
+    return `<div class="price"><span class="price-loading"><span class="spinner" role="status" aria-label="Loading price"></span>${t('hfa.price.loading')}</span></div>`;
+  }
+  if(price===null){
+    return `<div class="price"><span class="na">${t('hfa.price.noListings')}</span>${links}</div>`;
+  }
+  return `<div class="price"><span class="price-error"><span class="warn" aria-hidden="true">⚠</span>${t('hfa.price.error')}</span>${links}</div>`;
 }
 
 function render(){
@@ -453,18 +581,24 @@ function render(){
   if(state.sort==="costDesc") list.sort((a,b)=>b.cost-a.cost||a._i-b._i);
   if(state.sort==="verdict") list.sort((a,b)=>ORDER.indexOf(a.v)-ORDER.indexOf(b.v)||a._i-b._i);
   const ul = $("#list");
+  // Preserve any open "other ways to get it" panel across the rebuild —
+  // render() fires repeatedly while live prices stream in, and a plain
+  // innerHTML replace would otherwise snap every open <details> shut.
+  const openIds = new Set([...ul.querySelectorAll("details[open]")].map(d => d.closest("li").id));
   ul.innerHTML = list.map(it=>{
     const hidden = (state.filter!=="all" && it.v!==state.filter) || (state.mbOnly && !it.mb);
     const otherTexts = t(`hfa.items.${it.id}.other`, {returnObjects:true});
     const other = it.otherLinks.map((ls,i)=>`<li>${otherTexts[i]} ${ls.map(([l,u])=>`<a href="${u}" target="_blank" rel="noopener noreferrer">${l}</a>`).join(" ")}</li>`).join("");
-    return `<li class="item v-${it.v} ${hidden?"hidden":""}" id="item-${it.id}">
+    const liId = `item-${it.id}`;
+    const open = openIds.has(liId) ? " open" : "";
+    return `<li class="item v-${it.v} ${hidden?"hidden":""}" id="${liId}">
       <input class="pick" type="checkbox" aria-label="${t('hfa.meta.pickAria',{name:it.name})}" data-id="${it.id}" ${state.picked.has(it.id)?"checked":""}>
       <div class="cost">${it.cost}<small>${it.tokens?t('hfa.controls.hornTokens',{n:it.tokens}):t('hfa.controls.tomesUnit')}</small></div>
       <div class="main">
         <h3><img class="item-icon" src="${ICON(it.id)}" alt="" width="32" height="32" loading="lazy"><a href="${LDB(it.db)}" target="_blank" rel="noopener noreferrer">${it.name}</a></h3>
         <div class="meta">${t(`hfa.items.${it.id}.kind`)}, ${it.trade?t('hfa.meta.tradeable'):t('hfa.meta.untradeable')}</div>
         <p class="take">${it.exclusive?`<span class="flag">${t('hfa.meta.troveOnlyFlag')}</span>`:""}<span class="tag">${t('hfa.verdicts.'+it.v+'.label')}</span>${t(`hfa.items.${it.id}.take`)}</p>
-        <details><summary>${t('hfa.meta.otherWays')}</summary><ul>${other}<li>${t('hfa.meta.databases')} <a href="${TC(it.id)}" target="_blank" rel="noopener noreferrer">Teamcraft</a> <a href="${GT(it.id)}" target="_blank" rel="noopener noreferrer">Garland Tools</a> <a href="${LDB(it.db)}" target="_blank" rel="noopener noreferrer">Lodestone</a></li></ul></details>
+        <details${open}><summary>${t('hfa.meta.otherWays')}</summary><ul>${other}<li>${t('hfa.meta.databases')} <a href="${TC(it.id)}" target="_blank" rel="noopener noreferrer">Teamcraft</a> <a href="${GT(it.id)}" target="_blank" rel="noopener noreferrer">Garland Tools</a> <a href="${LDB(it.db)}" target="_blank" rel="noopener noreferrer">Lodestone</a></li></ul></details>
       </div>
       ${priceCell(it)}
     </li>`;
@@ -487,6 +621,8 @@ function updateBudget(){
 $("#mbOnly").addEventListener("change",e=>{state.mbOnly=e.target.checked;render();});
 $("#sort").addEventListener("change",e=>{state.sort=e.target.value;render();});
 $("#clear").addEventListener("click",()=>{state.picked.clear();save();render();});
+$("#refreshPrices").addEventListener("click", refreshPrices);
+seedPriceState();
 </script>
 <script src="https://cdn.jsdelivr.net/npm/i18next@26.4.0/dist/umd/i18next.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/i18next-http-backend@4.0.1/i18nextHttpBackend.min.js"></script>
@@ -494,7 +630,14 @@ $("#clear").addEventListener("click",()=>{state.picked.clear();save();render();}
 <script src="i18n.js"></script>
 <script>
 (function(){
-  function renderAll(){ drawSky(); drawShort(); render(); }
+  let pricesStarted = false;
+  function renderAll(){
+    drawSky(); drawShort(); render();
+    // Only kick off the live fetch once — languageChanged fires renderAll
+    // again on every language switch, and re-render(ing) with the cache
+    // already seeded is all that's needed then, not a fresh fetch.
+    if(!pricesStarted){ pricesStarted = true; loadPrices(); }
+  }
   document.addEventListener('i18nready', renderAll);
   i18next.on('languageChanged', renderAll);
 })();
