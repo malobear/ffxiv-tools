@@ -66,14 +66,16 @@ img{max-width:100%}
 .site-footer p{margin:6px 0}
 .site-footer .legal{margin-top:10px;font-size:13px;opacity:.75}
 
-header.hero{padding:28px 0 12px}
-.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(34px,6vw,56px);line-height:1.05;letter-spacing:-.02em;margin:0 0 14px;max-width:18ch}
-.hero .lede{max-width:64ch;color:var(--muted);margin:0 0 6px}
-.wip-note{background:var(--surface);border-left:4px solid var(--gold);padding:12px 16px;margin:20px 0 0;max-width:78ch;font-size:15px;color:var(--muted)}
+header.hero{padding:20px 0 4px}
+.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(34px,6vw,56px);line-height:1.05;letter-spacing:-.02em;margin:0 0 10px;max-width:18ch}
+.hero .lede{max-width:64ch;color:var(--muted);margin:0 0 8px}
+.wip-note{color:var(--muted);margin:0 0 4px;font-size:13px;max-width:78ch}
+.wip-note::before{content:"Work in progress: ";font-weight:700;color:var(--gold)}
 
-section{padding:36px 0 8px}
+section{padding:16px 0 8px}
 h2{font-family:var(--display);font-weight:800;font-size:clamp(24px,3.4vw,34px);letter-spacing:-.01em;margin:0 0 6px}
-.sub{color:var(--muted);margin:0 0 20px;max-width:70ch}
+#itemsHeading{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 4px}
+.sub{color:var(--muted);margin:0 0 14px;max-width:70ch;font-size:14px}
 
 .controls{position:sticky;top:0;z-index:5;background:var(--paper);padding:12px 0;border-bottom:1px solid var(--rule);display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center}
 .chips{display:flex;flex-wrap:wrap;gap:6px}
@@ -152,8 +154,8 @@ footer li{margin:5px 0}
 
 <header class="hero">
   <h1>Trade-in mounts: grind vs. buy the mats</h1>
-  <p class="lede">Every mount unlocked by trading in items or currency: what you actually need, where to turn it in, whether the trade-in materials (or the mount itself) are marketboardable, and a straight verdict on grinding it out versus buying your way there.</p>
-  <div class="wip-note">Work in progress: tribal quests, Bozja/Occult Crescent, Cosmic Exploration, the Firmament, hunt currencies, FC voyages, and Island Sanctuary are covered so far, with tomestones, Zadnor proper, and seasonal currencies still to come. Scope is currently-obtainable trade-in mounts only &mdash; permanently unavailable seasonal/collab mounts won't be included.</div>
+  <p class="lede">Every mount unlocked by trading in items or currency, with live market prices and a straight verdict: grind it out, or buy your way there.</p>
+  <p class="wip-note">Tribal quests through Island Sanctuary covered so far; tomestones and seasonal currencies still to come. Currently-obtainable mounts only.</p>
 </header>
 
 <section id="items">
@@ -1139,9 +1141,9 @@ const REGION_LABEL = {
 };
 
 const VIEWS = {
-  mats: { label: "Buy the mats", heading: "Buy the mats", sub: "Mounts where the trade-in currency or material is itself marketable — you can skip earning it entirely and buy your way to the turn-in. Prices, where shown, are live lowest listings and recent average sale price from the Universalis API, for the region or data center selected below." },
-  buyMount: { label: "Buy the mount instead", heading: "Buy the mount instead", sub: "The trade-in currency itself is bound and can't be bought — but the finished mount can be resold, so buying it outright skips the grind entirely. Prices below are live lowest listings and recent average sale price from the Universalis API." },
-  grind: { label: "Grind only", heading: "Grind only", sub: "No market angle anywhere: the trade-in currency is bound and the finished mount can't be resold either. Reputation grinding is the only way to get these — listed here for reference, not comparison." }
+  mats: { label: "Buy the mats", heading: "Buy the mats", sub: "The trade-in currency itself is marketable — skip earning it and buy your way to the turn-in." },
+  buyMount: { label: "Buy the mount instead", heading: "Buy the mount instead", sub: "Currency's bound, but the finished mount can be resold — buy it outright instead." },
+  grind: { label: "Grind only", heading: "Grind only", sub: "No market angle either side. Reputation grinding only — listed for reference, not comparison." }
 };
 
 // Which tab a mount belongs in: buyable mats, buyable-mount-only, or a pure
