@@ -1257,7 +1257,19 @@ async function fetchLivePrice(id, region, attempts = 5) {
         const d = await res.json();
         if (!d.hasData || !d.listings || !d.listings.length) return { noData: true };
         const low = d.listings.reduce((a, b) => a.pricePerUnit < b.pricePerUnit ? a : b);
-        return { price: { low: low.pricePerUnit, world: low.worldName, avg: Math.round(d.averagePrice || 0), perDay: Math.round(d.regularSaleVelocity || 0), fetchedAt: Date.now() } };
+        // Full sorted book (price, quantity per listing), not just the single
+        // cheapest listing — buying N units usually means buying through
+        // several listings as the cheap ones run out, so a real total for a
+        // trade-in that needs e.g. 500 units has to walk the book, not
+        // multiply the single lowest unit price by 500.
+        // Capped to the 200 cheapest listings — comfortably more than enough
+        // to cover the largest trade-in quantity on this page (500 units),
+        // while keeping the cached JSON small.
+        const listings = d.listings
+          .map(l => ({ p: l.pricePerUnit, q: l.quantity }))
+          .sort((a, b) => a.p - b.p)
+          .slice(0, 200);
+        return { price: { low: low.pricePerUnit, world: low.worldName, avg: Math.round(d.averagePrice || 0), perDay: Math.round(d.regularSaleVelocity || 0), listings, fetchedAt: Date.now() } };
       }
     } catch (e) { /* fall through and retry */ }
     if (attempt < attempts) await new Promise(r => setTimeout(r, 500 * attempt));
@@ -1333,6 +1345,23 @@ async function loadPrices() {
 // label/links row, then a single price line with everything else (world,
 // average, velocity, freshness) folded into a hover tooltip instead of its
 // own line — this used to be 5-6 lines per side, now it's 2.
+// Walks a price-sorted order book to find the real cost of buying `qty`
+// units, rather than assuming the whole quantity is available at the single
+// cheapest listing's price — cheap stacks run out, so buying e.g. 500 units
+// of a currency almost always means buying through several listings at
+// rising prices. Returns null total (short=true) if the currently-listed
+// quantity can't even cover the full amount.
+function costForQty(listings, qty) {
+  let remaining = qty, total = 0;
+  for (const l of listings) {
+    if (remaining <= 0) break;
+    const take = Math.min(remaining, l.q);
+    total += take * l.p;
+    remaining -= take;
+  }
+  return { total, short: remaining > 0 };
+}
+
 function priceBlock(label, id, qty) {
   const region = state.region;
   const key = cacheKey(region, id);
@@ -1343,9 +1372,15 @@ function priceBlock(label, id, qty) {
   const head = `<span class="pb-row"><span class="lbl">${label}</span>${links}</span>`;
 
   if (price) {
-    const totalFrag = qty && qty > 1 ? ` (${fmt(price.low * qty)} for ${qty})` : "";
+    let totalFrag = "";
+    let short = false;
+    if (qty && qty > 1 && price.listings) {
+      const cost = costForQty(price.listings, qty);
+      short = cost.short;
+      totalFrag = ` (${fmt(cost.total)}${short ? "+" : ""} for ${qty})`;
+    }
     const note = failed ? "Stale, refresh failed" : (loading ? "Refreshing…" : `Updated ${relativeTime(price.fetchedAt)}`);
-    const tip = `Lowest on ${price.world} (${REGION_LABEL[region]}). Average sale ${fmt(price.avg)}${price.perDay ? `, ~${price.perDay}/day` : ""}. ${note}.`;
+    const tip = `Lowest on ${price.world} (${REGION_LABEL[region]}). Average sale ${fmt(price.avg)}${price.perDay ? `, ~${price.perDay}/day` : ""}.${short ? " “+” means fewer than " + qty + " are currently listed, so the total is a lower bound." : ""} ${note}.`;
     return `<div class="price-block">
       ${head}
       <span class="pb-price"><span class="big" title="${escapeHtml(tip)}">${fmt(price.low)} gil</span><span class="pb-meta">${totalFrag ? totalFrag + " &middot; " : ""}avg ${fmt(price.avg)}${loading ? ` <span class="spinner" role="status" aria-label="Refreshing price"></span>` : ""}</span></span>
@@ -1385,21 +1420,24 @@ function computeVerdict(it) {
   const region = state.region;
   const matsPrice = priceCache[cacheKey(region, it.cost.currencyId)];
   const itemPrice = priceCache[cacheKey(region, it.id)];
-  if (!matsPrice || !itemPrice) return "checking";
-  const totalMats = matsPrice.low * it.cost.qty;
+  if (!matsPrice || !itemPrice || !matsPrice.listings) return "checking";
+  const totalMats = costForQty(matsPrice.listings, it.cost.qty).total;
   return totalMats <= itemPrice.low ? "buyMats" : "buyMount";
 }
 
 // Only meaningful when both sides are marketable and both prices are in —
 // the concrete gil/percent gap between "buy enough mats" and "just buy the
 // finished mount", to back up the buyMats/buyMount call with real numbers.
+// Uses costForQty() rather than low*qty, since the cheapest single listing
+// rarely has the full quantity a trade-in needs sitting in one stack.
 function computeSavings(it) {
   if (!it.cost.marketable || !it.itemMarketable) return null;
   const region = state.region;
   const matsPrice = priceCache[cacheKey(region, it.cost.currencyId)];
   const itemPrice = priceCache[cacheKey(region, it.id)];
-  if (!matsPrice || !itemPrice) return null;
-  const totalMats = matsPrice.low * it.cost.qty;
+  if (!matsPrice || !itemPrice || !matsPrice.listings) return null;
+  const matsCost = costForQty(matsPrice.listings, it.cost.qty);
+  const totalMats = matsCost.total;
   const itemLow = itemPrice.low;
   const cheap = Math.min(totalMats, itemLow);
   const expensive = Math.max(totalMats, itemLow);
@@ -1407,7 +1445,8 @@ function computeSavings(it) {
   return {
     cheaper: totalMats <= itemLow ? "mats" : "mount",
     gil: expensive - cheap,
-    pct: Math.round(((expensive - cheap) / expensive) * 100)
+    pct: Math.round(((expensive - cheap) / expensive) * 100),
+    short: matsCost.short
   };
 }
 
@@ -1417,9 +1456,13 @@ function savingsBlock(it) {
   const s = computeSavings(it);
   if (!s || s.gil <= 0) return "";
   const whichCheaper = s.cheaper === "mats" ? "Buying the mats" : "Buying the mount";
+  const shortNote = s.short
+    ? `<span class="na" title="Fewer than ${fmt(it.cost.qty)} ${it.cost.currency} are currently listed in this region, so the mats total (and this comparison) is a lower bound.">fewer than ${fmt(it.cost.qty)} listed &mdash; estimate</span>`
+    : "";
   return `<div class="price-block">
     <span class="pb-row"><span class="lbl">Savings</span></span>
     <span class="pb-price"><span class="big savings">${fmt(s.gil)} gil</span><span class="pb-meta">${whichCheaper}, ${s.pct}% cheaper</span></span>
+    ${shortNote}
   </div>`;
 }
 
