@@ -229,7 +229,7 @@
   "hfa": {
     "hero": {
       "h1": "Hunt for Astronomy: what's worth the tomes",
-      "lede": "Every item in the First Hunt for Astronomy trove, where else it drops, what it goes for on the NA market board, and a straight call on whether the event is the right way to get it. Tick what you want and it keeps a running tomestone total.",
+      "lede": "Every item in the First Hunt for Astronomy trove, where else it drops, what it goes for on the market board, and a straight call on whether the event is the right way to get it. Tick what you want and it keeps a running tomestone total.",
       "factEvent": "Event:",
       "factMog": "Mogpendium claims:",
       "factShop": "Shop exchanges:"
@@ -280,7 +280,7 @@
     },
     "itemsSection": {
       "heading": "Every reward",
-      "sub": "Tap a row's \"other ways to get it\" for sources. Prices are live North America region-wide lowest listings and recent average sale price from Universalis, refreshed on load."
+      "sub": "Tap a row's \"other ways to get it\" for sources. Prices are live lowest listings and recent average sale price from Universalis, for the region or data center selected below."
     },
     "controls": {
       "mbOnly": "On market board",
@@ -295,7 +295,8 @@
       "allChip": "All",
       "hornTokens": "+ {{n}} horn tokens",
       "refresh": "Refresh prices",
-      "refreshing": "Refreshing…"
+      "refreshing": "Refreshing…",
+      "pricesForLabel": "Prices for"
     },
     "empty": "No rewards match these filters. Pick \"All\" to see the full shop.",
     "meta": {
@@ -330,7 +331,7 @@
       "src1Link": "official Lodestone event page",
       "src2": "Item IDs and tradeability: {link2} Item.csv.",
       "src3": "Alternate sources (shops, drops, FATEs, crafts, ventures): {link3} extracts, linked per item. Teamcraft's drop data can be incomplete, so an item with \"no other source\" is worth a second look on Garland Tools.",
-      "src4": "Market prices: lowest current listing and recent average sale price, pulled live from the {link4b} API for the North America region, cached locally with a manual refresh option. Also browsable on {link4a}.",
+      "src4": "Market prices: lowest current listing and recent average sale price, pulled live from the {link4b} API for the region or data center selected above, cached locally with a manual refresh option. Also browsable on {link4a}.",
       "src5": "Tomestone payouts per objective aren't listed on the event page; check the Mogpendium in game for the exact numbers."
     },
     "items": {

@@ -229,7 +229,7 @@
   "hfa": {
     "hero": {
       "h1": "Hunt for Astronomy: Wofür sich die Steine lohnen",
-      "lede": "Alle Gegenstände im Tausch der Hunt for Astronomy, ihre alternativen Bezugsquellen, die Preise auf dem NA-Marktbrett und eine klare Einschätzung, ob sich der Tausch dafür lohnt. Hake an, was du willst, und die Gesamtsumme an Steinen wird laufend berechnet.",
+      "lede": "Alle Gegenstände im Tausch der Hunt for Astronomy, ihre alternativen Bezugsquellen, die Preise auf dem Marktbrett und eine klare Einschätzung, ob sich der Tausch dafür lohnt. Hake an, was du willst, und die Gesamtsumme an Steinen wird laufend berechnet.",
       "factEvent": "Event:",
       "factMog": "Mogpendium-Ansprüche:",
       "factShop": "Shop-Tausch:"
@@ -280,7 +280,7 @@
     },
     "itemsSection": {
       "heading": "Alle Belohnungen",
-      "sub": "Tippe bei einer Zeile auf „Andere Bezugsquellen“ für die Quellen. Die Preise sind die live abgerufenen günstigsten Listungen und der durchschnittliche Verkaufspreis für die Region Nordamerika von Universalis, beim Laden aktualisiert."
+      "sub": "Tippe bei einer Zeile auf „Andere Bezugsquellen“ für die Quellen. Die Preise sind die live abgerufenen günstigsten Listungen und der durchschnittliche Verkaufspreis von Universalis, für die unten ausgewählte Region oder das Rechenzentrum."
     },
     "controls": {
       "mbOnly": "Auf dem Marktbrett",
@@ -295,7 +295,8 @@
       "allChip": "Alle",
       "hornTokens": "+ {{n}} Horn-Marken",
       "refresh": "Preise aktualisieren",
-      "refreshing": "Wird aktualisiert…"
+      "refreshing": "Wird aktualisiert…",
+      "pricesForLabel": "Preise für"
     },
     "empty": "Keine Belohnungen entsprechen diesen Filtern. Wähle „Alle“, um den gesamten Shop zu sehen.",
     "meta": {
@@ -330,7 +331,7 @@
       "src1Link": "offizielle Lodestone-Eventseite",
       "src2": "Item-IDs und Handelbarkeit: {link2} Item.csv.",
       "src3": "Alternative Quellen (Shops, Drops, FATEs, Crafting, Aufträge): Auszüge von {link3}, pro Item verlinkt. Teamcrafts Drop-Daten können unvollständig sein, daher lohnt sich bei „keine andere Quelle“ ein zweiter Blick auf Garland Tools.",
-      "src4": "Marktpreise: günstigste aktuelle Listung und durchschnittlicher Verkaufspreis der letzten Zeit, live über die {link4b}-API für die Region Nordamerika abgerufen und lokal zwischengespeichert, mit manueller Aktualisierungsoption. Auch auf {link4a} einsehbar.",
+      "src4": "Marktpreise: günstigste aktuelle Listung und durchschnittlicher Verkaufspreis der letzten Zeit, live über die {link4b}-API für die oben ausgewählte Region oder das Rechenzentrum abgerufen und lokal zwischengespeichert, mit manueller Aktualisierungsoption. Auch auf {link4a} einsehbar.",
       "src5": "Die Steinzahl pro Ziel steht nicht auf der Eventseite; die genauen Zahlen findest du im Spiel im Mogpendium."
     },
     "items": {

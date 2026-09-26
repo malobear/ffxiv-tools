@@ -197,7 +197,7 @@ footer li{margin:5px 0}
 
 <header class="hero">
   <h1 data-i18n="hfa.hero.h1">Hunt for Astronomy: what's worth the tomes</h1>
-  <p class="lede" data-i18n="hfa.hero.lede">Every item in the First Hunt for Astronomy trove, where else it drops, what it goes for on the NA market board, and a straight call on whether the event is the right way to get it. Tick what you want and it keeps a running tomestone total.</p>
+  <p class="lede" data-i18n="hfa.hero.lede">Every item in the First Hunt for Astronomy trove, where else it drops, what it goes for on the market board, and a straight call on whether the event is the right way to get it. Tick what you want and it keeps a running tomestone total.</p>
   <ul class="facts">
     <li><b data-i18n="hfa.hero.factEvent">Event:</b> Sep 9 – Oct 19, 2026 (PDT)</li>
     <li><b data-i18n="hfa.hero.factMog">Mogpendium claims:</b> until patch 8.05</li>
@@ -227,7 +227,7 @@ footer li{margin:5px 0}
 
 <section id="items">
   <h2 data-i18n="hfa.itemsSection.heading">Every reward</h2>
-  <p class="sub" data-i18n="hfa.itemsSection.sub">Tap a row's "other ways to get it" for sources. Prices are live North America region-wide lowest listings and recent average sale price from Universalis, refreshed on load.</p>
+  <p class="sub" data-i18n="hfa.itemsSection.sub">Tap a row's "other ways to get it" for sources. Prices are live lowest listings and recent average sale price from Universalis, for the region or data center selected below.</p>
 
   <div class="controls" role="region" aria-label="Filters and tomestone budget">
     <div class="chips" id="chips"></div>
@@ -239,6 +239,9 @@ footer li{margin:5px 0}
         <option value="costDesc" data-i18n="hfa.controls.sortCostDesc">Priciest first</option>
         <option value="verdict" data-i18n="hfa.controls.sortVerdict">By verdict</option>
       </select>
+    </label>
+    <label class="ctl"><span data-i18n="hfa.controls.pricesForLabel">Prices for</span>
+      <select id="dcSelect"></select>
     </label>
     <button type="button" id="refreshPrices" class="chip" data-i18n="hfa.controls.refresh">Refresh prices</button>
     <div class="budget" aria-live="polite"><span data-i18n="hfa.controls.pickedLabel">Picked:</span> <b id="total">0</b> <span data-i18n="hfa.controls.tomesUnit">tomes</span> <span id="tokens"></span><button id="clear" type="button" data-i18n="hfa.controls.clear">Clear</button></div>
@@ -255,7 +258,7 @@ footer li{margin:5px 0}
     <li data-i18n-rich="hfa.footer.src1">Reward list and costs: <a href="https://na.finalfantasyxiv.com/lodestone/special/mogmog-collection/202609/lsekubsk45" target="_blank" rel="noopener noreferrer" data-token="link1" data-i18n="hfa.footer.src1Link">official Lodestone event page</a>.</li>
     <li data-i18n-rich="hfa.footer.src2">Item IDs and tradeability: <a href="https://github.com/xivapi/ffxiv-datamining" target="_blank" rel="noopener noreferrer" data-token="link2">xivapi/ffxiv-datamining</a> Item.csv.</li>
     <li data-i18n-rich="hfa.footer.src3">Alternate sources (shops, drops, FATEs, crafts, ventures): <a href="https://github.com/ffxiv-teamcraft/ffxiv-teamcraft" target="_blank" rel="noopener noreferrer" data-token="link3">FFXIV Teamcraft</a> extracts, linked per item. Teamcraft's drop data can be incomplete, so an item with "no other source" is worth a second look on Garland Tools.</li>
-    <li data-i18n-rich="hfa.footer.src4">Market prices: lowest current listing and recent average sale price, pulled live from the <a href="https://universalis.app/" target="_blank" rel="noopener noreferrer" data-token="link4b">Universalis</a> API for the North America region, cached locally with a manual refresh option. Also browsable on <a href="https://ultros.app/" target="_blank" rel="noopener noreferrer" data-token="link4a">Ultros</a>.</li>
+    <li data-i18n-rich="hfa.footer.src4">Market prices: lowest current listing and recent average sale price, pulled live from the <a href="https://universalis.app/" target="_blank" rel="noopener noreferrer" data-token="link4b">Universalis</a> API for the region or data center selected above, cached locally with a manual refresh option. Also browsable on <a href="https://ultros.app/" target="_blank" rel="noopener noreferrer" data-token="link4a">Ultros</a>.</li>
     <li data-i18n="hfa.footer.src5">Tomestone payouts per objective aren't listed on the event page; check the Mogpendium in game for the exact numbers.</li>
   </ul>
 
@@ -267,11 +270,12 @@ footer li{margin:5px 0}
 </footer>
 </div>
 
+<script src="market-region.js"></script>
 <script>
 const TC = id => `https://ffxivteamcraft.com/db/en/item/${id}`;
 const GT = id => `https://www.garlandtools.org/db/#item/${id}`;
 const UNI = id => `https://universalis.app/market/${id}`;
-const ULT = id => `https://ultros.app/item/North-America/${id}`;
+const ULT = (id, region) => `https://ultros.app/item/${region || "North-America"}/${id}`;
 const LDB = h => `https://na.finalfantasyxiv.com/lodestone/playguide/db/item/${h}/`;
 const TCX = (kind,id) => `https://ffxivteamcraft.com/db/en/${kind}/${id}`;
 
@@ -361,18 +365,19 @@ const escapeHtml = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<":
 /* live pricing — ported from trade-in-mounts.html. This page's items are
    single-unit purchases (buy 1 of the reward on the board), not a trade-in
    quantity, so there's no need for that page's order-book-walk logic; a
-   single cheapest-listing lookup per item is enough here. Region is fixed to
-   North America to match the page's stated scope (and the Ultros links). */
-const REGION = "North-America";
+   single cheapest-listing lookup per item is enough here. The DC/region
+   itself comes from market-region.js, shared with every other tool on this
+   site that prices things. */
 const priceCache = {};
 const priceLoading = new Set();
 const priceFailed = new Set();
+const cacheKey = (region, id) => `${region}:${id}`;
 
-function loadCachedPrice(id) {
-  try { const raw = localStorage.getItem(`hfa-price-${id}`); return raw ? JSON.parse(raw) : undefined; } catch (e) { return undefined; }
+function loadCachedPrice(region, id) {
+  try { const raw = localStorage.getItem(`hfa-price-${cacheKey(region, id)}`); return raw ? JSON.parse(raw) : undefined; } catch (e) { return undefined; }
 }
-function saveCachedPrice(id, price) {
-  try { localStorage.setItem(`hfa-price-${id}`, JSON.stringify(price)); } catch (e) {}
+function saveCachedPrice(region, id, price) {
+  try { localStorage.setItem(`hfa-price-${cacheKey(region, id)}`, JSON.stringify(price)); } catch (e) {}
 }
 function relativeTime(ts) {
   const s = Math.round((Date.now() - ts) / 1000);
@@ -385,12 +390,12 @@ function relativeTime(ts) {
 }
 
 // Up to 5 attempts with a short backoff, same retry shape as trade-in-mounts.
-async function fetchLivePrice(id, attempts = 5) {
+async function fetchLivePrice(id, region, attempts = 5) {
   for (let attempt = 1; attempt <= attempts; attempt++) {
     try {
       const ctrl = new AbortController();
       const timeout = setTimeout(() => ctrl.abort(), 12000);
-      const res = await fetch(`https://universalis.app/api/v2/${REGION}/${id}`, { signal: ctrl.signal });
+      const res = await fetch(`https://universalis.app/api/v2/${region}/${id}`, { signal: ctrl.signal });
       clearTimeout(timeout);
       if (res.ok) {
         const d = await res.json();
@@ -407,11 +412,13 @@ async function fetchLivePrice(id, attempts = 5) {
 const priceIdsNeeded = () => ITEMS.filter(it => it.mb).map(it => it.id);
 
 function seedPriceState() {
+  const region = state.region;
   priceIdsNeeded().forEach(id => {
-    const cached = loadCachedPrice(id);
-    if (cached !== undefined) priceCache[id] = cached;
-    priceLoading.add(id);
-    priceFailed.delete(id);
+    const key = cacheKey(region, id);
+    const cached = loadCachedPrice(region, id);
+    if (cached !== undefined) priceCache[key] = cached;
+    priceLoading.add(key);
+    priceFailed.delete(key);
   });
 }
 
@@ -428,6 +435,7 @@ function setProgress(done, total) {
 // separate single-id requests are reliable up to about 5 in flight.
 const PRICE_CONCURRENCY = 5;
 async function loadPrices() {
+  const region = state.region;
   const ids = priceIdsNeeded();
   let done = 0;
   setProgress(0, ids.length);
@@ -436,17 +444,18 @@ async function loadPrices() {
     if (startDelay) await new Promise(r => setTimeout(r, startDelay));
     while (next < ids.length) {
       const id = ids[next++];
-      const result = await fetchLivePrice(id);
-      priceLoading.delete(id);
+      const key = cacheKey(region, id);
+      const result = await fetchLivePrice(id, region);
+      priceLoading.delete(key);
       if (result.price) {
-        priceCache[id] = result.price;
-        priceFailed.delete(id);
-        saveCachedPrice(id, result.price);
+        priceCache[key] = result.price;
+        priceFailed.delete(key);
+        saveCachedPrice(region, id, result.price);
       } else if (result.noData) {
-        priceCache[id] = null;
-        priceFailed.delete(id);
+        priceCache[key] = null;
+        priceFailed.delete(key);
       } else {
-        priceFailed.add(id); // keep whatever's already cached, just mark it stale
+        priceFailed.add(key); // keep whatever's already cached, just mark it stale
       }
       done++;
       setProgress(done, ids.length);
@@ -464,7 +473,7 @@ async function refreshPrices() {
   const btn = $("#refreshPrices");
   btn.disabled = true;
   btn.textContent = t('hfa.controls.refreshing');
-  priceIdsNeeded().forEach(id => { priceLoading.add(id); priceFailed.delete(id); });
+  priceIdsNeeded().forEach(id => { const key = cacheKey(state.region, id); priceLoading.add(key); priceFailed.delete(key); });
   render();
   await loadPrices();
   btn.disabled = false;
@@ -537,7 +546,10 @@ function drawShort(){
 }
 
 /* state */
-const state = {filter:"all", mbOnly:false, sort:"shop", picked:new Set()};
+// Region comes from market-region.js — shared across every tool on this site
+// that prices things, so a DC picked here also applies on e.g. the trade-in
+// mounts guide, rather than each page remembering its own separately.
+const state = {filter:"all", mbOnly:false, sort:"shop", picked:new Set(), region: MarketRegion.load()};
 try{ const s = JSON.parse(localStorage.getItem("hfa-picks")||"[]"); s.forEach(id=>state.picked.add(id)); }catch(e){}
 const save = () => { try{ localStorage.setItem("hfa-picks", JSON.stringify([...state.picked])); }catch(e){} };
 
@@ -551,15 +563,17 @@ function priceCell(it){
   if(!it.mb){
     return `<div class="price"><span class="na">${it.trade ? t('hfa.price.tradeableNotListable') : t('hfa.meta.untradeable')}</span><span class="na">${t('hfa.price.notOnBoard')}</span></div>`;
   }
-  const links = `<span class="lk"><a href="${ULT(it.id)}" target="_blank" rel="noopener noreferrer">Ultros NA</a><a href="${UNI(it.id)}" target="_blank" rel="noopener noreferrer">Universalis</a></span>`;
-  const price = priceCache[it.id];
-  const loading = priceLoading.has(it.id);
-  const failed = priceFailed.has(it.id);
+  const region = state.region;
+  const key = cacheKey(region, it.id);
+  const links = `<span class="lk"><a href="${ULT(it.id, region)}" target="_blank" rel="noopener noreferrer">Ultros</a><a href="${UNI(it.id)}" target="_blank" rel="noopener noreferrer">Universalis</a></span>`;
+  const price = priceCache[key];
+  const loading = priceLoading.has(key);
+  const failed = priceFailed.has(key);
   if(price){
     const per = Math.round(price.low/it.cost);
     const note = failed ? t('hfa.price.stale') : (loading ? t('hfa.price.refreshing') : t('hfa.price.updated',{time:relativeTime(price.fetchedAt)}));
     return `<div class="price"><span class="big">${fmt(price.low)}</span>
-      <span class="na">${t('hfa.price.lowest',{shop:escapeHtml(price.world),region:"NA"})}</span>
+      <span class="na">${t('hfa.price.lowest',{shop:escapeHtml(price.world),region:MarketRegion.LABELS[region]})}</span>
       ${price.avg?`<span class="na">${t('hfa.price.averageSale',{avg:fmt(price.avg)})}${price.perDay?t('hfa.price.perDay',{n:price.perDay}):""}</span>`:""}
       <span class="per">${t('hfa.price.perTome',{gil:fmt(per)})}</span>
       <span class="na timestamp">${loading?`<span class="spinner" role="status" aria-label="Refreshing price"></span>`:""}${note}</span>
@@ -622,6 +636,15 @@ $("#mbOnly").addEventListener("change",e=>{state.mbOnly=e.target.checked;render(
 $("#sort").addEventListener("change",e=>{state.sort=e.target.value;render();});
 $("#clear").addEventListener("click",()=>{state.picked.clear();save();render();});
 $("#refreshPrices").addEventListener("click", refreshPrices);
+$("#dcSelect").addEventListener("change", e => {
+  state.region = e.target.value;
+  MarketRegion.save(state.region);
+  seedPriceState();
+  render();
+  loadPrices();
+});
+MarketRegion.populate($("#dcSelect"));
+$("#dcSelect").value = state.region;
 seedPriceState();
 </script>
 <script src="https://cdn.jsdelivr.net/npm/i18next@26.4.0/dist/umd/i18next.min.js"></script>

@@ -182,30 +182,7 @@ footer li{margin:5px 0}
       </select>
     </label>
     <label class="ctl">Prices for
-      <select id="dcSelect">
-        <option value="North-America">NA (all DCs)</option>
-        <optgroup label="North America">
-          <option value="Aether">Aether</option>
-          <option value="Crystal">Crystal</option>
-          <option value="Dynamis">Dynamis</option>
-          <option value="Primal">Primal</option>
-        </optgroup>
-        <optgroup label="Europe">
-          <option value="Europe">EU (all DCs)</option>
-          <option value="Chaos">Chaos</option>
-          <option value="Light">Light</option>
-        </optgroup>
-        <optgroup label="Japan">
-          <option value="Japan">JP (all DCs)</option>
-          <option value="Elemental">Elemental</option>
-          <option value="Gaia">Gaia</option>
-          <option value="Mana">Mana</option>
-          <option value="Meteor">Meteor</option>
-        </optgroup>
-        <optgroup label="Oceania">
-          <option value="Materia">Materia</option>
-        </optgroup>
-      </select>
+      <select id="dcSelect"></select>
     </label>
     <button type="button" id="refreshPrices" class="chip">Refresh prices</button>
   </div>
@@ -231,11 +208,12 @@ footer li{margin:5px 0}
 </footer>
 </div>
 
+<script src="market-region.js"></script>
 <script>
 const TC = id => `https://ffxivteamcraft.com/db/en/item/${id}`;
 const GT = id => `https://www.garlandtools.org/db/#item/${id}`;
 const UNI = id => `https://universalis.app/market/${id}`;
-const ULT = id => `https://ultros.app/item/North-America/${id}`;
+const ULT = (id, region) => `https://ultros.app/item/${region || "North-America"}/${id}`;
 
 // Game icon paths, from XIVAPI's Item sheet (Icon field).
 const ICON_PATHS = {
@@ -1127,27 +1105,16 @@ const $ = s => document.querySelector(s);
 // escape defensively rather than assume the response shape never changes.
 const escapeHtml = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
-// Remembered per-user, in this browser only — not shared, not a live price.
-function loadSavedRegion() {
-  try { return localStorage.getItem("tim-region") || "North-America"; } catch (e) { return "North-America"; }
-}
-function saveRegion(region) {
-  try { localStorage.setItem("tim-region", region); } catch (e) {}
-}
-
 // "mats" is the default view: this guide's whole premise is buying the mats
 // instead of grinding for them, which only means anything when the mats
 // themselves are marketable. Mounts split three ways (see tabOf()): buy the
 // mats, buy the finished mount instead (bound currency, resellable mount),
 // or grind only (nothing on either side is ever for sale).
-const state = { view: "mats", filter: "all", sort: "shop", region: loadSavedRegion() };
-
-const REGION_LABEL = {
-  "North-America": "NA, all DCs", "Aether": "Aether", "Crystal": "Crystal", "Dynamis": "Dynamis", "Primal": "Primal",
-  "Europe": "EU, all DCs", "Chaos": "Chaos", "Light": "Light",
-  "Japan": "JP, all DCs", "Elemental": "Elemental", "Gaia": "Gaia", "Mana": "Mana", "Meteor": "Meteor",
-  "Materia": "Materia"
-};
+// Region comes from market-region.js — shared across every tool on this site
+// that prices things, so picking a DC here also applies on e.g. the Hunt for
+// Astronomy guide, rather than each page remembering its own separately.
+const state = { view: "mats", filter: "all", sort: "shop", region: MarketRegion.load() };
+const REGION_LABEL = MarketRegion.LABELS;
 
 const VIEWS = {
   mats: { label: "Buy the mats", heading: "Buy the mats", sub: "The trade-in currency itself is marketable — skip earning it and buy your way to the turn-in." },
@@ -1365,7 +1332,7 @@ function costForQty(listings, qty) {
 function priceBlock(label, id, qty) {
   const region = state.region;
   const key = cacheKey(region, id);
-  const links = `<span class="lk"><a href="${ULT(id)}" target="_blank" rel="noopener noreferrer">Ultros</a><a href="${UNI(id)}" target="_blank" rel="noopener noreferrer">Universalis</a></span>`;
+  const links = `<span class="lk"><a href="${ULT(id, region)}" target="_blank" rel="noopener noreferrer">Ultros</a><a href="${UNI(id)}" target="_blank" rel="noopener noreferrer">Universalis</a></span>`;
   const price = priceCache[key];
   const loading = priceLoading.has(key);
   const failed = priceFailed.has(key);
@@ -1499,7 +1466,7 @@ function render() {
 $("#sort").addEventListener("change", e => { state.sort = e.target.value; render(); });
 $("#dcSelect").addEventListener("change", e => {
   state.region = e.target.value;
-  saveRegion(state.region);
+  MarketRegion.save(state.region);
   seedPriceState();
   render();
   loadPrices();
@@ -1521,6 +1488,7 @@ async function refreshPrices() {
 }
 $("#refreshPrices").addEventListener("click", refreshPrices);
 
+MarketRegion.populate($("#dcSelect"));
 $("#dcSelect").value = state.region;
 seedPriceState();
 render();

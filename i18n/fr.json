@@ -229,7 +229,7 @@
   "hfa": {
     "hero": {
       "h1": "Hunt for Astronomy : où mettre vos mémoquartz",
-      "lede": "Tous les objets de l'échange de la Hunt for Astronomy, leurs autres sources, leur prix sur le marché NA, et un avis tranché sur l'intérêt de les échanger contre des mémoquartz. Cochez ce qui vous intéresse pour suivre le total en temps réel.",
+      "lede": "Tous les objets de l'échange de la Hunt for Astronomy, leurs autres sources, leur prix sur le marché, et un avis tranché sur l'intérêt de les échanger contre des mémoquartz. Cochez ce qui vous intéresse pour suivre le total en temps réel.",
       "factEvent": "Événement :",
       "factMog": "Réclamations Mogpendium :",
       "factShop": "Échanges boutique :"
@@ -280,7 +280,7 @@
     },
     "itemsSection": {
       "heading": "Toutes les récompenses",
-      "sub": "Touchez « Autres façons de l'obtenir » sur une ligne pour voir les sources. Les prix sont les listings les plus bas et le prix de vente moyen récent pour la région Amérique du Nord, récupérés en direct via Universalis et actualisés au chargement."
+      "sub": "Touchez « Autres façons de l'obtenir » sur une ligne pour voir les sources. Les prix sont les listings les plus bas et le prix de vente moyen récent récupérés en direct via Universalis, pour la région ou le data center sélectionné ci-dessous."
     },
     "controls": {
       "mbOnly": "Sur le marché",
@@ -295,7 +295,8 @@
       "allChip": "Tout",
       "hornTokens": "+ {{n}} jetons de cor",
       "refresh": "Actualiser les prix",
-      "refreshing": "Actualisation…"
+      "refreshing": "Actualisation…",
+      "pricesForLabel": "Prix pour"
     },
     "empty": "Aucune récompense ne correspond à ces filtres. Choisissez « Tout » pour voir toute la boutique.",
     "meta": {
@@ -330,7 +331,7 @@
       "src1Link": "page officielle de l'événement sur le Lodestone",
       "src2": "ID d'objets et échangeabilité : Item.csv de {link2}.",
       "src3": "Autres sources (boutiques, butins, FATE, artisanat, missions) : extraits de {link3}, liés par objet. Les données de drop de Teamcraft peuvent être incomplètes, donc un objet marqué « aucune autre source » mérite une vérification sur Garland Tools.",
-      "src4": "Prix du marché : listing le plus bas actuel et prix de vente moyen récent, récupérés en direct via l'API {link4b} pour la région Amérique du Nord, mis en cache localement avec une option d'actualisation manuelle. Également consultable sur {link4a}.",
+      "src4": "Prix du marché : listing le plus bas actuel et prix de vente moyen récent, récupérés en direct via l'API {link4b} pour la région ou le data center sélectionné ci-dessus, mis en cache localement avec une option d'actualisation manuelle. Également consultable sur {link4a}.",
       "src5": "Le nombre de mémoquartz par objectif n'est pas indiqué sur la page de l'événement ; consultez le Mogpendium en jeu pour les chiffres exacts."
     },
     "items": {
