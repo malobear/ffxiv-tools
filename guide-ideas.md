@@ -117,6 +117,70 @@ Notes:
 
 ---
 
+## Recurring player questions without a good existing guide
+
+Broader sweep, not limited to the buy-vs-grind mechanic above: what do people keep
+asking on forums that no clear guide answers well today. Sourced from official forum
+sticky/FAQ threads and independent guide sites, cross-checked to rule out topics
+that already have solid coverage elsewhere. Methodology caveat: direct Reddit access
+wasn't available for this pass (fetching reddit.com was blocked, and the search
+backend wasn't indexing Reddit threads), so "frequency" below is triangulated from
+proxies instead: an official sticky FAQ thread's existence and contents, independent
+guide sites converging on the same question set, and forum posts explicitly asking
+because no answer exists yet. Worth a real Reddit-inclusive pass later if a tool
+with better forum access becomes available.
+
+### Inventory / retainer decluttering guide
+
+Pitch: a curated, opinionated list of what to actually keep vs. discard, this is
+junk, this is a hidden trap, this needs bank space regardless.
+
+- **Top pick of this batch.** Barely any existing coverage. Clearest evidence: a
+  Square Enix forum thread literally titled
+  ["Request: Inventory Management Tips from Vets"](https://forum.square-enix.com/ffxiv/threads/364479),
+  players asking other players because no comprehensive answer exists anywhere.
+- Fits this site's personal/opinionated style well, same spirit as
+  `jump-puzzle-macros.html`'s personal-tips angle, rather than a wiki clone.
+- Risk: subjective by nature, and needs light revision as new inventory features
+  ship (Chocobo Saddlebag, expansions adding storage).
+
+### "What new players actually ask" page
+
+Pitch: a tight, current, curated FAQ page, not another sprawling wiki-style list.
+
+- Evidence: two independent sources converge on nearly the same question set: the
+  official sticky
+  ["Sprout FAQs"](https://forum.square-enix.com/ffxiv/threads/495303-Sprout-FAQs)
+  (dyeing gear, aggro, Party Finder/Unsync, healer boredom, marketboard basics,
+  extreme queues not popping, glamour dresser, DC travel, GC promotion) and
+  [MMORPG.com's new-player FAQ](https://www.mmorpg.com/guides/final-fantasy-xiv-common-new-player-questions-2000120181)
+  (iLvl, melding, Limit Break, tomestones, Golden Saucer, flying, beast tribes). The
+  sticky thread's existence is itself frequency evidence.
+- Gap is partial: scattered coverage already exists (MMORPG.com, Moonieverse,
+  Trials of Fantasy), so the value-add here is curation and staying current, not
+  filling a void.
+
+### Retainer venture optimization (gearing vs. quick venture, when to switch)
+
+- Already covered by Console Games Wiki, Teamcraft, and RPGSite, but a GameFAQs
+  thread and forum posts still call it confusing, so the real opportunity is a
+  tighter decision tool, not new territory.
+- Lower priority than the two above since coverage already exists, just not in a
+  decision-tool format.
+
+### Currency cap/expiry tracker: "what's about to go to waste"
+
+- Evidence: [TheGamer's tomestone-cycle-exchange piece](https://www.thegamer.com/final-fantasy-14-xiv-allagan-tomestones-cycle-exchange-explained/)
+  confirms this is real, recurring, seasonal confusion every time tomestone tiers
+  rotate.
+- Best suited as a live/interactive tool rather than a static article: this would
+  reuse the currency-tracking groundwork already built for the mounts guide, rather
+  than needing new architecture.
+- Risk: needs upkeep every patch cycle when tomestone tiers rotate, similar
+  maintenance shape to the beast-tribe/tomestone data in `hunt-for-astronomy.html`.
+
+---
+
 ## Ideas considered and ruled out
 
 Recorded so these don't get re-researched later:
@@ -137,3 +201,22 @@ Recorded so these don't get re-researched later:
   gemstone-bought vs. marketboard) but the item count is enormous and heavily
   overlaps with the "framing kits" already sold by the gemstone vendor. Worth
   revisiting as a much bigger future project, not a near-term pick.
+- **Materia melding/breakpoints**: already well served by xivgear.app and
+  Teamcraft's gearset calculators, which solve this as an actual calculator rather
+  than a written guide. Would just duplicate existing tools.
+- **Housing lottery mechanics**: five or more major press explainers already cover
+  this clearly (Inverse, PC Gamer, Destructoid, TechRaptor, ScreenRant).
+- **Deep Dungeon mechanics (Palace of the Dead/Heaven-on-High/Eureka Orthos)**:
+  well covered by Icy Veins, the Console Games Wiki, ESTNN, and GameRant.
+- **Ocean Fishing scoring**: well covered by Icy Veins, Teamcraft, Fieldcraft, and
+  a detailed community forum guide.
+- **Job unlock order**: covered by TheGamer, GamesRadar, Destructoid, FFXIV Guild,
+  and Sportskeeda, all with current lists. Also goes stale every expansion, so
+  high maintenance for low differentiation versus existing coverage.
+- **Beast tribe reputation mechanics**: covered by the wiki plus Icy Veins'
+  per-tribe pages.
+- **Weekly tomestone cap/augmented gear**: covered clearly by Icy Veins' Dawntrail
+  gearing guide.
+- **Free Company vs. static vs. raid group**: answered informally across many
+  threads already, and it's too subjective/social a topic for a factual guide
+  format to add much.
