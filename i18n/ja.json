@@ -152,7 +152,8 @@
     "theeventide": "エオルゼアで一番奇妙な酒場",
     "aetherphone": "ゲーム内にフル機能のスマートフォン風UIを追加:ソーシャルフィード、メッセージ、写真共有、マーケットボード、ミニゲームなど。ホーム画面のような体験をかなり再現。カスタムリポジトリで、デフォルトのプラグイン一覧には含まれない",
     "xivmac": "Wine経由でFFXIVを実行する無料・オープンソースのmacOS用ランチャー。Dalamudのワンクリックセットアップを内蔵しており、プラグイン利用のために別のWindows環境を用意する必要がない",
-    "reshademac": "XIV on Mac環境のFFXIV向けにReShadeをワンコマンドでインストール。シェーダーとテクスチャがあらかじめパッケージ化されており、別のWindows環境なしでグラフィックMODを使いたいプレイヤー向け"
+    "reshademac": "XIV on Mac環境のFFXIV向けにReShadeをワンコマンドでインストール。シェーダーとテクスチャがあらかじめパッケージ化されており、別のWindows環境なしでグラフィックMODを使いたいプレイヤー向け",
+    "patinafx": "Apple Silicon専用のシェーダーツールで、Metalで描画するあらゆるゲームにReShadeコミュニティ製シェーダーを読み込める。XIV on Mac内蔵のReShade導入が不安定だったための代替として試用中"
   },
   "pages": {
     "index": {
@@ -208,7 +209,8 @@
         "theorycrafting": "理論値&計算機",
         "guides": "ガイド&リファレンス",
         "progress": "進行状況&チェックリスト",
-        "plugins": "プラグイン"
+        "plugins": "プラグイン",
+        "macos": "macOSツール"
       }
     },
     "venues": {

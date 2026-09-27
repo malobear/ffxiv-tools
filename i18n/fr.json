@@ -152,7 +152,8 @@
     "theeventide": "La taverne la plus étrange d'Éorzéa",
     "aetherphone": "Ajoute une interface complète de smartphone en jeu : fil social, messagerie, partage de photos, marché, jeux. Recrée en grande partie l'expérience d'un écran d'accueil. Dépôt personnalisé, absent du répertoire de plugins par défaut",
     "xivmac": "Lanceur macOS gratuit et open source qui exécute FFXIV via Wine, avec une configuration Dalamud en un clic intégrée, sans avoir besoin d'une installation Windows séparée pour les plugins",
-    "reshademac": "Installation de ReShade pour FFXIV en une seule commande sous XIV on Mac, avec shaders et textures pré-intégrés, pour les joueurs qui veulent des mods graphiques sans installation Windows séparée"
+    "reshademac": "Installation de ReShade pour FFXIV en une seule commande sous XIV on Mac, avec shaders et textures pré-intégrés, pour les joueurs qui veulent des mods graphiques sans installation Windows séparée",
+    "patinafx": "Outil de shaders réservé aux Mac Apple Silicon, qui charge des shaders communautaires ReShade dans n'importe quel jeu rendu en Metal. À l'essai comme alternative après que l'installation ReShade intégrée à XIV on Mac se soit révélée instable"
   },
   "pages": {
     "index": {
@@ -208,7 +209,8 @@
         "theorycrafting": "Theorycrafting & Calculateurs",
         "guides": "Guides & Référence",
         "progress": "Progression & Listes de vérification",
-        "plugins": "Plugins"
+        "plugins": "Plugins",
+        "macos": "Outils macOS"
       }
     },
     "venues": {
