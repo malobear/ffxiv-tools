@@ -203,25 +203,6 @@
     --section-accent: var(--warn);
     background: rgba(224, 164, 92, 0.04);
   }
-  .icon-strip {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 14px;
-    margin: 0 0 28px;
-    padding: 16px 20px;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-  }
-  .icon-strip img {
-    width: 44px;
-    height: 44px;
-    padding: 6px;
-    border-radius: 50%;
-    border: 2px solid var(--border);
-    background: #0d0f14;
-  }
   h2 {
     font-size: 1.05rem;
     text-transform: uppercase;
@@ -369,6 +350,25 @@
   .rule-card strong {
     color: var(--text);
   }
+  .avoid-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 12px;
+    margin: 8px 0 4px;
+  }
+  .avoid-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--warn);
+    border-radius: 8px;
+    padding: 12px 14px;
+  }
+  .avoid-card p {
+    margin: 0;
+  }
+  .avoid-card strong {
+    color: var(--text);
+  }
   table.cheat-sheet {
     width: 100%;
     border-collapse: collapse;
@@ -477,6 +477,30 @@
     color: var(--muted);
     font-size: 0.88rem;
   }
+  .mod-callout {
+    font-size: 0.85rem;
+    color: var(--muted);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--section-accent);
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin: 0 0 16px;
+  }
+  .mod-callout .badge {
+    display: inline-block;
+    color: var(--section-accent);
+    font-weight: 800;
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-right: 6px;
+  }
+  .mod-callout a {
+    color: var(--text);
+    font-weight: 700;
+    text-decoration: underline;
+  }
   footer {
     margin-top: 60px;
     color: var(--muted);
@@ -507,6 +531,7 @@
         <li><a href="#decision-tree">I have this. Should I keep it?</a></li>
         <li><a href="#rules-of-thumb">Quick rules of thumb</a></li>
         <li><a href="#lookups">Useful lookups</a></li>
+        <li><a href="#mods-that-help">Mods that make this easier</a></li>
         <li><a href="#gil-tiers">Does my gil change the effort?</a></li>
         <li><a href="#numbers">Quick-reference numbers</a></li>
         <li><a href="#free-storage">Free storage most people under-use</a></li>
@@ -516,6 +541,7 @@
         <li><a href="#other-sinks">Other things to do with clutter</a></li>
         <li><a href="#quest-currencies">Quest items & currencies</a></li>
         <li><a href="#traps">What never comes back</a></li>
+        <li><a href="#what-not-to-do">What not to do</a></li>
         <li><a href="#sources">Sources & further reading</a></li>
       </ol>
     </nav>
@@ -527,15 +553,6 @@
     <p>This isn't "how storage works," the in-game help and the wiki already cover that. It's the question people keep asking anyway: I'm staring at a full bag, what do I actually do with this stuff. The tree and rules below are the fast path, click any question further down for the sourced reasoning behind it. Purple boxes are opinion, a reasonable starting point, not the only right answer; more of my own take is still coming.</p>
   </div>
 
-  <div class="icon-strip" aria-hidden="true">
-    <img src="https://beta.xivapi.com/api/1/asset?path=ui/icon/052000/052536.tex&format=png" alt="" title="Armoire">
-    <img src="https://beta.xivapi.com/api/1/asset?path=ui/icon/052000/052513.tex&format=png" alt="" title="Retainers">
-    <img src="https://beta.xivapi.com/api/1/asset?path=ui/icon/052000/052478.tex&format=png" alt="" title="Storage">
-    <img src="https://beta.xivapi.com/api/1/asset?path=ui/icon/020000/020254.tex&format=png" alt="" title="Materia">
-    <img src="https://beta.xivapi.com/api/1/asset?path=ui/icon/000000/000120.tex&format=png" alt="" title="Desynthesis">
-    <img src="https://beta.xivapi.com/api/1/asset?path=ui/icon/065000/065002.tex&format=png" alt="" title="Gil">
-    <img src="https://beta.xivapi.com/api/1/asset?path=ui/icon/054000/054401.tex&format=png" alt="" title="What never comes back">
-  </div>
 
   <section data-theme="meta">
     <h2 id="decision-tree">I have this. Should I keep it?</h2>
@@ -605,6 +622,29 @@
   </section>
 
   <section data-theme="meta">
+    <h2 id="mods-that-help">Mods that make this easier</h2>
+    <p class="section-lede">If you're on PC and run Dalamud, plugins automate a good chunk of everything in this guide. Full list with install notes on the <a href="plugins.html#inventory-economy">Plugins page</a>.</p>
+    <div class="lookup-list">
+      <div class="lookup-item">
+        <a href="plugins.html#inventory-economy">Allagan Tools</a>
+        <p>Search and filter across every storage location at once instead of checking retainers one by one. The single biggest time-saver for anything in this guide.</p>
+      </div>
+      <div class="lookup-item">
+        <a href="plugins.html#inventory-economy">A Realm Reorganized</a>
+        <p>Scans your Glamour Dresser, Armoire, bags, and retainers for duplicates and now-Armoire-eligible items, then highlights them for you. Built for exactly the decluttering this guide covers.</p>
+      </div>
+      <div class="lookup-item">
+        <a href="plugins.html#inventory-economy">Price Insight and StackSellPrice</a>
+        <p>Marketboard and full-stack vendor prices right on the tooltip, no alt-tabbing to Universalis to apply the gil thresholds in this guide.</p>
+      </div>
+      <div class="lookup-item">
+        <a href="plugins.html#inventory-economy">CurrencyWatchdog</a>
+        <p>Alerts before a weekly-capped currency or tomestone actually caps, the direct fix for the "letting currencies sit" mistake further down.</p>
+      </div>
+    </div>
+  </section>
+
+  <section data-theme="meta">
     <h2 id="gil-tiers">Does my gil balance change how much this is worth doing?</h2>
     <p class="section-lede">Yes, and it's worth saying out loud instead of pretending every player should spend the same effort on this. Purely my own take, no source to cite.</p>
     <div class="opinion">
@@ -640,6 +680,7 @@
   <section data-theme="cyan">
     <h2 id="free-storage"><img class="h-icon" src="https://beta.xivapi.com/api/1/asset?path=ui/icon/052000/052536.tex&format=png" alt="">The free storage most people under-use</h2>
     <p class="section-lede">Two systems exist specifically to get gear out of your bags for good, and both get ignored for reasons that make sense once you see the friction involved.</p>
+    <p class="mod-callout"><span class="badge">Plugin</span><a href="plugins.html#inventory-economy">A Realm Reorganized</a> scans your Glamour Dresser, Armoire, and bags for you and highlights what's eligible, instead of checking item by item. See <a href="#mods-that-help">Mods that make this easier</a>.</p>
 
     <details class="qa">
       <summary>What's the Armoire actually for, and why do people ignore it?</summary>
@@ -666,6 +707,7 @@
   <section data-theme="cyan">
     <h2 id="retainers"><img class="h-icon" src="https://beta.xivapi.com/api/1/asset?path=ui/icon/052000/052513.tex&format=png" alt="">Retainers</h2>
     <p class="section-lede">How many you actually need, and what to do with them beyond "hold whatever doesn't fit."</p>
+    <p class="mod-callout"><span class="badge">Plugin</span><a href="plugins.html#inventory-economy">Allagan Tools</a> searches every retainer at once instead of opening each one, and <a href="plugins.html#inventory-economy">Allagan Market</a> tracks listings and undercutting across all of them. See <a href="#mods-that-help">Mods that make this easier</a>.</p>
 
     <details class="qa">
       <summary>How many retainers do I actually need, and what should each one do?</summary>
@@ -726,6 +768,7 @@
   <section data-theme="amber">
     <h2 id="materials-clutter"><img class="h-icon" src="https://beta.xivapi.com/api/1/asset?path=ui/icon/020000/020254.tex&format=png" alt="">Materials, materia & small collectibles</h2>
     <p class="section-lede">The stuff that quietly eats the most slots, and a rule of thumb for clearing it out without regret.</p>
+    <p class="mod-callout"><span class="badge">Plugin</span><a href="plugins.html#inventory-economy">RepairMe</a> reminds you when a piece of gear still has materia to extract, so you never accidentally desynthesize or sell it away for free. See <a href="#mods-that-help">Mods that make this easier</a>.</p>
 
     <details class="qa">
       <summary>My crafting mat tab is a disaster. What's safe to vendor or discard?</summary>
@@ -798,6 +841,7 @@
   <section data-theme="amber">
     <h2 id="quest-currencies"><img class="h-icon" src="https://beta.xivapi.com/api/1/asset?path=ui/icon/065000/065002.tex&format=png" alt="">Quest items & currencies</h2>
     <p class="section-lede">Most quest clutter is safer to clear than it looks, thanks to one specific NPC.</p>
+    <p class="mod-callout"><span class="badge">Plugin</span><a href="plugins.html#inventory-economy">CurrencyWatchdog</a> alerts you before a weekly-capped currency or tomestone actually caps, instead of finding out after it's already wasted. See <a href="#mods-that-help">Mods that make this easier</a>.</p>
 
     <details class="qa">
       <summary>Can I just discard my quest reward items once I'm done with that questline?</summary>
@@ -829,6 +873,19 @@
       </ul>
     </div>
     <p class="source">Source: <a href="https://forum.square-enix.com/ffxiv/threads/497773" target="_blank" rel="noopener noreferrer">SE forum: "Items that can never be acquired again after they are discarded"</a>.</p>
+  </section>
+
+  <section data-theme="danger">
+    <h2 id="what-not-to-do"><img class="h-icon" src="https://beta.xivapi.com/api/1/asset?path=ui/icon/051000/051456.tex&format=png" alt="">What not to do</h2>
+    <p class="section-lede">Habits that quietly undo everything above. None of these are about a single item, they're patterns worth noticing in yourself.</p>
+    <div class="avoid-grid">
+      <div class="avoid-card"><p><strong>Speculative hoarding.</strong> Keeping materials or gear "in case the price goes up later" with no target price, no check-in date, and no plan. That's not market timing, it's just storage. If you're not actually tracking it on Universalis, sell it the same week you get it.</p></div>
+      <div class="avoid-card"><p><strong>Half-building someone else's system.</strong> Copying the full 9-retainer category split from this guide when you only have 2 or 3 retainers leaves you with a worse mess than just picking a simple split that fits what you actually have.</p></div>
+      <div class="avoid-card"><p><strong>Leaving "store all newly obtained items" switched on.</strong> That one setting is what turns the Armory Chest into a graveyard of everything you've ever picked up instead of gear you actually chose to keep.</p></div>
+      <div class="avoid-card"><p><strong>Panic-discarding without checking the permanent-loss list.</strong> The flip side of hoarding: clearing bag space so aggressively you toss something that's actually gone for good. When unsure, check the list above or the Calamity Salvager's buy-back before you decide.</p></div>
+      <div class="avoid-card"><p><strong>Melding or overmelding gear you're not sure you're keeping.</strong> Overmeld fodder already has a low success rate, don't burn it into a piece you might replace next patch. Confirm it's a keeper first.</p></div>
+      <div class="avoid-card"><p><strong>Letting currencies sit until they cap or expire.</strong> The "I'll deal with it later" mistake with weekly caps and patch-cycle tomestones. You don't lose them all at once, you just quietly stop earning more until you spend down.</p></div>
+    </div>
   </section>
 
   <section>

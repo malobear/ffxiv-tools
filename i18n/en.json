@@ -47,6 +47,7 @@
     "hud": "hud",
     "hunts": "hunts",
     "immersion": "immersion",
+    "inventory": "inventory",
     "items": "items",
     "job-guides": "job-guides",
     "launcher": "launcher",
@@ -157,7 +158,15 @@
     "aetherphone": "Adds a full smartphone interface in-game, social feed, messaging, photo sharing, market board, games. Recreates a lot of a home-screen experience. Custom repo, not in the default plugin directory",
     "xivmac": "Free, open-source macOS launcher that runs FFXIV through Wine, with one-click Dalamud setup built in, no separate Windows install needed for plugins",
     "reshademac": "One-command ReShade install for FFXIV under XIV on Mac, with shaders and textures pre-packaged, for players wanting graphics mods without a separate Windows install",
-    "patinafx": "Apple silicon-only shader tool that loads ReShade community shaders into any Metal-rendered game, trying as an alternative after XIV on Mac's built-in ReShade setup turned out unstable"
+    "patinafx": "Apple silicon-only shader tool that loads ReShade community shaders into any Metal-rendered game, trying as an alternative after XIV on Mac's built-in ReShade setup turned out unstable",
+    "allagantools": "Cross-storage inventory search and filtering across characters, retainers, and the Free Company chest, plus craft planning and marketboard integration right in tooltips. In the default plugin repo but hidden from browsing, so search the exact name (InventoryTools) to install",
+    "allaganmarket": "Tracks retainer market listings, sales, and undercutting across every character at once. In the default plugin repo but hidden from browsing, so search the exact name to install",
+    "arealmreorganized": "Scans the Glamour Dresser, Armoire, bags, Armory Chest, Saddlebag, and retainers for duplicates, partial sets, and items now eligible for the Armoire, then highlights them right in those windows. In the default plugin repo but hidden from browsing, so search the exact name to install",
+    "priceinsight": "Shows NQ/HQ marketboard prices and the most recent sale directly on an item's tooltip on hover, pulled from Universalis. In the default plugin repo but hidden from browsing, so search the exact name to install",
+    "stacksellprice": "Shows a full stack's vendor sell price on the tooltip instead of just one unit, so you don't have to do the multiplication yourself before deciding to vendor a pile of materials. In the default plugin repo but hidden from browsing, so search the exact name to install",
+    "repairme": "Reminds you when gear needs repairing or still has materia to extract before you get rid of it. In the default plugin repo but hidden from browsing, so search the exact name to install",
+    "currencywatchdog": "Configurable overlay and alerts for currencies (or any item) approaching a threshold you set, so weekly-capped tomestones and tokens don't quietly go to waste. In the default plugin repo but hidden from browsing, so search the exact name to install",
+    "simpletweaks": "Huge, individually toggleable grab-bag of quality-of-life tweaks; several touch inventory, retainers, and tooltips directly. In the default plugin repo but hidden from browsing, so search the exact name to install"
   },
   "pages": {
     "index": {
@@ -198,6 +207,7 @@
         "mods": "Mods",
         "chatui": "Chat & UI",
         "social": "Social & Friends",
+        "inventory": "Inventory & Economy",
         "discovery": "Plugin Discovery & Publishers"
       }
     },

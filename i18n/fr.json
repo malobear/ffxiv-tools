@@ -47,6 +47,7 @@
     "hud": "interface (HUD)",
     "hunts": "chasses",
     "immersion": "immersion",
+    "inventory": "inventaire",
     "items": "objets",
     "job-guides": "guides de job",
     "launcher": "lanceur",
@@ -157,7 +158,15 @@
     "aetherphone": "Ajoute une interface complète de smartphone en jeu : fil social, messagerie, partage de photos, marché, jeux. Recrée en grande partie l'expérience d'un écran d'accueil. Dépôt personnalisé, absent du répertoire de plugins par défaut",
     "xivmac": "Lanceur macOS gratuit et open source qui exécute FFXIV via Wine, avec une configuration Dalamud en un clic intégrée, sans avoir besoin d'une installation Windows séparée pour les plugins",
     "reshademac": "Installation de ReShade pour FFXIV en une seule commande sous XIV on Mac, avec shaders et textures pré-intégrés, pour les joueurs qui veulent des mods graphiques sans installation Windows séparée",
-    "patinafx": "Outil de shaders réservé aux Mac Apple Silicon, qui charge des shaders communautaires ReShade dans n'importe quel jeu rendu en Metal. À l'essai comme alternative après que l'installation ReShade intégrée à XIV on Mac se soit révélée instable"
+    "patinafx": "Outil de shaders réservé aux Mac Apple Silicon, qui charge des shaders communautaires ReShade dans n'importe quel jeu rendu en Metal. À l'essai comme alternative après que l'installation ReShade intégrée à XIV on Mac se soit révélée instable",
+    "allagantools": "Recherche et filtrage d'inventaire multi-stockage sur tous les personnages, les gestionnaires et le coffre de compagnie libre, plus planification d'artisanat et intégration du marché directement dans les infobulles. Dans le dépôt de plugins par défaut mais masqué de la navigation, donc rechercher le nom exact (InventoryTools) pour l'installer",
+    "allaganmarket": "Suit les annonces, ventes et sous-enchères de vos gestionnaires sur tous les personnages à la fois. Dans le dépôt de plugins par défaut mais masqué de la navigation, donc rechercher le nom exact pour l'installer",
+    "arealmreorganized": "Analyse la commode à glamour, l'armoire, les sacs, le coffre d'équipement, la sacoche de chocobo et les gestionnaires à la recherche de doublons, d'ensembles incomplets et d'objets désormais éligibles à l'armoire, puis les met en évidence directement dans ces fenêtres. Dans le dépôt de plugins par défaut mais masqué de la navigation, donc rechercher le nom exact pour l'installer",
+    "priceinsight": "Affiche les prix du marché NQ/HQ et la vente la plus récente directement dans l'infobulle d'un objet au survol, récupérés depuis Universalis. Dans le dépôt de plugins par défaut mais masqué de la navigation, donc rechercher le nom exact pour l'installer",
+    "stacksellprice": "Affiche le prix de vente au marchand de la pile entière dans l'infobulle au lieu d'une seule unité, pour éviter de faire la multiplication soi-même avant de vendre un tas de matériaux. Dans le dépôt de plugins par défaut mais masqué de la navigation, donc rechercher le nom exact pour l'installer",
+    "repairme": "Rappelle quand un équipement a besoin d'être réparé ou contient encore de la matéria à extraire avant de s'en débarrasser. Dans le dépôt de plugins par défaut mais masqué de la navigation, donc rechercher le nom exact pour l'installer",
+    "currencywatchdog": "Overlay et alertes configurables pour les monnaies (ou tout autre objet) approchant un seuil que vous définissez, pour que les tomes et jetons plafonnés chaque semaine ne se perdent pas silencieusement. Dans le dépôt de plugins par défaut mais masqué de la navigation, donc rechercher le nom exact pour l'installer",
+    "simpletweaks": "Immense collection d'ajustements de confort activables individuellement ; plusieurs touchent directement l'inventaire, les gestionnaires et les infobulles. Dans le dépôt de plugins par défaut mais masqué de la navigation, donc rechercher le nom exact pour l'installer"
   },
   "pages": {
     "index": {
@@ -198,6 +207,7 @@
         "mods": "Mods",
         "chatui": "Chat & Interface",
         "social": "Social & Amis",
+        "inventory": "Inventaire & Économie",
         "discovery": "Découverte de plugins & Éditeurs"
       }
     },

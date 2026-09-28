@@ -47,6 +47,7 @@
     "hud": "HUD",
     "hunts": "Jagden",
     "immersion": "Immersion",
+    "inventory": "Inventar",
     "items": "Items",
     "job-guides": "Job-Guides",
     "launcher": "Launcher",
@@ -157,7 +158,15 @@
     "aetherphone": "Fügt eine vollständige Smartphone-Oberfläche ins Spiel ein: Social Feed, Nachrichten, Fotos teilen, Marktbrett, Spiele. Bringt viel vom Home-Screen-Gefühl ins Spiel. Custom-Repo, nicht im Standard-Plugin-Verzeichnis",
     "xivmac": "Kostenloser, quelloffener macOS-Launcher, der FFXIV über Wine ausführt, mit integriertem Ein-Klick-Setup für Dalamud, sodass für Plugins keine separate Windows-Installation nötig ist",
     "reshademac": "Installiert ReShade für FFXIV unter XIV on Mac mit einem einzigen Befehl, inklusive vorverpackter Shader und Texturen, für Spieler, die Grafik-Mods ohne separate Windows-Installation wollen",
-    "patinafx": "Shader-Tool nur für Apple Silicon, das ReShade-Community-Shader in jedes Metal-gerenderte Spiel lädt. Wird als Alternative getestet, nachdem sich die integrierte ReShade-Einrichtung von XIV on Mac als instabil erwiesen hat"
+    "patinafx": "Shader-Tool nur für Apple Silicon, das ReShade-Community-Shader in jedes Metal-gerenderte Spiel lädt. Wird als Alternative getestet, nachdem sich die integrierte ReShade-Einrichtung von XIV on Mac als instabil erwiesen hat",
+    "allagantools": "Speicherübergreifende Inventarsuche und -filterung über Charaktere, Gehilfen und die Kompanietruhe hinweg, dazu Craft-Planung und Marktbrett-Integration direkt im Tooltip. Im Standard-Plugin-Verzeichnis, aber beim Durchsuchen ausgeblendet, daher nach dem genauen Namen (InventoryTools) suchen, um es zu installieren",
+    "allaganmarket": "Verfolgt Gehilfen-Marktangebote, Verkäufe und Unterbietungen über alle Charaktere hinweg gleichzeitig. Im Standard-Plugin-Verzeichnis, aber beim Durchsuchen ausgeblendet, daher nach dem genauen Namen suchen, um es zu installieren",
+    "arealmreorganized": "Durchsucht Glamour-Kommode, Schrank, Taschen, Ausrüstungstruhe, Chocobo-Satteltasche und Gehilfen nach Duplikaten, unvollständigen Sets und Gegenständen, die jetzt für den Schrank geeignet sind, und markiert sie direkt in diesen Fenstern. Im Standard-Plugin-Verzeichnis, aber beim Durchsuchen ausgeblendet, daher nach dem genauen Namen suchen, um es zu installieren",
+    "priceinsight": "Zeigt NQ/HQ-Marktbrettpreise und den letzten Verkauf direkt im Tooltip eines Gegenstands beim Überfahren mit der Maus an, abgerufen von Universalis. Im Standard-Plugin-Verzeichnis, aber beim Durchsuchen ausgeblendet, daher nach dem genauen Namen suchen, um es zu installieren",
+    "stacksellprice": "Zeigt den Verkaufspreis eines ganzen Stapels im Tooltip an statt nur für ein einzelnes Stück, sodass man die Multiplikation nicht selbst machen muss, bevor man einen Stapel Materialien verkauft. Im Standard-Plugin-Verzeichnis, aber beim Durchsuchen ausgeblendet, daher nach dem genauen Namen suchen, um es zu installieren",
+    "repairme": "Erinnert daran, wenn Ausrüstung repariert werden muss oder noch Materia enthält, die extrahiert werden sollte, bevor man sie loswird. Im Standard-Plugin-Verzeichnis, aber beim Durchsuchen ausgeblendet, daher nach dem genauen Namen suchen, um es zu installieren",
+    "currencywatchdog": "Konfigurierbares Overlay und Warnungen für Währungen (oder beliebige Gegenstände), die sich einem selbst festgelegten Grenzwert nähern, damit wöchentlich gedeckelte Tomesteine und Marken nicht stillschweigend verfallen. Im Standard-Plugin-Verzeichnis, aber beim Durchsuchen ausgeblendet, daher nach dem genauen Namen suchen, um es zu installieren",
+    "simpletweaks": "Riesige Sammlung einzeln aktivierbarer Komfort-Anpassungen; mehrere betreffen direkt Inventar, Gehilfen und Tooltips. Im Standard-Plugin-Verzeichnis, aber beim Durchsuchen ausgeblendet, daher nach dem genauen Namen suchen, um es zu installieren"
   },
   "pages": {
     "index": {
@@ -198,6 +207,7 @@
         "mods": "Mods",
         "chatui": "Chat & UI",
         "social": "Sozial & Freunde",
+        "inventory": "Inventar & Wirtschaft",
         "discovery": "Plugin-Entdeckung & Publisher"
       }
     },
