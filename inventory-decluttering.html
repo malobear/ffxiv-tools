@@ -13,7 +13,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Inventory & Retainer Decluttering</title>
-<meta name="description" content="What to actually keep, bank, or discard in FFXIV: Armoire and Glamour Dresser tips, a retainer setup that scales, desynthesis and Doman Enclave donations, and the short list of items that never come back once discarded.">
+<meta name="description" content="What to actually keep, bank, or discard in FFXIV: a quick decision tree, rules of thumb, Armoire and Glamour Dresser tips, desynthesis and Doman Enclave donations, and the short list of items that never come back once discarded.">
 <link rel="canonical" href="https://malobear.github.io/ffxiv-tools/inventory-decluttering.html">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <meta name="theme-color" content="#12151c">
@@ -40,6 +40,9 @@
     --accent: #7db8ff;
     --warn: #e0a45c;
     --opine: #c99bf0;
+    --good: #7ed6a5;
+    --cyan: #6fd1e8;
+    --amber: #e0b35c;
   }
   * { box-sizing: border-box; }
   body {
@@ -48,6 +51,9 @@
     color: var(--text);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     line-height: 1.5;
+  }
+  strong, b {
+    color: var(--text);
   }
   main {
     max-width: 1180px;
@@ -163,7 +169,7 @@
     border-left: 3px solid var(--accent);
     border-radius: 6px;
     padding: 14px 16px;
-    margin-bottom: 28px;
+    margin-bottom: 24px;
     font-size: 0.88rem;
     color: var(--muted);
   }
@@ -173,27 +179,68 @@
   .intro-note strong {
     color: var(--text);
   }
+  .content-col > section {
+    --section-accent: var(--border);
+    background: rgba(255, 255, 255, 0.014);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px 24px 26px;
+    margin-bottom: 20px;
+  }
+  .content-col > section[data-theme="meta"] {
+    --section-accent: var(--accent);
+    background: rgba(125, 184, 255, 0.035);
+  }
+  .content-col > section[data-theme="cyan"] {
+    --section-accent: var(--cyan);
+    background: rgba(111, 209, 232, 0.035);
+  }
+  .content-col > section[data-theme="amber"] {
+    --section-accent: var(--amber);
+    background: rgba(224, 179, 92, 0.035);
+  }
+  .content-col > section[data-theme="danger"] {
+    --section-accent: var(--warn);
+    background: rgba(224, 164, 92, 0.04);
+  }
+  .icon-strip {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+    margin: 0 0 28px;
+    padding: 16px 20px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+  }
+  .icon-strip img {
+    width: 44px;
+    height: 44px;
+    padding: 6px;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    background: #0d0f14;
+  }
   h2 {
     font-size: 1.05rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     color: var(--muted);
-    margin: 40px 0 12px;
-    border-bottom: 1px solid var(--border);
+    margin: 0 0 12px;
+    border-bottom: 1px solid var(--section-accent);
     padding-bottom: 8px;
     display: flex;
     align-items: center;
     gap: 10px;
     scroll-margin-top: 20px;
   }
-  h2:first-of-type {
-    margin-top: 0;
-  }
   .h-icon {
-    width: 26px;
-    height: 26px;
-    border-radius: 5px;
-    border: 1px solid var(--border);
+    width: 40px;
+    height: 40px;
+    padding: 6px;
+    border-radius: 50%;
+    border: 2px solid var(--section-accent);
     background: #0d0f14;
     flex-shrink: 0;
   }
@@ -207,16 +254,42 @@
     margin: 0 0 6px;
     color: var(--text);
   }
-  .qa {
-    margin: 0 0 20px;
+  details.qa {
+    margin: 0 0 10px;
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--section-accent);
+    border-radius: 8px;
+    padding: 10px 14px;
+    background: rgba(255, 255, 255, 0.02);
   }
-  .qa p {
+  details.qa summary {
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.98rem;
+    color: var(--text);
+    list-style: none;
+  }
+  details.qa summary::-webkit-details-marker {
+    display: none;
+  }
+  details.qa summary::before {
+    content: "+ ";
+    color: var(--accent);
+    font-weight: 700;
+  }
+  details.qa[open] summary::before {
+    content: "\2212 ";
+  }
+  details.qa[open] summary {
+    margin-bottom: 8px;
+  }
+  details.qa .body p {
     margin: 0 0 8px;
   }
   .source {
     color: var(--muted);
     font-size: 0.78rem;
-    margin: 0 0 20px;
+    margin: 0;
   }
   .source a {
     color: var(--muted);
@@ -246,7 +319,7 @@
     border-left: 3px solid var(--opine);
     border-radius: 6px;
     padding: 12px 14px;
-    margin: 0 0 20px;
+    margin: 4px 0 20px;
     font-size: 0.92rem;
   }
   .opinion .badge {
@@ -267,6 +340,34 @@
   }
   .opinion li {
     margin: 2px 0;
+  }
+  .rules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 12px;
+    margin: 8px 0 4px;
+  }
+  .rule-card {
+    background: rgba(201, 155, 240, 0.07);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--opine);
+    border-radius: 8px;
+    padding: 12px 14px;
+  }
+  .rule-card .rule-num {
+    display: block;
+    color: var(--opine);
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 4px;
+  }
+  .rule-card p {
+    margin: 0;
+  }
+  .rule-card strong {
+    color: var(--text);
   }
   table.cheat-sheet {
     width: 100%;
@@ -313,7 +414,7 @@
   .fc-yes {
     background: rgba(125, 184, 255, 0.07);
     border: 1px solid var(--border);
-    border-left: 3px solid #7ed6a5;
+    border-left: 3px solid var(--good);
     border-radius: 8px;
     padding: 12px 14px;
     font-size: 0.9rem;
@@ -322,7 +423,7 @@
   }
   .fc-yes .badge {
     display: block;
-    color: #7ed6a5;
+    color: var(--good);
     font-size: 0.68rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -352,6 +453,30 @@
   .sources-list a {
     color: var(--accent);
   }
+  .lookup-list {
+    display: grid;
+    gap: 10px;
+    margin: 8px 0 4px;
+  }
+  .lookup-item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+  }
+  .lookup-item a {
+    color: var(--accent);
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .lookup-item a:hover {
+    text-decoration: underline;
+  }
+  .lookup-item p {
+    margin: 4px 0 0;
+    color: var(--muted);
+    font-size: 0.88rem;
+  }
   footer {
     margin-top: 60px;
     color: var(--muted);
@@ -379,6 +504,11 @@
     <nav class="toc" aria-label="Contents">
       <p class="toc-title">Contents</p>
       <ol>
+        <li><a href="#decision-tree">I have this. Should I keep it?</a></li>
+        <li><a href="#rules-of-thumb">Quick rules of thumb</a></li>
+        <li><a href="#lookups">Useful lookups</a></li>
+        <li><a href="#gil-tiers">Does my gil change the effort?</a></li>
+        <li><a href="#numbers">Quick-reference numbers</a></li>
         <li><a href="#free-storage">Free storage most people under-use</a></li>
         <li><a href="#retainers">Retainers</a></li>
         <li><a href="#storage-map">Where things actually go</a></li>
@@ -386,8 +516,6 @@
         <li><a href="#other-sinks">Other things to do with clutter</a></li>
         <li><a href="#quest-currencies">Quest items & currencies</a></li>
         <li><a href="#traps">What never comes back</a></li>
-        <li><a href="#numbers">Quick-reference numbers</a></li>
-        <li><a href="#triage">The 30-second triage</a></li>
         <li><a href="#sources">Sources & further reading</a></li>
       </ol>
     </nav>
@@ -396,24 +524,138 @@
   <div class="content-col column is-9">
 
   <div class="intro-note">
-    <p>This isn't "how storage works," the in-game help and the wiki already cover that. It's the question people keep asking anyway: I'm staring at a full bag, what do I actually do with this stuff. Answers below are sourced where the fact is checkable (slot counts, gil costs, what never comes back). The purple "my default" boxes are opinion layered on top of that, a reasonable starting point, not the only right answer; more of my own take is still coming.</p>
+    <p>This isn't "how storage works," the in-game help and the wiki already cover that. It's the question people keep asking anyway: I'm staring at a full bag, what do I actually do with this stuff. The tree and rules below are the fast path, click any question further down for the sourced reasoning behind it. Purple boxes are opinion, a reasonable starting point, not the only right answer; more of my own take is still coming.</p>
   </div>
 
-  <section>
+  <div class="icon-strip" aria-hidden="true">
+    <img src="https://beta.xivapi.com/api/1/asset?path=ui/icon/052000/052536.tex&format=png" alt="" title="Armoire">
+    <img src="https://beta.xivapi.com/api/1/asset?path=ui/icon/052000/052513.tex&format=png" alt="" title="Retainers">
+    <img src="https://beta.xivapi.com/api/1/asset?path=ui/icon/052000/052478.tex&format=png" alt="" title="Storage">
+    <img src="https://beta.xivapi.com/api/1/asset?path=ui/icon/020000/020254.tex&format=png" alt="" title="Materia">
+    <img src="https://beta.xivapi.com/api/1/asset?path=ui/icon/000000/000120.tex&format=png" alt="" title="Desynthesis">
+    <img src="https://beta.xivapi.com/api/1/asset?path=ui/icon/065000/065002.tex&format=png" alt="" title="Gil">
+    <img src="https://beta.xivapi.com/api/1/asset?path=ui/icon/054000/054401.tex&format=png" alt="" title="What never comes back">
+  </div>
+
+  <section data-theme="meta">
+    <h2 id="decision-tree">I have this. Should I keep it?</h2>
+    <p class="section-lede">Follow the chain until one answer is yes.</p>
+    <div class="flowchart">
+      <div class="fc-step">
+        <div class="fc-question">Equipped or genuinely BiS right now?</div>
+        <div class="fc-yes"><div><span class="badge">Yes</span>Keep it. Armory Chest.</div></div>
+      </div>
+      <div class="fc-connector">no ↓ keep checking</div>
+      <div class="fc-step">
+        <div class="fc-question">Is it on the permanent-loss list? (starting ring, PvP season reward, 1.x relic, removed content)</div>
+        <div class="fc-yes"><div><span class="badge">Yes</span>Don't discard casually, this one doesn't come back. See the full list below.</div></div>
+      </div>
+      <div class="fc-connector">no ↓ keep checking</div>
+      <div class="fc-step">
+        <div class="fc-question">Could I easily get another one? Marketboard, a vendor, the Calamity Salvager, or a fight I can just solo-unsync and farm again (an old dungeon boss past its relevancy, for example)</div>
+        <div class="fc-yes"><div><span class="badge">Yes</span>Default to clearing it out now: desynthesize it, sell it via the Doman Enclave, or discard it. Replacing it later costs you almost nothing.</div></div>
+      </div>
+      <div class="fc-connector">no ↓ keep checking</div>
+      <div class="fc-step">
+        <div class="fc-question">A glamour piece you'd actually wear, a material you use regularly, or part of a set you're actively completing?</div>
+        <div class="fc-yes"><div><span class="badge">Yes</span>Keep it deliberately: Glamour Dresser, a modest banked stack, or wherever that collection lives.</div></div>
+      </div>
+      <div class="fc-connector">still not sure ↓</div>
+      <div class="fc-step">
+        <div class="fc-question">None of the above fit.</div>
+        <div class="fc-yes"><div><span class="badge">Default</span>Desynthesize it or sell it through the Doman Enclave. Don't let it just sit there.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section data-theme="meta">
+    <h2 id="rules-of-thumb">Quick rules of thumb</h2>
+    <p class="section-lede">The short version of everything below, for when you don't want to click through the details.</p>
+    <div class="rules-grid">
+      <div class="rule-card"><span class="rule-num">Rule 1</span><p><strong>Retainer venture brought back something I don't need:</strong> first check if it helps level desynthesis on a class I'm behind on. If not, check whether it sells for over 10k gil with any real frequency on the board. If neither, vendor it or Doman Enclave it right away, don't bank it "just in case."</p></div>
+      <div class="rule-card"><span class="rule-num">Rule 2</span><p><strong>Under 10 gil on the board, or buyable from any vendor:</strong> never worth a bag slot, discard or vendor it immediately.</p></div>
+      <div class="rule-card"><span class="rule-num">Rule 3</span><p><strong>Old dungeon, trial, or raid gear you've outleveled:</strong> if you can easily solo-unsync the fight again, don't hoard it, farming it again costs almost nothing. Only keep it if the content is hard to repeat solo or gone entirely.</p></div>
+      <div class="rule-card"><span class="rule-num">Rule 4</span><p><strong>Materia:</strong> keep the current tier and one tier down, sell everything older, extracting first (not destructive since patch 5.2) if it's still melded to gear you're getting rid of anyway.</p></div>
+      <div class="rule-card"><span class="rule-num">Rule 5</span><p><strong>Junk gear you were about to vendor:</strong> sell it through the Doman Enclave basket instead, it pays a growing multiple of vendor price (up to double), up to the weekly cap.</p></div>
+      <div class="rule-card"><span class="rule-num">Rule 6</span><p><strong>Quest reward from a finished questline, not on the permanent-loss list:</strong> throw it out, the Calamity Salvager has it if you're ever wrong.</p></div>
+    </div>
+  </section>
+
+  <section data-theme="meta">
+    <h2 id="lookups">Useful lookups</h2>
+    <p class="section-lede">The tree and rules above lean on real numbers for the specific item in your hands, not a guess. These are the sites I actually open to get them.</p>
+    <div class="lookup-list">
+      <div class="lookup-item">
+        <a href="https://universalis.app/" target="_blank" rel="noopener noreferrer">Universalis</a>
+        <p>Live cross-world marketboard prices. The gil thresholds in this guide (under 10 gil, over 10k gil) are only useful once you know the actual current number for what you're holding, not a remembered price from months ago.</p>
+      </div>
+      <div class="lookup-item">
+        <a href="https://www.garlandtools.org/db/" target="_blank" rel="noopener noreferrer">Garland Tools</a>
+        <p>Search the item to see its vendor sell price and, for craftable gear, its desynthesis results, what materials and roughly how many you'd actually get. Answers the "desynthesize or just vendor it" question with real data instead of a guess.</p>
+      </div>
+      <div class="lookup-item">
+        <a href="https://ffxivcollect.com/" target="_blank" rel="noopener noreferrer">FFXIV Collect</a>
+        <p>If it's a mount, minion, or Triple Triad card, check whether you already own it or it's part of a set you're actually chasing before trading it away as clutter.</p>
+      </div>
+      <div class="lookup-item">
+        <a href="https://ffxivteamcraft.com/" target="_blank" rel="noopener noreferrer">Teamcraft</a>
+        <p>Search the item to see what current recipes, gathering logs, or gearsets actually use it. Useful for the "is this a material I use regularly" question when you're not sure if you'll need it again soon.</p>
+      </div>
+    </div>
+  </section>
+
+  <section data-theme="meta">
+    <h2 id="gil-tiers">Does my gil balance change how much this is worth doing?</h2>
+    <p class="section-lede">Yes, and it's worth saying out loud instead of pretending every player should spend the same effort on this. Purely my own take, no source to cite.</p>
+    <div class="opinion">
+      <span class="badge">My default</span>
+      <table class="cheat-sheet">
+        <tr><th>Gil on hand</th><th>How much effort I'd put in</th></tr>
+        <tr><td>Under 1 million</td><td>Run the full triage on most things. At this range, clearing clutter and using the Doman Enclave meaningfully move your total, it's worth the few extra clicks.</td></tr>
+        <tr><td>1 million to 10 million</td><td>Keep the systems (retainer categories, a Doman Enclave habit, the gil threshold), but stop agonizing over individual items. A wrong call on one stack of materials won't matter.</td></tr>
+        <tr><td>10 million to 100 million</td><td>The gil value of ordinary clutter is noise against your total. Only declutter for bag-space and sanity, not to optimize gil; don't spend real time hunting for extra value in a pile of mats.</td></tr>
+        <tr><td>Over 100 million</td><td>Skip the analysis entirely. Discard or vendor without thinking, keep only what you'd actually use (glamour, active materia, real collections), and spend money on more retainers or storage instead of hours of triage. Your time is worth more than the marginal gil here.</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section data-theme="meta">
+    <h2 id="numbers">Quick-reference numbers</h2>
+    <p class="section-lede">The hard slot counts and costs, in one place, since most guides scatter these across several pages.</p>
+    <table class="cheat-sheet">
+      <tr><th>Storage</th><th>Capacity</th><th>Notes</th></tr>
+      <tr><td>Main inventory</td><td class="num">140 slots</td><td>Fixed, cannot be upgraded by any means</td></tr>
+      <tr><td>Armory Chest: Main Hand & Rings</td><td class="num">50 / tab</td><td>Bumped from 35 in patch 6.0; the two tabs that actually run out for multi-job players</td></tr>
+      <tr><td>Armory Chest: everything else</td><td class="num">35 / tab</td><td>Head, Body, Hands, Legs, Feet, Earrings, Necklace, Bracelets, each its own tab; Soul Crystals are unlimited; no Waist tab since 6.0, belts were removed from the game</td></tr>
+      <tr><td>Chocobo Saddlebag</td><td class="num">70 / 140</td><td>70 free, 140 with a Companion App subscription</td></tr>
+      <tr><td>Glamour Dresser</td><td class="num">800 slots</td><td>Plus up to 20 saved glamour plates</td></tr>
+      <tr><td>Armoire</td><td class="num">No limit</td><td>Restricted to an eligible-item allowlist</td></tr>
+      <tr><td>Retainers</td><td class="num">2 + up to 7</td><td>175 slots each; extras are a real-money subscription (~$2/mo each), not gil</td></tr>
+      <tr><td>Crystals / shards / clusters</td><td class="num">9,999 cap</td><td>Per storage location: inventory, saddlebag, or each retainer separately</td></tr>
+      <tr><td>Doman Enclave weekly cap</td><td class="num">gil-capped</td><td>Resets every Tuesday; pays roughly 120%+ of vendor sell price until the cap is hit</td></tr>
+    </table>
+    <p class="source">Source: <a href="https://basicallyaverage.com/ffxiv-where-to-store-items/" target="_blank" rel="noopener noreferrer">Basically Average</a>; <a href="https://latetothepartyfinder.com/how-to-manage-your-ffxiv-inventory/" target="_blank" rel="noopener noreferrer">Late to the Party Finder</a>; <a href="https://na.finalfantasyxiv.com/lodestone/topics/detail/bdd208b52ddababad086dc9679e96a8412962edf/" target="_blank" rel="noopener noreferrer">official patch 6.0 notes</a>; <a href="https://na.finalfantasyxiv.com/lodestone/playguide/option_service/additional_retainer/" target="_blank" rel="noopener noreferrer">official Retainer Service page</a>; <a href="https://na.finalfantasyxiv.com/uiguide/fashion/equipment-glamours/fashion_fullitem.html" target="_blank" rel="noopener noreferrer">official Glamour Dresser UI guide</a>; <a href="https://ffxiv.consolegameswiki.com/wiki/Doman_Enclave_Reconstruction" target="_blank" rel="noopener noreferrer">Doman Enclave Reconstruction, Console Games Wiki</a>.</p>
+  </section>
+
+  <section data-theme="cyan">
     <h2 id="free-storage"><img class="h-icon" src="https://beta.xivapi.com/api/1/asset?path=ui/icon/052000/052536.tex&format=png" alt="">The free storage most people under-use</h2>
     <p class="section-lede">Two systems exist specifically to get gear out of your bags for good, and both get ignored for reasons that make sense once you see the friction involved.</p>
 
-    <div class="qa">
-      <h3>What's the Armoire actually for, and why do people ignore it?</h3>
-      <p>It has no slot limit, which sounds amazing, but it only accepts a specific allowlist of gear: job-specific armor sets, seasonal event costumes, achievement rewards, and a handful of bonus items, not just anything. Check for the small lit icon in the item's corner to confirm it qualifies before assuming it belongs there. That restriction, not laziness, is why most players under-use it.</p>
-      <p class="source">Source: <a href="https://na.finalfantasyxiv.com/uiguide/fashion/equipment-glamours/fashion_cabinet.html" target="_blank" rel="noopener noreferrer">official UI Guide: items storable in the Armoire</a>; <a href="https://decorguider.com/ff14-armoire-vs-glamour-dresser/" target="_blank" rel="noopener noreferrer">FF14 Armoire vs Glamour Dresser</a>.</p>
-    </div>
+    <details class="qa">
+      <summary>What's the Armoire actually for, and why do people ignore it?</summary>
+      <div class="body">
+        <p>It has no slot limit, which sounds amazing, but it only accepts a specific allowlist of gear: job-specific armor sets, seasonal event costumes, achievement rewards, and a handful of bonus items, not just anything. Check for the small lit icon in the item's corner to confirm it qualifies before assuming it belongs there. That restriction, not laziness, is why most players under-use it.</p>
+        <p class="source">Source: <a href="https://na.finalfantasyxiv.com/uiguide/fashion/equipment-glamours/fashion_cabinet.html" target="_blank" rel="noopener noreferrer">official UI Guide: items storable in the Armoire</a>; <a href="https://decorguider.com/ff14-armoire-vs-glamour-dresser/" target="_blank" rel="noopener noreferrer">FF14 Armoire vs Glamour Dresser</a>.</p>
+      </div>
+    </details>
 
-    <div class="qa">
-      <h3>Armory Chest or Glamour Dresser for my old gear?</h3>
-      <p>Armory Chest is for gear you might actually re-equip: current BiS per role, or gear you're actively using in a rotation. Turn off "store all newly obtained items" so it doesn't fill up with garbage automatically. The Glamour Dresser (800 slots) is for cosmetic keepers only, and it has real friction: you need a Glamour Prism per item, the piece must be at full durability, and materia has to be extracted first. Do that once, deliberately, rather than letting the Armory Chest become a graveyard of half-remembered gear.</p>
-      <p class="source">Source: <a href="https://latetothepartyfinder.com/how-to-manage-your-ffxiv-inventory/" target="_blank" rel="noopener noreferrer">Late to the Party Finder: managing your inventory</a>; <a href="https://basicallyaverage.com/ffxiv-where-to-store-items/" target="_blank" rel="noopener noreferrer">Basically Average: where to store items</a>.</p>
-    </div>
+    <details class="qa">
+      <summary>Armory Chest or Glamour Dresser for my old gear?</summary>
+      <div class="body">
+        <p>Armory Chest is for gear you might actually re-equip: current BiS per role, or gear you're actively using in a rotation. Turn off "store all newly obtained items" so it doesn't fill up with garbage automatically. The Glamour Dresser (800 slots) is for cosmetic keepers only, and it has real friction: you need a Glamour Prism per item, the piece must be at full durability, and materia has to be extracted first. Do that once, deliberately, rather than letting the Armory Chest become a graveyard of half-remembered gear.</p>
+        <p class="source">Source: <a href="https://latetothepartyfinder.com/how-to-manage-your-ffxiv-inventory/" target="_blank" rel="noopener noreferrer">Late to the Party Finder: managing your inventory</a>; <a href="https://basicallyaverage.com/ffxiv-where-to-store-items/" target="_blank" rel="noopener noreferrer">Basically Average: where to store items</a>.</p>
+      </div>
+    </details>
 
     <div class="opinion">
       <span class="badge">My default</span>
@@ -421,21 +663,25 @@
     </div>
   </section>
 
-  <section>
+  <section data-theme="cyan">
     <h2 id="retainers"><img class="h-icon" src="https://beta.xivapi.com/api/1/asset?path=ui/icon/052000/052513.tex&format=png" alt="">Retainers</h2>
     <p class="section-lede">How many you actually need, and what to do with them beyond "hold whatever doesn't fit."</p>
 
-    <div class="qa">
-      <h3>How many retainers do I actually need, and what should each one do?</h3>
-      <p>You start with 2 free. Up to 7 more are available, but that's a real-money Mogstation subscription (about $2/month per additional slot), not a gil cost, worth knowing before you assume you can just buy more with in-game currency. Each retainer holds 175 slots. One practical split from a veteran with a full 9: three retainers for crafting materials grouped by class, one for finished goods ready to sell, one for materia and collectibles, and the remaining four for glamour and equipment sorted by role. You don't need 9 retainers to benefit from having a system: even 2 or 3 retainers assigned to clear categories beats one retainer holding a little of everything.</p>
-      <p class="source">Source: veteran reply in <a href="https://forum.square-enix.com/ffxiv/threads/364479" target="_blank" rel="noopener noreferrer">SE forum: "Request: Inventory Management Tips from Vets"</a>; retainer counts and costs from <a href="https://www.thegamer.com/final-fantasy-14-complete-guide-retainers/" target="_blank" rel="noopener noreferrer">TheGamer's retainer guide</a> and the <a href="https://na.finalfantasyxiv.com/lodestone/playguide/option_service/additional_retainer/" target="_blank" rel="noopener noreferrer">official Retainer Service page</a>.</p>
-    </div>
+    <details class="qa">
+      <summary>How many retainers do I actually need, and what should each one do?</summary>
+      <div class="body">
+        <p>You start with 2 free. Up to 7 more are available, but that's a real-money Mogstation subscription (about $2/month per additional slot), not a gil cost, worth knowing before you assume you can just buy more with in-game currency. Each retainer holds 175 slots. One practical split from a veteran with a full 9: three retainers for crafting materials grouped by class, one for finished goods ready to sell, one for materia and collectibles, and the remaining four for glamour and equipment sorted by role. You don't need 9 retainers to benefit from having a system: even 2 or 3 retainers assigned to clear categories beats one retainer holding a little of everything.</p>
+        <p class="source">Source: veteran reply in <a href="https://forum.square-enix.com/ffxiv/threads/364479" target="_blank" rel="noopener noreferrer">SE forum: "Request: Inventory Management Tips from Vets"</a>; retainer counts and costs from <a href="https://www.thegamer.com/final-fantasy-14-complete-guide-retainers/" target="_blank" rel="noopener noreferrer">TheGamer's retainer guide</a> and the <a href="https://na.finalfantasyxiv.com/lodestone/playguide/option_service/additional_retainer/" target="_blank" rel="noopener noreferrer">official Retainer Service page</a>.</p>
+      </div>
+    </details>
 
-    <div class="qa">
-      <h3>Can I use an alt character as extra storage?</h3>
-      <p>Yes, and at least one veteran does exactly this: parking level 40+ materials on an alt specifically to keep the main character's bags clear. It's a real, low-effort pattern, not a workaround anyone will judge you for.</p>
-      <p class="source">Source: <a href="https://forum.square-enix.com/ffxiv/threads/364479" target="_blank" rel="noopener noreferrer">SE forum thread #364479</a>.</p>
-    </div>
+    <details class="qa">
+      <summary>Can I use an alt character as extra storage?</summary>
+      <div class="body">
+        <p>Yes, and at least one veteran does exactly this: parking level 40+ materials on an alt specifically to keep the main character's bags clear. It's a real, low-effort pattern, not a workaround anyone will judge you for.</p>
+        <p class="source">Source: <a href="https://forum.square-enix.com/ffxiv/threads/364479" target="_blank" rel="noopener noreferrer">SE forum thread #364479</a>.</p>
+      </div>
+    </details>
 
     <div class="opinion">
       <span class="badge">My default</span>
@@ -443,15 +689,27 @@
     </div>
   </section>
 
-  <section>
+  <section data-theme="cyan">
     <h2 id="storage-map"><img class="h-icon" src="https://beta.xivapi.com/api/1/asset?path=ui/icon/052000/052478.tex&format=png" alt="">Where things actually go</h2>
     <p class="section-lede">Main inventory, Armory Chest, and the Chocobo Saddlebag serve different jobs. Using each for what it's built for is most of the battle.</p>
 
-    <div class="qa">
-      <h3>What goes in the Chocobo Saddlebag instead of my main bags?</h3>
-      <p>The saddlebag is usable almost everywhere outside of instanced duties, and it's effectively a separate inventory (it'll even hold a second copy of some unique items your main bags won't). Good candidates: relic weapon materials, dye stacks, tribal and event tokens and other currencies, and gardening supplies if you garden seriously. You get 70 slots free, or 140 with the Companion App subscription.</p>
-      <p class="source">Source: <a href="https://basicallyaverage.com/ffxiv-where-to-store-items/" target="_blank" rel="noopener noreferrer">Basically Average</a>; <a href="https://latetothepartyfinder.com/how-to-manage-your-ffxiv-inventory/" target="_blank" rel="noopener noreferrer">Late to the Party Finder</a>.</p>
-    </div>
+    <details class="qa">
+      <summary>What goes in the Chocobo Saddlebag instead of my main bags?</summary>
+      <div class="body">
+        <p>The saddlebag is usable almost everywhere outside of instanced duties, and it's effectively a separate inventory (it'll even hold a second copy of some unique items your main bags won't). Good candidates: relic weapon materials, dye stacks, tribal and event tokens and other currencies, and gardening supplies if you garden seriously. You get 70 slots free, or 140 with the Companion App subscription.</p>
+        <p class="source">Source: <a href="https://basicallyaverage.com/ffxiv-where-to-store-items/" target="_blank" rel="noopener noreferrer">Basically Average</a>; <a href="https://latetothepartyfinder.com/how-to-manage-your-ffxiv-inventory/" target="_blank" rel="noopener noreferrer">Late to the Party Finder</a>.</p>
+      </div>
+    </details>
+
+    <details class="qa">
+      <summary>I'm leveling multiple jobs or multiple crafters. How do I keep the Armory Chest from running out of space?</summary>
+      <div class="body">
+        <p>Weapons are the real bottleneck. Every job and class has its own unique weapon, they're never shared between jobs, and there's no way around needing one Main Hand slot per job you keep geared. As of Dawntrail that's 21 standard combat jobs plus the limited job Blue Mage, plus 8 crafters and 3 gatherers, roughly 33 weapons for a true completionist. Square Enix knows this is tight: patch 6.0 bumped the Main Hand and Rings tabs specifically from 35 to 50 slots (and removed the Waist tab entirely, since belts were cut from the game the same patch). Every other tab, Head, Body, Hands, Legs, Feet, Earrings, Necklace, Bracelets, is still 35, and there's no Mogstation item, achievement, or quest that lets you buy or unlock more, unlike retainers.</p>
+        <p>Crafters and gatherers have it much easier than combat jobs on the armor side: current-tier crafting/gathering armor (body, hands, legs, feet, most accessories) is generally usable by all 8 Disciples of the Hand at once, not job-locked, so you're mostly only paying for one weapon per crafting job, not a full gear set. The exception is class-specific Artifact Armor at level milestones 50/60/70/80, which is job-locked like combat gear. Rings, earrings, necklaces, and bracelets are stat-based rather than job-locked too, so a single accessory often covers every job sharing that stat spread, which is exactly why the Rings tab got the same capacity bump as weapons in 6.0.</p>
+        <p>Two concrete tricks from long-time multi-job players: don't keep a second physical copy of a weapon in Armory purely for glamour, right-click it into the Glamour Dresser and apply it manually per job instead, that's a free slot back per job you're not using a matching plate for. And when a gearset says you don't have room for a ring even though the Rings tab isn't full, it's usually because different gearsets have the same ring type sitting in different gearset slots, put the same ring type in the same slot across every job's gearset and the false "not enough space" error goes away.</p>
+        <p class="source">Source: official <a href="https://na.finalfantasyxiv.com/lodestone/topics/detail/bdd208b52ddababad086dc9679e96a8412962edf/" target="_blank" rel="noopener noreferrer">patch 6.0 notes</a>; SE forum <a href="https://forum.square-enix.com/ffxiv/threads/436215" target="_blank" rel="noopener noreferrer">"Armory Space"</a>; <a href="https://basicallyaverage.com/ffxiv-where-to-store-items/" target="_blank" rel="noopener noreferrer">Basically Average</a>.</p>
+      </div>
+    </details>
 
     <div class="opinion">
       <span class="badge">My default</span>
@@ -460,53 +718,76 @@
         <li><strong>Armory Chest:</strong> current BiS per role I actually play, nothing benched "just in case."</li>
         <li><strong>Saddlebag:</strong> currencies, dyes, and relic/event materials I'm actively accumulating toward something.</li>
         <li><strong>Retainer/alt:</strong> everything else worth keeping at all.</li>
+        <li><strong>Jobs I'm not actively playing:</strong> bank the weapon on a retainer or alt instead of leaving it in Armory. Crafting/gathering tools especially, most are cheap to buy or craft again, so an old one isn't worth a permanent slot just in case.</li>
       </ul>
     </div>
   </section>
 
-  <section>
+  <section data-theme="amber">
     <h2 id="materials-clutter"><img class="h-icon" src="https://beta.xivapi.com/api/1/asset?path=ui/icon/020000/020254.tex&format=png" alt="">Materials, materia & small collectibles</h2>
     <p class="section-lede">The stuff that quietly eats the most slots, and a rule of thumb for clearing it out without regret.</p>
 
-    <div class="qa">
-      <h3>My crafting mat tab is a disaster. What's safe to vendor or discard?</h3>
-      <p>If a material is buyable from any NPC vendor, or it's not clearing more than about 10 gil on the marketboard, it's not earning its slot: toss it or vendor it. Downgrade stray HQ stacks to NQ if you're not actively using the HQ bonus. If your gatherers are high-level, you can regather most raw materials on demand anyway, so there's little reason to bank them "just in case."</p>
-      <p class="source">Source: veteran replies in <a href="https://forum.square-enix.com/ffxiv/threads/364479" target="_blank" rel="noopener noreferrer">SE forum thread #364479</a>; corroborated by <a href="https://latetothepartyfinder.com/how-to-manage-your-ffxiv-inventory/" target="_blank" rel="noopener noreferrer">Late to the Party Finder</a>.</p>
-    </div>
+    <details class="qa">
+      <summary>My crafting mat tab is a disaster. What's safe to vendor or discard?</summary>
+      <div class="body">
+        <p>If a material is buyable from any NPC vendor, or it's not clearing more than about 10 gil on the marketboard, it's not earning its slot: toss it or vendor it. Downgrade stray HQ stacks to NQ if you're not actively using the HQ bonus. If your gatherers are high-level, you can regather most raw materials on demand anyway, so there's little reason to bank them "just in case."</p>
+        <p class="source">Source: veteran replies in <a href="https://forum.square-enix.com/ffxiv/threads/364479" target="_blank" rel="noopener noreferrer">SE forum thread #364479</a>; corroborated by <a href="https://latetothepartyfinder.com/how-to-manage-your-ffxiv-inventory/" target="_blank" rel="noopener noreferrer">Late to the Party Finder</a>.</p>
+      </div>
+    </details>
 
-    <div class="qa">
-      <h3>Which materia is safe to sell or discard?</h3>
-      <p>Keep the current top grade (Grade VIII as of this writing) and the grade just below it, since that's usually the best fodder for overmelding. Grade VI is worth holding onto while leveling specifically because it has a 100% retrieval chance when you re-extract it. Anything older that you've already outleveled the source gear for is safe to clear out. Separately: if a piece of gear is already at 100% spiritbond and you don't want it, right-click it and convert it straight into materia yourself, no prism, no NPC, no Armoire eligibility needed. That's unlocked early, via the level-19 quest "Forging the Spirit" on any Disciple of the Hand except Culinarian.</p>
-      <p class="source">Source: veteran replies in <a href="https://forum.square-enix.com/ffxiv/threads/364479" target="_blank" rel="noopener noreferrer">SE forum thread #364479</a>; <a href="https://www.thonky.com/final-fantasy-xiv/materia" target="_blank" rel="noopener noreferrer">Thonky's materia guide</a>; <a href="https://ffxiv.consolegameswiki.com/wiki/Materia" target="_blank" rel="noopener noreferrer">Materia, Console Games Wiki</a>.</p>
-    </div>
+    <details class="qa">
+      <summary>What do meld, spiritbond, and overmeld actually mean?</summary>
+      <div class="body">
+        <p><strong>Melding</strong> is attaching a materia to an empty materia slot on a piece of gear for a stat bonus. A Materia Melder NPC (found near most market boards) will do it for a small gil fee, 50 gil for Grade I materia up to 2,000 gil for Grade XII, once you've completed the quest "Forging the Spirit" (Swynbroes, The Bonfire, Central Thanalan). Completing a separate quest, "Waking the Spirit" (level 19+, with a Disciple of the Hand at or above your gear's level), lets you meld it yourself instead of paying an NPC.</p>
+        <p><strong>Overmelding</strong> is adding materia beyond a piece of gear's normal slots, via "advanced melding," which you have to do yourself, NPCs can't do it. It has a real chance to fail and destroy the materia you're trying to meld: roughly 17% success on the first overmeld slot, dropping to 10%, 7%, and 5% on the slots after that with current endgame materia. That's why overmeld fodder is specifically valuable, you'll burn through several materia per successful overmeld.</p>
+        <p><strong>Spiritbond</strong> builds up on a piece of gear as you use it in battle, crafting, or gathering, shown by the gear's status dots turning from green to white at 100%. Since patch 5.2, reaching 100% and extracting materia is non-destructive: you keep the item and get the materia both, this used to destroy the item pre-5.2 and was called "conversion," which is why older guides and forum posts still say "convert." If you're getting rid of a piece of gear anyway, spiritbond it to 100% and extract first, then desynthesize or sell the (now materia-free) item afterward, there's no reason to skip the free materia.</p>
+        <p class="source">Source: <a href="https://ffxiv.consolegameswiki.com/wiki/Materia" target="_blank" rel="noopener noreferrer">Materia, Console Games Wiki</a>.</p>
+      </div>
+    </details>
 
-    <div class="qa">
-      <h3>I've got a pile of Triple Triad cards, fireworks, and orchestrion rolls. Worth keeping?</h3>
-      <p>Triple Triad cards have no marketboard value at all, they can only be sold to an NPC for MGP, so if you're not actively collecting the set, trade them in rather than let them sit. Unused fireworks and duplicate orchestrion rolls (a roll you already own doesn't stack usefully) are safe clutter to clear.</p>
-      <p class="source">Source: <a href="https://latetothepartyfinder.com/how-to-manage-your-ffxiv-inventory/" target="_blank" rel="noopener noreferrer">Late to the Party Finder</a>; Triple Triad marketboard status cross-checked in this site's own trade-in guide research.</p>
-    </div>
+    <details class="qa">
+      <summary>Which materia is safe to sell or discard?</summary>
+      <div class="body">
+        <p>Keep the current top grade (Grade VIII as of this writing) and the grade just below it, since that's usually the best fodder for overmelding. Grade VI is worth holding onto while leveling specifically because it has a 100% retrieval chance when you re-extract it. Anything older that you've already outleveled the source gear for is safe to clear out.</p>
+        <p class="source">Source: veteran replies in <a href="https://forum.square-enix.com/ffxiv/threads/364479" target="_blank" rel="noopener noreferrer">SE forum thread #364479</a>; <a href="https://www.thonky.com/final-fantasy-xiv/materia" target="_blank" rel="noopener noreferrer">Thonky's materia guide</a>; <a href="https://ffxiv.consolegameswiki.com/wiki/Materia" target="_blank" rel="noopener noreferrer">Materia, Console Games Wiki</a>.</p>
+      </div>
+    </details>
+
+    <details class="qa">
+      <summary>I've got a pile of Triple Triad cards, fireworks, and orchestrion rolls. Worth keeping?</summary>
+      <div class="body">
+        <p>Triple Triad cards have no marketboard value at all, they can only be sold to an NPC for MGP, so if you're not actively collecting the set, trade them in rather than let them sit. Unused fireworks and duplicate orchestrion rolls (a roll you already own doesn't stack usefully) are safe clutter to clear.</p>
+        <p class="source">Source: <a href="https://latetothepartyfinder.com/how-to-manage-your-ffxiv-inventory/" target="_blank" rel="noopener noreferrer">Late to the Party Finder</a>; Triple Triad marketboard status cross-checked in this site's own trade-in guide research.</p>
+      </div>
+    </details>
 
     <div class="opinion">
       <span class="badge">My default</span>
-      <p>Gil threshold for materials: under 10 gil on the board or vendor-buyable, it goes, no exceptions. Materia: keep current grade plus one grade down, everything else gets sold or spiritbond-converted. Collectibles I'm not actively completing a set for (cards, fireworks, duplicate rolls) get liquidated the same week I notice them, not "eventually."</p>
+      <p>Gil threshold for materials: under 10 gil on the board or vendor-buyable, it goes, no exceptions. Materia: keep current grade plus one grade down, everything else gets sold, or spiritbond-extracted first if it's still attached to gear I'm getting rid of anyway. Collectibles I'm not actively completing a set for (cards, fireworks, duplicate rolls) get liquidated the same week I notice them, not "eventually."</p>
     </div>
   </section>
 
-  <section>
+  <section data-theme="amber">
     <h2 id="other-sinks"><img class="h-icon" src="https://beta.xivapi.com/api/1/asset?path=ui/icon/000000/000120.tex&format=png" alt="">Other things to do with clutter besides the trash</h2>
     <p class="section-lede">Before you discard or plain-vendor something, two systems can turn it into more value than either option: desynthesis and the Doman Enclave.</p>
 
-    <div class="qa">
-      <h3>Is desynthesis actually worth doing, and do I need a high skill level first?</h3>
-      <p>No level requirement to worry about: as of patch 5.2, your desynthesis skill level no longer affects your success chance at all, that was a common misconception in older guides. What skill level actually changes is reward quality: desynthesizing gear well above your current skill gives a wider variety of materials, larger quantities, or a better chance at HQ materials. Eight crafting classes can desynthesize (Carpenter, Blacksmith, Armorer, Goldsmith, Leatherworker, Weaver, Alchemist, Culinarian), each with its own independent skill level, unlocked at level 30 via the quest "Gone to Pieces." It works on most gear, housing items, and even fish, and turns something you'd otherwise vendor for a pittance into real crafting materials instead. It's permanent, so don't desynthesize anything you might still want.</p>
-      <p class="source">Source: <a href="https://ffxiv.consolegameswiki.com/wiki/Desynthesis" target="_blank" rel="noopener noreferrer">Desynthesis, Console Games Wiki</a>.</p>
-    </div>
+    <details class="qa">
+      <summary>Is desynthesis actually worth doing, and do I need a high skill level first?</summary>
+      <div class="body">
+        <p>No level requirement to worry about: as of patch 5.2, your desynthesis skill level no longer affects your success chance at all, that was a common misconception in older guides. What skill level actually changes is reward quality: desynthesizing gear well above your current skill gives a wider variety of materials, larger quantities, or a better chance at HQ materials. Eight crafting classes can desynthesize (Carpenter, Blacksmith, Armorer, Goldsmith, Leatherworker, Weaver, Alchemist, Culinarian), each with its own independent skill level, unlocked at level 30 via the quest "Gone to Pieces." It works on most gear, housing items, and even fish, and turns something you'd otherwise vendor for a pittance into real crafting materials instead. It's permanent, so don't desynthesize anything you might still want.</p>
+        <p class="source">Source: <a href="https://ffxiv.consolegameswiki.com/wiki/Desynthesis" target="_blank" rel="noopener noreferrer">Desynthesis, Console Games Wiki</a>.</p>
+      </div>
+    </details>
 
-    <div class="qa">
-      <h3>Is there a better place to sell junk gear than a regular vendor?</h3>
-      <p>Yes: the Donation Basket at the Doman Enclave's Shazenkai in Kugane. It pays significantly more than a normal vendor sale (roughly 120% and up of standard vendor sell price), up to a weekly gil budget that resets every Tuesday. The Doman Enclave reconstruction storyline itself wrapped up years ago, but the donation basket is still fully functional today as a permanently-better-than-vendor sell option, it just no longer unlocks new storyline rewards. If you accidentally donate something you needed, any of your last 100 donated items can be reclaimed for a small fee.</p>
-      <p class="source">Source: <a href="https://ffxiv.consolegameswiki.com/wiki/Doman_Enclave_Reconstruction" target="_blank" rel="noopener noreferrer">Doman Enclave Reconstruction, Console Games Wiki</a>; <a href="https://ffxiv.gamerescape.com/wiki/Doman_Reconstruction" target="_blank" rel="noopener noreferrer">Doman Reconstruction, Gamer Escape</a>.</p>
-    </div>
+    <details class="qa" open>
+      <summary>Is there a better place to sell junk gear than a regular vendor? (New player primer: the Doman Enclave)</summary>
+      <div class="body">
+        <p>Yes, and if you've never heard of it, this is worth knowing early. The Doman Enclave is a district in Kugane with its own Shazenkai, and inside it a Donation Basket that acts like a vendor who pays you more than a vendor. Every item you donate there sells for a multiple of its normal vendor price, not a flat bonus, a multiple: it starts at 120% of vendor price, and climbs in stages the more you personally donate over time, to 150% (after roughly 40,000 gil donated), 180% (roughly 85,000 gil), and finally 200%, double the normal vendor payout, once you've donated roughly 160,000 gil worth of items total.</p>
+        <p>There's a weekly limit on how much of that bonus gil the basket will pay out, though: it starts at 20,000 gil per week and rises in the same stages up to 40,000 gil per week at the higher milestones. It resets every Tuesday at 8am GMT. Once you hit the weekly cap, extra donations that week just pay normal vendor price until it resets, so it's worth spreading big sell-offs across weeks once you're relying on it.</p>
+        <p>To unlock it at all, you need to have cleared a short chain of Stormblood MSQ-adjacent quests ("Elation and Trepidation," "Short Arms of the Law," and "A Thousand and One Farewells"), then started "Precious Reclamation," which begins the reconstruction questline and opens the basket. The reconstruction storyline itself concluded years ago, but the basket keeps working exactly the same way today, it just doesn't hand out new one-time storyline rewards anymore. If you donate something by mistake, any of your last 100 donated items can be reclaimed for a small fee.</p>
+        <p class="source">Source: <a href="https://ffxiv.consolegameswiki.com/wiki/Doman_Enclave_Reconstruction" target="_blank" rel="noopener noreferrer">Doman Enclave Reconstruction, Console Games Wiki</a>; <a href="https://ffxiv.gamerescape.com/wiki/Doman_Reconstruction" target="_blank" rel="noopener noreferrer">Doman Reconstruction, Gamer Escape</a>.</p>
+      </div>
+    </details>
 
     <div class="opinion">
       <span class="badge">My default</span>
@@ -514,24 +795,28 @@
     </div>
   </section>
 
-  <section>
+  <section data-theme="amber">
     <h2 id="quest-currencies"><img class="h-icon" src="https://beta.xivapi.com/api/1/asset?path=ui/icon/065000/065002.tex&format=png" alt="">Quest items & currencies</h2>
     <p class="section-lede">Most quest clutter is safer to clear than it looks, thanks to one specific NPC.</p>
 
-    <div class="qa">
-      <h3>Can I just discard my quest reward items once I'm done with that questline?</h3>
-      <p>Almost always, yes. Most quest-related items you discard can be repurchased later from the Calamity Salvager in Limsa Lominsa, Gridania, or Ul'dah, that NPC exists specifically so new players don't ruin their game by clearing bag space. The exceptions are rare enough to list explicitly (see below), so don't let one edge case make you a hoarder of everything.</p>
-      <p class="source">Source: <a href="https://ffxiv.consolegameswiki.com/wiki/Calamity_Salvager" target="_blank" rel="noopener noreferrer">Calamity Salvager, Console Games Wiki</a>; <a href="https://forum.square-enix.com/ffxiv/threads/497773" target="_blank" rel="noopener noreferrer">SE forum: items that can never be reacquired</a>.</p>
-    </div>
+    <details class="qa">
+      <summary>Can I just discard my quest reward items once I'm done with that questline?</summary>
+      <div class="body">
+        <p>Almost always, yes. Most quest-related items you discard can be repurchased later from the Calamity Salvager in Limsa Lominsa, Gridania, or Ul'dah, that NPC exists specifically so new players don't ruin their game by clearing bag space. The exceptions are rare enough to list explicitly (see below), so don't let one edge case make you a hoarder of everything.</p>
+        <p class="source">Source: <a href="https://ffxiv.consolegameswiki.com/wiki/Calamity_Salvager" target="_blank" rel="noopener noreferrer">Calamity Salvager, Console Games Wiki</a>; <a href="https://forum.square-enix.com/ffxiv/threads/497773" target="_blank" rel="noopener noreferrer">SE forum: items that can never be reacquired</a>.</p>
+      </div>
+    </details>
 
-    <div class="qa">
-      <h3>What about all the tomestones, scrips, and event currencies piling up?</h3>
-      <p>Short answer here, the longer answer deserves its own page: several currencies have a hard cap or rotate out entirely on a patch cycle, silently converting or vanishing if you don't spend them down first. This is common enough that it's its own guide idea on this site rather than something to fully solve in this FAQ.</p>
-      <p class="source">Source: <a href="https://www.thegamer.com/final-fantasy-14-xiv-allagan-tomestones-cycle-exchange-explained/" target="_blank" rel="noopener noreferrer">TheGamer: the tomestone cycle-exchange explained</a>.</p>
-    </div>
+    <details class="qa">
+      <summary>What about all the tomestones, scrips, and event currencies piling up?</summary>
+      <div class="body">
+        <p>Short answer here, the longer answer deserves its own page: several currencies have a hard cap or rotate out entirely on a patch cycle, silently converting or vanishing if you don't spend them down first. This is common enough that it's its own guide idea on this site rather than something to fully solve in this FAQ.</p>
+        <p class="source">Source: <a href="https://www.thegamer.com/final-fantasy-14-xiv-allagan-tomestones-cycle-exchange-explained/" target="_blank" rel="noopener noreferrer">TheGamer: the tomestone cycle-exchange explained</a>.</p>
+      </div>
+    </details>
   </section>
 
-  <section>
+  <section data-theme="danger">
     <h2 id="traps"><img class="h-icon" src="https://beta.xivapi.com/api/1/asset?path=ui/icon/054000/054401.tex&format=png" alt="">What never comes back</h2>
     <p class="section-lede">A short list on purpose. Everything else quest-related is almost certainly safe, and is on the Calamity Salvager's buy-back list if you're not sure.</p>
     <div class="trap-box">
@@ -547,68 +832,17 @@
   </section>
 
   <section>
-    <h2 id="numbers">Quick-reference numbers</h2>
-    <p class="section-lede">The hard slot counts and costs, in one place, since most guides scatter these across several pages.</p>
-    <table class="cheat-sheet">
-      <tr><th>Storage</th><th>Capacity</th><th>Notes</th></tr>
-      <tr><td>Main inventory</td><td class="num">140 slots</td><td>Fixed, cannot be upgraded by any means</td></tr>
-      <tr><td>Armory Chest</td><td class="num">35 / tab</td><td>Per equipment-type tab in Normal view, up to 70 in Expanded view</td></tr>
-      <tr><td>Chocobo Saddlebag</td><td class="num">70 / 140</td><td>70 free, 140 with a Companion App subscription</td></tr>
-      <tr><td>Glamour Dresser</td><td class="num">800 slots</td><td>Plus up to 20 saved glamour plates</td></tr>
-      <tr><td>Armoire</td><td class="num">No limit</td><td>Restricted to an eligible-item allowlist</td></tr>
-      <tr><td>Retainers</td><td class="num">2 + up to 7</td><td>175 slots each; extras are a real-money subscription (~$2/mo each), not gil</td></tr>
-      <tr><td>Crystals / shards / clusters</td><td class="num">9,999 cap</td><td>Per storage location: inventory, saddlebag, or each retainer separately</td></tr>
-      <tr><td>Doman Enclave weekly cap</td><td class="num">gil-capped</td><td>Resets every Tuesday; pays roughly 120%+ of vendor sell price until the cap is hit</td></tr>
-    </table>
-    <p class="source">Source: <a href="https://basicallyaverage.com/ffxiv-where-to-store-items/" target="_blank" rel="noopener noreferrer">Basically Average</a>; <a href="https://latetothepartyfinder.com/how-to-manage-your-ffxiv-inventory/" target="_blank" rel="noopener noreferrer">Late to the Party Finder</a>; <a href="https://na.finalfantasyxiv.com/lodestone/playguide/option_service/additional_retainer/" target="_blank" rel="noopener noreferrer">official Retainer Service page</a>; <a href="https://na.finalfantasyxiv.com/uiguide/fashion/equipment-glamours/fashion_fullitem.html" target="_blank" rel="noopener noreferrer">official Glamour Dresser UI guide</a>; <a href="https://ffxiv.consolegameswiki.com/wiki/Doman_Enclave_Reconstruction" target="_blank" rel="noopener noreferrer">Doman Enclave Reconstruction, Console Games Wiki</a>.</p>
-  </section>
-
-  <section>
-    <h2 id="triage">The 30-second triage</h2>
-    <p class="section-lede">Staring at one item and don't know what to do with it? Follow the chain until one answer is yes.</p>
-    <div class="flowchart">
-      <div class="fc-step">
-        <div class="fc-question">Equipped or genuinely BiS right now?</div>
-        <div class="fc-yes"><div><span class="badge">Yes</span>Keep it. Armory Chest.</div></div>
-      </div>
-      <div class="fc-connector">no ↓ keep checking</div>
-      <div class="fc-step">
-        <div class="fc-question">A glamour piece you'd actually wear again?</div>
-        <div class="fc-yes"><div><span class="badge">Yes</span>Repair it, extract materia, Glamour Dresser.</div></div>
-      </div>
-      <div class="fc-connector">no ↓ keep checking</div>
-      <div class="fc-step">
-        <div class="fc-question">A crafting material you use regularly?</div>
-        <div class="fc-yes"><div><span class="badge">Yes</span>Keep a modest stack, bank the rest on a retainer or alt.</div></div>
-      </div>
-      <div class="fc-connector">no ↓ keep checking</div>
-      <div class="fc-step">
-        <div class="fc-question">Craftable gear, a weapon, or worth over ~10 gil to sell?</div>
-        <div class="fc-yes"><div><span class="badge">Yes</span>Desynthesize it, or sell it through the Doman Enclave basket.</div></div>
-      </div>
-      <div class="fc-connector">no ↓ keep checking</div>
-      <div class="fc-step">
-        <div class="fc-question">A quest reward from a line you've finished?</div>
-        <div class="fc-yes"><div><span class="badge">Yes, unless it's on the traps list</span>Discard it. Check the Calamity Salvager's buy list first if unsure.</div></div>
-      </div>
-      <div class="fc-connector">still not sure ↓</div>
-      <div class="fc-step">
-        <div class="fc-question">None of the above fit.</div>
-        <div class="fc-yes"><div><span class="badge">Default</span>Vendor or discard it. It's not worth another lap of this list.</div></div>
-      </div>
-    </div>
-  </section>
-
-  <section>
     <h2 id="sources">Sources & further reading</h2>
     <ul class="sources-list">
       <li><a href="https://forum.square-enix.com/ffxiv/threads/364479" target="_blank" rel="noopener noreferrer">SE Forum: "Request: Inventory Management Tips from Vets"</a>, primary source, direct veteran advice</li>
+      <li><a href="https://forum.square-enix.com/ffxiv/threads/436215" target="_blank" rel="noopener noreferrer">SE Forum: "Armory Space"</a>, community advice on multi-job weapon/ring space</li>
+      <li><a href="https://na.finalfantasyxiv.com/lodestone/topics/detail/bdd208b52ddababad086dc9679e96a8412962edf/" target="_blank" rel="noopener noreferrer">Official patch 6.0 notes</a>, Armory Chest Main Hand/Rings capacity increase and Waist tab removal</li>
       <li><a href="https://forum.square-enix.com/ffxiv/threads/497773" target="_blank" rel="noopener noreferrer">SE Forum: "Items that can never be acquired again after they are discarded"</a></li>
       <li><a href="https://ffxiv.consolegameswiki.com/wiki/Calamity_Salvager" target="_blank" rel="noopener noreferrer">Calamity Salvager, Console Games Wiki</a></li>
       <li><a href="https://ffxiv.consolegameswiki.com/wiki/Desynthesis" target="_blank" rel="noopener noreferrer">Desynthesis, Console Games Wiki</a></li>
       <li><a href="https://ffxiv.consolegameswiki.com/wiki/Doman_Enclave_Reconstruction" target="_blank" rel="noopener noreferrer">Doman Enclave Reconstruction, Console Games Wiki</a></li>
       <li><a href="https://ffxiv.gamerescape.com/wiki/Doman_Reconstruction" target="_blank" rel="noopener noreferrer">Doman Reconstruction, Gamer Escape</a></li>
-      <li><a href="https://ffxiv.consolegameswiki.com/wiki/Materia" target="_blank" rel="noopener noreferrer">Materia (spiritbond conversion), Console Games Wiki</a></li>
+      <li><a href="https://ffxiv.consolegameswiki.com/wiki/Materia" target="_blank" rel="noopener noreferrer">Materia (melding, overmelding, spiritbond extraction), Console Games Wiki</a></li>
       <li><a href="https://latetothepartyfinder.com/how-to-manage-your-ffxiv-inventory/" target="_blank" rel="noopener noreferrer">Late to the Party Finder: How to Manage Your FFXIV Inventory</a></li>
       <li><a href="https://basicallyaverage.com/ffxiv-where-to-store-items/" target="_blank" rel="noopener noreferrer">Basically Average: FFXIV Where to Store Items</a></li>
       <li><a href="https://na.finalfantasyxiv.com/uiguide/fashion/equipment-glamours/fashion_cabinet.html" target="_blank" rel="noopener noreferrer">Official UI Guide: items storable in the Armoire</a></li>
@@ -652,6 +886,11 @@
     },
     {
       "@type": "Question",
+      "name": "I'm leveling multiple jobs or multiple crafters. How do I keep the Armory Chest from running out of space?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Weapons are the bottleneck: every job needs its own, never shared, and there's no way to buy more space unlike retainers. Patch 6.0 bumped Main Hand and Rings to 50 slots each; everything else is still 35. Crafting and gathering armor is usually shared across all 8 Disciples of the Hand, so multi-crafting mainly costs one weapon per job, not a full gear set." }
+    },
+    {
+      "@type": "Question",
       "name": "How many retainers do I actually need, and what should each one do?",
       "acceptedAnswer": { "@type": "Answer", "text": "You start with 2 free retainers, with up to 7 more available as a real-money subscription, not a gil cost. Each holds 175 slots. A common split: crafting materials by class, finished goods for sale, materia and collectibles, and glamour by role." }
     },
@@ -662,8 +901,13 @@
     },
     {
       "@type": "Question",
+      "name": "What do meld, spiritbond, and overmeld actually mean?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Melding attaches materia to an empty slot on gear for a stat bonus. Overmelding adds materia beyond those slots with a real chance to fail and destroy the materia. Spiritbond builds up as you use a piece of gear and, at 100%, lets you extract its materia without destroying the item, non-destructive since patch 5.2." }
+    },
+    {
+      "@type": "Question",
       "name": "Which materia is safe to sell or discard?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Keep the current top grade and the grade just below it for overmelding, plus one tier down while leveling for its retrieval chance. Anything older than the gear you've outleveled is safe to clear, or convert gear at 100% spiritbond directly into materia." }
+      "acceptedAnswer": { "@type": "Answer", "text": "Keep the current top grade and the grade just below it for overmelding, plus one tier down while leveling for its retrieval chance. Anything older than the gear you've outleveled is safe to clear." }
     },
     {
       "@type": "Question",
@@ -673,7 +917,7 @@
     {
       "@type": "Question",
       "name": "Is there a better place to sell junk gear than a regular vendor?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Yes, the Donation Basket at the Doman Enclave's Shazenkai in Kugane, which pays roughly 120% or more of normal vendor sell price up to a weekly gil cap that resets every Tuesday." }
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes, the Donation Basket at the Doman Enclave's Shazenkai in Kugane, which pays a multiple of normal vendor sell price, from 120% up to 200% as your own cumulative donations hit milestones, up to a weekly gil cap (20,000 to 40,000 gil) that resets every Tuesday." }
     },
     {
       "@type": "Question",
