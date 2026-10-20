@@ -100,6 +100,7 @@
   "items": {
     "universalis": "Cross-world market board data",
     "teamcraft": "Crafting lists, alarms, gathering routes",
+    "currencyspending": "Got too much of a currency? Pick the currency, amount, and server to find which item to buy with it for the most gil",
     "xivtodo": "Duty completion tracker for dungeons, raids, and trials (less useful for the dailies checklist)",
     "msqtracker": "Main Scenario Quest progress tracker, kept current through Dawntrail (progress saves to your browser only; export/import to move it, no shareable link)",
     "ffxivprogress": "MSQ progress tracker; stopped receiving updates after Endwalker, so use MSQTracker above for anything post-Endwalker",
@@ -121,6 +122,8 @@
     "consolegameswiki": "General item and quest info, easy to figure out what or how to go get something",
     "retainerventures": "List of every minion obtainable from retainer exploration ventures, and which venture unlocks each one",
     "ffxivgardening": "Hybrid seed crossbreeding paths. I use it for Thavnair onions",
+    "kuganetowerjump": "Step-by-step screenshot guide to the Kugane rooftop jump puzzle near Bokairo Inn, up to the hidden hot spring sightseeing log on the roof",
+    "makaigear": "How to earn Wolf Marks in PvP and what Makai gear costs at Wolves' Den Pier, plus the Garo titles and mounts",
     "lodestone": "Official news, maintenance, and lore updates",
     "unicodereddit": "Community-cataloged Unicode symbols that render in FFXIV chat and names",
     "unicodegist": "Broader Unicode reference table, linked to the FFXIV-relevant range",

@@ -100,6 +100,7 @@
   "items": {
     "universalis": "Marktpreise serverübergreifend",
     "teamcraft": "Handwerkslisten, Erinnerungen, Sammelrouten",
+    "currencyspending": "Zu viel von einer Währung übrig? Währung, Menge und Server wählen und herausfinden, welcher Kauf am meisten Gil einbringt",
     "xivtodo": "Tracker für abgeschlossene Dungeons, Raids und Trials (für die tägliche Checkliste weniger geeignet)",
     "msqtracker": "Fortschrittstracker für das Hauptszenario, aktuell bis Dawntrail (Fortschritt wird nur im Browser gespeichert; Export/Import zum Übertragen, kein teilbarer Link)",
     "ffxivprogress": "MSQ-Fortschrittstracker; erhält seit Endwalker keine Updates mehr, für alles danach lieber MSQTracker oben verwenden",
@@ -121,6 +122,8 @@
     "consolegameswiki": "Allgemeine Item- und Quest-Infos, gut um herauszufinden, was oder wie man etwas bekommt",
     "retainerventures": "Liste aller Minions, die man über Gehilfen-Erkundungen erhalten kann, und welche Erkundung welches Minion freischaltet",
     "ffxivgardening": "Kreuzungspfade für Hybridsamen. Ich nutze es für Thavnair-Zwiebeln",
+    "kuganetowerjump": "Schritt-für-Schritt-Screenshot-Guide für das Dächer-Sprungrätsel in Kugane beim Bokairo Inn, bis zum versteckten Sightseeing-Log-Punkt in der heißen Quelle auf dem Dach",
+    "makaigear": "So verdient man Wolfsmarken im PvP und was die Makai-Ausrüstung am Wolfsbau-Pier kostet, dazu die Garo-Titel und -Reittiere",
     "lodestone": "Offizielle News, Wartungshinweise und Lore-Updates",
     "unicodereddit": "Von der Community gesammelte Unicode-Symbole, die im FFXIV-Chat und in Namen dargestellt werden",
     "unicodegist": "Umfassendere Unicode-Referenztabelle, verlinkt zum FFXIV-relevanten Bereich",

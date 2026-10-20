@@ -100,6 +100,7 @@
   "items": {
     "universalis": "Données du marché inter-serveurs",
     "teamcraft": "Listes d'artisanat, alarmes, itinéraires de récolte",
+    "currencyspending": "Trop d'une monnaie ? Choisissez la monnaie, la quantité et le serveur pour trouver quel objet acheter afin d'obtenir le plus de gils",
     "xivtodo": "Suivi des donjons, raids et défis terminés (moins utile pour la liste des quotidiennes)",
     "msqtracker": "Suivi de la progression du scénario principal, à jour jusqu'à Dawntrail (la progression n'est enregistrée que dans le navigateur ; export/import pour la transférer, pas de lien partageable)",
     "ffxivprogress": "Suivi de la progression du MSQ ; n'a plus été mis à jour depuis Endwalker, utilisez MSQTracker ci-dessus pour tout ce qui suit",
@@ -121,6 +122,8 @@
     "consolegameswiki": "Infos générales sur les objets et les quêtes, pratique pour comprendre quoi ou comment obtenir quelque chose",
     "retainerventures": "Liste de toutes les mascottes obtenables via les explorations de servants, et quelle exploration débloque laquelle",
     "ffxivgardening": "Chemins de croisement de graines hybrides. Je l'utilise pour les oignons de Thavnair",
+    "kuganetowerjump": "Guide pas à pas en captures d'écran pour le puzzle de saut sur les toits de Kugane près du Bokairo Inn, jusqu'au point du journal de tourisme dans la source chaude cachée sur le toit",
+    "makaigear": "Comment gagner des marques de loup en JcJ et le prix de l'équipement Makai à la jetée du Repaire des loups, avec les titres et montures Garo",
     "lodestone": "Actualités officielles, maintenances et mises à jour du lore",
     "unicodereddit": "Symboles Unicode répertoriés par la communauté qui s'affichent dans le chat et les noms de FFXIV",
     "unicodegist": "Table de référence Unicode plus large, avec un lien vers la plage pertinente pour FFXIV",
