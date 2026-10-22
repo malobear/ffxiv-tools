@@ -1,0 +1,22 @@
+# XIVKit
+
+> XIVKit is a curated, unofficial list of Final Fantasy XIV (FFXIV) tools, Dalamud plugins, and player-run venues that the maintainer actually uses, plus original guides hosted on the site. Every entry is hand-picked and annotated with why it's useful, rather than an exhaustive directory.
+
+The site is static and every page is plain HTML. Market board prices on the guides are fetched live from Universalis. FINAL FANTASY XIV is a registered trademark of Square Enix Holdings Co., Ltd. XIVKit is fan-made and not affiliated with or endorsed by Square Enix.
+
+## Guides
+
+- [Jump Puzzle Macros](https://xivkit.com/jump-puzzle-macros.html): Timed macro-and-hotbar technique for jumping exact, repeatable distances in FFXIV jumping puzzles, with copyable macros and a calibration spot.
+- [Hunt for Astronomy: What's Worth the Tomes](https://xivkit.com/hunt-for-astronomy.html): Every reward in the Hunt for Astronomy trove, its alternate sources, market board prices, and a verdict on whether it's worth the tomestones.
+- [Trade-In Mounts: Grind vs. Buy the Mats](https://xivkit.com/trade-in-mounts.html): Every FFXIV mount unlocked by trading in items or currency, with live market board prices and a verdict on grinding versus buying.
+
+## Lists
+
+- [Tools & Links](https://xivkit.com/): Curated FFXIV tools grouped by use: market and economy, progress trackers, glamour, housing, reference databases, and community sites.
+- [Plugins](https://xivkit.com/plugins.html): Dalamud plugins in active use, tagged by whether they're in the default plugin directory or need a custom (experimental) repo.
+- [Venues](https://xivkit.com/venues.html): Player-run FFXIV venues with open hours converted to your local time and a Lifestream address.
+
+## Optional
+
+- [Watchlist](https://xivkit.com/watchlist.html): FFXIV tools that are recommended but not yet tried by the maintainer.
+- [Source on GitHub](https://github.com/malobear/ffxiv-tools): The site's source, open to pull requests.
