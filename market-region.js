@@ -4,8 +4,8 @@
 // prices things (e.g. hunt-for-astronomy.html), instead of each tool having
 // its own separate "where do you play" setting.
 (function () {
-  var STORAGE_KEY = "ffxiv-tools-region";
-  var LEGACY_KEYS = ["tim-region"]; // trade-in-mounts.html's original page-local key, migrated in once
+  var STORAGE_KEY = "xivkit-region";
+  var LEGACY_KEYS = ["ffxiv-tools-region", "tim-region"]; // earlier keys (tim-region was trade-in-mounts.html's page-local key), migrated in once
 
   var LABELS = {
     "North-America": "NA, all DCs", "Aether": "Aether", "Crystal": "Crystal", "Dynamis": "Dynamis", "Primal": "Primal",
