@@ -1,13 +1,20 @@
 # XIVKit: FFXIV Tools & Links
 
-**https://xivkit.com**
+**Browse the site: https://xivkit.com**
 
-A curated, hand-picked list of FFXIV tools I actually use: market board data, crafting trackers, glamour and mod sources, Dalamud plugins, and other reference sites. Kept small on purpose, updated whenever something new earns a spot.
+A curated, hand-picked list of FFXIV tools I actually use. Kept small on purpose, updated whenever something new earns a spot. The site is available in English, Japanese, German, and French.
 
-- Tools: https://xivkit.com/
-- Watchlist (unvetted, to explore later): https://xivkit.com/watchlist.html
-- Plugins: https://xivkit.com/plugins.html
-- Venues: https://xivkit.com/venues.html
+## What's on the site
+
+- [Tools](https://xivkit.com/): market board data, crafting trackers, theorycrafting calculators, progress checklists, glamour and mod sources, and other reference sites.
+- [Plugins](https://xivkit.com/plugins.html): Dalamud plugins I actually use, with a note on which ones need a custom repo.
+- [Venues](https://xivkit.com/venues.html): player-run venues with open hours converted to your local time and a one-click Lifestream address.
+- [Watchlist](https://xivkit.com/watchlist.html): tools I haven't tried yet, kept separate from the ones I vouch for.
+- Guides: [Jump Puzzle Macros](https://xivkit.com/jump-puzzle-macros.html), [Hunt for Astronomy](https://xivkit.com/hunt-for-astronomy.html), and [Trade-In Mounts](https://xivkit.com/trade-in-mounts.html), with live market prices where it helps.
+
+## Suggest a tool
+
+Know a tool, plugin, or venue that belongs here? [Open an issue](https://github.com/malobear/xivkit/issues/new) with the link and a line on what it does, or send a pull request following the entry format under "Updating the list" below.
 
 FINAL FANTASY XIV is a registered trademark of Square Enix Holdings Co., Ltd. This project is an unofficial, fan-made list, not affiliated with or endorsed by Square Enix. Each page carries the same notice in its footer.
 
@@ -118,7 +125,7 @@ branch = `main`, folder = `/ (root)`. Save, then the site will start working. Cu
 ## Domain, analytics, and social previews
 
 - The site is served from GitHub Pages at the custom domain `xivkit.com` (the `CNAME`
-  file holds it). The old `malobear.github.io/ffxiv-tools/` address redirects there.
+  file holds it). The old `malobear.github.io/ffxiv-tools/` address redirects there. The repo was renamed from `ffxiv-tools` to `xivkit`; GitHub redirects the old repo URL.
 - Every page carries the same Google tag (gtag.js) snippet near the top of `<head>`.
   To change the analytics property, replace the `G-...` ID in all pages.
 - Each page's link preview is a 1200x630 `og-*.png` in the repo root (dark card with
