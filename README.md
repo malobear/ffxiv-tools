@@ -1,15 +1,19 @@
 # XIVKit: FFXIV Tools & Links
 
+**https://xivkit.com**
+
 A curated, hand-picked list of FFXIV tools I actually use: market board data, crafting trackers, glamour and mod sources, Dalamud plugins, and other reference sites. Kept small on purpose, updated whenever something new earns a spot.
 
-Live page: https://xivkit.com/
-Watchlist (unvetted, to explore later): https://xivkit.com/watchlist.html
-Plugins: https://xivkit.com/plugins.html
-Venues: https://xivkit.com/venues.html
+- Tools: https://xivkit.com/
+- Watchlist (unvetted, to explore later): https://xivkit.com/watchlist.html
+- Plugins: https://xivkit.com/plugins.html
+- Venues: https://xivkit.com/venues.html
 
 FINAL FANTASY XIV is a registered trademark of Square Enix Holdings Co., Ltd. This project is an unofficial, fan-made list, not affiliated with or endorsed by Square Enix. Each page carries the same notice in its footer.
 
-## Four pages
+## Pages
+
+Four list pages share the exact same structure, styling, and search/tag script:
 
 - `index.html`: tools I actually use. This is the one worth sharing/linking.
 - `watchlist.html`: tools I've heard about or seen recommended but haven't tried
@@ -24,7 +28,14 @@ FINAL FANTASY XIV is a registered trademark of Square Enix Holdings Co., Ltd. Th
 - `venues.html`: player-run venues I actually visit, with hours and an in-game
   address. See "Venue entries" below for the extra attributes this page uses.
 
-All four pages share the exact same structure, styling, and search/tag script. See below.
+Guides are standalone pages hosted on the site and listed under "Curated Guides" on
+the home page: `jump-puzzle-macros.html`, `hunt-for-astronomy.html`, and
+`trade-in-mounts.html`. `inventory-decluttering.html` exists but isn't linked from
+the home page or listed in `sitemap.xml` yet.
+
+All pages share the branding: titles read `Page name | XIVKit` (the home page is
+`XIVKit: FFXIV Tools & Links`), `og:site_name` is `XIVKit`, and URLs use
+`https://xivkit.com/`.
 
 ## Updating the list
 
@@ -102,4 +113,16 @@ pill does the same for that tag.
 ## One-time setup (if Pages isn't enabled yet)
 
 In the repo on GitHub: **Settings → Pages → Build and deployment → Source** = `Deploy from a branch`,
-branch = `main`, folder = `/ (root)`. Save, then the live link above will start working.
+branch = `main`, folder = `/ (root)`. Save, then the site will start working. Custom domain: set it to `xivkit.com` and tick **Enforce HTTPS**.
+
+## Domain, analytics, and social previews
+
+- The site is served from GitHub Pages at the custom domain `xivkit.com` (the `CNAME`
+  file holds it). The old `malobear.github.io/ffxiv-tools/` address redirects there.
+- Every page carries the same Google tag (gtag.js) snippet near the top of `<head>`.
+  To change the analytics property, replace the `G-...` ID in all pages.
+- Each page's link preview is a 1200x630 `og-*.png` in the repo root (dark card with
+  the XIV badge, page title, short description, tags, and `xivkit.com`). When a page's
+  title or description changes, regenerate its card in the same style.
+- The region setting is stored in `localStorage` as `xivkit-region` (older keys are
+  migrated automatically by `market-region.js`).
