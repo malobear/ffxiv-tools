@@ -1,0 +1,67 @@
+# Pings IndexNow (Bing, Yandex, Naver, Seznam, and others) after each GitHub Pages
+# deploy, so changed pages get recrawled within hours instead of weeks.
+#
+# Only URLs listed in sitemap.xml are submitted, so unlisted or draft pages stay out.
+# Run it manually (Actions tab > IndexNow > Run workflow) to submit every sitemap URL.
+
+name: IndexNow
+
+on:
+  workflow_run:
+    workflows: ["pages-build-deployment"]
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  HOST: xivkit.com
+  KEY: 358764a8f25e8986ddc7196e625b5043
+
+jobs:
+  ping:
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+          fetch-depth: 2
+
+      - name: Collect URLs
+        id: urls
+        run: |
+          set -euo pipefail
+          grep -o '<loc>[^<]*</loc>' sitemap.xml | sed -e 's#<loc>##' -e 's#</loc>##' > sitemap_urls.txt
+
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            cp sitemap_urls.txt urls.txt
+          else
+            : > urls.txt
+            git diff --name-only HEAD^ HEAD -- '*.html' | while read -r f; do
+              if [ "$f" = "index.html" ]; then url="https://$HOST/"; else url="https://$HOST/$f"; fi
+              if grep -qxF "$url" sitemap_urls.txt; then echo "$url" >> urls.txt; fi
+            done
+          fi
+
+          echo "URLs to submit:"
+          cat urls.txt
+          echo "count=$(wc -l < urls.txt | tr -d ' ')" >> "$GITHUB_OUTPUT"
+
+      - name: Submit to IndexNow
+        if: steps.urls.outputs.count != '0'
+        run: |
+          set -euo pipefail
+          jq -n --arg host "$HOST" --arg key "$KEY" \
+            --arg loc "https://$HOST/$KEY.txt" \
+            --rawfile urls urls.txt \
+            '{host: $host, key: $key, keyLocation: $loc, urlList: ($urls | split("\n") | map(select(length > 0)))}' > payload.json
+          cat payload.json
+          status=$(curl -s -o response.txt -w '%{http_code}' \
+            -X POST https://api.indexnow.org/indexnow \
+            -H 'Content-Type: application/json; charset=utf-8' \
+            --data @payload.json)
+          echo "IndexNow responded $status"
+          cat response.txt || true
+          case "$status" in 200|202) ;; *) exit 1 ;; esac
