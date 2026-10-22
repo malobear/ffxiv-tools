@@ -172,7 +172,7 @@
   },
   "pages": {
     "index": {
-      "h1": "FFXIV Tools & Links",
+      "h1": "XIVKit: FFXIV Tools & Links",
       "tagline": "A running list of things I actually use. Updated whenever I find something worth keeping.",
       "searchPlaceholder": "Search tools by name, description, or tag...",
       "emptyStateText": "No tools match that search.",

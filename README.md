@@ -1,4 +1,4 @@
-# FFXIV Tools & Links
+# XIVKit: FFXIV Tools & Links
 
 A curated, hand-picked list of FFXIV tools I actually use: market board data, crafting trackers, glamour and mod sources, Dalamud plugins, and other reference sites. Kept small on purpose, updated whenever something new earns a spot.
 
