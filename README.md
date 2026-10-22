@@ -2,10 +2,10 @@
 
 A curated, hand-picked list of FFXIV tools I actually use: market board data, crafting trackers, glamour and mod sources, Dalamud plugins, and other reference sites. Kept small on purpose, updated whenever something new earns a spot.
 
-Live page: https://malobear.github.io/ffxiv-tools/
-Watchlist (unvetted, to explore later): https://malobear.github.io/ffxiv-tools/watchlist.html
-Plugins: https://malobear.github.io/ffxiv-tools/plugins.html
-Venues: https://malobear.github.io/ffxiv-tools/venues.html
+Live page: https://xivkit.com/
+Watchlist (unvetted, to explore later): https://xivkit.com/watchlist.html
+Plugins: https://xivkit.com/plugins.html
+Venues: https://xivkit.com/venues.html
 
 FINAL FANTASY XIV is a registered trademark of Square Enix Holdings Co., Ltd. This project is an unofficial, fan-made list, not affiliated with or endorsed by Square Enix. Each page carries the same notice in its footer.
 
